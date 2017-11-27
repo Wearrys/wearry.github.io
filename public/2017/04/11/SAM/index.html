@@ -1,0 +1,747 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="StringMatch,Automaton," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Definition&amp;emsp;&amp;emsp;后缀自动机（以下简称SAM）是一个典型的有限状态自动机，定义在给定的字符集上，可识别状态为一个字符串的所有子串，可以证明这个自动机的状态数和转移数都是线性的，常用于处理子串出现次数、字典序相关的字符串问题、以及要求强制在线的字符串匹配问题。 一些定义：&amp;emsp;&amp;emsp; $ link(s) $ 状态s的后缀链接状态&amp;emsp;&amp;emsp; $ le">
+<meta name="keywords" content="StringMatch,Automaton">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Summary of Suffix Automaton">
+<meta property="og:url" content="http://yoursite.com/2017/04/11/SAM/index.html">
+<meta property="og:site_name" content="Wearry's Blog">
+<meta property="og:description" content="Definition&amp;emsp;&amp;emsp;后缀自动机（以下简称SAM）是一个典型的有限状态自动机，定义在给定的字符集上，可识别状态为一个字符串的所有子串，可以证明这个自动机的状态数和转移数都是线性的，常用于处理子串出现次数、字典序相关的字符串问题、以及要求强制在线的字符串匹配问题。 一些定义：&amp;emsp;&amp;emsp; $ link(s) $ 状态s的后缀链接状态&amp;emsp;&amp;emsp; $ le">
+<meta property="og:updated_time" content="2017-05-23T12:04:39.116Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Summary of Suffix Automaton">
+<meta name="twitter:description" content="Definition&amp;emsp;&amp;emsp;后缀自动机（以下简称SAM）是一个典型的有限状态自动机，定义在给定的字符集上，可识别状态为一个字符串的所有子串，可以证明这个自动机的状态数和转移数都是线性的，常用于处理子串出现次数、字典序相关的字符串问题、以及要求强制在线的字符串匹配问题。 一些定义：&amp;emsp;&amp;emsp; $ link(s) $ 状态s的后缀链接状态&amp;emsp;&amp;emsp; $ le">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/11/SAM/"/>
+
+
+
+
+
+  <title> Summary of Suffix Automaton | Wearry's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wearry's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-friends">
+          <a href="/friends" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-link"></i> <br />
+            
+            Friends
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/11/SAM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wearry">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/ava.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wearry's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Summary of Suffix Automaton
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-11T00:00:00+08:00">
+                2017-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h3><p>&emsp;&emsp;后缀自动机（以下简称SAM）是一个典型的有限状态自动机，定义在给定的字符集上，可识别状态为一个字符串的所有子串，可以证明这个自动机的状态数和转移数都是线性的，常用于处理子串出现次数、字典序相关的字符串问题、以及要求强制在线的字符串匹配问题。</p>
+<p>一些定义：<br>&emsp;&emsp; $ link(s) $ 状态s的后缀链接状态<br>&emsp;&emsp; $ len(s) $ 状态s的最长表示长度<br>&emsp;&emsp; $ trans(s, c) $ 在状态s下加入字符c能到达的转移状态<br>&emsp;&emsp; $ endpos(s) $ 状态s所对应的字符串出现在原串中的位置集合</p>
+<h3 id="Status-in-SAM"><a href="#Status-in-SAM" class="headerlink" title="Status in SAM"></a>Status in SAM</h3><p>&emsp;&emsp;与一般自动机不同，在SAM中，一个状态对应的是一个字符串的集合，而且这个集合是原串的一段长度连续的子串。同时后缀自动机的状态有许多性质，考虑trans边的时候它是一个DAG，而考虑link边的时候它又成了一棵树（事实上，这就是俗称的后缀树），本文接下来的部分将从这两个方面来讨论SAM的一些性质。</p>
+<a id="more"></a>
+<h4 id="emsp-1-Trans-（DAG）"><a href="#emsp-1-Trans-（DAG）" class="headerlink" title="&emsp; 1.Trans （DAG）"></a>&emsp; 1.Trans （DAG）</h4><p>&emsp;&emsp;$ trans $ 边的定义与一般的有限状态自动机类似，表示一种合法的状态转移关系，简而言之就是在一个字符串的末尾添加一个字符，同时使得新的字符串是一个合法的串。<br>&emsp;&emsp;在SAM中，这个性质仍然成立但是要注意的是因为一个状态对应的不只有一个字符串，所以一个状态的trans状态<strong>不一定恰好是这个状态的转移状态，还包括其他的状态转移到的状态</strong>。<br>&emsp;&emsp;性质：不同状态的endpos集合必定不同。理由：如果两个状态的endpos集合是相同的，那么它们的后继状态就是相同的，那么在DAG上，这两个点就可以合并从而减少状态数。</p>
+<h4 id="emsp-2-Link-（Tree）"><a href="#emsp-2-Link-（Tree）" class="headerlink" title="&emsp; 2.Link （Tree）"></a>&emsp; 2.Link （Tree）</h4><p>&emsp;&emsp;前面已经提到，SAM中的一个状态的endpos集合是固定的，在这种情况下满足条件的子串就是一段长度连续的子串，$link$边的定义就是<strong>满足表示的子串集合恰好是当前状态所有子串的后缀</strong>的状态中，<strong>$len$值最大</strong>的那个。<br>&emsp;&emsp;那么我们就不难发现，一个状态和它的$link$之间的endpos集合恰好是包含关系。事实上，因为后缀自动机的一个状态表示的所有子串endpos集合相同，所以<strong>任意两个状态的endpos集合之间仅存在不相交关系和包含关系</strong>。</p>
+<h3 id="Construction-of-SAM"><a href="#Construction-of-SAM" class="headerlink" title="Construction of SAM"></a>Construction of SAM</h3><p>&emsp;&emsp;后缀自动机的构建采用增量法，假设当前已经处理好了原串的一个前缀的SAM，那么新加入的状态就是前缀的任意一个后缀加入当前字符所产生的新的子串。<br>&emsp;&emsp;那么我们可以沿着$link$边不断地往回跳，顺次遍历前缀的每一个后缀，并依次考虑加入新字符后的转移，如果不存在这种转移，则说明这个子串是第一次出现，添加这个转移指向新建节点即可。如果存在这个转移而且转移得到的状态的$len$恰好在原状态的基础上加了1，那么说明这个串独立地作为一个状态<strong>在原前缀串中出现过并且它的所有后缀都曾出现过</strong>，直接将新点的$link$指向这个点即可。否则说明这个串<strong>出现过但是和别的一些串合并在一起</strong>，现在这个串的endpos集合发生了改变（加上了最后一次出现的位置），所以需要一个新的点来表示这个串，然后把原来的和这个串之前所在状态相连的转移接到这个点上，剩下的点不用管（想一想，为什么）。<br>&emsp;&emsp;讲了这么多其实代码很好写：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">extend</span><span class="params">(<span class="keyword">int</span> c)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> p = lst, cur = newnode(len[p]+<span class="number">1</span>);</div><div class="line"></div><div class="line">    <span class="keyword">while</span>(p &amp;&amp; !trans[p][c]) trans[p][c] = cur, p = link[p];</div><div class="line"></div><div class="line">    <span class="keyword">if</span>(!p) link[cur] = <span class="number">1</span>;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">int</span> q = trans[p][c];</div><div class="line">        <span class="keyword">if</span>(len[q] == len[p] + <span class="number">1</span>) link[cur] = q;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">int</span> nq = newnode(len[p]+<span class="number">1</span>); </div><div class="line">            <span class="built_in">memcpy</span>(trans[nq], trans[q], <span class="keyword">sizeof</span> trans[q]);</div><div class="line">            link[nq] = link[q];</div><div class="line">            link[cur] = link[q] = nq;</div><div class="line">            <span class="keyword">while</span>(p &amp;&amp; trans[p][c] == q) trans[p][c] = nq, p = link[p];</div><div class="line">        &#125;</div><div class="line">    &#125;lst = cur;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/StringMatch/" rel="tag"># StringMatch</a>
+          
+            <a href="/tags/Automaton/" rel="tag"># Automaton</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/23/HNOI2017_day1/" rel="next" title="HNOI2017 Day1 Solution">
+                <i class="fa fa-chevron-left"></i> HNOI2017 Day1 Solution
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/26/NTT/" rel="prev" title="Fast Number-Theoretic Transformation">
+                Fast Number-Theoretic Transformation <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/ava.jpg"
+               alt="Wearry" />
+          <p class="site-author-name" itemprop="name">Wearry</p>
+           
+              <p class="site-description motion-element" itemprop="description">Less is more.</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/wearrys" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Definition"><span class="nav-number">1.</span> <span class="nav-text">Definition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Status-in-SAM"><span class="nav-number">2.</span> <span class="nav-text">Status in SAM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#emsp-1-Trans-（DAG）"><span class="nav-number">2.1.</span> <span class="nav-text">  1.Trans （DAG）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#emsp-2-Link-（Tree）"><span class="nav-number">2.2.</span> <span class="nav-text">  2.Link （Tree）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Construction-of-SAM"><span class="nav-number">3.</span> <span class="nav-text">Construction of SAM</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-terminal"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wearry</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
