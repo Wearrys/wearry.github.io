@@ -2,7 +2,6 @@
 title: 两道概率题
 date: 2017-07-17 21:01:11
 tags:
-    - Solution
     - Probability
     - Dynamic Programming
 ---
@@ -45,7 +44,7 @@ $$ F(S) = \sum _ {T \subset S, T \neq \varnothing} (-1) ^ {|T| - 1}  \times 2 ^ 
 然而感觉枚举$Scc$ 划分更不可做.
 先不考虑$Scc$ 如何划分, 考虑哪一些点集构成多少个$Scc$.
 假设$G _ K(T)$表示$T$ 集合分成$K$ 个$Scc$ 的方案数, 类似上面式子地, 有:
-    
+
 $$ F(S) = \sum _ {T \subset S, T \neq \varnothing} \sum _ {K = 1}^{|T|} (-1) ^ {K - 1} \times G _ K(T) \times 2 ^ {E(T, S-T) + E(S-T, S-T)} $$
 
 $$ DP(S) = 2 ^ {E(S, S)} - F(S) $$
