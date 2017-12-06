@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-01T07:46:25.941Z</updated>
+  <updated>2017-12-06T14:02:45.527Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/count-plane-tree/"/>
     <id>http://yoursite.com/2017/count-plane-tree/</id>
     <published>2017-12-01T03:03:04.000Z</published>
-    <updated>2017-12-01T07:46:25.941Z</updated>
+    <updated>2017-12-06T14:02:45.527Z</updated>
     
     <content type="html"><![CDATA[<p>不常见的经典问题, 顺便总结一下Burnside引理吧.</p>
 <a id="more"></a>
@@ -73,7 +73,7 @@
     <link href="http://yoursite.com/2017/after-noip-2017/"/>
     <id>http://yoursite.com/2017/after-noip-2017/</id>
     <published>2017-11-13T00:24:59.000Z</published>
-    <updated>2017-11-15T12:45:41.760Z</updated>
+    <updated>2017-12-06T14:02:45.527Z</updated>
     
     <content type="html"><![CDATA[<h3 id="引"><a href="#引" class="headerlink" title="引"></a>引</h3><blockquote>
 <p>本来应该有另一篇博客叫做写在NOIP2017之前的, 但跑回家才意识到博客搭在机房的电脑上, 于是……</p>
@@ -114,7 +114,7 @@
     <link href="http://yoursite.com/2017/ctsc2017-game/"/>
     <id>http://yoursite.com/2017/ctsc2017-game/</id>
     <published>2017-08-22T12:21:17.000Z</published>
-    <updated>2017-11-15T12:15:19.037Z</updated>
+    <updated>2017-12-06T14:02:45.527Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
 <p>有$N$ 局游戏, 除第一局游戏外每一局游戏的获胜机率均与上一局游戏的结果有关. 现在对游戏进行$Q$次修改, 每次告诉你某一局游戏的结果或者删除之前给你的信息, 求修改后期望下获胜的场数为多少.<br>$ N, Q \le 2 \times 10 ^ 5 $</p>
@@ -145,7 +145,7 @@
     <link href="http://yoursite.com/2017/probability-problems/"/>
     <id>http://yoursite.com/2017/probability-problems/</id>
     <published>2017-07-17T13:01:11.000Z</published>
-    <updated>2017-12-01T02:53:24.486Z</updated>
+    <updated>2017-12-06T14:02:45.527Z</updated>
     
     <content type="html"><![CDATA[<h3 id="玛里苟斯"><a href="#玛里苟斯" class="headerlink" title="玛里苟斯"></a>玛里苟斯</h3><h4 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h4><blockquote>
 <p>给你一个大小为N的可重集合, 求该集合子集异或和的$K$次方的期望, 保证答案不超过$ 2 ^ {64} $.<br>$ N \le 100000, K \le 5, A _ i \le 10 ^ 9 $</p>
@@ -180,9 +180,9 @@
     </summary>
     
     
-      <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
-    
       <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
+    
+      <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
     
   </entry>
   
@@ -191,7 +191,7 @@
     <link href="http://yoursite.com/2017/atcoder-select/"/>
     <id>http://yoursite.com/2017/atcoder-select/</id>
     <published>2017-06-30T13:56:39.000Z</published>
-    <updated>2017-08-27T11:46:00.561Z</updated>
+    <updated>2017-12-06T14:02:45.527Z</updated>
     
     <content type="html"><![CDATA[<p>其实是总结一下比赛中遇到的好题, 然后瞎做了几场 AGC 的题目练习, 感觉还比较有意思. </p>
 <a id="more"></a>
@@ -277,7 +277,7 @@
     <link href="http://yoursite.com/2017/cf-418e/"/>
     <id>http://yoursite.com/2017/cf-418e/</id>
     <published>2017-06-12T12:56:07.000Z</published>
-    <updated>2017-11-15T12:46:19.165Z</updated>
+    <updated>2017-12-06T14:02:45.527Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
 <p>求满足如下条件的 $N$ 个点的简单无向图的个数对 $ 1e9 + 7 $ 取模的结果：</p>
@@ -312,9 +312,9 @@
     </summary>
     
     
-      <category term="Counting Problems" scheme="http://yoursite.com/tags/Counting-Problems/"/>
-    
       <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
+    
+      <category term="Counting Problems" scheme="http://yoursite.com/tags/Counting-Problems/"/>
     
   </entry>
   
@@ -323,7 +323,7 @@
     <link href="http://yoursite.com/2017/zjoi2017-bit/"/>
     <id>http://yoursite.com/2017/zjoi2017-bit/</id>
     <published>2017-06-12T12:04:19.000Z</published>
-    <updated>2017-12-01T03:01:12.763Z</updated>
+    <updated>2017-12-06T14:02:45.527Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
 <p>给你一个长度为 $N$ 的序列以及 $M$ 次操作, 每次等概率地修改 $[L_i, R_i]$ 区间中一个值的奇偶性, 或者对于询问$[L_i,R_i]$区间中的和的奇偶性, 判断给定的一种错误算法输出正确答案的概率是多少<br>$ N, M &lt;= 10^5 $<br><a id="more"></a></p>
@@ -362,7 +362,7 @@
     <link href="http://yoursite.com/2017/noi2016-grid/"/>
     <id>http://yoursite.com/2017/noi2016-grid/</id>
     <published>2017-06-10T06:36:06.000Z</published>
-    <updated>2017-11-15T12:46:47.333Z</updated>
+    <updated>2017-12-06T14:02:45.527Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
 <p>给出一个 $ N \times M $ 的网格图和图上的 $ C $ 个障碍物, 求最少删去多少个点可使得原图空格不四连通.<br>$ N, M &lt;= 10 ^ 9, C &lt;= 10 ^ 5 $</p>
@@ -393,7 +393,7 @@
     <link href="http://yoursite.com/2017/cf-553e/"/>
     <id>http://yoursite.com/2017/cf-553e/</id>
     <published>2017-05-03T13:21:27.000Z</published>
-    <updated>2017-12-01T02:52:45.665Z</updated>
+    <updated>2017-12-06T14:02:45.527Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
 <p>给定 $N$ 个点, $M$ 条边的有向图.<br>每条边有花费: 通过第 $i$ 条边的时间有 $ P _ {i1} $ 的概率为 $1$, $P _ {i2}$ 的概率为 $2$…<br>如果总用时超过 $T$ 则会被罚钱 $X$ 元, 求从 $1$ 号点到 $n$ 号点的最小期望花费.<br>$ N \leq 50, M \leq 100, T \leq 100000 $</p>
@@ -420,9 +420,9 @@
     </summary>
     
     
-      <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
-    
       <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
+    
+      <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
     
   </entry>
   
