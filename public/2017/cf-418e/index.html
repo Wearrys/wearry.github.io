@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="OI, Computer Science, Math" />
+  <meta name="keywords" content="Counting Problems,Dynamic Programming," />
 
 
 
@@ -94,15 +94,17 @@
 
 
 
-<meta name="description" content="Less is more.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wearry's Blog">
-<meta property="og:url" content="http://yoursite.com/tags/Solution/index.html">
+<meta name="description" content="Description 求满足如下条件的 $N$ 个点的简单无向图的个数对 $ 1e9 + 7 $ 取模的结果：  每个点的度数均为 $2$ 或 $3$ 从一号点到任何一个点的最短路唯一并且随着点标号上升而不降.    (两个图不同当且仅当边的集合不同).$ N &amp;lt;= 50 $">
+<meta name="keywords" content="Counting Problems,Dynamic Programming">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codeforces Div2 418E">
+<meta property="og:url" content="http://yoursite.com/2017/cf-418e/index.html">
 <meta property="og:site_name" content="Wearry's Blog">
-<meta property="og:description" content="Less is more.">
+<meta property="og:description" content="Description 求满足如下条件的 $N$ 个点的简单无向图的个数对 $ 1e9 + 7 $ 取模的结果：  每个点的度数均为 $2$ 或 $3$ 从一号点到任何一个点的最短路唯一并且随着点标号上升而不降.    (两个图不同当且仅当边的集合不同).$ N &amp;lt;= 50 $">
+<meta property="og:updated_time" content="2017-11-15T12:46:19.165Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Wearry's Blog">
-<meta name="twitter:description" content="Less is more.">
+<meta name="twitter:title" content="Codeforces Div2 418E">
+<meta name="twitter:description" content="Description 求满足如下条件的 $N$ 个点的简单无向图的个数对 $ 1e9 + 7 $ 取模的结果：  每个点的度数均为 $2$ 或 $3$ 从一号点到任何一个点的最短路唯一并且随着点标号上升而不降.    (两个图不同当且仅当边的集合不同).$ N &amp;lt;= 50 $">
 
 
 
@@ -131,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Solution/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/cf-418e/"/>
 
 
 
 
 
-  <title>Tag: Solution | Wearry's Blog</title>
+  <title>Codeforces Div2 418E | Wearry's Blog</title>
   
 
 
@@ -156,7 +158,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -284,54 +286,174 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Solution<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/cf-418e/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wearry">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/ava.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wearry's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/atcoder-select/" itemprop="url">
-              
-                <span itemprop="name">Atcoder 选做</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Codeforces Div2 418E</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-30T21:56:39+08:00"
-              content="2017-06-30" >
-          06-30
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-12T20:56:07+08:00">
+                2017-06-12
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>求满足如下条件的 $N$ 个点的简单无向图的个数对 $ 1e9 + 7 $ 取模的结果：</p>
+<ul>
+<li>每个点的度数均为 $2$ 或 $3$</li>
+<li>从一号点到任何一个点的最短路唯一并且随着点标号上升而不降. </li>
+</ul>
+</blockquote>
+<p>(两个图不同当且仅当边的集合不同).<br>$ N &lt;= 50 $<br><a id="more"></a></p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>我们可以记:</p>
+<ul>
+<li>$f _ {i, j}$ 表示考虑完前 $i$ 个点, 最后一层恰好有 $j$ 个点, 且最后一层之前的点度数已经满足条件时的方案数.</li>
+<li>$g _ {i, j, k}$ 表示当前层有 $i$ 个点, 上一层剩下来 $j$ 个度为 $2$ 的点, $k$ 个度为 $3$ 的点时连边的方案数.</li>
+</ul>
+<p>那么容易得到 $f _ {i, j} = \sum _ {k} f _ {i-j, k} * g _ {j, c0, c1}$, 其中 $c0, c1$ 表示最后一层 $k$ 个点中度为 $2$ 的点和度为 $3$ 的点的个数.</p>
+<p>对于 $ g $, 不难得到:</p>
+<p>$$<br>g _ {i, j, k} =<br>\begin{cases}<br>    1 &amp; i = 0, j = 0, k = 0 \\<br>    \sum _ {l=2}^{k-1} \frac{l!}{2} {k-1 \choose l} g _ {i, j, k-l-1} &amp; i = 0, j = 0, k &gt; 0 \\<br>    (j-1) \cdot g _ {i, j-2, k} + k \cdot g _ {i, j, k-1} &amp; i = 0, j &gt; 0 \\<br>    j \cdot g _ {i-1, j-1, k} + k \cdot g _ {i-1, j+1, k-1} &amp; i &gt; 0<br>\end{cases}<br>$$</p>
+<h3 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h3><p>注意在第二个递推式中 $l$ 从 $2$ 开始枚举, 因为不能有重边, 所以不存在大小为 $2$ 的环.</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Counting-Problems/" rel="tag"># Counting Problems</a>
+          
+            <a href="/tags/Dynamic-Programming/" rel="tag"># Dynamic Programming</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/atcoder-select/" rel="next" title="Atcoder 选做">
+                <i class="fa fa-chevron-left"></i> Atcoder 选做
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/zjoi2017-bit/" rel="prev" title="ZJOI2017 树状数组">
+                ZJOI2017 树状数组 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -339,6 +461,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -359,8 +485,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/ava.jpg"
@@ -426,6 +561,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hint"><span class="nav-number">3.</span> <span class="nav-text">Hint</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -559,10 +710,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 

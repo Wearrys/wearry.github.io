@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="OI, Computer Science, Math" />
+  <meta name="keywords" content="Probability,Dynamic Programming," />
 
 
 
@@ -94,15 +94,17 @@
 
 
 
-<meta name="description" content="Less is more.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wearry's Blog">
-<meta property="og:url" content="http://yoursite.com/tags/Solution/index.html">
+<meta name="description" content="玛里苟斯Description 给你一个大小为N的可重集合, 求该集合子集异或和的$K$次方的期望, 保证答案不超过$ 2 ^ {64} $.$ N \le 100000, K \le 5, A _ i \le 10 ^ 9 $">
+<meta name="keywords" content="Probability,Dynamic Programming">
+<meta property="og:type" content="article">
+<meta property="og:title" content="两道概率题">
+<meta property="og:url" content="http://yoursite.com/2017/probability-problems/index.html">
 <meta property="og:site_name" content="Wearry's Blog">
-<meta property="og:description" content="Less is more.">
+<meta property="og:description" content="玛里苟斯Description 给你一个大小为N的可重集合, 求该集合子集异或和的$K$次方的期望, 保证答案不超过$ 2 ^ {64} $.$ N \le 100000, K \le 5, A _ i \le 10 ^ 9 $">
+<meta property="og:updated_time" content="2017-12-01T02:53:24.486Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Wearry's Blog">
-<meta name="twitter:description" content="Less is more.">
+<meta name="twitter:title" content="两道概率题">
+<meta name="twitter:description" content="玛里苟斯Description 给你一个大小为N的可重集合, 求该集合子集异或和的$K$次方的期望, 保证答案不超过$ 2 ^ {64} $.$ N \le 100000, K \le 5, A _ i \le 10 ^ 9 $">
 
 
 
@@ -131,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Solution/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/probability-problems/"/>
 
 
 
 
 
-  <title>Tag: Solution | Wearry's Blog</title>
+  <title>两道概率题 | Wearry's Blog</title>
   
 
 
@@ -156,7 +158,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -284,54 +286,179 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Solution<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/probability-problems/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wearry">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/ava.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wearry's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/atcoder-select/" itemprop="url">
-              
-                <span itemprop="name">Atcoder 选做</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">两道概率题</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-30T21:56:39+08:00"
-              content="2017-06-30" >
-          06-30
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-17T21:01:11+08:00">
+                2017-07-17
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="玛里苟斯"><a href="#玛里苟斯" class="headerlink" title="玛里苟斯"></a>玛里苟斯</h3><h4 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h4><blockquote>
+<p>给你一个大小为N的可重集合, 求该集合子集异或和的$K$次方的期望, 保证答案不超过$ 2 ^ {64} $.<br>$ N \le 100000, K \le 5, A _ i \le 10 ^ 9 $</p>
+</blockquote>
+<a id="more"></a>
+<h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><p>$K=1$ 时满足期望的线性性, 可以对每一个二进制位分开计算答案.<br>不难发现每一个二进制位变成 $1$ 的概率恰好为 $ \frac {1}{2} $ (集合的奇数和偶数大小的子集数相同).</p>
+<p>$K=2$ 时要求的是期望的平方, 即:<br>$$ \sum _ {i=0}^{32} \sum _ {j=0}^{32} b _ i b _ j 2 ^ {i+j} $$<br>其中 $ b _ i $表示期望二进制第 $i$ 位的值, 枚举两个二进制位再求一下两个位置同时取到 $1$ 的概率即可.</p>
+<p>$K \ge 3$时由于答案不超过 $2^{64}$, 所以集合内的数也不会很大, 直接用线性基处理.</p>
+<h3 id="主旋律"><a href="#主旋律" class="headerlink" title="主旋律"></a>主旋律</h3><h4 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h4><blockquote>
+<p>求N个点, M条边的有向图有多少生成子图满足整个图是强联通的.<br>$ N \le 15, M \le N(N-1) $</p>
+</blockquote>
+<h4 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h4><p>这题一眼看上去不太好做, 不妨从问题的反面来考虑.<br>首先一个非强联通的图缩掉$Scc$ 之后会得到若干个 $DAG$.<br>如果知道$Scc$ 的划分情况, 计算$DAG$ 的数量就变成一个经典问题了:</p>
+<p>$$ E(S, T) = {|\{(u, v) \in E | u \in S, v \in T)\}|} $$</p>
+<p>$$ F(S) = \sum _ {T \subset S, T \neq \varnothing} (-1) ^ {|T| - 1}  \times 2 ^ {E(T, S-T)} F(T) $$</p>
+<p>然而感觉枚举$Scc$ 划分更不可做.<br>先不考虑$Scc$ 如何划分, 考虑哪一些点集构成多少个$Scc$.<br>假设$G _ K(T)$表示$T$ 集合分成$K$ 个$Scc$ 的方案数, 类似上面式子地, 有:</p>
+<p>$$ F(S) = \sum _ {T \subset S, T \neq \varnothing} \sum _ {K = 1}^{|T|} (-1) ^ {K - 1} \times G _ K(T) \times 2 ^ {E(T, S-T) + E(S-T, S-T)} $$</p>
+<p>$$ DP(S) = 2 ^ {E(S, S)} - F(S) $$</p>
+<p>实际上只需要求将某个集合分成奇数个$Scc$ 与偶数个$Scc$ 的方案数之差 $ P(S) $:</p>
+<p>$$ P(S) = DP(S) + \sum _ {T \subset S, u \in T} - DP(T) \times P(S - T) $$</p>
+<blockquote>
+<p>其中 $ u \in T $ 避免重复计数.</p>
+</blockquote>
+<p>这样加上一些预处理的技巧可以做到 $ O(3 ^ n) $.</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Probability/" rel="tag"># Probability</a>
+          
+            <a href="/tags/Dynamic-Programming/" rel="tag"># Dynamic Programming</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/ctsc2017-game/" rel="next" title="CTSC2017 游戏">
+                <i class="fa fa-chevron-left"></i> CTSC2017 游戏
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/atcoder-select/" rel="prev" title="Atcoder 选做">
+                Atcoder 选做 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -339,6 +466,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -359,8 +490,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/ava.jpg"
@@ -426,6 +566,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#玛里苟斯"><span class="nav-number">1.</span> <span class="nav-text">玛里苟斯</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description"><span class="nav-number">1.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Solution"><span class="nav-number">1.2.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主旋律"><span class="nav-number">2.</span> <span class="nav-text">主旋律</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description-1"><span class="nav-number">2.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Solution-1"><span class="nav-number">2.2.</span> <span class="nav-text">Solution</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -559,10 +715,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 

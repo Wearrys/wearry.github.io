@@ -2,28 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2017/ZJOI-2017-r1t2/</loc>
+    <loc>http://yoursite.com/2017/count-plane-tree/</loc>
     
-    <lastmod>2017-11-15T12:47:33.034Z</lastmod>
+    <lastmod>2017-12-01T07:46:25.941Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/NOI-2016-d1t2/</loc>
+    <loc>http://yoursite.com/2017/zjoi2017-bit/</loc>
+    
+    <lastmod>2017-12-01T03:01:12.763Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/probability-problems/</loc>
+    
+    <lastmod>2017-12-01T02:53:24.486Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/cf-553e/</loc>
+    
+    <lastmod>2017-12-01T02:52:45.665Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/noi2016-grid/</loc>
     
     <lastmod>2017-11-15T12:46:47.333Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/CF-553-E/</loc>
-    
-    <lastmod>2017-11-15T12:46:32.213Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/CF-418-E/</loc>
+    <loc>http://yoursite.com/2017/cf-418e/</loc>
     
     <lastmod>2017-11-15T12:46:19.165Z</lastmod>
     
@@ -37,21 +51,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/two-probability-problems/</loc>
-    
-    <lastmod>2017-11-15T12:16:02.305Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/CTSC-2017-d1t3/</loc>
+    <loc>http://yoursite.com/2017/ctsc2017-game/</loc>
     
     <lastmod>2017-11-15T12:15:19.037Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/Atcoder-select/</loc>
+    <loc>http://yoursite.com/2017/atcoder-select/</loc>
     
     <lastmod>2017-08-27T11:46:00.561Z</lastmod>
     

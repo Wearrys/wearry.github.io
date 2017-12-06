@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="OI, Computer Science, Math" />
+  <meta name="keywords" content="Burnside,Combinatorial," />
 
 
 
@@ -94,15 +94,19 @@
 
 
 
-<meta name="description" content="Less is more.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wearry's Blog">
-<meta property="og:url" content="http://yoursite.com/tags/Solution/index.html">
+<meta name="description" content="不常见的经典问题, 顺便总结一下Burnside引理吧.">
+<meta name="keywords" content="Burnside,Combinatorial">
+<meta property="og:type" content="article">
+<meta property="og:title" content="平面树计数">
+<meta property="og:url" content="http://yoursite.com/2017/count-plane-tree/index.html">
 <meta property="og:site_name" content="Wearry's Blog">
-<meta property="og:description" content="Less is more.">
+<meta property="og:description" content="不常见的经典问题, 顺便总结一下Burnside引理吧.">
+<meta property="og:image" content="http://yoursite.com/img/plane-tree.png">
+<meta property="og:updated_time" content="2017-12-01T07:46:25.941Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Wearry's Blog">
-<meta name="twitter:description" content="Less is more.">
+<meta name="twitter:title" content="平面树计数">
+<meta name="twitter:description" content="不常见的经典问题, 顺便总结一下Burnside引理吧.">
+<meta name="twitter:image" content="http://yoursite.com/img/plane-tree.png">
 
 
 
@@ -131,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Solution/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/count-plane-tree/"/>
 
 
 
 
 
-  <title>Tag: Solution | Wearry's Blog</title>
+  <title>平面树计数 | Wearry's Blog</title>
   
 
 
@@ -156,7 +160,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -284,54 +288,184 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Solution<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/count-plane-tree/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wearry">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/ava.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wearry's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/atcoder-select/" itemprop="url">
-              
-                <span itemprop="name">Atcoder 选做</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">平面树计数</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-06-30T21:56:39+08:00"
-              content="2017-06-30" >
-          06-30
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-01T11:03:04+08:00">
+                2017-12-01
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>不常见的经典问题, 顺便总结一下Burnside引理吧.</p>
+<a id="more"></a>
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><blockquote>
+<p>给定 $N$, 求 $N$ 个点的本质不同的平面树的数量.<br>两棵平面树是等价的当且仅当其中一棵能够移动点的位置与另一棵重合, 并且在整个过程中仍然是一棵平面树.</p>
+</blockquote>
+<h3 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h3><p>首先考虑模型转化(计算 $N+1$ 个点的答案):<br>取一个单位圆, 在上面等距的取 $2N$ 个点, 然后将这些点两两配对连边, 满足所有连边不相交.<br>发现它的对偶图恰好是一棵平面树, 像这样:</p>
+<p><img src="/img/plane-tree.png" alt=""></p>
+<p>那么就只需要考虑本质不同的这样的圆的数量即可.<br>两个圆是等价的当且仅当一个圆可以通过旋转一定的角度与另一个圆重合.<br>而在这个圆上共有 $2N$ 个点, 就意味着有 $2N$ 个置换, 构成一个置换群.</p>
+<p>置换群下的计数可以用到 Burnside引理 :</p>
+<blockquote>
+<p>$$ N(G, C) = \frac{1}{|G|} { \sum_{f \in G} c(f) } $$</p>
+</blockquote>
+<p>则转化为求置换下的不动点的数量:</p>
+<ul>
+<li><p>不存在置换的情况下, 答案为 $c_N$, $\mathrm{Catalan}$ 数的第 $N$ 项.<br>即将相互匹配的位置看作左右括号, 则所有合法的括号序列都对应一个满足条件的圆.</p>
+</li>
+<li><p>$N$ 为奇数时, 可能存在一条平分圆的对角线在置换下不变, 计算 $\frac{N+1}{2}$ 个点的答案即可.</p>
+</li>
+<li><p>考虑旋转置换.<br>为了满足旋转之后的边重合, 点 $i$ 和它的匹配点 $p_i$ 在旋转后应该仍然是相匹配的.<br>则环的数量一定是偶数 $2d$, 所以环的长度可以表示为 $\frac{2N}{2d} = \frac{N}{d}$.</p>
+<p>假定置换的阶是 $e$, $e &gt; 1, e | N$, 环的数量 $2d = \frac{2N}{e}$.<br>环上与 $0$ 匹配的点为 $i$, 不难发现在这些点之间的点的方案数为 $c_{i-1}$.<br>当这些点确定之后, 它们在环上依次经过的 $(i+1)e$ 个点就确定了.</p>
+<p>令 $f(x)$ 表示 $\mathrm{Catalan}$ 数的生成函数, 根据 $\mathrm{Catalan}$ 数的递推式, 不难得到:</p>
+<p>$$ f(x) = xf^2(x) + 1 $$</p>
+<p>构造 $b_d$ 表示包含 $2d$ 个环的置换下不动点的数量.</p>
+<p>$$ b_d = 2\sum_{i = 0}^{d-1} c_i b_{d-i-1} $$</p>
+<p>其中因子 $2$ 考虑的是 $i &gt; 2d$ 时用当前置换的逆来计算的情况.<br>则 $b_d$ 的生成函数 $g(x)$ 满足:</p>
+<p>$$ g(x) = 2x g(x) f(x) + 1 $$</p>
+<p>解得:</p>
+<p>$$ g(x) = (1 - 4x) ^ {-\frac{1}{2}} $$</p>
+</li>
+</ul>
+<h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><p>  $$ p(n) = \frac{1}{2n} ( [n \, is \, odd]\binom{n}{\lfloor\frac{n}{2}\rfloor} - \binom{2n}{n-1} + \sum_{d|n}{\varphi(n/d)\binom {2d}{d}} )$$</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Burnside/" rel="tag"># Burnside</a>
+          
+            <a href="/tags/Combinatorial/" rel="tag"># Combinatorial</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/after-noip-2017/" rel="prev" title="写在NOIP2017之后">
+                写在NOIP2017之后 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -339,6 +473,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -359,8 +497,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/ava.jpg"
@@ -426,6 +573,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做法"><span class="nav-number">2.</span> <span class="nav-text">做法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题解决"><span class="nav-number">3.</span> <span class="nav-text">问题解决</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -559,10 +722,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
