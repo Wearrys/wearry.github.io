@@ -324,7 +324,7 @@
       
         
           <h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
-<p>给定 $N$ 个点, $M$ 条边的有向图.<br>每条边有花费: 通过第 $i$ 条边的时间有 $ P <em> {i1} $ 的概率为 $1$, $P </em> {i2}$ 的概率为 $2$…<br>如果总用时超过 $T$ 则会被罚钱 $X$ 元, 求从 $1$ 号点到 $n$ 号点的最小期望花费.<br>$ N \leq 50, M \leq 100, T \leq 100000 $</p>
+<p>给定 $N$ 个点, $M$ 条边的有向图.<br>每条边有花费: 通过第 $i$ 条边的时间有 $ P _ {i1} $ 的概率为 $1$, $P _ {i2}$ 的概率为 $2$…<br>如果总用时超过 $T$ 则会被罚钱 $X$ 元, 求从 $1$ 号点到 $n$ 号点的最小期望花费.<br>$ N \leq 50, M \leq 100, T \leq 100000 $</p>
 </blockquote>
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>考虑暴力DP, 记状态 $ dp _ {i, t} $ 表示到达 $i$ 号点, 且经过的时间为 $t$ 的最小期望花费, 转移十分显然.<br>同时因为状态之间按照时间构成一个拓扑图, 所以转移不存在环.</p>
           <!--noindex-->
