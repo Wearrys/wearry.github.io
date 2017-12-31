@@ -325,7 +325,7 @@
 <p>给出一个 $ N \times M $ 的网格图和图上的 $ C $ 个障碍物, 求最少删去多少个点可使得原图空格不四连通.<br>$ N, M &lt;= 10 ^ 9, C &lt;= 10 ^ 5 $</p>
 </blockquote>
 <a id="more"></a>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>我们可以发现, 可能的答案只有 $ \{ -1, 0, 1, 2 \} $ 几种.</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>我们可以发现, 可能的答案只有 $ { -1, 0, 1, 2 } $ 几种.</p>
 <p>考虑一些简单的情况:<br>答案等于 $ -1 $ 时, 点数小于 $2$ 或者恰好有两个相邻的点.<br>答案为 $ 0 $ 时, 显然原图不连通.</p>
 <p>那么就只需知道答案是否为 $ 1 $, 发现答案等于 $ 1 $ 当且仅当原图存在割点, 暴力的话不难做到 $ O(n * m) $.</p>
 <p>将到达每个障碍的曼哈顿距离不超过 $2$ 的空格给提出来, 然后在这些点中找出一个割点, 满足到达最近的障碍的距离不超过 $1$.<br>这样的点就一定是原图中的割点.</p>

@@ -326,8 +326,12 @@
 <h3 id="AGC"><a href="#AGC" class="headerlink" title="AGC"></a>AGC</h3><h4 id="AGC002-F-Leftmost-Ball"><a href="#AGC002-F-Leftmost-Ball" class="headerlink" title="AGC002 F Leftmost Ball"></a>AGC002 F Leftmost Ball</h4><blockquote>
 <p>给你$N$种不同颜色的球, 每种有$K$个, 现在你可以将球任意排列, 但最终的序列中每种颜色的第一个出现位置要被染成$0$颜色, 求能够得到的本质不同的序列数, 对$10^9 + 7$取模.<br>$ N, K \leq 2000 $</p>
 </blockquote>
-<p>这题正着处理没有什么思路, 但是如果从右往左来会比较好考虑.<br>我们可以记$f(i, j)$ 表示当前从右往左填剩下 $i$ 个 $0$ 颜色的球, 还剩下$j$ 种颜色没有放的方案数.<br>那么每一次的决策就包括放入一个$0$ 颜色的球以及添加一种颜色的 $k-1$个球:<br>$$<br>\begin{align}<br>    f(i-1, j) &amp; \leftarrow f(i, j) \mid [i &gt; j] \\<br>    f(i, j-1) &amp; \leftarrow f(i, j) \times {n-i + (n-j) \times (k-1) + k-2 \choose k-2}<br>\end{align}<br>$$</p>
-<blockquote>
+<p>这题正着处理没有什么思路, 但是如果从右往左来会比较好考虑.<br>我们可以记$f(i, j)$ 表示当前从右往左填剩下 $i$ 个 $0$ 颜色的球, 还剩下$j$ 种颜色没有放的方案数.<br>那么每一次的决策就包括放入一个$0$ 颜色的球以及添加一种颜色的 $k-1$个球:</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    f(i-1, j) & \leftarrow f(i, j) \mid [i > j] \\
+    f(i, j-1) & \leftarrow f(i, j) \times {n-i + (n-j) \times (k-1) + k-2 \choose k-2}
+\end{align}</script><blockquote>
 <p>后面那个公式是可重集, 还有最后的答案要乘以$n!$.</p>
 </blockquote>
 <h4 id="AGC005-D-K-Perm-Counting"><a href="#AGC005-D-K-Perm-Counting" class="headerlink" title="AGC005 D ~K Perm Counting"></a>AGC005 D ~K Perm Counting</h4><blockquote>
@@ -347,13 +351,20 @@
 <p>我们考虑找到最大的一个$T$,使得$B$ 的第$T$ 位为$1$ 且$A$ 的第$T$ 位不为$1$, 记 $K = 2 ^ T$.<br>当选择的数的集合在 $[A, K)$ 以及在 $[K, B]$ 中的情况可以直接用上述结论.</p>
 <p>接下来考虑同时选取两个集合中的数可能会产生的答案.<br>因为这时小于$K$ 的部分是没有贡献的, 所以直接将$[A, K)$ 中的所有答案取出. 不难发现$[K, B]$ 中取任意个都与只使用$K$ 没有区别, 那么这时候的范围是$[K+A, 2\times K-1]$, 注意减去重复贡献.</p>
 <h4 id="AGC015-F-Kenus-the-Ancient-Greek"><a href="#AGC015-F-Kenus-the-Ancient-Greek" class="headerlink" title="AGC015 F Kenus the Ancient Greek"></a>AGC015 F Kenus the Ancient Greek</h4><blockquote>
-<p>Q组询问, 每组询问的形式为A, B, 表示求$ x \in [1, A], y \in [1, B] $的 $g(x, y)$ 的最大值, 及最大值的方案数, 其中:<br>$$<br>g(x, y) =<br>\begin{cases}<br>    1, &amp; \text{y = 0} \\<br>    g(y, x), &amp; \text{x &gt; y} \\<br>    g(y \; mod \; x, x) + 1, &amp; \text{otherwise} \\<br>\end{cases}<br>$$<br>$ 1 \le Q \le 3 \times 10 ^ 5 \,\,, 1 \le A, B \le 10 ^ {18} $</p>
+<p>Q组询问, 每组询问的形式为A, B, 表示求$ x \in [1, A], y \in [1, B] $的 $g(x, y)$ 的最大值, 及最大值的方案数, 其中: </p>
+<script type="math/tex; mode=display">
+g(x, y) = 
+\begin{cases} 
+    1, & \text{y = 0} \\
+    g(y, x), & \text{x > y} \\
+    g(y \; mod \; x, x) + 1, & \text{otherwise} \\
+\end{cases}</script><p>$ 1 \le Q \le 3 \times 10 ^ 5 \,\,, 1 \le A, B \le 10 ^ {18} $</p>
 </blockquote>
 <p><strong>以下无特殊说明, 均默认所有 $x &lt; y, A &lt; B $</strong></p>
 <p>先考虑第一问, 如果我们由一个特定的 $(x, y)$ , 从小到大地构造使得 $g(x, y)$ 的值不断地变大, 那么如何构造使得这个值最大呢?</p>
 <p>对于所有 $(x’, y’)$ 满足 $g(x’, y’) = g(x, y) + 1$, 显然有:</p>
-<p>$$<br>(x’, y’) \in \{ (y, x + ky) \mid k \in Z^+ \}<br>$$</p>
-<p>同时, 为了使得这个过程尽可能的多次进行,我们从 $(0, 1)$ 出发, 每次取 $ k = 1 $.<br>发现这样生成了一组$Fibonacci$数列, 这里$Fibonacci$数列从0开始标号. </p>
+<script type="math/tex; mode=display">
+(x', y') \in \{ (y, x + ky) \mid k \in Z^+ \}</script><p>同时, 为了使得这个过程尽可能的多次进行,我们从 $(0, 1)$ 出发, 每次取 $ k = 1 $.<br>发现这样生成了一组$Fibonacci$数列, 这里$Fibonacci$数列从0开始标号. </p>
 <p>那么第一问的答案就是求满足 $ Fib_k \le A,\; Fib_{k+1} \le B $ 的最大的$k$.<br>同时, 这样的数对是满足 $g(x, y) = k$ 的最小的数对.</p>
 <p>接下来考虑统计方案数.<br>首先, 对于一组询问我们只需考虑其中<strong>与最优解相关</strong>的 $(x, y)$.</p>
 <p>考虑所有最优的 $(x, y)$ 会具有的性质:</p>
@@ -368,7 +379,9 @@
 <li>$ x’ \ge Fib_{k-1}, y’ \ge Fib_{k} $</li>
 <li>$ y’ \le Fib_{k+1} + Fib_{k-2} $</li>
 </ul>
-<p>后面条件的解释:<br>若 $ y’ &gt; Fib_{k+1} + Fib_{k-2}$, 则<br>    $$ (x, y) = (y’ &gt; Fib_{k+1} + Fib_{k-2} &gt; Fib_{k+1}, x’ + py’ \ge x’ + y’ &gt; Fib_{k+2})$$<br>则$(x, y)$ 不再满足上述最优性质2, 矛盾.</p>
+<p>后面条件的解释:<br>若 $ y’ &gt; Fib_{k+1} + Fib_{k-2}$, 则 </p>
+<pre><code>$$ (x, y) = (y&#39; &gt; Fib\_{k+1} + Fib\_{k-2} &gt; Fib\_{k+1}, x&#39; + py&#39; \ge x&#39; + y&#39; &gt; Fib\_{k+2})$$ 
+</code></pre><p>则$(x, y)$ 不再满足上述最优性质2, 矛盾.</p>
 <p>同时每次向下一步进行构造的时候只有 $ (Fib_k, Fib_{k+1}) $ 可能取到 $ p = 2 $ 所以这样的数对个数是$ O(k) $ 的.<br>所以我们预处理所有的这样的数对, 然后用除法算下答案就好了.<br>复杂度 $ O(log^2{MAX} + QlogMAX) $.</p>
 <h3 id="ARC"><a href="#ARC" class="headerlink" title="ARC"></a>ARC</h3><p>ARC 的题目主要来源是打过的几场比赛, 暂时不多.</p>
 <h4 id="ARC074-E-RGB-Sequence"><a href="#ARC074-E-RGB-Sequence" class="headerlink" title="ARC074 E RGB Sequence"></a>ARC074 E RGB Sequence</h4><blockquote>

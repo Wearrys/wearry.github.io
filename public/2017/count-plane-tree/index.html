@@ -333,8 +333,7 @@
 <p>那么就只需要考虑本质不同的这样的圆的数量即可.<br>两个圆是等价的当且仅当一个圆可以通过旋转一定的角度与另一个圆重合.<br>而在这个圆上共有 $2N$ 个点, 就意味着有 $2N$ 个置换, 构成一个置换群.</p>
 <p>置换群下的计数可以用到 Burnside引理 :</p>
 <blockquote>
-<p>$$ N(G, C) = \frac{1}{|G|} { \sum_{f \in G} c(f) } $$</p>
-</blockquote>
+<script type="math/tex; mode=display">N(G, C) = \frac{1}{|G|} { \sum_{f \in G} c(f) }</script></blockquote>
 <p>则转化为求置换下的不动点的数量:</p>
 <ul>
 <li><p>不存在置换的情况下, 答案为 $c_N$, $\mathrm{Catalan}$ 数的第 $N$ 项.<br>即将相互匹配的位置看作左右括号, 则所有合法的括号序列都对应一个满足条件的圆.</p>
@@ -344,17 +343,12 @@
 <li><p>考虑旋转置换.<br>为了满足旋转之后的边重合, 点 $i$ 和它的匹配点 $p_i$ 在旋转后应该仍然是相匹配的.<br>则环的数量一定是偶数 $2d$, 所以环的长度可以表示为 $\frac{2N}{2d} = \frac{N}{d}$.</p>
 <p>假定置换的阶是 $e$, $e &gt; 1, e | N$, 环的数量 $2d = \frac{2N}{e}$.<br>环上与 $0$ 匹配的点为 $i$, 不难发现在这些点之间的点的方案数为 $c_{i-1}$.<br>当这些点确定之后, 它们在环上依次经过的 $(i+1)e$ 个点就确定了.</p>
 <p>令 $f(x)$ 表示 $\mathrm{Catalan}$ 数的生成函数, 根据 $\mathrm{Catalan}$ 数的递推式, 不难得到:</p>
-<p>$$ f(x) = xf^2(x) + 1 $$</p>
-<p>构造 $b_d$ 表示包含 $2d$ 个环的置换下不动点的数量.</p>
-<p>$$ b_d = 2\sum_{i = 0}^{d-1} c_i b_{d-i-1} $$</p>
-<p>其中因子 $2$ 考虑的是 $i &gt; 2d$ 时用当前置换的逆来计算的情况.<br>则 $b_d$ 的生成函数 $g(x)$ 满足:</p>
-<p>$$ g(x) = 2x g(x) f(x) + 1 $$</p>
-<p>解得:</p>
-<p>$$ g(x) = (1 - 4x) ^ {-\frac{1}{2}} $$</p>
-</li>
+<script type="math/tex; mode=display">f(x) = xf^2(x) + 1</script><p>构造 $b_d$ 表示包含 $2d$ 个环的置换下不动点的数量.</p>
+<script type="math/tex; mode=display">b_d = 2\sum_{i = 0}^{d-1} c_i b_{d-i-1}</script><p>其中因子 $2$ 考虑的是 $i &gt; 2d$ 时用当前置换的逆来计算的情况.<br>则 $b_d$ 的生成函数 $g(x)$ 满足:</p>
+<script type="math/tex; mode=display">g(x) = 2x g(x) f(x) + 1</script><p>解得:</p>
+<script type="math/tex; mode=display">g(x) = (1 - 4x) ^ {-\frac{1}{2}}</script></li>
 </ul>
-<h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><p>  $$ p(n) = \frac{1}{2n} ( [n \, is \, odd]\binom{n}{\lfloor\frac{n}{2}\rfloor} - \binom{2n}{n-1} + \sum_{d|n}{\varphi(n/d)\binom {2d}{d}} )$$</p>
-
+<h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><script type="math/tex; mode=display">p(n) = \frac{1}{2n} \( [n \, is \, odd]\binom{n}{\lfloor\frac{n}{2}\rfloor} - \binom{2n}{n-1} + \sum_{d|n}{\varphi(n/d)\binom {2d}{d}} \)</script>
       
     </div>
     

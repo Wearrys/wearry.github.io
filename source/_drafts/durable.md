@@ -5,6 +5,7 @@ tags: Datastructure
 ---
 
 ### Example:
+
 &emsp;&emsp;1.Hdu 4348 : 线段树区间修改，历史版本查询，操作回退。
 &emsp;&emsp;2.Bzoj 2653: 给定左右端点的区间范围，求最大的可行中位数。
 &emsp;&emsp;3.Spoj DQUERY: 给定区间求区间内不同数的个数。
