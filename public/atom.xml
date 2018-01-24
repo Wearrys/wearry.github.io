@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-06T14:02:45.527Z</updated>
+  <updated>2018-01-24T03:59:47.919Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/count-plane-tree/"/>
     <id>http://yoursite.com/2017/count-plane-tree/</id>
     <published>2017-12-01T03:03:04.000Z</published>
-    <updated>2017-12-06T14:02:45.527Z</updated>
+    <updated>2018-01-24T03:59:47.919Z</updated>
     
     <content type="html"><![CDATA[<p>不常见的经典问题, 顺便总结一下Burnside引理吧.</p>
 <a id="more"></a>
@@ -47,7 +47,7 @@
 <script type="math/tex; mode=display">g(x) = 2x g(x) f(x) + 1</script><p>解得:</p>
 <script type="math/tex; mode=display">g(x) = (1 - 4x) ^ {-\frac{1}{2}}</script></li>
 </ul>
-<h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><script type="math/tex; mode=display">p(n) = \frac{1}{2n} \( [n \, is \, odd]\binom{n}{\lfloor\frac{n}{2}\rfloor} - \binom{2n}{n-1} + \sum_{d|n}{\varphi(n/d)\binom {2d}{d}} \)</script>]]></content>
+<h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><script type="math/tex; mode=display">p(n) = \frac{1}{2n} ( [n \, is \, odd]\binom{n}{\lfloor\frac{n}{2}\rfloor} - \binom{2n}{n-1} + \sum_{d|n}{\varphi(n/d)\binom {2d}{d}} )</script>]]></content>
     
     <summary type="html">
     
@@ -328,9 +328,9 @@ g_{i, j, k} =
     </summary>
     
     
-      <category term="Counting Problems" scheme="http://yoursite.com/tags/Counting-Problems/"/>
-    
       <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
+    
+      <category term="Counting Problems" scheme="http://yoursite.com/tags/Counting-Problems/"/>
     
   </entry>
   
