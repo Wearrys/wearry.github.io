@@ -81,17 +81,17 @@
 
 
 
-<meta name="description" content="玛里苟斯 Description  给你一个大小为N的可重集合, 求该集合子集异或和的\(K\)次方的期望, 保证答案不超过$ 2 ^ {64} $. $ N 100000, K 5, A _ i 10 ^ 9 $">
+<meta name="description" content="玛里苟斯Description 给你一个大小为N的可重集合, 求该集合子集异或和的$K$次方的期望, 保证答案不超过$ 2 ^ {64} $.$ N \le 100000, K \le 5, A _ i \le 10 ^ 9 $">
 <meta name="keywords" content="Dynamic Programming,Probability">
 <meta property="og:type" content="article">
 <meta property="og:title" content="两道概率题">
 <meta property="og:url" content="http://yoursite.com/2017/probability-problems/index.html">
 <meta property="og:site_name" content="Wearry's Blog">
-<meta property="og:description" content="玛里苟斯 Description  给你一个大小为N的可重集合, 求该集合子集异或和的\(K\)次方的期望, 保证答案不超过$ 2 ^ {64} $. $ N 100000, K 5, A _ i 10 ^ 9 $">
+<meta property="og:description" content="玛里苟斯Description 给你一个大小为N的可重集合, 求该集合子集异或和的$K$次方的期望, 保证答案不超过$ 2 ^ {64} $.$ N \le 100000, K \le 5, A _ i \le 10 ^ 9 $">
 <meta property="og:updated_time" content="2017-12-06T14:02:45.527Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="两道概率题">
-<meta name="twitter:description" content="玛里苟斯 Description  给你一个大小为N的可重集合, 求该集合子集异或和的\(K\)次方的期望, 保证答案不超过$ 2 ^ {64} $. $ N 100000, K 5, A _ i 10 ^ 9 $">
+<meta name="twitter:description" content="玛里苟斯Description 给你一个大小为N的可重集合, 求该集合子集异或和的$K$次方的期望, 保证答案不超过$ 2 ^ {64} $.$ N \le 100000, K \le 5, A _ i \le 10 ^ 9 $">
 
 
 
@@ -321,32 +321,26 @@
       
 
       
-        <h3 id="玛里苟斯">玛里苟斯</h3>
-<h4 id="description">Description</h4>
-<blockquote>
-<p>给你一个大小为N的可重集合, 求该集合子集异或和的<span class="math inline">\(K\)</span>次方的期望, 保证答案不超过$ 2 ^ {64} $. $ N 100000, K 5, A _ i 10 ^ 9 $</p>
+        <h3 id="玛里苟斯"><a href="#玛里苟斯" class="headerlink" title="玛里苟斯"></a>玛里苟斯</h3><h4 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h4><blockquote>
+<p>给你一个大小为N的可重集合, 求该集合子集异或和的$K$次方的期望, 保证答案不超过$ 2 ^ {64} $.<br>$ N \le 100000, K \le 5, A _ i \le 10 ^ 9 $</p>
 </blockquote>
 <a id="more"></a>
-<h4 id="solution">Solution</h4>
-<p><span class="math inline">\(K=1\)</span> 时满足期望的线性性, 可以对每一个二进制位分开计算答案. 不难发现每一个二进制位变成 <span class="math inline">\(1\)</span> 的概率恰好为 $  $ (集合的奇数和偶数大小的子集数相同).</p>
-<p><span class="math inline">\(K=2\)</span> 时要求的是期望的平方, 即: <span class="math display">\[ \sum _ {i=0}^{32} \sum _ {j=0}^{32} b _ i b _ j 2 ^ {i+j} \]</span> 其中 $ b _ i $表示期望二进制第 <span class="math inline">\(i\)</span> 位的值, 枚举两个二进制位再求一下两个位置同时取到 <span class="math inline">\(1\)</span> 的概率即可.</p>
-<p><span class="math inline">\(K \ge 3\)</span>时由于答案不超过 <span class="math inline">\(2^{64}\)</span>, 所以集合内的数也不会很大, 直接用线性基处理.</p>
-<h3 id="主旋律">主旋律</h3>
-<h4 id="description-1">Description</h4>
-<blockquote>
-<p>求N个点, M条边的有向图有多少生成子图满足整个图是强联通的. $ N 15, M N(N-1) $</p>
+<h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><p>$K=1$ 时满足期望的线性性, 可以对每一个二进制位分开计算答案.<br>不难发现每一个二进制位变成 $1$ 的概率恰好为 $ \frac {1}{2} $ (集合的奇数和偶数大小的子集数相同).</p>
+<p>$K=2$ 时要求的是期望的平方, 即:<br>$$ \sum _ {i=0}^{32} \sum _ {j=0}^{32} b _ i b _ j 2 ^ {i+j} $$<br>其中 $ b _ i $表示期望二进制第 $i$ 位的值, 枚举两个二进制位再求一下两个位置同时取到 $1$ 的概率即可.</p>
+<p>$K \ge 3$时由于答案不超过 $2^{64}$, 所以集合内的数也不会很大, 直接用线性基处理.</p>
+<h3 id="主旋律"><a href="#主旋律" class="headerlink" title="主旋律"></a>主旋律</h3><h4 id="Description-1"><a href="#Description-1" class="headerlink" title="Description"></a>Description</h4><blockquote>
+<p>求N个点, M条边的有向图有多少生成子图满足整个图是强联通的.<br>$ N \le 15, M \le N(N-1) $</p>
 </blockquote>
-<h4 id="solution-1">Solution</h4>
-<p>这题一眼看上去不太好做, 不妨从问题的反面来考虑. 首先一个非强联通的图缩掉<span class="math inline">\(Scc\)</span> 之后会得到若干个 <span class="math inline">\(DAG\)</span>. 如果知道<span class="math inline">\(Scc\)</span> 的划分情况, 计算<span class="math inline">\(DAG\)</span> 的数量就变成一个经典问题了:</p>
-<p><span class="math display">\[ E(S, T) = {|\{(u, v) \in E | u \in S, v \in T)\}|} \]</span></p>
-<p><span class="math display">\[ F(S) = \sum _ {T \subset S, T \neq \varnothing} (-1) ^ {|T| - 1}  \times 2 ^ {E(T, S-T)} F(T) \]</span></p>
-<p>然而感觉枚举<span class="math inline">\(Scc\)</span> 划分更不可做. 先不考虑<span class="math inline">\(Scc\)</span> 如何划分, 考虑哪一些点集构成多少个<span class="math inline">\(Scc\)</span>. 假设<span class="math inline">\(G _ K(T)\)</span>表示<span class="math inline">\(T\)</span> 集合分成<span class="math inline">\(K\)</span> 个<span class="math inline">\(Scc\)</span> 的方案数, 类似上面式子地, 有:</p>
-<p><span class="math display">\[ F(S) = \sum _ {T \subset S, T \neq \varnothing} \sum _ {K = 1}^{|T|} (-1) ^ {K - 1} \times G _ K(T) \times 2 ^ {E(T, S-T) + E(S-T, S-T)} \]</span></p>
-<p><span class="math display">\[ DP(S) = 2 ^ {E(S, S)} - F(S) \]</span></p>
-<p>实际上只需要求将某个集合分成奇数个<span class="math inline">\(Scc\)</span> 与偶数个<span class="math inline">\(Scc\)</span> 的方案数之差 $ P(S) $:</p>
-<p><span class="math display">\[ P(S) = DP(S) + \sum _ {T \subset S, u \in T} - DP(T) \times P(S - T) \]</span></p>
+<h4 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h4><p>这题一眼看上去不太好做, 不妨从问题的反面来考虑.<br>首先一个非强联通的图缩掉$Scc$ 之后会得到若干个 $DAG$.<br>如果知道$Scc$ 的划分情况, 计算$DAG$ 的数量就变成一个经典问题了:</p>
+<p>$$ E(S, T) = {|\{(u, v) \in E | u \in S, v \in T)\}|} $$</p>
+<p>$$ F(S) = \sum _ {T \subset S, T \neq \varnothing} (-1) ^ {|T| - 1}  \times 2 ^ {E(T, S-T)} F(T) $$</p>
+<p>然而感觉枚举$Scc$ 划分更不可做.<br>先不考虑$Scc$ 如何划分, 考虑哪一些点集构成多少个$Scc$.<br>假设$G _ K(T)$表示$T$ 集合分成$K$ 个$Scc$ 的方案数, 类似上面式子地, 有:</p>
+<p>$$ F(S) = \sum _ {T \subset S, T \neq \varnothing} \sum _ {K = 1}^{|T|} (-1) ^ {K - 1} \times G _ K(T) \times 2 ^ {E(T, S-T) + E(S-T, S-T)} $$</p>
+<p>$$ DP(S) = 2 ^ {E(S, S)} - F(S) $$</p>
+<p>实际上只需要求将某个集合分成奇数个$Scc$ 与偶数个$Scc$ 的方案数之差 $ P(S) $:</p>
+<p>$$ P(S) = DP(S) + \sum _ {T \subset S, u \in T} - DP(T) \times P(S - T) $$</p>
 <blockquote>
-<p>其中 $ u T $ 避免重复计数.</p>
+<p>其中 $ u \in T $ 避免重复计数.</p>
 </blockquote>
 <p>这样加上一些预处理的技巧可以做到 $ O(3 ^ n) $.</p>
 
@@ -537,7 +531,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#玛里苟斯"><span class="nav-number">1.</span> <span class="nav-text">玛里苟斯</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#description"><span class="nav-number">1.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#solution"><span class="nav-number">1.2.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主旋律"><span class="nav-number">2.</span> <span class="nav-text">主旋律</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#description-1"><span class="nav-number">2.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#solution-1"><span class="nav-number">2.2.</span> <span class="nav-text">Solution</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#玛里苟斯"><span class="nav-number">1.</span> <span class="nav-text">玛里苟斯</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description"><span class="nav-number">1.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Solution"><span class="nav-number">1.2.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主旋律"><span class="nav-number">2.</span> <span class="nav-text">主旋律</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Description-1"><span class="nav-number">2.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Solution-1"><span class="nav-number">2.2.</span> <span class="nav-text">Solution</span></a></li></ol></li></ol></div>
             
 
           </div>
