@@ -21,7 +21,7 @@ tags:
 取一个单位圆, 在上面等距的取 $2N$ 个点, 然后将这些点两两配对连边, 满足所有连边不相交.
 发现它的对偶图恰好是一棵平面树, 像这样:
 
-![](/img/plane-tree.png)
+![](./../img/plane-tree.png)
 
 那么就只需要考虑本质不同的这样的圆的数量即可.
 两个圆是等价的当且仅当一个圆可以通过旋转一定的角度与另一个圆重合.
@@ -64,4 +64,4 @@ tags:
 
 ### 问题解决
 
-  $$ p(n) = \frac{1}{2n} \( [n \, is \, odd]\binom{n}{\lfloor\frac{n}{2}\rfloor} - \binom{2n}{n-1} + \sum_{d|n}{\varphi(n/d)\binom {2d}{d}} \)$$
+  $$ p(n) = \frac{1}{2n} ( [n \, is \, odd]\binom{n}{\lfloor\frac{n}{2}\rfloor} - \binom{2n}{n-1} + \sum_{d|n}{\varphi(n/d)\binom {2d}{d}} )$$
