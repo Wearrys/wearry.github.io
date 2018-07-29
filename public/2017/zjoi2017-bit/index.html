@@ -88,7 +88,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/zjoi2017-bit/index.html">
 <meta property="og:site_name" content="Wearry's Blog">
 <meta property="og:description" content="Description 给你一个长度为 $N$ 的序列以及 $M$ 次操作, 每次等概率地修改 $[L_i, R_i]$ 区间中一个值的奇偶性, 或者对于询问$[L_i,R_i]$区间中的和的奇偶性, 判断给定的一种错误算法输出正确答案的概率是多少$ N, M &amp;lt;= 10^5 $">
-<meta property="og:updated_time" content="2017-12-06T14:02:45.527Z">
+<meta property="og:updated_time" content="2018-07-29T11:36:22.041Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ZJOI2017 树状数组">
 <meta name="twitter:description" content="Description 给你一个长度为 $N$ 的序列以及 $M$ 次操作, 每次等概率地修改 $[L_i, R_i]$ 区间中一个值的奇偶性, 或者对于询问$[L_i,R_i]$区间中的和的奇偶性, 判断给定的一种错误算法输出正确答案的概率是多少$ N, M &amp;lt;= 10^5 $">
@@ -322,8 +322,9 @@
 
       
         <h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
-<p>给你一个长度为 $N$ 的序列以及 $M$ 次操作, 每次等概率地修改 $[L_i, R_i]$ 区间中一个值的奇偶性, 或者对于询问$[L_i,R_i]$区间中的和的奇偶性, 判断给定的一种错误算法输出正确答案的概率是多少<br>$ N, M &lt;= 10^5 $<br><a id="more"></a></p>
+<p>给你一个长度为 $N$ 的序列以及 $M$ 次操作, 每次等概率地修改 $[L_i, R_i]$ 区间中一个值的奇偶性, 或者对于询问$[L_i,R_i]$区间中的和的奇偶性, 判断给定的一种错误算法输出正确答案的概率是多少<br>$ N, M &lt;= 10^5 $</p>
 </blockquote>
+<a id="more"></a>
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>考虑这个错误算法, 由于可以把 $ + lowbit $ 和 $ - lowbit $ 都看成在一棵树上向父亲节点跳, 根据这个性质可以知道错误算法求了一个后缀和, 所以当且仅当对于询问区间 $[L_i, R_i]$, 满足 $ a[L_i-1] = a[R_i] $ 时它会输出正确答案</p>
 <p>那么我们得到了一个 $ O(nm) $ 的暴力算法, 即每一个询问都暴力扫之前的所有修改计算概率即可.</p>
 <p>然而这样还不能通过所有数据, 考虑将区间 $[L_i, R_i]$ 表示成二维平面上的一个点 $ (L_i, R_i)$.</p>

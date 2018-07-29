@@ -14,6 +14,7 @@ tags:
 
 $N \le 100000, K \le 5, A _ i \le 10 ^ 9$
 
+<!--more-->
 
 #### Solution
 

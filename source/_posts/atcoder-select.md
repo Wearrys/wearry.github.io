@@ -8,6 +8,8 @@ tags:
 &emsp;&emsp;
 其实是总结一下比赛中遇到的好题, 然后瞎做了几场 AGC 的题目练习, 感觉还比较有意思. 
 
+<!--more-->
+
 ### AGC
 
 #### AGC002 F Leftmost Ball
