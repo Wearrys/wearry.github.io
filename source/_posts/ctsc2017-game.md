@@ -3,6 +3,7 @@ title: CTSC2017 游戏
 date: 2017-08-22 20:21:17
 tags:
     - Probability
+    - Data Structure
 ---
 
 ### Description

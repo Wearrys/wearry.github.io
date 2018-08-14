@@ -1,8 +1,8 @@
 ---
 title: NOI2016 网格
-tags:
-  - Graph Theory
 date: 2017-06-10 14:36:06
+tags:
+    - Graph Theory
 ---
 
 ### Description
