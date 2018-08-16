@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/tsinsen-calc/</loc>
+    
+    <lastmod>2018-08-16T03:26:01.363Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/ctsc2017-game/</loc>
+    
+    <lastmod>2018-08-16T02:38:40.182Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/friends/index.html</loc>
+    
+    <lastmod>2018-08-16T01:58:27.589Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/tags/index.html</loc>
+    
+    <lastmod>2018-08-16T01:57:51.936Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2017/probability-problems/</loc>
     
     <lastmod>2018-08-14T01:26:53.401Z</lastmod>
@@ -44,13 +72,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/ctsc2017-game/</loc>
-    
-    <lastmod>2018-08-14T01:22:57.490Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2017/cf-418e/</loc>
     
     <lastmod>2018-08-14T01:21:40.249Z</lastmod>
@@ -66,20 +87,6 @@
   
   <url>
     <loc>http://yoursite.com/2017/after-noip-2017/</loc>
-    
-    <lastmod>2017-12-06T14:02:45.527Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/friends/index.html</loc>
-    
-    <lastmod>2017-12-06T14:02:45.527Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/tags/index.html</loc>
     
     <lastmod>2017-12-06T14:02:45.527Z</lastmod>
     

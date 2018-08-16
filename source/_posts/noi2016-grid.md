@@ -45,11 +45,11 @@ const int maxn = 2.5e6 + 10;
 const int oo = 0x3f3f3f3f;
 
 template<typename T> T read() {
-	T n = 0, f = 1;
-	char ch = getchar();
-	for( ;!isdigit(ch); ch = getchar()) if(ch == '-') f = -1;
-	for( ; isdigit(ch); ch = getchar()) n = n * 10 + ch - 48;
-	return n * f;
+    T n = 0, f = 1;
+    char ch = getchar();
+    for( ;!isdigit(ch); ch = getchar()) if(ch == '-') f = -1;
+    for( ; isdigit(ch); ch = getchar()) n = n * 10 + ch - 48;
+    return n * f;
 }
 
 struct Hash_Map {

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-07-30T03:16:02.536Z</updated>
+  <updated>2018-08-16T03:26:01.363Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,56 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Calc</title>
+    <link href="http://yoursite.com/2018/tsinsen-calc/"/>
+    <id>http://yoursite.com/2018/tsinsen-calc/</id>
+    <published>2018-08-16T02:32:35.000Z</published>
+    <updated>2018-08-16T03:26:01.363Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
+<p>给定 $N$, 求有多少组 $a$, $b$ 满足:<br>$1 \le a &lt; b \le N$<br>$a + b \mid a \times b$</p>
+</blockquote>
+<p>$N \le 2 ^ {31} - 1$</p>
+<a id="more"></a>
+<h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><p>考虑转化条件二:<br>令 $d = \gcd(a, b),\,\, a = a’d,\,\, b = b’d$. 那么条件二等价于:</p>
+<p>$$a’d + b’d \mid a’b’d^2 \Rightarrow a’ + b’ \mid a’b’d \Rightarrow a’ + b’ \mid d$$</p>
+<p>令 $d = t(a’ + b’)$, 则:</p>
+<p>$$b = b’d = b’(a’ + b’)t$$</p>
+<p>考虑枚举 $p = b’,\,\, q = (a’ + b’)$, 计算 $t$ 的数量:</p>
+<p>$$ Ans = \sum_{p=2}^{\sqrt{N}}\sum_{q=p+1}^{2p-1} [\gcd(p, q) = 1] \left\lfloor \frac{N}{pq} \right\rfloor $$</p>
+<h4 id="Algorithm-1"><a href="#Algorithm-1" class="headerlink" title="Algorithm 1"></a>Algorithm 1</h4><p>定义 $L_i$ 为 $i$ 的质因子个数.</p>
+<p>首先枚举 $p$, 考虑有哪些 $q$ 能对答案产生贡献, 每次用 $O(L_p)$ 的时间判断 $p, q$ 是否互质.</p>
+<p>复杂度为 $O(\sqrt{N} \sum_{i=2}^{\sqrt{N}} L_i) = O(N \log\log \sqrt{N})$</p>
+<h4 id="Algorithm-2"><a href="#Algorithm-2" class="headerlink" title="Algorithm 2"></a>Algorithm 2</h4><p>枚举完 $p$ 之后, $T = \lfloor \frac{N}{p} \rfloor$ 的值就确定了.</p>
+<p>只需要考虑 $\lfloor \frac{T}{q} \rfloor$ 的值即可, 考虑对这样的 $q$ 进行分块, 每一块内部利用 $2^{L_p}$ 的容斥计算与 $p$ 互质的 $q$ 的个数.</p>
+<p>复杂度近似为 $O(\sqrt{N} \sum_{i=2}^{\sqrt{N}} 2^{L_i})$</p>
+<h3 id="Complexity-Analysis"><a href="#Complexity-Analysis" class="headerlink" title="Complexity Analysis"></a>Complexity Analysis</h3><p>分析实际运行的情况, 发现理论复杂度更高的算法二表现优于算法一, 原因是 $\lfloor \frac{T}{q} \rfloor$ 的取值很少.</p>
+<p>考虑综合两种算法的长处, 在 $q$ 比较小的时候, $\lfloor \frac{T}{q} \rfloor$ 的取值比较多, 我们使用算法一, $q$ 比较大的时候使用算法二.</p>
+<p>假设这个分界点为 $k$, 复杂度:</p>
+<p>$$f(k) = (k - p) L + (\left\lfloor \frac{T}{k} \right\rfloor + \left\lfloor \frac{T}{2p} \right\rfloor)2^L$$</p>
+<p>只考虑其中与 $k$ 相关的部分:</p>
+<p>$$f(k) = kL + \frac{T2^L}{k}$$</p>
+<p>根据基本不等式, 使得 $f$ 最优的 $k = \sqrt{\frac{T2^L}{L}}$, 此时 $f(k) = 2\sqrt{T2^LL}$.</p>
+<p>然后算一下复杂度, 发现在 $N = 2^{31}-1$ 时, 复杂度大约为 $8 \times 10 ^ 7$.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Description&quot;&gt;&lt;a href=&quot;#Description&quot; class=&quot;headerlink&quot; title=&quot;Description&quot;&gt;&lt;/a&gt;Description&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;给定 $N$, 求有多少组 $a$, $b$ 满足:&lt;br&gt;$1 \le a &amp;lt; b \le N$&lt;br&gt;$a + b \mid a \times b$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;$N \le 2 ^ {31} - 1$&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Number Theory" scheme="http://yoursite.com/tags/Number-Theory/"/>
+    
+      <category term="Complexity Analysis" scheme="http://yoursite.com/tags/Complexity-Analysis/"/>
+    
+  </entry>
   
   <entry>
     <title>记NOI2018</title>
@@ -102,9 +152,9 @@
     
       <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
     
-      <category term="Burnside" scheme="http://yoursite.com/tags/Burnside/"/>
-    
       <category term="Generating Function" scheme="http://yoursite.com/tags/Generating-Function/"/>
+    
+      <category term="Burnside" scheme="http://yoursite.com/tags/Burnside/"/>
     
   </entry>
   
@@ -154,30 +204,26 @@
     <link href="http://yoursite.com/2017/ctsc2017-game/"/>
     <id>http://yoursite.com/2017/ctsc2017-game/</id>
     <published>2017-08-22T12:21:17.000Z</published>
-    <updated>2018-08-14T01:22:57.490Z</updated>
+    <updated>2018-08-16T02:38:40.182Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><blockquote>
-<p>有$N$ 局游戏, 除第一局游戏外每一局游戏的获胜机率均与上一局游戏的结果有关. 现在对游戏进行$Q$次修改, 每次告诉你某一局游戏的结果或者删除之前给你的信息, 求修改后期望下获胜的场数为多少.<br>$ N, Q \le 2 \times 10 ^ 5 $</p>
+<p>有$N$ 局游戏, 除第一局游戏外每一局游戏的获胜机率均与上一局游戏的结果有关. 现在对游戏进行$Q$次修改, 每次告诉你某一局游戏的结果或者删除之前给你的信息, 求修改后期望下获胜的场数为多少.</p>
 </blockquote>
+<p>$ N, Q \le 2 \times 10 ^ 5 $</p>
 <a id="more"></a>
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>首先不难发现, 某一局的游戏的胜率只与其左右的最近游戏结果相关, 所以答案可以分段计算.</p>
 <p>考虑期望的线性性, 可以将期望胜利场数表示成每一局游戏的胜率之和.<br>记 $X _ i$  表示第$i$ 场游戏的状态. 所求即为 $ \sum _ {l &lt; m &lt; r} P( X _ m = 1 | X _ l, X _ r) $. </p>
-<p>由贝叶斯公式:</p>
-<script type="math/tex; mode=display">
-\begin{align}
-P(X _ m = 1 | X _ l, X _ r) &= \frac{P(X _ m = 1, X _ l, X _ r)}{P(X _ l) \cdot P(X _ r | X _ l) } \\
-&= \frac{P(X _ l) \cdot P(X _ m = 1 | X _ l) \cdot P(X _ r | X _ l, X _ m = 1)}{P(X _ l) \cdot P(X _ r | X _ l)} \\
-&= \frac{P(X _ m=1 | X _ l) \cdot P(X _ r | X _ l, X _ m = 1)}{P(X _ r | X _ l)} \\
-&= \frac{P(X _ m=1 | X _ l) \cdot P(X _ r | X _ m = 1)}{P(X _ r | X _ l)} 
-\end{align}</script><p>发现分母是常数, 于是可以合并分子.<br>考虑分子的意义, 大概是合法状态下当前位置为胜的概率.<br>每一段就可以直接用$dp$来处理出答案, 记录某场比赛为胜/ 负的概率以及分子的期望即可.<br>这个复杂度是每次询问$O(n)$的.</p>
+<p>由贝叶斯公式:<br>$$<br>\begin{align}<br>P(X _ m = 1 | X _ l, X _ r) &amp;= \frac{P(X _ m = 1, X _ l, X _ r)}{P(X _ l) \cdot P(X _ r | X _ l) } \\<br>&amp;= \frac{P(X _ l) \cdot P(X _ m = 1 | X _ l) \cdot P(X _ r | X _ l, X _ m = 1)}{P(X _ l) \cdot P(X _ r | X _ l)} \\<br>&amp;= \frac{P(X _ m=1 | X _ l) \cdot P(X _ r | X _ l, X _ m = 1)}{P(X _ r | X _ l)} \\<br>&amp;= \frac{P(X _ m=1 | X _ l) \cdot P(X _ r | X _ m = 1)}{P(X _ r | X _ l)}<br>\end{align}<br>$$</p>
+<p>发现分母是常数, 于是可以合并分子.<br>考虑分子的意义, 大概是合法状态下当前位置为胜的概率.<br>每一段就可以直接用$dp$来处理出答案, 记录某场比赛为胜/ 负的概率以及分子的期望即可.<br>这个复杂度是每次询问$O(n)$的.</p>
 <p>其实这道题要讲的已经讲完了, 最后只要用矩乘快速合并$dp$值, 维护一下就可以了.</p>
 ]]></content>
     
     <summary type="html">
     
       &lt;h3 id=&quot;Description&quot;&gt;&lt;a href=&quot;#Description&quot; class=&quot;headerlink&quot; title=&quot;Description&quot;&gt;&lt;/a&gt;Description&lt;/h3&gt;&lt;blockquote&gt;
-&lt;p&gt;有$N$ 局游戏, 除第一局游戏外每一局游戏的获胜机率均与上一局游戏的结果有关. 现在对游戏进行$Q$次修改, 每次告诉你某一局游戏的结果或者删除之前给你的信息, 求修改后期望下获胜的场数为多少.&lt;br&gt;$ N, Q \le 2 \times 10 ^ 5 $&lt;/p&gt;
+&lt;p&gt;有$N$ 局游戏, 除第一局游戏外每一局游戏的获胜机率均与上一局游戏的结果有关. 现在对游戏进行$Q$次修改, 每次告诉你某一局游戏的结果或者删除之前给你的信息, 求修改后期望下获胜的场数为多少.&lt;/p&gt;
 &lt;/blockquote&gt;
+&lt;p&gt;$ N, Q \le 2 \times 10 ^ 5 $&lt;/p&gt;
     
     </summary>
     
@@ -370,14 +416,8 @@ P(X _ m = 1 | X _ l, X _ r) &= \frac{P(X _ m = 1, X _ l, X _ r)}{P(X _ l) \cdot 
 </ul>
 <p>那么容易得到$f_{i, j} = \sum_{k} f_{i-j, k} \times g_{j, c0, c1}$, 其中$c0\,,c1$表示最后一层 $k$ 个点中度为 $2$ 的点和度为 $3$ 的点的个数.</p>
 <p>对于 $g$, 不难得到:</p>
-<script type="math/tex; mode=display">
-g_{i, j, k} = 
-\begin{cases} 
-    1 & i = 0, j = 0, k = 0 \\
-    \sum_{l=2}^{k-1} \frac{l!}{2} {k-1 \choose l} g_{i, j, k-l-1} & i = 0, j = 0, k > 0 \\
-    (j-1) \cdot g_{i, j-2, k} + k \cdot g_{i, j, k-1} & i = 0, j > 0 \\
-    j \cdot g_{i-1, j-1, k} + k \cdot g_{i-1, j+1, k-1} & i > 0
-\end{cases}</script><h3 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h3><p>注意在第二个递推式中 $l$ 从 $2$ 开始枚举, 因为不能有重边, 所以不存在大小为 $2$ 的环.</p>
+<p>$$<br>g_{i, j, k} =<br>\begin{cases}<br>    1 &amp; i = 0, j = 0, k = 0 \\<br>    \sum_{l=2}^{k-1} \frac{l!}{2} {k-1 \choose l} g_{i, j, k-l-1} &amp; i = 0, j = 0, k &gt; 0 \\<br>    (j-1) \cdot g_{i, j-2, k} + k \cdot g_{i, j, k-1} &amp; i = 0, j &gt; 0 \\<br>    j \cdot g_{i-1, j-1, k} + k \cdot g_{i-1, j+1, k-1} &amp; i &gt; 0<br>\end{cases}<br>$$</p>
+<h3 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h3><p>注意在第二个递推式中 $l$ 从 $2$ 开始枚举, 因为不能有重边, 所以不存在大小为 $2$ 的环.</p>
 ]]></content>
     
     <summary type="html">

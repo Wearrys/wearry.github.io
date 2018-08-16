@@ -1,6 +1,8 @@
 ---
 title: My Friends
 date: 2017-04-23 11:09:26
+comments: false
+
 ---
 
 &emsp;&emsp;[Dy's Blog](http://dy0607.github.io)
@@ -10,4 +12,4 @@ date: 2017-04-23 11:09:26
 &emsp;&emsp;[Sunshine's Blog](http://www.sunshine-cfbsl.com/)
 &emsp;&emsp;[Xffyjq's Blog](http://xffyjq.github.io)
 
-欢迎添加友链(QQ:1721604476)~~ 
+欢迎添加友链 (QQ:1721604476)
