@@ -6,6 +6,7 @@ tags:
     - Complexity Analysis
 ---
 
+
 ### Description
 
 > 给定 $N$, 求有多少组 $a$, $b$ 满足:
