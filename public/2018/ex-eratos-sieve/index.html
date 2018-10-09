@@ -335,8 +335,7 @@
         <p>学完洲阁筛之后忘得差不多了, 不过现在已经可以将洲阁筛扔进垃圾桶了…</p>
 <a id="more"></a>
 <h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>求:</p>
-<p>$$S(N) = \sum_{i=1}^{N} F(i)$$ </p>
-<p>其中 $F$ 满足在 $i$ 是质数幂的情况下比较好算并且是一个积性函数.</p>
+<script type="math/tex; mode=display">S(N) = \sum_{i=1}^{N} F(i)</script><p>其中 $F$ 满足在 $i$ 是质数幂的情况下比较好算并且是一个积性函数.</p>
 <h3 id="Conversion"><a href="#Conversion" class="headerlink" title="Conversion"></a>Conversion</h3><p>首先将所有的 $i$ 按照最大质因子的次数是否大于一分为两类计算答案.</p>
 <p>对于第一类的数, 我们将最大质因子除去, 剩下的部分一定只包含不超过 $\sqrt{N}$ 的质因子, 于是可以暴搜所有剩下的部分, 同时这个过程中一定会遍历所有第二类的数. 接下来只需计算 $s(i)$ 表示 $[1, i]$ 中所有质数的 $F$ 的和.</p>
 <p>因为 $p \le \sqrt{N}$, 所以有用的状态只有 $O(\sqrt{N})$ 个.<br>枚举 $[1, \sqrt{N}]$ 中的所有质数 $p$, 考虑每次筛去最小质因子为 $p$ 的数的贡献.<br>那么对于每个 $p$ , 都会使得一个满足 $i \ge p^2$ 的 $s(i)$ 减去 $s(\lfloor \frac{i}{p} \rfloor) - s(p-1)$. </p>
@@ -372,6 +371,10 @@
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/probelm-select/" rel="next" title="互测题总结">
+                <i class="fa fa-chevron-left"></i> 互测题总结
+              </a>
             
           </div>
 
@@ -472,7 +475,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

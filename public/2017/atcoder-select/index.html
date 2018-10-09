@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Summary,Dynamic Programming,Combinatorial," />
+  <meta name="keywords" content="Dynamic Programming,Summary,Combinatorial," />
 
 
 
@@ -82,7 +82,7 @@
 
 
 <meta name="description" content="&amp;emsp;&amp;emsp; 其实是总结一下比赛中遇到的好题, 然后瞎做了几场 AGC 的题目练习, 感觉还比较有意思.">
-<meta name="keywords" content="Summary,Dynamic Programming,Combinatorial">
+<meta name="keywords" content="Dynamic Programming,Summary,Combinatorial">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Atcoder 选做">
 <meta property="og:url" content="http://yoursite.com/2017/atcoder-select/index.html">
@@ -339,8 +339,11 @@
 </blockquote>
 <p>$N, K \leq 2000$</p>
 <p>&emsp;&emsp; 这题正着处理没有什么思路, 但是如果从右往左来会比较好考虑. 我们可以记$f(i, j)$表示当前从右往左填剩下$i$个$0$颜色的球, 还剩下$j$种颜色没有放的方案数. 那么每一次的决策就包括放入一个$0$颜色的球以及添加一种颜色的$k-1$个球:</p>
-<p>$$<br>\begin{aligned}<br>    f(i-1, j) &amp; \leftarrow f(i, j) \mid [i &gt; j] \\<br>    f(i, j-1) &amp; \leftarrow f(i, j) \times {n-i + (n-j) \times (k-1) + k-2 \choose k-2}<br>\end{aligned}<br>$$</p>
-<blockquote>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    f(i-1, j) & \leftarrow f(i, j) \mid [i > j] \\
+    f(i, j-1) & \leftarrow f(i, j) \times {n-i + (n-j) \times (k-1) + k-2 \choose k-2}
+\end{aligned}</script><blockquote>
 <p>后面那个公式是可重集, 还有最后的答案要乘以$n!$.</p>
 </blockquote>
 <h4 id="AGC005-D-K-Perm-Counting"><a href="#AGC005-D-K-Perm-Counting" class="headerlink" title="AGC005 D ~K Perm Counting"></a>AGC005 D ~K Perm Counting</h4><blockquote>
@@ -366,13 +369,18 @@
 <h4 id="AGC015-F-Kenus-the-Ancient-Greek"><a href="#AGC015-F-Kenus-the-Ancient-Greek" class="headerlink" title="AGC015 F Kenus the Ancient Greek"></a>AGC015 F Kenus the Ancient Greek</h4><blockquote>
 <p>Q组询问, 每组询问的形式为A, B, 表示求$x \in [1, A], y \in [1, B]$的$g(x, y)$的最大值, 及最大值的方案数, 其中: </p>
 </blockquote>
-<p>$$<br>g(x, y) =<br>\begin{cases}<br>    1, &amp; \text{y = 0} \\<br>    g(y, x), &amp; \text{x &gt; y} \\<br>    g(y \; mod \; x, x) + 1, &amp; \text{otherwise} \\<br>\end{cases}<br>$$</p>
-<p>$1 \le Q \le 3 \times 10 ^ 5 \,\,, 1 \le A, B \le 10 ^ {18}$</p>
+<script type="math/tex; mode=display">
+g(x, y) = 
+\begin{cases} 
+    1, & \text{y = 0} \\
+    g(y, x), & \text{x > y} \\
+    g(y \; mod \; x, x) + 1, & \text{otherwise} \\
+\end{cases}</script><p>$1 \le Q \le 3 \times 10 ^ 5 \,\,, 1 \le A, B \le 10 ^ {18}$</p>
 <p>&emsp;&emsp; <strong>以下无特殊说明, 均默认所有$x &lt; y, A &lt; B$</strong></p>
 <p>&emsp;&emsp; 先考虑第一问, 如果我们由一个特定的$(x, y)$, 从小到大地构造使得$g(x, y)$的值不断地变大, 那么如何构造使得这个值最大呢?</p>
 <p>&emsp;&emsp; 对于所有$(x’, y’)$满足$g(x’, y’) = g(x, y) + 1$, 显然有:</p>
-<p>$$<br>(x’, y’) \in \{ (y, x + ky) \mid k \in Z^+ \}<br>$$</p>
-<p>&emsp;&emsp; 同时, 为了使得这个过程尽可能的多次进行,我们从$(0, 1)$出发, 每次取$k = 1$.<br>发现这样生成了一组$Fibonacci$数列, 这里$Fibonacci$数列从0开始标号. </p>
+<script type="math/tex; mode=display">
+(x', y') \in \{ (y, x + ky) \mid k \in Z^+ \}</script><p>&emsp;&emsp; 同时, 为了使得这个过程尽可能的多次进行,我们从$(0, 1)$出发, 每次取$k = 1$.<br>发现这样生成了一组$Fibonacci$数列, 这里$Fibonacci$数列从0开始标号. </p>
 <p>&emsp;&emsp; 那么第一问的答案就是求满足$Fib_k \le A,\; Fib_{k+1} \le B$的最大的$k$. 同时, 这样的数对是满足$g(x, y) = k$的最小的数对.</p>
 <p>&emsp;&emsp; 接下来考虑统计方案数. 首先, 对于一组询问我们只需考虑其中<strong>与最优解相关</strong>的$(x, y)$.</p>
 <p>&emsp;&emsp; 考虑所有最优的$(x, y)$会具有的性质:</p>
@@ -392,7 +400,7 @@
 <li><p>$y’ \le Fib_{k+1} + Fib_{k-2}$</p>
 </li>
 </ul>
-<p>&emsp;&emsp; 后面条件的解释: 若$y’ &gt; Fib_{k+1} + Fib_{k-2}$, 则 $$(x, y) = (y’ &gt; Fib_{k+1} + Fib_{k-2} &gt; Fib_{k+1}, x’ + py’ \ge x’ + y’ &gt; Fib_{k+2})$$, $(x, y)$不再满足上述最优性质2, 矛盾.</p>
+<p>&emsp;&emsp; 后面条件的解释: 若$y’ &gt; Fib_{k+1} + Fib_{k-2}$, 则 <script type="math/tex">(x, y) = (y' > Fib_{k+1} + Fib_{k-2} > Fib_{k+1}, x' + py' \ge x' + y' > Fib_{k+2})</script>, $(x, y)$不再满足上述最优性质2, 矛盾.</p>
 <p>&emsp;&emsp; 同时每次向下一步进行构造的时候只有$(Fib_k, Fib_{k+1})$可能取到$p = 2$所以这样的数对个数是$O(k)$的. 所以我们预处理所有的这样的数对, 然后用除法算下答案就好了.</p>
 <p>&emsp;&emsp; 复杂度$O(log^2{MAX} + QlogMAX)$.</p>
 <h3 id="ARC"><a href="#ARC" class="headerlink" title="ARC"></a>ARC</h3><p>ARC 的题目主要来源是打过的几场比赛, 暂时不多.</p>
@@ -433,9 +441,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Summary/" rel="tag"># Summary</a>
-          
             <a href="/tags/Dynamic-Programming/" rel="tag"># Dynamic Programming</a>
+          
+            <a href="/tags/Summary/" rel="tag"># Summary</a>
           
             <a href="/tags/Combinatorial/" rel="tag"># Combinatorial</a>
           
@@ -553,7 +561,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

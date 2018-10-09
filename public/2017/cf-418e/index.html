@@ -348,8 +348,14 @@
 </ul>
 <p>那么容易得到$f_{i, j} = \sum_{k} f_{i-j, k} \times g_{j, c0, c1}$, 其中$c0\,,c1$表示最后一层 $k$ 个点中度为 $2$ 的点和度为 $3$ 的点的个数.</p>
 <p>对于 $g$, 不难得到:</p>
-<p>$$<br>g_{i, j, k} =<br>\begin{cases}<br>    1 &amp; i = 0, j = 0, k = 0 \\<br>    \sum_{l=2}^{k-1} \frac{l!}{2} {k-1 \choose l} g_{i, j, k-l-1} &amp; i = 0, j = 0, k &gt; 0 \\<br>    (j-1) \cdot g_{i, j-2, k} + k \cdot g_{i, j, k-1} &amp; i = 0, j &gt; 0 \\<br>    j \cdot g_{i-1, j-1, k} + k \cdot g_{i-1, j+1, k-1} &amp; i &gt; 0<br>\end{cases}<br>$$</p>
-<h3 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h3><p>注意在第二个递推式中 $l$ 从 $2$ 开始枚举, 因为不能有重边, 所以不存在大小为 $2$ 的环.</p>
+<script type="math/tex; mode=display">
+g_{i, j, k} = 
+\begin{cases} 
+    1 & i = 0, j = 0, k = 0 \\
+    \sum_{l=2}^{k-1} \frac{l!}{2} {k-1 \choose l} g_{i, j, k-l-1} & i = 0, j = 0, k > 0 \\
+    (j-1) \cdot g_{i, j-2, k} + k \cdot g_{i, j, k-1} & i = 0, j > 0 \\
+    j \cdot g_{i-1, j-1, k} + k \cdot g_{i-1, j+1, k-1} & i > 0
+\end{cases}</script><h3 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h3><p>注意在第二个递推式中 $l$ 从 $2$ 开始枚举, 因为不能有重边, 所以不存在大小为 $2$ 的环.</p>
 
       
     </div>
@@ -485,7 +491,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -88,7 +88,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/tsinsen-calc/index.html">
 <meta property="og:site_name" content="Wearry's Blog">
 <meta property="og:description" content="Description 给定 $N$, 求有多少组 $a$, $b$ 满足:$1 \le a &amp;lt; b \le N$$a + b \mid a \times b$  $N \le 2 ^ {31} - 1$">
-<meta property="og:updated_time" content="2018-08-21T12:58:43.998Z">
+<meta property="og:updated_time" content="2018-08-21T13:00:39.845Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Calc">
 <meta name="twitter:description" content="Description 给定 $N$, 求有多少组 $a$, $b$ 满足:$1 \le a &amp;lt; b \le N$$a + b \mid a \times b$  $N \le 2 ^ {31} - 1$">
@@ -338,12 +338,9 @@
 <p>$N \le 2 ^ {31} - 1$</p>
 <a id="more"></a>
 <h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><p>考虑转化条件二:<br>令 $d = \gcd(a, b),\,\, a = a’d,\,\, b = b’d$. 那么条件二等价于:</p>
-<p>$$a’d + b’d \mid a’b’d^2 \Rightarrow a’ + b’ \mid a’b’d \Rightarrow a’ + b’ \mid d$$</p>
-<p>令 $d = t(a’ + b’)$, 则:</p>
-<p>$$b = b’d = b’(a’ + b’)t$$</p>
-<p>考虑枚举 $p = b’,\,\, q = (a’ + b’)$, 计算 $t$ 的数量:</p>
-<p>$$ Ans = \sum_{p=2}^{\sqrt{N}}\sum_{q=p+1}^{2p-1} [\gcd(p, q) = 1] \left\lfloor \frac{N}{pq} \right\rfloor $$</p>
-<h4 id="Algorithm-1"><a href="#Algorithm-1" class="headerlink" title="Algorithm 1"></a>Algorithm 1</h4><p>定义 $L_i$ 为 $i$ 的质因子个数.</p>
+<script type="math/tex; mode=display">a'd + b'd \mid a'b'd^2 \Rightarrow a' + b' \mid a'b'd \Rightarrow a' + b' \mid d</script><p>令 $d = t(a’ + b’)$, 则:</p>
+<script type="math/tex; mode=display">b = b'd = b'(a' + b')t</script><p>考虑枚举 $p = b’,\,\, q = (a’ + b’)$, 计算 $t$ 的数量:</p>
+<script type="math/tex; mode=display">Ans = \sum_{p=2}^{\sqrt{N}}\sum_{q=p+1}^{2p-1} \[\gcd(p, q) = 1\] \left\lfloor \frac{N}{pq} \right\rfloor</script><h4 id="Algorithm-1"><a href="#Algorithm-1" class="headerlink" title="Algorithm 1"></a>Algorithm 1</h4><p>定义 $L_i$ 为 $i$ 的质因子个数.</p>
 <p>首先枚举 $p$, 考虑有哪些 $q$ 能对答案产生贡献, 每次用 $O(L_p)$ 的时间判断 $p, q$ 是否互质.</p>
 <p>复杂度为 $O(\sqrt{N} \sum_{i=2}^{\sqrt{N}} L_i) = O(N \log\log \sqrt{N})$</p>
 <h4 id="Algorithm-2"><a href="#Algorithm-2" class="headerlink" title="Algorithm 2"></a>Algorithm 2</h4><p>枚举完 $p$ 之后, $T = \lfloor \frac{N}{p} \rfloor$ 的值就确定了.</p>
@@ -352,10 +349,8 @@
 <h3 id="Complexity-Analysis"><a href="#Complexity-Analysis" class="headerlink" title="Complexity Analysis"></a>Complexity Analysis</h3><p>分析实际运行的情况, 发现理论复杂度更高的算法二表现优于算法一, 原因是 $\lfloor \frac{T}{q} \rfloor$ 的取值很少.</p>
 <p>考虑综合两种算法的长处, 在 $q$ 比较小的时候, $\lfloor \frac{T}{q} \rfloor$ 的取值比较多, 我们使用算法一, $q$ 比较大的时候使用算法二.</p>
 <p>假设这个分界点为 $k$, 复杂度:</p>
-<p>$$f(k) = (k - p) L + (\left\lfloor \frac{T}{k} \right\rfloor + \left\lfloor \frac{T}{2p} \right\rfloor)2^L$$</p>
-<p>只考虑其中与 $k$ 相关的部分:</p>
-<p>$$f(k) = kL + \frac{T2^L}{k}$$</p>
-<p>根据基本不等式, 使得 $f$ 最优的 $k = \sqrt{\frac{T2^L}{L}}$, 此时 $f(k) = 2\sqrt{T2^LL}$.</p>
+<script type="math/tex; mode=display">f(k) = (k - p) L + (\left\lfloor \frac{T}{k} \right\rfloor + \left\lfloor \frac{T}{2p} \right\rfloor)2^L</script><p>只考虑其中与 $k$ 相关的部分:</p>
+<script type="math/tex; mode=display">f(k) = kL + \frac{T2^L}{k}</script><p>根据基本不等式, 使得 $f$ 最优的 $k = \sqrt{\frac{T2^L}{L}}$, 此时 $f(k) = 2\sqrt{T2^LL}$.</p>
 <p>然后算一下复杂度, 发现在 $N = 2^{31}-1$ 时, 复杂度大约为 $8 \times 10 ^ 7$.</p>
 
       
@@ -492,7 +487,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
