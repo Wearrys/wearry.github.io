@@ -30,7 +30,7 @@ $$b = b'd = b'(a' + b')t$$
 
 考虑枚举 $p = b',\,\, q = (a' + b')$, 计算 $t$ 的数量:
 
-$$ Ans = \sum_{p=2}^{\sqrt{N}}\sum_{q=p+1}^{2p-1} \[\gcd(p, q) = 1\] \left\lfloor \frac{N}{pq} \right\rfloor $$
+$$ Ans = \sum_{p=2}^{\sqrt{N}}\sum_{q=p+1}^{2p-1} [\gcd(p, q) = 1] \left\lfloor \frac{N}{pq} \right\rfloor $$
 
 #### Algorithm 1
 

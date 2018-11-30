@@ -45,6 +45,32 @@
 
 
 
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
 
 
 
@@ -88,7 +114,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/ex-eratos-sieve/index.html">
 <meta property="og:site_name" content="Wearry's Blog">
 <meta property="og:description" content="学完洲阁筛之后忘得差不多了, 不过现在已经可以将洲阁筛扔进垃圾桶了…">
-<meta property="og:updated_time" content="2018-08-21T12:55:51.028Z">
+<meta property="og:updated_time" content="2018-11-29T13:26:16.753Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="拓展埃氏筛法小结">
 <meta name="twitter:description" content="学完洲阁筛之后忘得差不多了, 不过现在已经可以将洲阁筛扔进垃圾桶了…">
@@ -335,13 +361,19 @@
         <p>学完洲阁筛之后忘得差不多了, 不过现在已经可以将洲阁筛扔进垃圾桶了…</p>
 <a id="more"></a>
 <h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>求:</p>
-<script type="math/tex; mode=display">S(N) = \sum_{i=1}^{N} F(i)</script><p>其中 $F$ 满足在 $i$ 是质数幂的情况下比较好算并且是一个积性函数.</p>
-<h3 id="Conversion"><a href="#Conversion" class="headerlink" title="Conversion"></a>Conversion</h3><p>首先将所有的 $i$ 按照最大质因子的次数是否大于一分为两类计算答案.</p>
-<p>对于第一类的数, 我们将最大质因子除去, 剩下的部分一定只包含不超过 $\sqrt{N}$ 的质因子, 于是可以暴搜所有剩下的部分, 同时这个过程中一定会遍历所有第二类的数. 接下来只需计算 $s(i)$ 表示 $[1, i]$ 中所有质数的 $F$ 的和.</p>
-<p>因为 $p \le \sqrt{N}$, 所以有用的状态只有 $O(\sqrt{N})$ 个.<br>枚举 $[1, \sqrt{N}]$ 中的所有质数 $p$, 考虑每次筛去最小质因子为 $p$ 的数的贡献.<br>那么对于每个 $p$ , 都会使得一个满足 $i \ge p^2$ 的 $s(i)$ 减去 $s(\lfloor \frac{i}{p} \rfloor) - s(p-1)$. </p>
-<p>这样子的复杂度大约为 $O\left (\frac{N^{\frac{3}{4}}}{\log{N}}\right )$</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><p>以 $\varphi$ 函数为例 (实际效率似乎不输杜教筛?).</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">namespace</span> Sieve &#123;</div><div class="line"></div><div class="line">    ll n;</div><div class="line">    ll s0[N + <span class="number">5</span>], S0[N + <span class="number">5</span>];</div><div class="line">    ll s1[N + <span class="number">5</span>], S1[N + <span class="number">5</span>];</div><div class="line">    <span class="keyword">int</span> m, prime[N + <span class="number">5</span>], pcnt;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">calc</span><span class="params">(ll res, <span class="keyword">int</span> lst, ll mul)</span> </span>&#123;</div><div class="line">        ll temp = (res &gt; m ? S1[n / res] : s1[res]) - s1[prime[lst]];</div><div class="line">        ll ans = temp * mul % mo;</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = lst + <span class="number">1</span>; i &lt;= pcnt; ++i) &#123;</div><div class="line">            <span class="keyword">int</span> p = prime[i];</div><div class="line">            <span class="keyword">if</span>((ll) p * p &gt; res) <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">for</span>(ll j = p, nmul = mul * (p<span class="number">-1</span>) % mo; res &gt;= j * p; j *= p) &#123;</div><div class="line">                ans = (ans + calc(res / j, i, nmul)) % mo;</div><div class="line">                nmul = nmul * p % mo;</div><div class="line">                ans = (ans + nmul) % mo;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ans;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">solve</span><span class="params">(ll _n)</span> </span>&#123;</div><div class="line">        n = _n;</div><div class="line">        <span class="keyword">if</span>(n &lt;= <span class="number">1</span>) <span class="keyword">return</span> n;</div><div class="line"></div><div class="line">        pcnt = <span class="number">0</span>;</div><div class="line">        m = (<span class="keyword">int</span>) <span class="built_in">sqrt</span>(n + <span class="number">0.5</span>);</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</div><div class="line">            s0[i] = i - <span class="number">1</span>;</div><div class="line">            s1[i] = (ll) (<span class="number">2</span> + i) * (i - <span class="number">1</span>) / <span class="number">2</span> % mo;</div><div class="line"></div><div class="line">            ll t = (n / i) % mo;</div><div class="line">            S0[i] = t - <span class="number">1</span>;</div><div class="line">            S1[i] = (ll) (<span class="number">2</span> + t) * (t - <span class="number">1</span>) / <span class="number">2</span> % mo;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= m; ++i) &#123;</div><div class="line">            <span class="keyword">if</span>(s0[i] == s0[i<span class="number">-1</span>]) <span class="keyword">continue</span>;</div><div class="line">            prime[++ pcnt] = i;</div><div class="line"></div><div class="line">            <span class="keyword">const</span> ll t0 = s0[i<span class="number">-1</span>], t1 = s1[i<span class="number">-1</span>], p = (ll) i * i;</div><div class="line">            <span class="keyword">const</span> ll lim = <span class="built_in">std</span>::min((ll) m, n / p), x = m / i, y = n / i;</div><div class="line"></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= x; ++j) &#123;</div><div class="line">                S0[j] = (S0[j] - (S0[j * i] - t0)) % mo;</div><div class="line">                S1[j] = (S1[j] - (S1[j * i] - t1) * i) % mo;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = x+<span class="number">1</span>; j &lt;= lim; ++j) &#123;</div><div class="line">                S0[j] = (S0[j] - (s0[y / j] - t0)) % mo;</div><div class="line">                S1[j] = (S1[j] - (s1[y / j] - t1) * i) % mo;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = m; j &gt;= p; --j) &#123;</div><div class="line">                s0[j] = (s0[j] - (s0[j / i] - t0)) % mo;</div><div class="line">                s1[j] = (s1[j] - (s1[j / i] - t1) * i) % mo;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</div><div class="line">            s1[i] = (s1[i] - s0[i] + mo) % mo;</div><div class="line">            S1[i] = (S1[i] - S0[i] + mo) % mo; </div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> (<span class="number">1</span> + calc(n, <span class="number">0</span>, <span class="number">1</span>)) % mo;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">h(n) = \sum_{i=1}^{n} f(i)</script><p>其中 $f$ 是定义在正整数集下的积性函数, 满足 $f(p^c)$ 能够快速计算.</p>
+<h3 id="Conversion"><a href="#Conversion" class="headerlink" title="Conversion"></a>Conversion</h3><p>首先可以将所有要求的数按照是否只含大于 $\sqrt{n}$ 的质因子分为两类, 对于第一类数一定是一个质数, 而第二类数一定可以在某个较小的质因子处考虑到, 于是我们只关注不超过 $\sqrt{n}$ 的那些质因子.</p>
+<p>定义 $S_k(n, i)$ 表示小于等于 $n$ 的数中与前 $i$ 个质数互质的所有数与<strong>所有质数</strong>的 $k$ 次方和, 容易得到转移:</p>
+<script type="math/tex; mode=display">
+S_k(n, i) = 
+\begin{cases}
+S_k(n, i-1) & n < p_i^2 \\
+S_k(n, i-1) - p_i^k \times \left(S_k(\left \lfloor \frac{n}{p_i} \right \rfloor, i - 1) - S_k(p_{i-1}, i - 1)\right) & \mathrm{otherwise} 
+\end{cases}</script><p>在考虑完 $\sqrt{n}$ 以内的所有质因数后, $S_k(n)$ 中留下了所有质数的 $k$ 次方, 这样所有第一类数的函数值都可以快速计算.</p>
+<p>类似地, 定义 $G(n, i)$ 表示小于等于 $n$ 的数中仅由第 $i$ 个以后的质数构成的数与<strong>所有质数</strong> $x$ 的 $f(x)$ 之和, 转移的方式类似:</p>
+<script type="math/tex; mode=display">
+G(n, i) = G(n, i+1) + \sum_{c=0}^{\substack{p_i^{c+1} \le n}} f(p_i^{c+1}) + f(p_i^c) \times \left(G(\left \lfloor \frac{n}{p_i^c} \right \rfloor, i+1) - G(p_i, i+1)\right)</script><p>复杂度约为 $O\left(\frac{n^{\frac{3}{4}}}{\log{n}}\right)$</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">namespace</span> SIV &#123;</div><div class="line"></div><div class="line">    <span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">100000</span>;</div><div class="line"></div><div class="line">    ll n;</div><div class="line">    <span class="keyword">int</span> m;</div><div class="line">    uint val[M + <span class="number">5</span>];</div><div class="line">    <span class="keyword">int</span> prime[M + <span class="number">5</span>], pcnt;</div><div class="line">    uint s[M + <span class="number">5</span>], S[M + <span class="number">5</span>];</div><div class="line">    uint f[M + <span class="number">5</span>], F[M + <span class="number">5</span>];</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">inline</span> uint <span class="title">gets</span><span class="params">(ll x)</span> </span>&#123; <span class="keyword">return</span> x &lt;= m ? s[x] : S[n / x]; &#125;</div><div class="line">    <span class="function"><span class="keyword">inline</span> uint <span class="title">getf</span><span class="params">(ll x)</span> </span>&#123; <span class="keyword">return</span> x &lt;= m ? f[x] : F[n / x]; &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">my_sqrt</span><span class="params">(ll x)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> r = <span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span>(<span class="number">1l</span>l * (r + <span class="number">1</span>) * (r + <span class="number">1</span>) &lt;= x) ++ r;</div><div class="line">        <span class="keyword">return</span> r;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(ll _n)</span> </span>&#123;</div><div class="line">        m = my_sqrt(n = _n);</div><div class="line">       </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</div><div class="line">            val[i] = <span class="number">81</span> * i * i - <span class="number">27</span> * i + <span class="number">9</span>;</div><div class="line">            s[i] = i - <span class="number">1</span>;</div><div class="line">            S[i] = (n / i) - <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> p = <span class="number">2</span>; p &lt;= m; ++p) &#123;</div><div class="line">            <span class="keyword">if</span>(s[p] == s[p<span class="number">-1</span>]) <span class="keyword">continue</span>;</div><div class="line">            prime[pcnt ++] = p;</div><div class="line">             </div><div class="line">            <span class="keyword">const</span> uint _s = s[p - <span class="number">1</span>];</div><div class="line">            <span class="keyword">const</span> ll q = <span class="number">1l</span>l * p * p, lim = min((ll) m, n / q), x = m / p, y = n / p;</div><div class="line"></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= x; ++i) S[i] -= S[i * p] - _s;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = x + <span class="number">1</span>; i &lt;= lim; ++i) S[i] -= s[y / i] - _s;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = m; i &gt;= q; --i) s[i] -= s[i / p] - _s;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</div><div class="line">            f[i] = s[i] * <span class="number">63</span>;</div><div class="line">            F[i] = S[i] * <span class="number">63</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> e = pcnt; e &gt;= <span class="number">1</span>; --e) &#123;</div><div class="line">            <span class="keyword">int</span> p = prime[e<span class="number">-1</span>];</div><div class="line">            <span class="keyword">const</span> ll q = <span class="number">1l</span>l * p * p, lim = min((ll) m, n / q);</div><div class="line"></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= lim; ++i) &#123;</div><div class="line">                ll cur = n / i;</div><div class="line">                <span class="keyword">for</span>(ll t = p, c = <span class="number">1</span>; t * p &lt;= cur; t *= p, ++ c) &#123;</div><div class="line">                    F[i] += (getf(cur / t) - e * <span class="number">63</span>) * val[c] + val[c + <span class="number">1</span>];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = m; i &gt;= q; --i) &#123;</div><div class="line">                <span class="keyword">int</span> cur = i;</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> t = p, c = <span class="number">1</span>; t &lt;= cur / p; t *= p, ++ c) &#123;</div><div class="line">                    f[i] += (getf(cur / t) - e * <span class="number">63</span>) * val[c] + val[c + <span class="number">1</span>];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -372,7 +404,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/probelm-select/" rel="next" title="互测题总结">
+              <a href="/2018/problem-select/" rel="next" title="互测题总结">
                 <i class="fa fa-chevron-left"></i> 互测题总结
               </a>
             
@@ -382,8 +414,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/tsinsen-calc/" rel="prev" title="Calc">
-                Calc <i class="fa fa-chevron-right"></i>
+              <a href="/2018/noi2018/" rel="prev" title="记NOI2018">
+                记NOI2018 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -475,7 +507,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -773,7 +805,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
