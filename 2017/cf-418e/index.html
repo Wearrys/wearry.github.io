@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="Combinatorial,Dynamic Programming,">
+  <meta name="keywords" content="Dynamic Programming,Combinatorial,">
 
 
 
@@ -108,7 +108,7 @@
 
 
 <meta name="description" content="Description 求满足如下条件的 $N$ 个点的简单无向图的个数对 $ 1e9 + 7 $ 取模的结果：  每个点的度数均为 $2$ 或 $3$ 从一号点到任何一个点的最短路唯一并且随着点标号上升而不降.    (两个图不同当且仅当边的集合不同).$N &amp;lt;= 50$">
-<meta name="keywords" content="Combinatorial,Dynamic Programming">
+<meta name="keywords" content="Dynamic Programming,Combinatorial">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Codeforces Div2 418E">
 <meta property="og:url" content="http://yoursite.com/2017/cf-418e/index.html">
@@ -367,16 +367,21 @@
 </blockquote>
 <p>(两个图不同当且仅当边的集合不同).<br>$N &lt;= 50$ </p>
 <a id="more"></a>
-
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>我们可以记:</p>
 <ul>
 <li>$f_{i, j}$ 表示考虑完前 $i$ 个点, 最后一层恰好有 $j$ 个点, 且最后一层之前的点度数已经满足条件时的方案数.</li>
 <li>$g_{i, j, k}$ 表示当前层有 $i$ 个点, 上一层剩下来 $j$ 个度为 $2$ 的点, $k$ 个度为 $3$ 的点时连边的方案数.</li>
 </ul>
-<p>那么容易得到$f_{i, j} = \sum_{k} f_{i-j, k} \times g_{j, c0, c1}$, 其中$c0,,c1$表示最后一层 $k$ 个点中度为 $2$ 的点和度为 $3$ 的点的个数.</p>
+<p>那么容易得到$f_{i, j} = \sum_{k} f_{i-j, k} \times g_{j, c0, c1}$, 其中$c0\,,c1$表示最后一层 $k$ 个点中度为 $2$ 的点和度为 $3$ 的点的个数.</p>
 <p>对于 $g$, 不难得到:</p>
-<p>$$<br>g_{i, j, k} =<br>\begin{cases}<br>    1 &amp; i = 0, j = 0, k = 0 \<br>    \sum_{l=2}^{k-1} \frac{l!}{2} {k-1 \choose l} g_{i, j, k-l-1} &amp; i = 0, j = 0, k &gt; 0 \<br>    (j-1) \cdot g_{i, j-2, k} + k \cdot g_{i, j, k-1} &amp; i = 0, j &gt; 0 \<br>    j \cdot g_{i-1, j-1, k} + k \cdot g_{i-1, j+1, k-1} &amp; i &gt; 0<br>\end{cases}<br>$$</p>
-<h3 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h3><p>注意在第二个递推式中 $l$ 从 $2$ 开始枚举, 因为不能有重边, 所以不存在大小为 $2$ 的环.</p>
+<script type="math/tex; mode=display">
+g_{i, j, k} = 
+\begin{cases} 
+    1 & i = 0, j = 0, k = 0 \\
+    \sum_{l=2}^{k-1} \frac{l!}{2} {k-1 \choose l} g_{i, j, k-l-1} & i = 0, j = 0, k > 0 \\
+    (j-1) \cdot g_{i, j-2, k} + k \cdot g_{i, j, k-1} & i = 0, j > 0 \\
+    j \cdot g_{i-1, j-1, k} + k \cdot g_{i-1, j+1, k-1} & i > 0
+\end{cases}</script><h3 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h3><p>注意在第二个递推式中 $l$ 从 $2$ 开始枚举, 因为不能有重边, 所以不存在大小为 $2$ 的环.</p>
 
       
     </div>
@@ -394,9 +399,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Combinatorial/" rel="tag"># Combinatorial</a>
-          
             <a href="/tags/Dynamic-Programming/" rel="tag"># Dynamic Programming</a>
+          
+            <a href="/tags/Combinatorial/" rel="tag"># Combinatorial</a>
           
         </div>
       

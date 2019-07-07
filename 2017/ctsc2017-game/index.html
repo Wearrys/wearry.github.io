@@ -363,11 +363,16 @@
 </blockquote>
 <p>$ N, Q \le 2 \times 10 ^ 5 $</p>
 <a id="more"></a>
-
 <h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>首先不难发现, 某一局的游戏的胜率只与其左右的最近游戏结果相关, 所以答案可以分段计算.</p>
 <p>考虑期望的线性性, 可以将期望胜利场数表示成每一局游戏的胜率之和.<br>记 $X _ i$  表示第$i$ 场游戏的状态. 所求即为 $ \sum _ {l &lt; m &lt; r} P( X _ m = 1 | X _ l, X _ r) $. </p>
-<p>由贝叶斯公式:<br>$$<br>\begin{align}<br>P(X _ m = 1 | X _ l, X _ r) &amp;= \frac{P(X _ m = 1, X _ l, X _ r)}{P(X _ l) \cdot P(X _ r | X _ l) } \<br>&amp;= \frac{P(X _ l) \cdot P(X _ m = 1 | X _ l) \cdot P(X _ r | X _ l, X _ m = 1)}{P(X _ l) \cdot P(X _ r | X _ l)} \<br>&amp;= \frac{P(X _ m=1 | X _ l) \cdot P(X _ r | X _ l, X _ m = 1)}{P(X _ r | X _ l)} \<br>&amp;= \frac{P(X _ m=1 | X _ l) \cdot P(X _ r | X _ m = 1)}{P(X _ r | X _ l)}<br>\end{align}<br>$$</p>
-<p>发现分母是常数, 于是可以合并分子.<br>考虑分子的意义, 大概是合法状态下当前位置为胜的概率.<br>每一段就可以直接用$dp$来处理出答案, 记录某场比赛为胜/ 负的概率以及分子的期望即可.<br>这个复杂度是每次询问$O(n)$的.</p>
+<p>由贝叶斯公式:</p>
+<script type="math/tex; mode=display">
+\begin{align}
+P(X _ m = 1 | X _ l, X _ r) &= \frac{P(X _ m = 1, X _ l, X _ r)}{P(X _ l) \cdot P(X _ r | X _ l) } \\
+&= \frac{P(X _ l) \cdot P(X _ m = 1 | X _ l) \cdot P(X _ r | X _ l, X _ m = 1)}{P(X _ l) \cdot P(X _ r | X _ l)} \\
+&= \frac{P(X _ m=1 | X _ l) \cdot P(X _ r | X _ l, X _ m = 1)}{P(X _ r | X _ l)} \\
+&= \frac{P(X _ m=1 | X _ l) \cdot P(X _ r | X _ m = 1)}{P(X _ r | X _ l)} 
+\end{align}</script><p>发现分母是常数, 于是可以合并分子.<br>考虑分子的意义, 大概是合法状态下当前位置为胜的概率.<br>每一段就可以直接用$dp$来处理出答案, 记录某场比赛为胜/ 负的概率以及分子的期望即可.<br>这个复杂度是每次询问$O(n)$的.</p>
 <p>其实这道题要讲的已经讲完了, 最后只要用矩乘快速合并$dp$值, 维护一下就可以了.</p>
 
       

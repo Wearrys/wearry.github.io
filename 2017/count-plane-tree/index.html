@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="Combinatorial,Burnside,Generating Function,">
+  <meta name="keywords" content="Combinatorial,Generating Function,Burnside,">
 
 
 
@@ -108,7 +108,7 @@
 
 
 <meta name="description" content="不常见的经典问题, 顺便总结一下Burnside引理吧.">
-<meta name="keywords" content="Combinatorial,Burnside,Generating Function">
+<meta name="keywords" content="Combinatorial,Generating Function,Burnside">
 <meta property="og:type" content="article">
 <meta property="og:title" content="平面树计数">
 <meta property="og:url" content="http://yoursite.com/2017/count-plane-tree/index.html">
@@ -362,7 +362,6 @@
       
         <p>不常见的经典问题, 顺便总结一下Burnside引理吧.</p>
 <a id="more"></a>
-
 <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><blockquote>
 <p>给定 $N$, 求 $N$ 个点的本质不同的平面树的数量.<br>两棵平面树是等价的当且仅当其中一棵能够移动点的位置与另一棵重合, 且过程中仍然是一棵平面树.</p>
 </blockquote>
@@ -371,8 +370,7 @@
 <p>那么就只需要考虑本质不同的这样的配对的数量即可.<br>两个圆是等价的当且仅当一个圆可以通过旋转一定的角度与另一个圆重合.<br>而在这个圆上共有 $2N$ 个点, 就意味着有 $2N$ 个置换, 构成一个置换群.</p>
 <p>置换群下的计数可以用到 Burnside引理 :</p>
 <blockquote>
-<p>$$ N(G, C) = \frac{1}{|G|} { \sum_{f \in G} c(f) } $$</p>
-</blockquote>
+<script type="math/tex; mode=display">N(G, C) = \frac{1}{|G|} { \sum_{f \in G} c(f) }</script></blockquote>
 <p>则转化为求置换下的不动点的数量:</p>
 <ul>
 <li><p>不存在置换的情况下, 答案为 $C_N$, $\mathrm{Catalan}$ 数的第 $N$ 项.<br>即将相互匹配的位置看作左右括号, 则所有合法的括号序列都对应一个满足条件的圆.</p>
@@ -384,16 +382,11 @@
 </li>
 </ul>
 <p>令 $f(x)$ 表示 $\mathrm{Catalan}$ 数的生成函数, 根据 $\mathrm{Catalan}$ 数的递推式, 不难得到:</p>
-<p>$$ f(x) = xf^2(x) + 1 $$</p>
-<p>构造 $B_d$ 表示包含 $2d$ 个环的置换下不动点的数量.</p>
-<p>$$ B_d = 2\sum_{i = 0}^{d-1} C_i B_{d-i-1} $$</p>
-<p>其中因子 $2$ 考虑的是 $i &gt; 2d$ 时用当前置换的逆来计算的情况.</p>
+<script type="math/tex; mode=display">f(x) = xf^2(x) + 1</script><p>构造 $B_d$ 表示包含 $2d$ 个环的置换下不动点的数量.</p>
+<script type="math/tex; mode=display">B_d = 2\sum_{i = 0}^{d-1} C_i B_{d-i-1}</script><p>其中因子 $2$ 考虑的是 $i &gt; 2d$ 时用当前置换的逆来计算的情况.</p>
 <p>则 $B_d$ 的生成函数 $g(x)$ 满足:</p>
-<p>$$ g(x) = 2x g(x) f(x) + 1 $$</p>
-<p>解得:</p>
-<p>$$ g(x) = (1 - 4x) ^ {-\frac{1}{2}} $$</p>
-<h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><p>$$ p(n) = \frac{1}{2n} ( [\mathrm{n , is , odd}]\binom{n}{\lfloor\frac{n}{2}\rfloor} - \binom{2n}{n-1} + \sum_{d|n}{\varphi(n/d)\binom {2d}{d}} )$$</p>
-
+<script type="math/tex; mode=display">g(x) = 2x g(x) f(x) + 1</script><p>解得:</p>
+<script type="math/tex; mode=display">g(x) = (1 - 4x) ^ {-\frac{1}{2}}</script><h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><script type="math/tex; mode=display">p(n) = \frac{1}{2n} ( [\mathrm{n \, is \, odd}]\binom{n}{\lfloor\frac{n}{2}\rfloor} - \binom{2n}{n-1} + \sum_{d|n}{\varphi(n/d)\binom {2d}{d}} )</script>
       
     </div>
     
@@ -412,9 +405,9 @@
           
             <a href="/tags/Combinatorial/" rel="tag"># Combinatorial</a>
           
-            <a href="/tags/Burnside/" rel="tag"># Burnside</a>
-          
             <a href="/tags/Generating-Function/" rel="tag"># Generating Function</a>
+          
+            <a href="/tags/Burnside/" rel="tag"># Burnside</a>
           
         </div>
       
