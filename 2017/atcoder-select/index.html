@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Combinatorial,Dynamic Programming,Summary,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Wearry's Blog" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp; 其实是总结一下比赛中遇到的好题, 然后瞎做了几场 AGC 的题目练习, 感觉还比较有意思.">
+<meta name="keywords" content="Combinatorial,Dynamic Programming,Summary">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Atcoder 选做">
+<meta property="og:url" content="http://yoursite.com/2017/atcoder-select/index.html">
+<meta property="og:site_name" content="Wearry&#39;s Blog">
+<meta property="og:description" content="&amp;emsp;&amp;emsp; 其实是总结一下比赛中遇到的好题, 然后瞎做了几场 AGC 的题目练习, 感觉还比较有意思.">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-11-29T19:43:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Atcoder 选做">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp; 其实是总结一下比赛中遇到的好题, 然后瞎做了几场 AGC 的题目练习, 感觉还比较有意思.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/atcoder-select/">
+
+
+
+
+
+  <title>Atcoder 选做 | Wearry's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wearry's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-friends">
+          <a href="/friends/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            Friends
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/atcoder-select/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wearry">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/ava.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wearry's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Atcoder 选做</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-30T00:00:00+08:00">
+                2017-06-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/atcoder-select/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/atcoder-select/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;&emsp; 其实是总结一下比赛中遇到的好题, 然后瞎做了几场 AGC 的题目练习, 感觉还比较有意思.</p>
+<a id="more"></a>
+
+<h3 id="AGC"><a href="#AGC" class="headerlink" title="AGC"></a>AGC</h3><h4 id="AGC002-F-Leftmost-Ball"><a href="#AGC002-F-Leftmost-Ball" class="headerlink" title="AGC002 F Leftmost Ball"></a>AGC002 F Leftmost Ball</h4><blockquote>
+<p>给你$N$种不同颜色的球, 每种有$K$个, 现在你可以将球任意排列, 但最终的序列中每种颜色的第一个出现位置要被染成$0$颜色, 求能够得到的本质不同的序列数, 对$10^9 + 7$取模.</p>
+</blockquote>
+<p>$N, K \leq 2000$</p>
+<p>&emsp;&emsp; 这题正着处理没有什么思路, 但是如果从右往左来会比较好考虑. 我们可以记$f(i, j)$表示当前从右往左填剩下$i$个$0$颜色的球, 还剩下$j$种颜色没有放的方案数. 那么每一次的决策就包括放入一个$0$颜色的球以及添加一种颜色的$k-1$个球:</p>
+<p>$$<br>\begin{aligned}<br>    f(i-1, j) &amp; \leftarrow f(i, j) \mid [i &gt; j] \<br>    f(i, j-1) &amp; \leftarrow f(i, j) \times {n-i + (n-j) \times (k-1) + k-2 \choose k-2}<br>\end{aligned}<br>$$</p>
+<blockquote>
+<p>后面那个公式是可重集, 还有最后的答案要乘以$n!$.</p>
+</blockquote>
+<h4 id="AGC005-D-K-Perm-Counting"><a href="#AGC005-D-K-Perm-Counting" class="headerlink" title="AGC005 D ~K Perm Counting"></a>AGC005 D ~K Perm Counting</h4><blockquote>
+<p>求长度为$N$的排列中, 满足对任意的$i$, 都有$|a_i - i| \neq K$的排列数量. </p>
+</blockquote>
+<p>$1 \leq K &lt; N \leq 2000$</p>
+<p>&emsp;&emsp; 考虑容斥, 计算至少有$i$个位置不合法的方案数. 由于$K$是确定的, 那么所有不合法的方案可以看成是完全二分图匹配中出现了一条$(i, i+k)$的边或者一条$(i, i-k)$的边.</p>
+<p>&emsp;&emsp; 将这样的边在画出来就是若干条交叉路径. 观察到这样的交叉路径不相交, 所以可以拆开拼成一个序列, 然后在序列上$dp$即可.</p>
+<h4 id="AGC015-D-A-or…or-B-Problem"><a href="#AGC015-D-A-or…or-B-Problem" class="headerlink" title="AGC015 D A or…or B Problem"></a>AGC015 D A or…or B Problem</h4><blockquote>
+<p>求在$[A, B]$中任意选出一个非空整数集合的元素位或和有多少种不同的答案.</p>
+</blockquote>
+<p>$1 \le A \le B \le 2^{60}$</p>
+<p>&emsp;&emsp; 先考虑一些比较特殊的情况(以下默认$A, B$的位数相同):</p>
+<ul>
+<li>当$B$可以表示为$2^k - 1$时, 这个位或和恰好取遍$[A, B]$之间的所有整数.</li>
+<li>当$A$可以表示为$2^k$时, 这个位或和在区间$[A, A + 2^{t+1}) \mid t &lt; log_2 A$中, 其中$t$是最大的满足$B$的第$t$位为$1$的数.</li>
+</ul>
+<p>&emsp;&emsp; 那么一般情况下这些条件有什么用呢?</p>
+<p>&emsp;&emsp; 我们考虑找到最大的一个$T$,使得$B$的第$T$位为$1$且$A$的第$T$位不为$1$, 记$K = 2 ^ T$. 当选择的数的集合在$[A, K)$以及在$[K, B]$中的情况可以直接用上述结论.</p>
+<p>&emsp;&emsp; 接下来考虑同时选取两个集合中的数可能会产生的答案. 因为这时小于$K$的部分是没有贡献的, 所以直接将$[A, K)$中的所有答案取出. 不难发现$[K, B]$中取任意个都与只使用$K$没有区别, 那么这时候的范围是$[K+A, 2\times K-1]$, 注意减去重复贡献.</p>
+<h4 id="AGC015-F-Kenus-the-Ancient-Greek"><a href="#AGC015-F-Kenus-the-Ancient-Greek" class="headerlink" title="AGC015 F Kenus the Ancient Greek"></a>AGC015 F Kenus the Ancient Greek</h4><blockquote>
+<p>Q组询问, 每组询问的形式为A, B, 表示求$x \in [1, A], y \in [1, B]$的$g(x, y)$的最大值, 及最大值的方案数, 其中: </p>
+</blockquote>
+<p>$$<br>g(x, y) =<br>\begin{cases}<br>    1, &amp; \text{y = 0} \<br>    g(y, x), &amp; \text{x &gt; y} \<br>    g(y ; mod ; x, x) + 1, &amp; \text{otherwise} \<br>\end{cases}<br>$$</p>
+<p>$1 \le Q \le 3 \times 10 ^ 5 ,,, 1 \le A, B \le 10 ^ {18}$</p>
+<p>&emsp;&emsp; <strong>以下无特殊说明, 均默认所有$x &lt; y, A &lt; B$</strong><br>&emsp;&emsp; 先考虑第一问, 如果我们由一个特定的$(x, y)$, 从小到大地构造使得$g(x, y)$的值不断地变大, 那么如何构造使得这个值最大呢?<br>&emsp;&emsp; 对于所有$(x’, y’)$满足$g(x’, y’) = g(x, y) + 1$, 显然有:</p>
+<p>$$<br>(x’, y’) \in { (y, x + ky) \mid k \in Z^+ }<br>$$</p>
+<p>&emsp;&emsp; 同时, 为了使得这个过程尽可能的多次进行,我们从$(0, 1)$出发, 每次取$k = 1$.<br>发现这样生成了一组$Fibonacci$数列, 这里$Fibonacci$数列从0开始标号.<br>&emsp;&emsp; 那么第一问的答案就是求满足$Fib_k \le A,; Fib_{k+1} \le B$的最大的$k$. 同时, 这样的数对是满足$g(x, y) = k$的最小的数对.<br>&emsp;&emsp; 接下来考虑统计方案数. 首先, 对于一组询问我们只需考虑其中<strong>与最优解相关</strong>的$(x, y)$.<br>&emsp;&emsp; 考虑所有最优的$(x, y)$会具有的性质:</p>
+<ul>
+<li>$x \ge Fib_k, ; y \ge Fib_{k+1}$</li>
+<li>不存在一组$(x’ &lt; x, y’ &lt; y)$, 使得$g(x’, y’) &gt; g(x, y)$</li>
+</ul>
+<p>&emsp;&emsp; 然而这样的$(x, y)$并不一定是最优的.<br>&emsp;&emsp; 我们接着分析所有在最优解的$g$的计算路径上的数对$(x, y)$的性质: 不难发现, 经过一次变化后得到的$(x’, y’)$, 一定满足:</p>
+<ul>
+<li>$g(x’, y’) = k-1$</li>
+<li>$x’ \ge Fib_{k-1}, y’ \ge Fib_{k}$</li>
+<li>$y’ \le Fib_{k+1} + Fib_{k-2}$</li>
+</ul>
+<p>&emsp;&emsp; 后面条件的解释: 若$y’ &gt; Fib_{k+1} + Fib_{k-2}$, 则:<br>$$(x, y) = (y’ &gt; Fib_{k+1} + Fib_{k-2} &gt; Fib_{k+1}, x’ + py’ \ge x’ + y’ &gt; Fib_{k+2})$$<br>&emsp;&emsp;$(x, y)$不再满足上述最优性质2, 矛盾.<br>&emsp;&emsp; 同时每次向下一步进行构造的时候只有$(Fib_k, Fib_{k+1})$可能取到$p = 2$所以这样的数对个数是$O(k)$的. 所以我们预处理所有的这样的数对, 然后用除法算下答案就好了.<br>&emsp;&emsp; 复杂度$O(log^2{MAX} + QlogMAX)$.</p>
+<h3 id="ARC"><a href="#ARC" class="headerlink" title="ARC"></a>ARC</h3><p>ARC 的题目主要来源是打过的几场比赛, 暂时不多.</p>
+<h4 id="ARC074-E-RGB-Sequence"><a href="#ARC074-E-RGB-Sequence" class="headerlink" title="ARC074 E RGB Sequence"></a>ARC074 E RGB Sequence</h4><blockquote>
+<p>给你一个长度为$N$的序列和$M$组约束条件, 每组条件形如$L_i, R_i, X_i$, 表示序列上的$[L_i, R_i]$中恰好有$X_i$种颜色, 现在要你用三种颜色给这个序列染色, 求满足所有约束的方案数.</p>
+</blockquote>
+<p>$1 \le N, M \le 300$</p>
+<p>&emsp;&emsp; $dp$的思路应该比较显然, 然而普通的状态表示不太好处理. 我们记$dp_{r, g, b}$表示三种颜色的球最后一次出现的位置分别是$r, g, b$时的方案数. </p>
+<p>&emsp;&emsp; 然后考虑状态的合法性, 可以把条件存在$R_i$的位置. 当选择一个状态时, 考虑这个状态的最末位的所有约束即可. </p>
+<h4 id="ARC077-F-SS"><a href="#ARC077-F-SS" class="headerlink" title="ARC077 F SS"></a>ARC077 F SS</h4><blockquote>
+<p>定义一个字符串为偶的, 当且仅当这个字符串能够被分成两个完全相同的字符串.</p>
+</blockquote>
+<p>&emsp;&emsp; 定义函数$f(s)$, 其中$s, f(s)$均是字符串,$f(s)$为在字符串$s$后添加非空的字符满足新串为偶且长度最小的串. 现在给你串$s$(初始为偶的), 求$f^{10^{100}}(s)[L, R]$中各个字母的出现次数.<br>$1 \le |S| \le 2\times 10^5$<br>$1 \le L \le R \le 10^{18}$</p>
+<p>&emsp;&emsp; 首先对于一个给定的$s$, 其$f(s)$必定唯一. 考虑每次最少加一个字符,$f^{10^{100}}(s)$就等价于一个长度无穷的字符串. 这个答案的形式显然可以前缀和, 又因为$s$在变化过程中始终是偶的, 实际上我们只需要关注左半部分的字符.</p>
+<p>&emsp;&emsp; 我们从最简单的一次操作来考虑. 记初始的字符串$s$为$SS$, 记一次变化之后左边的部分为$ST$, 那么得到的新串就是$STST$. 要使得加的字符长度最小, 就要在$S$中找到最长前后缀匹配长度, 这时$T$就是$S$去掉最长匹配后缀所得.</p>
+<p>&emsp;&emsp; 我们发现, 每次操作都等价于找到前后缀匹配最大长度(当然要小于$|S|$), 然后将剩下部分的前缀$T$添加到$S$的末尾.</p>
+<ul>
+<li>当$|T| \mid |S|$时,$|S|$有长为$|T|$的最小周期, 每次加入的$|T|$相同.</li>
+<li>当$|T| \nmid|S|$时, 我们<del>通过打表</del>发现, 这样的$T$是在有规律地变化的, 因为每次加入$T$之后的串前后缀最长匹配一定是$|T|$, 否则的话, 上一步中最长匹配的性质就不一定会满足.</li>
+</ul>
+<p>&emsp;&emsp; 然后我们得到了一个$Fibonacci$数列? 直接暴力算就好了… 实际上第一种情况也可以直接算, 因为整个序列都是$T$的若干次重复得到的.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Combinatorial/" rel="tag"># Combinatorial</a>
+          
+            <a href="/tags/Dynamic-Programming/" rel="tag"># Dynamic Programming</a>
+          
+            <a href="/tags/Summary/" rel="tag"># Summary</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/cf-418e/" rel="next" title="Codeforces Div2 418E">
+                <i class="fa fa-chevron-left"></i> Codeforces Div2 418E
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/probability-problems/" rel="prev" title="两道概率题">
+                两道概率题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/ava.png" alt="Wearry">
+            
+              <p class="site-author-name" itemprop="name">Wearry</p>
+              <p class="site-description motion-element" itemprop="description">Less is more.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/wearrys" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#AGC"><span class="nav-number">1.</span> <span class="nav-text">AGC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AGC002-F-Leftmost-Ball"><span class="nav-number">1.1.</span> <span class="nav-text">AGC002 F Leftmost Ball</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AGC005-D-K-Perm-Counting"><span class="nav-number">1.2.</span> <span class="nav-text">AGC005 D ~K Perm Counting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AGC015-D-A-or…or-B-Problem"><span class="nav-number">1.3.</span> <span class="nav-text">AGC015 D A or…or B Problem</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AGC015-F-Kenus-the-Ancient-Greek"><span class="nav-number">1.4.</span> <span class="nav-text">AGC015 F Kenus the Ancient Greek</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARC"><span class="nav-number">2.</span> <span class="nav-text">ARC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ARC074-E-RGB-Sequence"><span class="nav-number">2.1.</span> <span class="nav-text">ARC074 E RGB Sequence</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ARC077-F-SS"><span class="nav-number">2.2.</span> <span class="nav-text">ARC077 F SS</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-terminal"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wearry</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://wearry.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2017/atcoder-select/';
+          this.page.identifier = '2017/atcoder-select/';
+          this.page.title = 'Atcoder 选做';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://wearry.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
