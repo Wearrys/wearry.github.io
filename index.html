@@ -360,21 +360,14 @@
 
       
         
-          
-            <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>宅家没事的时候找的乐子，不定期更新，大概。</p>
-<h2 id="1"><a href="#1" class="headerlink" title="1"></a>1</h2><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>有 $n$ 个人，其中有好有坏，每个人都知道其他任何人是好是坏，现在可以进行若干次询问，每次询问形如 $(i, j)$，表示问第 $i$ 个人第 $j$ 个人是否是好人 $(i \neq j)$，同时好人一定说真话，坏人可能说假话，问：</p>
-<ol>
-<li>如果有多于一半的人是好的，是否存在策略能够在不超过 $n$ 次询问下确定一个好人。</li>
-<li>如果有恰好一半的人是坏人，是否存在上述策略。</li>
-</ol>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><h4 id="1-1"><a href="#1-1" class="headerlink" title="1"></a>1</h4><p>考虑维护一个序列，初始时加入编号为 $1$ 的人，接下来依次将其他人加入，每次加入的时候询问序列末尾的人这个人是好人还是坏人，如果答案是坏人则删除末尾，否则将这个新加入的作为末尾，正确性不难验证：</p>
-<ol>
-<li>每次删除的至少有一个坏人，因此最后序列剩下的人中至少有一个好人。</li>
-<li>如果序列中至少有一个好人，则序列的末尾一定也是好人。</li>
-</ol>
-<h4 id="2"><a href="#2" class="headerlink" title="2"></a>2</h4><p>不能，如果所有坏人都永远说谎，则他们与好人没有区别。</p>
-
-          
+          <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>宅家没事的时候找的乐子，不定期更新，大概。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/exercise-of-thoughts/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
