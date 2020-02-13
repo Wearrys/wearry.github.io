@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/friends/index.html</loc>
+    
+    <lastmod>2020-02-13T08:14:14.674Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2020/exercise-of-thoughts/</loc>
     
     <lastmod>2020-02-10T15:49:41.434Z</lastmod>
@@ -9,16 +16,30 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/friends/index.html</loc>
+    <loc>http://yoursite.com/2018/problem-select/</loc>
     
-    <lastmod>2019-07-07T12:55:18.560Z</lastmod>
+    <lastmod>2019-07-07T12:41:27.733Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/problem-select/</loc>
+    <loc>http://yoursite.com/2017/probability-problems/</loc>
     
-    <lastmod>2019-07-07T12:41:27.733Z</lastmod>
+    <lastmod>2018-11-29T19:43:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/ctsc2017-game/</loc>
+    
+    <lastmod>2018-11-29T19:43:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2018/ex-eratos-sieve/</loc>
+    
+    <lastmod>2018-11-29T19:43:50.000Z</lastmod>
     
   </url>
   
@@ -37,14 +58,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/cf-553e/</loc>
-    
-    <lastmod>2018-11-29T19:43:50.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/ctsc2017-game/</loc>
+    <loc>http://yoursite.com/2018/noi2018/</loc>
     
     <lastmod>2018-11-29T19:43:50.000Z</lastmod>
     
@@ -58,21 +72,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/noi2018/</loc>
-    
-    <lastmod>2018-11-29T19:43:50.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/count-plane-tree/</loc>
-    
-    <lastmod>2018-11-29T19:43:50.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2017/probability-problems/</loc>
+    <loc>http://yoursite.com/2017/zjoi2017-bit/</loc>
     
     <lastmod>2018-11-29T19:43:50.000Z</lastmod>
     
@@ -86,14 +86,14 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/zjoi2017-bit/</loc>
+    <loc>http://yoursite.com/2017/cf-553e/</loc>
     
     <lastmod>2018-11-29T19:43:50.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/ex-eratos-sieve/</loc>
+    <loc>http://yoursite.com/2017/count-plane-tree/</loc>
     
     <lastmod>2018-11-29T19:43:50.000Z</lastmod>
     

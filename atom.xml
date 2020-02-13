@@ -57,9 +57,9 @@
     </summary>
     
     
-      <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
-    
       <category term="Summary" scheme="http://yoursite.com/tags/Summary/"/>
+    
+      <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
     
   </entry>
   
@@ -219,9 +219,9 @@
     
       <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
     
-      <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
-    
       <category term="Summary" scheme="http://yoursite.com/tags/Summary/"/>
+    
+      <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
     
   </entry>
   
