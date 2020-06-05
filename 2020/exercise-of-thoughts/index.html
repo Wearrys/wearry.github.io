@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="Wearry&#39;s Blog">
 <meta property="og:description" content="写在前面宅家没事的时候找的乐子，不定期更新，大概。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-10T15:49:41.434Z">
+<meta property="og:updated_time" content="2020-06-05T10:33:06.575Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="若干趣题">
 <meta name="twitter:description" content="写在前面宅家没事的时候找的乐子，不定期更新，大概。">
@@ -371,7 +371,32 @@
 <li>如果序列中至少有一个好人，则序列的末尾一定也是好人。</li>
 </ol>
 <h4 id="2"><a href="#2" class="headerlink" title="2"></a>2</h4><p>不能，如果所有坏人都永远说谎，则他们与好人没有区别。</p>
-
+<h2 id="2-1"><a href="#2-1" class="headerlink" title="2"></a>2</h2><h3 id="巴塞尔公式"><a href="#巴塞尔公式" class="headerlink" title="巴塞尔公式"></a>巴塞尔公式</h3><script type="math/tex; mode=display">
+    \sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}</script><h3 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h3><p>首先注意到：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    I=&\int_0^1 \mathrm{d} x \int_0^1 \frac{1}{1-xy} \mathrm{d} y \\
+    =&\iint_D \sum_{i=0}^{\infty} (xy)^i \mathrm{d}x\mathrm{d}y \\
+    =&\sum_{i=0}^{\infty} \iint_D (xy)^i \mathrm{d}x\mathrm{d}y \\
+    =&\sum_{i=0}^{\infty} \left(\int_0^1 x^i \mathrm{d} x\right)^2 \\
+    =&\sum_{i=1}^{\infty} \frac{1}{i^2}
+\end{aligned}</script><p>故只需证明 $I = \dfrac{\pi^2}{6}$ 即可，考虑变量替换：</p>
+<script type="math/tex; mode=display">
+\begin{cases}
+    x = u + v \\
+    y = u - v
+\end{cases},
+\frac{\partial(x, y)}{\partial(u, v)} = \left|\begin{matrix} 1 & 1 \\ 1 & -1 \end{matrix} \right| = -2</script><p>则：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+I &= 2 \iint_{D_{uv}} \frac{1}{1 - u^2 + v^2} \mathrm{d} u \mathrm{d} v \\
+&= 4 \left(\int_0^{\frac{1}{2}} \mathrm{d} u \int_0^{u} \frac{1}{1-u^2+v^2} \mathrm{d} v + \int_{\frac{1}{2}}^{1} \mathrm{d}u \int_0^{1-u} \frac{1}{1-u^2+v^2} \mathrm{d} v\right) \\
+&= 4 \left(\int_0^{\frac{1}{2}} \frac{1}{\sqrt{1-u^2}} \arctan \frac{u}{\sqrt{1-u^2}} \mathrm{d} u + \int_{\frac{1}{2}}^{1} \frac{1}{\sqrt{1-u^2}} \arctan \frac{1-u}{\sqrt{1-u^2}} \mathrm{d} u\right) \\
+&= 4 \left(\int_0^{\frac{1}{2}} \arctan \frac{u}{\sqrt{1-u^2}} \mathrm{d} \arctan \frac{u}{\sqrt{1-u^2}} 
+  -2       \int_{\frac{1}{2}}^1 \arctan \frac{1-u}{\sqrt{1-u^2}} \mathrm{d} \arctan \frac{1-u}{\sqrt{1-u^2}} \right) \\
+&= 4 \times \frac{1}{2} \times \left(\frac{\pi}{6}\right)^2 + 4 \times \left(\frac{\pi}{6}\right)^2 = \frac{\pi^2}{6} \\
+&& \square
+\end{aligned}</script>
       
     </div>
     
@@ -563,7 +588,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1"><span class="nav-number">2.</span> <span class="nav-text">1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">2.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.2.</span> <span class="nav-text">Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2"><span class="nav-number">2.2.2.</span> <span class="nav-text">2</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1"><span class="nav-number">2.</span> <span class="nav-text">1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">2.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.2.</span> <span class="nav-text">Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2"><span class="nav-number">2.2.2.</span> <span class="nav-text">2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1"><span class="nav-number">3.</span> <span class="nav-text">2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#巴塞尔公式"><span class="nav-number">3.1.</span> <span class="nav-text">巴塞尔公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#证明"><span class="nav-number">3.2.</span> <span class="nav-text">证明</span></a></li></ol></li></ol></div>
             
 
           </div>
