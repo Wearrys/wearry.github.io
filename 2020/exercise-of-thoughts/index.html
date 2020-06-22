@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="Wearry&#39;s Blog">
 <meta property="og:description" content="写在前面宅家没事的时候找的乐子，不定期更新，大概。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-06-05T10:33:06.575Z">
+<meta property="og:updated_time" content="2020-06-22T09:24:00.420Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="若干趣题">
 <meta name="twitter:description" content="写在前面宅家没事的时候找的乐子，不定期更新，大概。">
@@ -396,6 +396,16 @@ I &= 2 \iint_{D_{uv}} \frac{1}{1 - u^2 + v^2} \mathrm{d} u \mathrm{d} v \\
   -2       \int_{\frac{1}{2}}^1 \arctan \frac{1-u}{\sqrt{1-u^2}} \mathrm{d} \arctan \frac{1-u}{\sqrt{1-u^2}} \right) \\
 &= 4 \times \frac{1}{2} \times \left(\frac{\pi}{6}\right)^2 + 4 \times \left(\frac{\pi}{6}\right)^2 = \frac{\pi^2}{6} \\
 && \square
+\end{aligned}</script><h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><blockquote>
+<p>任取两个正整数，求它们互质的概率</p>
+</blockquote>
+<p>考虑任意质因子 $p$，如果两个数同时是 $p$ 的倍数，则不会互质，这个概率显然为 $\dfrac{1}{p^2}$，因此互质的概率可以写成如下形式：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+P &= \prod_{p\, \mathrm{is\ prime}} \left(1 - \frac{1}{p^2}\right) \\
+&= \prod_{p\, \mathrm{is\ prime}} \cfrac{1}{\sum_{i=0}^{\infty} \left(\cfrac{1}{p^2}\right)^i} \\
+&= \frac{1}{\sum_{i=1}^{\infty} \frac{1}{i^2}} \\
+&= \frac{6}{\pi^2}
 \end{aligned}</script>
       
     </div>
@@ -588,7 +598,7 @@ I &= 2 \iint_{D_{uv}} \frac{1}{1 - u^2 + v^2} \mathrm{d} u \mathrm{d} v \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1"><span class="nav-number">2.</span> <span class="nav-text">1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">2.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.2.</span> <span class="nav-text">Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2"><span class="nav-number">2.2.2.</span> <span class="nav-text">2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1"><span class="nav-number">3.</span> <span class="nav-text">2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#巴塞尔公式"><span class="nav-number">3.1.</span> <span class="nav-text">巴塞尔公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#证明"><span class="nav-number">3.2.</span> <span class="nav-text">证明</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1"><span class="nav-number">2.</span> <span class="nav-text">1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">2.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">2.2.</span> <span class="nav-text">Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2"><span class="nav-number">2.2.2.</span> <span class="nav-text">2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1"><span class="nav-number">3.</span> <span class="nav-text">2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#巴塞尔公式"><span class="nav-number">3.1.</span> <span class="nav-text">巴塞尔公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#证明"><span class="nav-number">3.2.</span> <span class="nav-text">证明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用"><span class="nav-number">3.3.</span> <span class="nav-text">应用</span></a></li></ol></li></ol></div>
             
 
           </div>
