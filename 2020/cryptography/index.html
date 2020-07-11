@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="Summary,">
+  <meta name="keywords" content="Number Theory,Probability,Induction,">
 
 
 
@@ -107,18 +107,18 @@
 
 
 
-<meta name="description" content="引 本来应该有另一篇博客叫做写在NOIP2017之前的, 但跑回家才意识到博客搭在机房的电脑上, 于是……">
-<meta name="keywords" content="Summary">
+<meta name="description" content="Some notes of 🔒 cryptography lessons">
+<meta name="keywords" content="Number Theory,Probability,Induction">
 <meta property="og:type" content="article">
-<meta property="og:title" content="写在NOIP2017之后">
-<meta property="og:url" content="http://yoursite.com/2017/after-noip-2017/index.html">
+<meta property="og:title" content="Cryptography Notes">
+<meta property="og:url" content="http://yoursite.com/2020/cryptography/index.html">
 <meta property="og:site_name" content="Wearry&#39;s Blog">
-<meta property="og:description" content="引 本来应该有另一篇博客叫做写在NOIP2017之前的, 但跑回家才意识到博客搭在机房的电脑上, 于是……">
+<meta property="og:description" content="Some notes of 🔒 cryptography lessons">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-29T19:43:50.000Z">
+<meta property="og:updated_time" content="2020-07-11T08:57:21.209Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="写在NOIP2017之后">
-<meta name="twitter:description" content="引 本来应该有另一篇博客叫做写在NOIP2017之前的, 但跑回家才意识到博客搭在机房的电脑上, 于是……">
+<meta name="twitter:title" content="Cryptography Notes">
+<meta name="twitter:description" content="Some notes of 🔒 cryptography lessons">
 
 
 
@@ -148,13 +148,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/after-noip-2017/">
+  <link rel="canonical" href="http://yoursite.com/2020/cryptography/">
 
 
 
 
 
-  <title>写在NOIP2017之后 | Wearry's Blog</title>
+  <title>Cryptography Notes | Wearry's Blog</title>
   
 
 
@@ -281,7 +281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/after-noip-2017/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/cryptography/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wearry">
@@ -298,7 +298,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">写在NOIP2017之后</h1>
+          <h1 class="post-title" itemprop="name headline">Cryptography Notes</h1>
         
 
         <div class="post-meta">
@@ -310,8 +310,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-13T08:24:59+08:00">
-                2017-11-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-07T21:37:14+08:00">
+                2020-07-07
               </time>
             
 
@@ -329,8 +329,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/after-noip-2017/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/after-noip-2017/" itemprop="commentCount"></span>
+                <a href="/2020/cryptography/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/cryptography/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -358,25 +358,80 @@
       
 
       
-        <h3 id="引"><a href="#引" class="headerlink" title="引"></a>引</h3><blockquote>
-<p>本来应该有另一篇博客叫做写在NOIP2017之前的, 但跑回家才意识到博客搭在机房的电脑上, 于是……</p>
-</blockquote>
+        <p>Some notes of 🔒 cryptography lessons </p>
 <a id="more"></a>
-<h3 id="比赛过程"><a href="#比赛过程" class="headerlink" title="比赛过程"></a>比赛过程</h3><h4 id="Day1"><a href="#Day1" class="headerlink" title="Day1"></a>Day1</h4><p>看到这个T1不送分了, 心里还是有点虚, 认真地读完了后面两题平复了一下心态.<br>想着既然是T1, 肯定不是送就是偷, 看着样例找了找规律, 推了个 $ a + b + (b \% a) (a &lt; b) $ 的方法, 发现过不了大样例. 于是盯着大样例发呆, 突然发现了世界的奥秘.<br>然后写T2, 写完眼查了一下大样例, 正要关闭窗口的时候 Vimdiff 了一波, 发现自己大小写写错一大堆…<br>T3想了想写了个不考虑零边的记忆化搜索, 发现大样例过不了 认真思考了一下发现是没有考虑到达终点又折返的情况 又想了想发现 $-1$ 挺好判的, 就加上了.</p>
-<h4 id="Day2"><a href="#Day2" class="headerlink" title="Day2"></a>Day2</h4><p>到达考场时精神状态不太好, 意识模糊地打开了题目.<br>看完T2一直在想MST什么的, 感觉不太会做准备放弃时发现数据范围只有12, 于是秒懂了.<br>T3没想多久推出一个平衡树的做法, 对自己代码能力过于自信没有多想就开始写, 结果调到最后一刻还是GG了.</p>
-<h3 id="反思错误"><a href="#反思错误" class="headerlink" title="反思错误"></a>反思错误</h3><p>感觉这次虽然题目比较奇怪, 但实际难度还是合理的, 出现了一些失误恰恰暴露出身上的一些问题.</p>
+<h1 id="Preliminary-Discrete-Probability"><a href="#Preliminary-Discrete-Probability" class="headerlink" title="Preliminary: Discrete Probability"></a><em>Preliminary: Discrete Probability</em></h1><p>Suppose $U$ is a finite set.</p>
+<h2 id="Probability-Distribution"><a href="#Probability-Distribution" class="headerlink" title="Probability Distribution"></a><em>Probability Distribution</em></h2><blockquote>
+<p>a <code>probability distribution</code> $P$ over $U$ is a function</p>
+<script type="math/tex; mode=display">P: U \rightarrow [0,1]</script><p>s.t.</p>
+<script type="math/tex; mode=display">\sum_{x \in U} P(x) = 1</script></blockquote>
+<p>Some examples:</p>
 <ul>
-<li>考试的时候大部分处在一种边想边写的状态, 一边写可能还要一边完善一些细节.</li>
-<li>刷了很多Atcoder 的题目之后, 代码能力退化明显.</li>
-<li>考场的debuff比较强.</li>
+<li>Uniform distribution: $\forall x \in U, P(x) = \dfrac{1}{|U|}$</li>
+<li>Pointed distribution: $\exists x \in U, P(x) = 1$</li>
 </ul>
-<p>可能后面两条还稍微可以接受吧, 但是第一条的确是硬伤, 这样做简单题或者在比较清醒的时候写题可能还好,  然而一旦遇到代码实现比较复杂或者条件比较多的题目, 就会挂得很惨, 这个问题模拟赛中也出现过几次.<br>解决的策略其实说起来也不难, 主要就是每道题写之前把算法细节考虑基本清楚, 做到 $ Think \,\, twice, Code \,\, once $ 吧. 这样也不会出现某道题写了很久最后发现做法是错误的这种尴尬的情况也能够避免写一些特别复杂的做法.</p>
-<h3 id="关于未来"><a href="#关于未来" class="headerlink" title="关于未来"></a>关于未来</h3><p>针对这次联赛的问题和原来的一些弱点, 对接下来的一段学习做一些规划：</p>
-<ul>
-<li>补一些数学相关的知识（不一定OI相关）</li>
-<li>提高一下代码能力, 复习一些不熟练的数据结构, 刷一些质量比较高的题目</li>
+<h2 id="Event"><a href="#Event" class="headerlink" title="Event"></a><em>Event</em></h2><blockquote>
+<p>an <code>event</code> is a subset $E$ of $U$, define the probability of $E$ under <code>probability distribution</code> $P$ as below:</p>
+<script type="math/tex; mode=display">Pr[E] = \sum_{x \in E} P(x)</script></blockquote>
+<h3 id="The-Union-Bound"><a href="#The-Union-Bound" class="headerlink" title="The Union Bound"></a><em>The Union Bound</em></h3><p>By definition, we can obviously get:</p>
+<script type="math/tex; mode=display">Pr[A_1 \cap A_2] + Pr[A_1 \cup A_2] = Pr[A_1] + Pr[A_2]</script><p>Which also implies that:</p>
+<script type="math/tex; mode=display">Pr[A_1 \cup A_2] \le Pr[A_1] + Pr[A_2]</script><h2 id="Random-Variable"><a href="#Random-Variable" class="headerlink" title="Random Variable"></a><em>Random Variable</em></h2><blockquote>
+<p>a <code>random variable</code> $X$ is a function </p>
+<script type="math/tex; mode=display">X:U \rightarrow V</script><p>where $V$ is <strong>range</strong> of $X$</p>
+</blockquote>
+<p>Example <sup><a href="#fn_1" id="reffn_1">1</a></sup>:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+X:\{0, 1\}^n \rightarrow \{0, 1\} \\
+X(b) = LSB(b) \in \{0, 1\}
+\end{aligned}</script><p>As you can see, <code>random variable</code> $X$ can also induce <code>probability distribution</code> from $U$ to $V$ (Suppose $P$ is a distribution on $U$):</p>
+<script type="math/tex; mode=display">
+\forall v \in V, Q(v) = Pr[X = v] = Pr[X^{-1}(v)]</script><blockquote id="fn_1">
+<sup>1</sup>. LSB is a function which gets the last significant bit of a bit-string<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<h3 id="Uniform-Random-Variable"><a href="#Uniform-Random-Variable" class="headerlink" title="Uniform Random Variable"></a><em>Uniform Random Variable</em></h3><p>Specially, when $P$ is uniform distribution and $X(r) = r$ for all $r \in U$, then:</p>
+<script type="math/tex; mode=display">
+\forall r \in U, Pr[X = r] = \frac{1}{|U|}</script><p>this is called <code>uniform random variable</code>, denoted by $X \xleftarrow{R} U$</p>
+<h2 id="Independence"><a href="#Independence" class="headerlink" title="Independence"></a><em>Independence</em></h2><ul>
+<li>Two <code>events</code> $A, B$ are independent <strong>iff</strong>: $Pr[A \cap B] = Pr[A] \times Pr[B]$</li>
+<li>Two <code>random variables</code> $A, B$ are independent <strong>iff</strong> $\forall a \in V_A, b \in V_B$:</li>
 </ul>
-<p>然后的话, 回去就要补文化了吧.</p>
+<script type="math/tex; mode=display">
+Pr[A = a \,\,\mathrm{and}\,\, B = b] = Pr[A = a] \times Pr[B = b]</script><blockquote>
+<p>For better understanding of independency, consider the example below:<br>Suppose a dice numbered by $D = \{1, 2, \dots, 6\}$ and 2 <code>random variables</code> $A, B$:</p>
+<script type="math/tex; mode=display">\begin{aligned}
+&A:D \rightarrow \{0, 1\} &A(x) = [x \equiv 0 \pmod 2] \\
+&B:D \rightarrow \{0, 1\} &B(x) = [x \equiv 0 \pmod 3] 
+\end{aligned}</script><p>For uniform distribution of $D$, $A, B$ are obviously independent. Think about conditions below:</p>
+<ol>
+<li>$B(x) = [x \equiv 0 \pmod 4]$</li>
+<li>$D = \{1, 2, \dots, 5\}$</li>
+</ol>
+</blockquote>
+<h1 id="I-Information-Theoretic-Security"><a href="#I-Information-Theoretic-Security" class="headerlink" title="I: Information Theoretic Security"></a><em>I: Information Theoretic Security</em></h1><p>Throughout history, there were many ways of encryption, however, some of them have been proved unsafe. The question now is whether a particular <code>cipher</code> is <strong>secure</strong>.</p>
+<h2 id="Cipher"><a href="#Cipher" class="headerlink" title="Cipher"></a><em>Cipher</em></h2><blockquote>
+<p>A <code>cipher</code> defined over a triple $(\mathcal{K, M, C})$ is a pair of <strong>efficient</strong><sup><a href="#fn_2" id="reffn_2">2</a></sup> algos $(E, D)$ where:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+E: \mathcal{K \times M} \rightarrow \mathcal{C} \\
+D: \mathcal{K \times C} \rightarrow \mathcal{M}
+\end{aligned}</script><p>s.t. $\forall m \in \mathcal{M}, k \in \mathcal{K}$</p>
+<script type="math/tex; mode=display">
+m = D(k, E(k, m))</script><p>and $\mathcal{K, M, C}$ denote the space of keys, messages and cipher texts.</p>
+</blockquote>
+<h3 id="One-Time-Pad"><a href="#One-Time-Pad" class="headerlink" title="One Time Pad"></a><em>One Time Pad</em></h3><p>An example cipher over $\mathcal{K, M, C} = \{0, 1\}^n$ and:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+E(k, m) = k \oplus m \\
+D(k, m) = k \oplus m \\
+\end{aligned}</script><blockquote id="fn_2">
+<sup>2</sup>. Theoretically, efficient means runs in polynomial time; Practically it means runs within a certain time period.<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<h2 id="Perfect-Secrecy"><a href="#Perfect-Secrecy" class="headerlink" title="Perfect Secrecy"></a><em>Perfect Secrecy</em></h2><p>The basic idea behind perfect secrecy is: cipher text should reveal no “info” about plain text.</p>
+<blockquote>
+<p>A <code>cipher</code> $(E, D)$ over $\{\mathcal{K, M, C}\}$ has <code>perfect secrecy</code> <strong>iff</strong>:<br>$\forall m_0, m_1 \in \mathcal{M} \,\,\mathrm{that}\,\, |m_0| = |m_1|, c \in \mathcal{C}$:</p>
+<script type="math/tex; mode=display">Pr[E(k, m_0) = c] = Pr[E(k, m_1) = c]</script><p>where $k \xleftarrow{R} \mathcal{K}$</p>
+</blockquote>
 
       
     </div>
@@ -394,7 +449,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Summary/" rel="tag"># Summary</a>
+            <a href="/tags/Number-Theory/" rel="tag"># Number Theory</a>
+          
+            <a href="/tags/Probability/" rel="tag"># Probability</a>
+          
+            <a href="/tags/Induction/" rel="tag"># Induction</a>
           
         </div>
       
@@ -407,8 +466,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/ctsc2017-game/" rel="next" title="CTSC2017 游戏">
-                <i class="fa fa-chevron-left"></i> CTSC2017 游戏
+              <a href="/2020/exercise-of-thoughts/" rel="next" title="若干趣题">
+                <i class="fa fa-chevron-left"></i> 若干趣题
               </a>
             
           </div>
@@ -416,10 +475,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/count-plane-tree/" rel="prev" title="平面树计数">
-                平面树计数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -571,7 +626,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引"><span class="nav-number">1.</span> <span class="nav-text">引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比赛过程"><span class="nav-number">2.</span> <span class="nav-text">比赛过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Day1"><span class="nav-number">2.1.</span> <span class="nav-text">Day1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Day2"><span class="nav-number">2.2.</span> <span class="nav-text">Day2</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反思错误"><span class="nav-number">3.</span> <span class="nav-text">反思错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于未来"><span class="nav-number">4.</span> <span class="nav-text">关于未来</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Preliminary-Discrete-Probability"><span class="nav-number">1.</span> <span class="nav-text">Preliminary: Discrete Probability</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Probability-Distribution"><span class="nav-number">1.1.</span> <span class="nav-text">Probability Distribution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Event"><span class="nav-number">1.2.</span> <span class="nav-text">Event</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Union-Bound"><span class="nav-number">1.2.1.</span> <span class="nav-text">The Union Bound</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Random-Variable"><span class="nav-number">1.3.</span> <span class="nav-text">Random Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Uniform-Random-Variable"><span class="nav-number">1.3.1.</span> <span class="nav-text">Uniform Random Variable</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Independence"><span class="nav-number">1.4.</span> <span class="nav-text">Independence</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#I-Information-Theoretic-Security"><span class="nav-number">2.</span> <span class="nav-text">I: Information Theoretic Security</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cipher"><span class="nav-number">2.1.</span> <span class="nav-text">Cipher</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#One-Time-Pad"><span class="nav-number">2.1.1.</span> <span class="nav-text">One Time Pad</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Perfect-Secrecy"><span class="nav-number">2.2.</span> <span class="nav-text">Perfect Secrecy</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -734,9 +789,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/after-noip-2017/';
-          this.page.identifier = '2017/after-noip-2017/';
-          this.page.title = '写在NOIP2017之后';
+          this.page.url = 'http://yoursite.com/2020/cryptography/';
+          this.page.identifier = '2020/cryptography/';
+          this.page.title = 'Cryptography Notes';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://wearry.disqus.com/embed.js';
