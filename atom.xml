@@ -32,9 +32,9 @@
     </summary>
     
     
-      <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
-    
       <category term="Number Theory" scheme="http://yoursite.com/tags/Number-Theory/"/>
+    
+      <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
     
       <category term="Induction" scheme="http://yoursite.com/tags/Induction/"/>
     
@@ -217,9 +217,9 @@
     </summary>
     
     
-      <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
-    
       <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
+    
+      <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
     
       <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
     
@@ -241,11 +241,11 @@
     </summary>
     
     
+      <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
+    
       <category term="Summary" scheme="http://yoursite.com/tags/Summary/"/>
     
       <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
-    
-      <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
     
   </entry>
   
@@ -272,9 +272,9 @@
     </summary>
     
     
-      <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
-    
       <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
+    
+      <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
     
   </entry>
   
