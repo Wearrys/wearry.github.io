@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="Number Theory,Probability,Induction,">
+  <meta name="keywords" content="Probability,Number Theory,Induction,">
 
 
 
@@ -108,14 +108,14 @@
 
 
 <meta name="description" content="Some notes of 🔒 cryptography lessons">
-<meta name="keywords" content="Number Theory,Probability,Induction">
+<meta name="keywords" content="Probability,Number Theory,Induction">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cryptography Notes">
 <meta property="og:url" content="http://yoursite.com/2020/cryptography/index.html">
 <meta property="og:site_name" content="Wearry&#39;s Blog">
 <meta property="og:description" content="Some notes of 🔒 cryptography lessons">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-07-11T08:57:21.209Z">
+<meta property="og:updated_time" content="2020-07-13T03:54:37.963Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cryptography Notes">
 <meta name="twitter:description" content="Some notes of 🔒 cryptography lessons">
@@ -330,7 +330,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2020/cryptography/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/cryptography/" itemprop="commentCount"></span>
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2020/cryptography/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -432,6 +432,13 @@ D(k, m) = k \oplus m \\
 <p>A <code>cipher</code> $(E, D)$ over $\{\mathcal{K, M, C}\}$ has <code>perfect secrecy</code> <strong>iff</strong>:<br>$\forall m_0, m_1 \in \mathcal{M} \,\,\mathrm{that}\,\, |m_0| = |m_1|, c \in \mathcal{C}$:</p>
 <script type="math/tex; mode=display">Pr[E(k, m_0) = c] = Pr[E(k, m_1) = c]</script><p>where $k \xleftarrow{R} \mathcal{K}$</p>
 </blockquote>
+<p>It’s not hard to see that when attacker gets a cipher text, he will have no idea what the plain text is. By definition, we can also prove <a href="#One-Time-Pad">One Time Pad</a> has <code>perfect secrecy</code>.</p>
+<p>However, <code>perfect secrecy</code> is too hard to satisfy because we have theorem below:</p>
+<blockquote>
+<p>If a <code>cipher</code> has <code>perfect secrecy</code>, then:</p>
+<script type="math/tex; mode=display">|\mathcal{K}| \ge |\mathcal{M}|</script><p>which means the length of keys mustn’t less than length of messages. </p>
+</blockquote>
+<p>That somehow makes no sense for if we have some way sending and receiving such long keys secretly, then it’s absolutely unnecessary to use <code>cipher</code>.</p>
 
       
     </div>
@@ -449,9 +456,9 @@ D(k, m) = k \oplus m \\
       
         <div class="post-tags">
           
-            <a href="/tags/Number-Theory/" rel="tag"># Number Theory</a>
-          
             <a href="/tags/Probability/" rel="tag"># Probability</a>
+          
+            <a href="/tags/Number-Theory/" rel="tag"># Number Theory</a>
           
             <a href="/tags/Induction/" rel="tag"># Induction</a>
           
@@ -505,12 +512,9 @@ D(k, m) = k \oplus m \\
 
   
     <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
+      
+        <div id="gitment-container"></div>
+      
     </div>
 
   
@@ -782,26 +786,6 @@ D(k, m) = k \oplus m \\
 
   
 
-    
-      <script id="dsq-count-scr" src="https://wearry.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2020/cryptography/';
-          this.page.identifier = '2020/cryptography/';
-          this.page.title = 'Cryptography Notes';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://wearry.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
-
-  
-
 
 
 
@@ -817,8 +801,54 @@ D(k, m) = k \oplus m \\
 
 
 
+  
 
 
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'wearrys',
+            repo: 'gitment-comments',
+            
+            lang: "english" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '1b4d3b7cc2317b59e42d52241d7ac01693badd89',
+            
+                client_id: 'b17a9177804d710e1313'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
 
 
 
