@@ -32,9 +32,9 @@
     </summary>
     
     
-      <category term="Number Theory" scheme="http://yoursite.com/tags/Number-Theory/"/>
-    
       <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
+    
+      <category term="Number Theory" scheme="http://yoursite.com/tags/Number-Theory/"/>
     
       <category term="Induction" scheme="http://yoursite.com/tags/Induction/"/>
     
@@ -143,9 +143,9 @@
     </summary>
     
     
-      <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
-    
       <category term="Generating Function" scheme="http://yoursite.com/tags/Generating-Function/"/>
+    
+      <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
     
       <category term="Burnside" scheme="http://yoursite.com/tags/Burnside/"/>
     
@@ -217,11 +217,11 @@
     </summary>
     
     
+      <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
+    
       <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
     
       <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
-    
-      <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
     
   </entry>
   
@@ -241,9 +241,9 @@
     </summary>
     
     
-      <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
-    
       <category term="Summary" scheme="http://yoursite.com/tags/Summary/"/>
+    
+      <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
     
       <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
     
@@ -341,9 +341,9 @@
     </summary>
     
     
-      <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
-    
       <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
+    
+      <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
     
       <category term="Generating Function" scheme="http://yoursite.com/tags/Generating-Function/"/>
     
