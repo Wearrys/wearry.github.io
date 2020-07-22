@@ -6,7 +6,7 @@
 
 
 <html class="theme-next mist use-motion" lang="en">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="Generating Function,Combinatorial,Burnside,">
+  <meta name="keywords" content="Combinatorial,Generating Function,Burnside,">
 
 
 
@@ -108,7 +108,7 @@
 
 
 <meta name="description" content="不常见的经典问题, 顺便总结一下Burnside引理吧.">
-<meta name="keywords" content="Generating Function,Combinatorial,Burnside">
+<meta name="keywords" content="Combinatorial,Generating Function,Burnside">
 <meta property="og:type" content="article">
 <meta property="og:title" content="平面树计数">
 <meta property="og:url" content="http://yoursite.com/2017/count-plane-tree/index.html">
@@ -116,7 +116,7 @@
 <meta property="og:description" content="不常见的经典问题, 顺便总结一下Burnside引理吧.">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/img/plane-tree.png">
-<meta property="og:updated_time" content="2018-11-29T19:43:50.000Z">
+<meta property="og:updated_time" content="2020-07-14T12:05:04.113Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="平面树计数">
 <meta name="twitter:description" content="不常见的经典问题, 顺便总结一下Burnside引理吧.">
@@ -352,31 +352,38 @@
       
         <p>不常见的经典问题, 顺便总结一下Burnside引理吧.</p>
 <a id="more"></a>
-<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><blockquote>
-<p>给定 $N$, 求 $N$ 个点的本质不同的平面树的数量.<br>两棵平面树是等价的当且仅当其中一棵能够移动点的位置与另一棵重合, 且过程中仍然是一棵平面树.</p>
+<h3 id="问题描述">问题描述</h3>
+<blockquote>
+<p>给定 <span class="math inline">\(N\)</span>, 求 <span class="math inline">\(N\)</span> 个点的本质不同的平面树的数量. 两棵平面树是等价的当且仅当其中一棵能够移动点的位置与另一棵重合, 且过程中仍然是一棵平面树.</p>
 </blockquote>
-<h3 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h3><p>考虑模型转化(计算 $N+1$ 个点的答案):<br>取单位圆, 等距地取 $2N$ 个点, 然后将这些点两两配对连边, 满足所有连边不相交.<br>发现它的对偶图恰好是一棵平面树, 像这样:</p>
-<p><img src="/img/plane-tree.png" alt></p>
-<p>那么就只需要考虑本质不同的这样的配对的数量即可.<br>两个圆是等价的当且仅当一个圆可以通过旋转一定的角度与另一个圆重合.<br>而在这个圆上共有 $2N$ 个点, 就意味着有 $2N$ 个置换, 构成一个置换群.</p>
+<h3 id="做法">做法</h3>
+<p>考虑模型转化(计算 <span class="math inline">\(N+1\)</span> 个点的答案): 取单位圆, 等距地取 <span class="math inline">\(2N\)</span> 个点, 然后将这些点两两配对连边, 满足所有连边不相交. 发现它的对偶图恰好是一棵平面树, 像这样:</p>
+<p><img src="/img/plane-tree.png"></p>
+<p>那么就只需要考虑本质不同的这样的配对的数量即可. 两个圆是等价的当且仅当一个圆可以通过旋转一定的角度与另一个圆重合. 而在这个圆上共有 <span class="math inline">\(2N\)</span> 个点, 就意味着有 <span class="math inline">\(2N\)</span> 个置换, 构成一个置换群.</p>
 <p>置换群下的计数可以用到 Burnside引理 :</p>
 <blockquote>
-<script type="math/tex; mode=display">N(G, C) = \frac{1}{|G|} { \sum_{f \in G} c(f) }</script></blockquote>
+<p><span class="math display">\[ N(G, C) = \frac{1}{|G|} { \sum_{f \in G} c(f) } \]</span></p>
+</blockquote>
 <p>则转化为求置换下的不动点的数量:</p>
 <ul>
-<li><p>不存在置换的情况下, 答案为 $C_N$, $\mathrm{Catalan}$ 数的第 $N$ 项.<br>即将相互匹配的位置看作左右括号, 则所有合法的括号序列都对应一个满足条件的圆.</p>
-</li>
-<li><p>$N$ 为奇数时, 可能存在一条平分圆的对角线在置换下不变, 计算 $\frac{N+1}{2}$ 个点的答案即可.</p>
-</li>
-<li><p>考虑旋转置换.<br>为了满足旋转之后的边重合, 点 $i$ 和它的匹配点 $p_i$ 在旋转后应该仍然是相匹配的.<br>则环的数量一定是偶数 $2d$, 所以环的长度可以表示为 $\frac{2N}{2d} = \frac{N}{d}$.</p>
-<p>假定置换的阶是 $e$, $e &gt; 1, e | N$, 环的数量 $2d = \frac{2N}{e}$.<br>环上与 $0$ 匹配的点为 $i$, 不难发现在这些点之间的点的方案数为 $C_{i-1}$.<br>当这些点确定之后, 它们在环上依次经过的 $e(i+1)$ 个点就确定了.</p>
-</li>
+<li><p>不存在置换的情况下, 答案为 <span class="math inline">\(C_N\)</span>, <span class="math inline">\(\mathrm{Catalan}\)</span> 数的第 <span class="math inline">\(N\)</span> 项. 即将相互匹配的位置看作左右括号, 则所有合法的括号序列都对应一个满足条件的圆.</p></li>
+<li><p><span class="math inline">\(N\)</span> 为奇数时, 可能存在一条平分圆的对角线在置换下不变, 计算 <span class="math inline">\(\frac{N+1}{2}\)</span> 个点的答案即可.</p></li>
+<li><p>考虑旋转置换:</p>
+<p>为了满足旋转之后的边重合, 点 <span class="math inline">\(i\)</span> 和它的匹配点 <span class="math inline">\(p_i\)</span> 在旋转后应该仍然是相匹配的. 则环的数量一定是偶数 <span class="math inline">\(2d\)</span>, 所以环的长度可以表示为 <span class="math inline">\(\frac{2N}{2d} = \frac{N}{d}\)</span>.</p>
+<p>假定置换的阶是 <span class="math inline">\(e\)</span>, <span class="math inline">\(e &gt; 1, e | N\)</span>, 环的数量 <span class="math inline">\(2d = \frac{2N}{e}\)</span>. 环上与 <span class="math inline">\(0\)</span> 匹配的点为 <span class="math inline">\(i\)</span>, 不难发现在这些点之间的点的方案数为 <span class="math inline">\(C_{i-1}\)</span>. 当这些点确定之后, 它们在环上依次经过的 <span class="math inline">\(e(i+1)\)</span> 个点就确定了.</p></li>
 </ul>
-<p>令 $f(x)$ 表示 $\mathrm{Catalan}$ 数的生成函数, 根据 $\mathrm{Catalan}$ 数的递推式, 不难得到:</p>
-<script type="math/tex; mode=display">f(x) = xf^2(x) + 1</script><p>构造 $B_d$ 表示包含 $2d$ 个环的置换下不动点的数量.</p>
-<script type="math/tex; mode=display">B_d = 2\sum_{i = 0}^{d-1} C_i B_{d-i-1}</script><p>其中因子 $2$ 考虑的是 $i &gt; 2d$ 时用当前置换的逆来计算的情况.</p>
-<p>则 $B_d$ 的生成函数 $g(x)$ 满足:</p>
-<script type="math/tex; mode=display">g(x) = 2x g(x) f(x) + 1</script><p>解得:</p>
-<script type="math/tex; mode=display">g(x) = (1 - 4x) ^ {-\frac{1}{2}}</script><h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><script type="math/tex; mode=display">p(n) = \frac{1}{2n} ( [\mathrm{n \, is \, odd}]\binom{n}{\lfloor\frac{n}{2}\rfloor} - \binom{2n}{n-1} + \sum_{d|n}{\varphi(n/d)\binom {2d}{d}} )</script>
+<p>令 <span class="math inline">\(f(x)\)</span> 表示 <span class="math inline">\(\mathrm{Catalan}\)</span> 数的生成函数, 根据 <span class="math inline">\(\mathrm{Catalan}\)</span> 数的递推式, 不难得到:</p>
+<p><span class="math display">\[ f(x) = xf^2(x) + 1 \]</span></p>
+<p>构造 <span class="math inline">\(B_d\)</span> 表示包含 <span class="math inline">\(2d\)</span> 个环的置换下不动点的数量.</p>
+<p><span class="math display">\[ B_d = 2\sum_{i = 0}^{d-1} C_i B_{d-i-1} \]</span></p>
+<p>其中因子 <span class="math inline">\(2\)</span> 考虑的是 <span class="math inline">\(i &gt; 2d\)</span> 时用当前置换的逆来计算的情况.</p>
+<p>则 <span class="math inline">\(B_d\)</span> 的生成函数 <span class="math inline">\(g(x)\)</span> 满足:</p>
+<p><span class="math display">\[ g(x) = 2x g(x) f(x) + 1 \]</span></p>
+<p>解得:</p>
+<p><span class="math display">\[ g(x) = (1 - 4x) ^ {-\frac{1}{2}} \]</span></p>
+<h3 id="问题解决">问题解决</h3>
+<p><span class="math display">\[ p(n) = \frac{1}{2n} \left( [\mathrm{n \, is \, odd}]\binom{n}{\lfloor\frac{n}{2}\rfloor} - \binom{2n}{n-1} + \sum_{d|n}{\varphi(n/d)\binom {2d}{d}} \right)\]</span></p>
+
       
     </div>
     
@@ -393,9 +400,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Generating-Function/" rel="tag"># Generating Function</a>
-          
             <a href="/tags/Combinatorial/" rel="tag"># Combinatorial</a>
+          
+            <a href="/tags/Generating-Function/" rel="tag"># Generating Function</a>
           
             <a href="/tags/Burnside/" rel="tag"># Burnside</a>
           
@@ -803,7 +810,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   
 
 

@@ -6,7 +6,7 @@
 
 
 <html class="theme-next mist use-motion" lang="en">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="Probability,Number Theory,Induction,">
+  <meta name="keywords" content="Number Theory,Probability,Induction,">
 
 
 
@@ -108,14 +108,14 @@
 
 
 <meta name="description" content="Some notes of 🔒 cryptography lessons">
-<meta name="keywords" content="Probability,Number Theory,Induction">
+<meta name="keywords" content="Number Theory,Probability,Induction">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cryptography Notes">
 <meta property="og:url" content="http://yoursite.com/2020/cryptography/index.html">
 <meta property="og:site_name" content="Wearry&#39;s Blog">
 <meta property="og:description" content="Some notes of 🔒 cryptography lessons">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-07-13T03:54:37.963Z">
+<meta property="og:updated_time" content="2020-07-22T16:20:52.600Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cryptography Notes">
 <meta name="twitter:description" content="Some notes of 🔒 cryptography lessons">
@@ -348,87 +348,115 @@
       
 
       
-        <p>Some notes of 🔒 cryptography lessons </p>
+        <p>Some notes of 🔒 cryptography lessons</p>
 <a id="more"></a>
-<h1 id="Preliminary-Discrete-Probability"><a href="#Preliminary-Discrete-Probability" class="headerlink" title="Preliminary: Discrete Probability"></a><em>Preliminary: Discrete Probability</em></h1><p>Suppose $U$ is a finite set.</p>
-<h2 id="Probability-Distribution"><a href="#Probability-Distribution" class="headerlink" title="Probability Distribution"></a><em>Probability Distribution</em></h2><blockquote>
-<p>a <code>probability distribution</code> $P$ over $U$ is a function</p>
-<script type="math/tex; mode=display">P: U \rightarrow [0,1]</script><p>s.t.</p>
-<script type="math/tex; mode=display">\sum_{x \in U} P(x) = 1</script></blockquote>
+<h1 id="preliminary-discrete-probability"><em>Preliminary: Discrete Probability</em></h1>
+<p>Suppose <span class="math inline">\(U\)</span> is a finite set.</p>
+<h2 id="probability-distribution"><em>Probability Distribution</em></h2>
+<blockquote>
+<p>a <code>probability distribution</code> <span class="math inline">\(P\)</span> over <span class="math inline">\(U\)</span> is a function <span class="math display">\[P: U \rightarrow [0,1]\]</span> s.t. <span class="math display">\[\sum_{x \in U} P(x) = 1\]</span></p>
+</blockquote>
 <p>Some examples:</p>
 <ul>
-<li>Uniform distribution: $\forall x \in U, P(x) = \dfrac{1}{|U|}$</li>
-<li>Pointed distribution: $\exists x \in U, P(x) = 1$</li>
+<li>Uniform distribution: <span class="math inline">\(\forall x \in U, P(x) = \dfrac{1}{|U|}\)</span></li>
+<li>Pointed distribution: <span class="math inline">\(\exists x \in U, P(x) = 1\)</span></li>
 </ul>
-<h2 id="Event"><a href="#Event" class="headerlink" title="Event"></a><em>Event</em></h2><blockquote>
-<p>an <code>event</code> is a subset $E$ of $U$, define the probability of $E$ under <code>probability distribution</code> $P$ as below:</p>
-<script type="math/tex; mode=display">Pr[E] = \sum_{x \in E} P(x)</script></blockquote>
-<h3 id="The-Union-Bound"><a href="#The-Union-Bound" class="headerlink" title="The Union Bound"></a><em>The Union Bound</em></h3><p>By definition, we can obviously get:</p>
-<script type="math/tex; mode=display">Pr[A_1 \cap A_2] + Pr[A_1 \cup A_2] = Pr[A_1] + Pr[A_2]</script><p>Which also implies that:</p>
-<script type="math/tex; mode=display">Pr[A_1 \cup A_2] \le Pr[A_1] + Pr[A_2]</script><h2 id="Random-Variable"><a href="#Random-Variable" class="headerlink" title="Random Variable"></a><em>Random Variable</em></h2><blockquote>
-<p>a <code>random variable</code> $X$ is a function </p>
-<script type="math/tex; mode=display">X:U \rightarrow V</script><p>where $V$ is <strong>range</strong> of $X$</p>
+<h2 id="event"><em>Event</em></h2>
+<blockquote>
+<p>an <code>event</code> is a subset <span class="math inline">\(E\)</span> of <span class="math inline">\(U\)</span>, define the probability of <span class="math inline">\(E\)</span> under <code>probability distribution</code> <span class="math inline">\(P\)</span> as below: <span class="math display">\[Pr[E] = \sum_{x \in E} P(x)\]</span></p>
 </blockquote>
-<p>Example <sup><a href="#fn_1" id="reffn_1">1</a></sup>:</p>
-<script type="math/tex; mode=display">
+<h3 id="the-union-bound"><em>The Union Bound</em></h3>
+<p>By definition, we can obviously get:</p>
+<p><span class="math display">\[Pr[A_1 \cap A_2] + Pr[A_1 \cup A_2] = Pr[A_1] + Pr[A_2]\]</span></p>
+<p>Which also implies that:</p>
+<p><span class="math display">\[Pr[A_1 \cup A_2] \le Pr[A_1] + Pr[A_2]\]</span></p>
+<h2 id="random-variable"><em>Random Variable</em></h2>
+<blockquote>
+<p>a <code>random variable</code> <span class="math inline">\(X\)</span> is a function <span class="math display">\[X:U \rightarrow V\]</span> where <span class="math inline">\(V\)</span> is <strong>range</strong> of <span class="math inline">\(X\)</span></p>
+</blockquote>
+<p>Example <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
+<p><span class="math display">\[
 \begin{aligned}
 X:\{0, 1\}^n \rightarrow \{0, 1\} \\
 X(b) = LSB(b) \in \{0, 1\}
-\end{aligned}</script><p>As you can see, <code>random variable</code> $X$ can also induce <code>probability distribution</code> from $U$ to $V$ (Suppose $P$ is a distribution on $U$):</p>
-<script type="math/tex; mode=display">
-\forall v \in V, Q(v) = Pr[X = v] = Pr[X^{-1}(v)]</script><blockquote id="fn_1">
-<sup>1</sup>. LSB is a function which gets the last significant bit of a bit-string<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
-</blockquote>
-<h3 id="Uniform-Random-Variable"><a href="#Uniform-Random-Variable" class="headerlink" title="Uniform Random Variable"></a><em>Uniform Random Variable</em></h3><p>Specially, when $P$ is uniform distribution and $X(r) = r$ for all $r \in U$, then:</p>
-<script type="math/tex; mode=display">
-\forall r \in U, Pr[X = r] = \frac{1}{|U|}</script><p>this is called <code>uniform random variable</code>, denoted by $X \xleftarrow{R} U$</p>
-<h2 id="Independence"><a href="#Independence" class="headerlink" title="Independence"></a><em>Independence</em></h2><ul>
-<li>Two <code>events</code> $A, B$ are independent <strong>iff</strong>: $Pr[A \cap B] = Pr[A] \times Pr[B]$</li>
-<li>Two <code>random variables</code> $A, B$ are independent <strong>iff</strong> $\forall a \in V_A, b \in V_B$:</li>
+\end{aligned}
+\]</span></p>
+<p>As you can see, <code>random variable</code> <span class="math inline">\(X\)</span> can also induce <code>probability distribution</code> from <span class="math inline">\(U\)</span> to <span class="math inline">\(V\)</span> (Suppose <span class="math inline">\(P\)</span> is a distribution on <span class="math inline">\(U\)</span>):</p>
+<p><span class="math display">\[
+\forall v \in V, Q(v) = Pr[X = v] = Pr[X^{-1}(v)]
+\]</span></p>
+<h3 id="uniform-random-variable"><em>Uniform Random Variable</em></h3>
+<p>Specially, when <span class="math inline">\(P\)</span> is uniform distribution and <span class="math inline">\(X(r) = r\)</span> for all <span class="math inline">\(r \in U\)</span>, then:</p>
+<p><span class="math display">\[
+\forall r \in U, Pr[X = r] = \frac{1}{|U|}
+\]</span></p>
+<p>this is called <code>uniform random variable</code>, denoted by <span class="math inline">\(X \xleftarrow{R} U\)</span></p>
+<h2 id="independence"><em>Independence</em></h2>
+<ul>
+<li>Two <code>events</code> <span class="math inline">\(A, B\)</span> are independent <strong>iff</strong>: <span class="math inline">\(Pr[A \cap B] = Pr[A] \times Pr[B]\)</span></li>
+<li>Two <code>random variables</code> <span class="math inline">\(A, B\)</span> are independent <strong>iff</strong> <span class="math inline">\(\forall a \in V_A, b \in V_B\)</span>:</li>
 </ul>
-<script type="math/tex; mode=display">
-Pr[A = a \,\,\mathrm{and}\,\, B = b] = Pr[A = a] \times Pr[B = b]</script><blockquote>
-<p>For better understanding of independency, consider the example below:<br>Suppose a dice numbered by $D = \{1, 2, \dots, 6\}$ and 2 <code>random variables</code> $A, B$:</p>
-<script type="math/tex; mode=display">\begin{aligned}
-&A:D \rightarrow \{0, 1\} &A(x) = [x \equiv 0 \pmod 2] \\
-&B:D \rightarrow \{0, 1\} &B(x) = [x \equiv 0 \pmod 3] 
-\end{aligned}</script><p>For uniform distribution of $D$, $A, B$ are obviously independent. Think about conditions below:</p>
-<ol>
-<li>$B(x) = [x \equiv 0 \pmod 4]$</li>
-<li>$D = \{1, 2, \dots, 5\}$</li>
+<p><span class="math display">\[
+Pr[A = a \,\,\mathrm{and}\,\, B = b] = Pr[A = a] \times Pr[B = b]
+\]</span></p>
+<blockquote>
+<p>For better understanding of independence, consider the example below: Suppose a dice numbered by <span class="math inline">\(D = \{1, 2, \dots, 6\}\)</span> and 2 <code>random variables</code> <span class="math inline">\(A, B\)</span>: <span class="math display">\[ \begin{aligned}
+&amp;A:D \rightarrow \{0, 1\} &amp;A(x) = [x \equiv 0 \pmod 2] \\
+&amp;B:D \rightarrow \{0, 1\} &amp;B(x) = [x \equiv 0 \pmod 3] 
+\end{aligned} \]</span> For uniform distribution of <span class="math inline">\(D\)</span>, <span class="math inline">\(A, B\)</span> are obviously independent. Think about conditions below:</p>
+<ol type="1">
+<li><span class="math inline">\(B(x) = [x \equiv 0 \pmod 4]\)</span></li>
+<li><span class="math inline">\(D = \{1, 2, \dots, 5\}\)</span></li>
 </ol>
 </blockquote>
-<h1 id="I-Information-Theoretic-Security"><a href="#I-Information-Theoretic-Security" class="headerlink" title="I: Information Theoretic Security"></a><em>I: Information Theoretic Security</em></h1><p>Throughout history, there were many ways of encryption, however, some of them have been proved unsafe. The question now is whether a particular <code>cipher</code> is <strong>secure</strong>.</p>
-<h2 id="Cipher"><a href="#Cipher" class="headerlink" title="Cipher"></a><em>Cipher</em></h2><blockquote>
-<p>A <code>cipher</code> defined over a triple $(\mathcal{K, M, C})$ is a pair of <strong>efficient</strong><sup><a href="#fn_2" id="reffn_2">2</a></sup> algos $(E, D)$ where:</p>
-<script type="math/tex; mode=display">
+<h1 id="i-stream-cipher"><em>I: Stream Cipher</em></h1>
+<p>Throughout history, there were many ways of encryption, however, some of them have been proved unsafe. The question now is whether a particular <code>cipher</code> is <strong>secure</strong> and how to construct a <strong>secure</strong> one.</p>
+<h2 id="cipher"><em>Cipher</em></h2>
+<blockquote>
+<p>A <code>cipher</code> defined over a triple <span class="math inline">\((\mathcal{K, M, C})\)</span> is a pair of <strong>efficient</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> algos <span class="math inline">\((E, D)\)</span> where:</p>
+<p><span class="math display">\[
 \begin{aligned}
 E: \mathcal{K \times M} \rightarrow \mathcal{C} \\
 D: \mathcal{K \times C} \rightarrow \mathcal{M}
-\end{aligned}</script><p>s.t. $\forall m \in \mathcal{M}, k \in \mathcal{K}$</p>
-<script type="math/tex; mode=display">
-m = D(k, E(k, m))</script><p>and $\mathcal{K, M, C}$ denote the space of keys, messages and cipher texts.</p>
+\end{aligned}
+\]</span> s.t. <span class="math inline">\(\forall m \in \mathcal{M}, k \in \mathcal{K}\)</span> <span class="math display">\[
+m = D(k, E(k, m))
+\]</span> and <span class="math inline">\(\mathcal{K, M, C}\)</span> denote the space of keys, messages and cipher texts.</p>
 </blockquote>
-<h3 id="One-Time-Pad"><a href="#One-Time-Pad" class="headerlink" title="One Time Pad"></a><em>One Time Pad</em></h3><p>An example cipher over $\mathcal{K, M, C} = \{0, 1\}^n$ and:</p>
-<script type="math/tex; mode=display">
+<h3 id="otp"><em>One Time Pad</em></h3>
+<p>An example cipher over <span class="math inline">\(\mathcal{K, M, C} = \{0, 1\}^n\)</span> and:</p>
+<p><span class="math display">\[
 \begin{aligned}
 E(k, m) = k \oplus m \\
 D(k, m) = k \oplus m \\
-\end{aligned}</script><blockquote id="fn_2">
-<sup>2</sup>. Theoretically, efficient means runs in polynomial time; Practically it means runs within a certain time period.<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
-</blockquote>
-<h2 id="Perfect-Secrecy"><a href="#Perfect-Secrecy" class="headerlink" title="Perfect Secrecy"></a><em>Perfect Secrecy</em></h2><p>The basic idea behind perfect secrecy is: cipher text should reveal no “info” about plain text.</p>
+\end{aligned}
+\]</span></p>
+<h2 id="perfect-secrecy"><em>Perfect Secrecy</em></h2>
+<p>The basic idea behind perfect secrecy is: cipher text should reveal no "info" about plain text.</p>
 <blockquote>
-<p>A <code>cipher</code> $(E, D)$ over $\{\mathcal{K, M, C}\}$ has <code>perfect secrecy</code> <strong>iff</strong>:<br>$\forall m_0, m_1 \in \mathcal{M} \,\,\mathrm{that}\,\, |m_0| = |m_1|, c \in \mathcal{C}$:</p>
-<script type="math/tex; mode=display">Pr[E(k, m_0) = c] = Pr[E(k, m_1) = c]</script><p>where $k \xleftarrow{R} \mathcal{K}$</p>
+<p>A <code>cipher</code> <span class="math inline">\((E, D)\)</span> over <span class="math inline">\(\{\mathcal{K, M, C}\}\)</span> has <code>perfect secrecy</code> <strong>iff</strong>:</p>
+<p><span class="math inline">\(\forall m_0, m_1 \in \mathcal{M} \,\,\mathrm{that}\,\, |m_0| = |m_1|, c \in \mathcal{C}\)</span>: <span class="math display">\[Pr[E(k, m_0) = c] = Pr[E(k, m_1) = c]\]</span> where <span class="math inline">\(k \xleftarrow{R} \mathcal{K}\)</span></p>
 </blockquote>
-<p>It’s not hard to see that when attacker gets a cipher text, he will have no idea what the plain text is. By definition, we can also prove <a href="#One-Time-Pad">One Time Pad</a> has <code>perfect secrecy</code>.</p>
+<p>It's not hard to see that when attacker gets a cipher text, he will have no idea what the plain text is. By definition, we can also prove <a href="#otp">One Time Pad</a> has <code>perfect secrecy</code>.</p>
 <p>However, <code>perfect secrecy</code> is too hard to satisfy because we have theorem below:</p>
 <blockquote>
-<p>If a <code>cipher</code> has <code>perfect secrecy</code>, then:</p>
-<script type="math/tex; mode=display">|\mathcal{K}| \ge |\mathcal{M}|</script><p>which means the length of keys mustn’t less than length of messages. </p>
+<p>If a <code>cipher</code> has <code>perfect secrecy</code>, then: <span class="math display">\[|\mathcal{K}| \ge |\mathcal{M}|\]</span> which means the length of keys mustn't less than length of messages.</p>
 </blockquote>
-<p>That somehow makes no sense for if we have some way sending and receiving such long keys secretly, then it’s absolutely unnecessary to use <code>cipher</code>.</p>
+<p>That somehow makes no sense for if we have some way sending and receiving such long keys secretly, then it's absolutely unnecessary to use <code>cipher</code>.</p>
+<h2 id="pseudo-random-generator"><em>Pseudo Random Generator</em></h2>
+<blockquote>
+<p><code>Pseudo random generator</code> is a function: <span class="math display">\[
+G: \{0, 1\}^l \rightarrow \{0, 1\}^n
+\]</span> where <span class="math inline">\(l\)</span> is a small value such as <span class="math inline">\(128\)</span>, the input is also called <code>seed</code>.</p>
+</blockquote>
+<p>By using <code>pseudo random generator</code>, we could define <code>stream cipher</code>.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1" role="doc-endnote"><p>LSB is a function which gets the last significant bit of a bit-string<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Theoretically, efficient means runs in polynomial time; Practically it means runs within a certain time period.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
       
     </div>
@@ -446,9 +474,9 @@ D(k, m) = k \oplus m \\
       
         <div class="post-tags">
           
-            <a href="/tags/Probability/" rel="tag"># Probability</a>
-          
             <a href="/tags/Number-Theory/" rel="tag"># Number Theory</a>
+          
+            <a href="/tags/Probability/" rel="tag"># Probability</a>
           
             <a href="/tags/Induction/" rel="tag"># Induction</a>
           
@@ -615,7 +643,7 @@ D(k, m) = k \oplus m \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Preliminary-Discrete-Probability"><span class="nav-number">1.</span> <span class="nav-text">Preliminary: Discrete Probability</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Probability-Distribution"><span class="nav-number">1.1.</span> <span class="nav-text">Probability Distribution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Event"><span class="nav-number">1.2.</span> <span class="nav-text">Event</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Union-Bound"><span class="nav-number">1.2.1.</span> <span class="nav-text">The Union Bound</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Random-Variable"><span class="nav-number">1.3.</span> <span class="nav-text">Random Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Uniform-Random-Variable"><span class="nav-number">1.3.1.</span> <span class="nav-text">Uniform Random Variable</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Independence"><span class="nav-number">1.4.</span> <span class="nav-text">Independence</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#I-Information-Theoretic-Security"><span class="nav-number">2.</span> <span class="nav-text">I: Information Theoretic Security</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cipher"><span class="nav-number">2.1.</span> <span class="nav-text">Cipher</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#One-Time-Pad"><span class="nav-number">2.1.1.</span> <span class="nav-text">One Time Pad</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Perfect-Secrecy"><span class="nav-number">2.2.</span> <span class="nav-text">Perfect Secrecy</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#preliminary-discrete-probability"><span class="nav-number">1.</span> <span class="nav-text">Preliminary: Discrete Probability</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#probability-distribution"><span class="nav-number">1.1.</span> <span class="nav-text">Probability Distribution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#event"><span class="nav-number">1.2.</span> <span class="nav-text">Event</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#the-union-bound"><span class="nav-number">1.2.1.</span> <span class="nav-text">The Union Bound</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#random-variable"><span class="nav-number">1.3.</span> <span class="nav-text">Random Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#uniform-random-variable"><span class="nav-number">1.3.1.</span> <span class="nav-text">Uniform Random Variable</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#independence"><span class="nav-number">1.4.</span> <span class="nav-text">Independence</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#i-stream-cipher"><span class="nav-number">2.</span> <span class="nav-text">I: Stream Cipher</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cipher"><span class="nav-number">2.1.</span> <span class="nav-text">Cipher</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#otp"><span class="nav-number">2.1.1.</span> <span class="nav-text">One Time Pad</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#perfect-secrecy"><span class="nav-number">2.2.</span> <span class="nav-text">Perfect Secrecy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pseudo-random-generator"><span class="nav-number">2.3.</span> <span class="nav-text">Pseudo Random Generator</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -852,7 +880,7 @@ D(k, m) = k \oplus m \\
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   
 
 
