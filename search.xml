@@ -34,36 +34,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Codeforces Div2 418E</title>
-    <url>/2017/cf-418e/</url>
-    <content><![CDATA[<h3 id="description">Description</h3>
-<blockquote>
-<p>求满足如下条件的 <span class="math inline">\(N\)</span> 个点的简单无向图的个数对 $ 1e9 + 7 $ 取模的结果： - 每个点的度数均为 <span class="math inline">\(2\)</span> 或 <span class="math inline">\(3\)</span> - 从一号点到任何一个点的最短路唯一并且随着点标号上升而不降.</p>
-</blockquote>
-<p>(两个图不同当且仅当边的集合不同). <span class="math inline">\(N &lt;= 50\)</span></p>
-<a id="more"></a>
-<h3 id="solution">Solution</h3>
-<p>我们可以记: - <span class="math inline">\(f_{i, j}\)</span> 表示考虑完前 <span class="math inline">\(i\)</span> 个点, 最后一层恰好有 <span class="math inline">\(j\)</span> 个点, 且最后一层之前的点度数已经满足条件时的方案数. - <span class="math inline">\(g_{i, j, k}\)</span> 表示当前层有 <span class="math inline">\(i\)</span> 个点, 上一层剩下来 <span class="math inline">\(j\)</span> 个度为 <span class="math inline">\(2\)</span> 的点, <span class="math inline">\(k\)</span> 个度为 <span class="math inline">\(3\)</span> 的点时连边的方案数.</p>
-<p>那么容易得到<span class="math inline">\(f_{i, j} = \sum_{k} f_{i-j, k} \times g_{j, c0, c1}\)</span>, 其中<span class="math inline">\(c0\,,c1\)</span>表示最后一层 <span class="math inline">\(k\)</span> 个点中度为 <span class="math inline">\(2\)</span> 的点和度为 <span class="math inline">\(3\)</span> 的点的个数.</p>
-<p>对于 <span class="math inline">\(g\)</span>, 不难得到:</p>
-<p><span class="math display">\[ 
-g_{i, j, k} = 
-\begin{cases} 
-    1 &amp; i = 0, j = 0, k = 0 \\
-    \sum_{l=2}^{k-1} \frac{l!}{2} {k-1 \choose l} g_{i, j, k-l-1} &amp; i = 0, j = 0, k &gt; 0 \\
-    (j-1) \cdot g_{i, j-2, k} + k \cdot g_{i, j, k-1} &amp; i = 0, j &gt; 0 \\
-    j \cdot g_{i-1, j-1, k} + k \cdot g_{i-1, j+1, k-1} &amp; i &gt; 0
-\end{cases}
-\]</span></p>
-<h3 id="hint">Hint</h3>
-<p>注意在第二个递推式中 <span class="math inline">\(l\)</span> 从 <span class="math inline">\(2\)</span> 开始枚举, 因为不能有重边, 所以不存在大小为 <span class="math inline">\(2\)</span> 的环.</p>
-]]></content>
-      <tags>
-        <tag>Dynamic Programming</tag>
-        <tag>Combinatorial</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Atcoder 选做</title>
     <url>/2017/atcoder-select/</url>
     <content><![CDATA[<p>   其实是总结一下比赛中遇到的好题, 然后瞎做了几场 AGC 的题目练习, 感觉还比较有意思.</p>
@@ -163,6 +133,36 @@ g(x, y) =
       </tags>
   </entry>
   <entry>
+    <title>Codeforces Div2 418E</title>
+    <url>/2017/cf-418e/</url>
+    <content><![CDATA[<h3 id="description">Description</h3>
+<blockquote>
+<p>求满足如下条件的 <span class="math inline">\(N\)</span> 个点的简单无向图的个数对 $ 1e9 + 7 $ 取模的结果： - 每个点的度数均为 <span class="math inline">\(2\)</span> 或 <span class="math inline">\(3\)</span> - 从一号点到任何一个点的最短路唯一并且随着点标号上升而不降.</p>
+</blockquote>
+<p>(两个图不同当且仅当边的集合不同). <span class="math inline">\(N &lt;= 50\)</span></p>
+<a id="more"></a>
+<h3 id="solution">Solution</h3>
+<p>我们可以记: - <span class="math inline">\(f_{i, j}\)</span> 表示考虑完前 <span class="math inline">\(i\)</span> 个点, 最后一层恰好有 <span class="math inline">\(j\)</span> 个点, 且最后一层之前的点度数已经满足条件时的方案数. - <span class="math inline">\(g_{i, j, k}\)</span> 表示当前层有 <span class="math inline">\(i\)</span> 个点, 上一层剩下来 <span class="math inline">\(j\)</span> 个度为 <span class="math inline">\(2\)</span> 的点, <span class="math inline">\(k\)</span> 个度为 <span class="math inline">\(3\)</span> 的点时连边的方案数.</p>
+<p>那么容易得到<span class="math inline">\(f_{i, j} = \sum_{k} f_{i-j, k} \times g_{j, c0, c1}\)</span>, 其中<span class="math inline">\(c0\,,c1\)</span>表示最后一层 <span class="math inline">\(k\)</span> 个点中度为 <span class="math inline">\(2\)</span> 的点和度为 <span class="math inline">\(3\)</span> 的点的个数.</p>
+<p>对于 <span class="math inline">\(g\)</span>, 不难得到:</p>
+<p><span class="math display">\[ 
+g_{i, j, k} = 
+\begin{cases} 
+    1 &amp; i = 0, j = 0, k = 0 \\
+    \sum_{l=2}^{k-1} \frac{l!}{2} {k-1 \choose l} g_{i, j, k-l-1} &amp; i = 0, j = 0, k &gt; 0 \\
+    (j-1) \cdot g_{i, j-2, k} + k \cdot g_{i, j, k-1} &amp; i = 0, j &gt; 0 \\
+    j \cdot g_{i-1, j-1, k} + k \cdot g_{i-1, j+1, k-1} &amp; i &gt; 0
+\end{cases}
+\]</span></p>
+<h3 id="hint">Hint</h3>
+<p>注意在第二个递推式中 <span class="math inline">\(l\)</span> 从 <span class="math inline">\(2\)</span> 开始枚举, 因为不能有重边, 所以不存在大小为 <span class="math inline">\(2\)</span> 的环.</p>
+]]></content>
+      <tags>
+        <tag>Dynamic Programming</tag>
+        <tag>Combinatorial</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Codeforces 553E Kyoya and Train</title>
     <url>/2017/cf-553e/</url>
     <content><![CDATA[<h3 id="description">Description</h3>
@@ -186,49 +186,6 @@ g(x, y) =
         <tag>Dynamic Programming</tag>
         <tag>Probability</tag>
         <tag>Generating Function</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>平面树计数</title>
-    <url>/2017/count-plane-tree/</url>
-    <content><![CDATA[<p>不常见的经典问题, 顺便总结一下Burnside引理吧.</p>
-<a id="more"></a>
-<h3 id="问题描述">问题描述</h3>
-<blockquote>
-<p>给定 <span class="math inline">\(N\)</span>, 求 <span class="math inline">\(N\)</span> 个点的本质不同的平面树的数量. 两棵平面树是等价的当且仅当其中一棵能够移动点的位置与另一棵重合, 且过程中仍然是一棵平面树.</p>
-</blockquote>
-<h3 id="做法">做法</h3>
-<p>考虑模型转化(计算 <span class="math inline">\(N+1\)</span> 个点的答案): 取单位圆, 等距地取 <span class="math inline">\(2N\)</span> 个点, 然后将这些点两两配对连边, 满足所有连边不相交. 发现它的对偶图恰好是一棵平面树, 像这样:</p>
-<p><img src="/img/plane-tree.png"></p>
-<p>那么就只需要考虑本质不同的这样的配对的数量即可. 两个圆是等价的当且仅当一个圆可以通过旋转一定的角度与另一个圆重合. 而在这个圆上共有 <span class="math inline">\(2N\)</span> 个点, 就意味着有 <span class="math inline">\(2N\)</span> 个置换, 构成一个置换群.</p>
-<p>置换群下的计数可以用到 Burnside引理 :</p>
-<blockquote>
-<p><span class="math display">\[ N(G, C) = \frac{1}{|G|} { \sum_{f \in G} c(f) } \]</span></p>
-</blockquote>
-<p>则转化为求置换下的不动点的数量:</p>
-<ul>
-<li><p>不存在置换的情况下, 答案为 <span class="math inline">\(C_N\)</span>, <span class="math inline">\(\mathrm{Catalan}\)</span> 数的第 <span class="math inline">\(N\)</span> 项. 即将相互匹配的位置看作左右括号, 则所有合法的括号序列都对应一个满足条件的圆.</p></li>
-<li><p><span class="math inline">\(N\)</span> 为奇数时, 可能存在一条平分圆的对角线在置换下不变, 计算 <span class="math inline">\(\frac{N+1}{2}\)</span> 个点的答案即可.</p></li>
-<li><p>考虑旋转置换:</p>
-<p>为了满足旋转之后的边重合, 点 <span class="math inline">\(i\)</span> 和它的匹配点 <span class="math inline">\(p_i\)</span> 在旋转后应该仍然是相匹配的. 则环的数量一定是偶数 <span class="math inline">\(2d\)</span>, 所以环的长度可以表示为 <span class="math inline">\(\frac{2N}{2d} = \frac{N}{d}\)</span>.</p>
-<p>假定置换的阶是 <span class="math inline">\(e\)</span>, <span class="math inline">\(e &gt; 1, e | N\)</span>, 环的数量 <span class="math inline">\(2d = \frac{2N}{e}\)</span>. 环上与 <span class="math inline">\(0\)</span> 匹配的点为 <span class="math inline">\(i\)</span>, 不难发现在这些点之间的点的方案数为 <span class="math inline">\(C_{i-1}\)</span>. 当这些点确定之后, 它们在环上依次经过的 <span class="math inline">\(e(i+1)\)</span> 个点就确定了.</p></li>
-</ul>
-<p>令 <span class="math inline">\(f(x)\)</span> 表示 <span class="math inline">\(\mathrm{Catalan}\)</span> 数的生成函数, 根据 <span class="math inline">\(\mathrm{Catalan}\)</span> 数的递推式, 不难得到:</p>
-<p><span class="math display">\[ f(x) = xf^2(x) + 1 \]</span></p>
-<p>构造 <span class="math inline">\(B_d\)</span> 表示包含 <span class="math inline">\(2d\)</span> 个环的置换下不动点的数量.</p>
-<p><span class="math display">\[ B_d = 2\sum_{i = 0}^{d-1} C_i B_{d-i-1} \]</span></p>
-<p>其中因子 <span class="math inline">\(2\)</span> 考虑的是 <span class="math inline">\(i &gt; 2d\)</span> 时用当前置换的逆来计算的情况.</p>
-<p>则 <span class="math inline">\(B_d\)</span> 的生成函数 <span class="math inline">\(g(x)\)</span> 满足:</p>
-<p><span class="math display">\[ g(x) = 2x g(x) f(x) + 1 \]</span></p>
-<p>解得:</p>
-<p><span class="math display">\[ g(x) = (1 - 4x) ^ {-\frac{1}{2}} \]</span></p>
-<h3 id="问题解决">问题解决</h3>
-<p><span class="math display">\[ p(n) = \frac{1}{2n} \left( [\mathrm{n \, is \, odd}]\binom{n}{\lfloor\frac{n}{2}\rfloor} - \binom{2n}{n-1} + \sum_{d|n}{\varphi(n/d)\binom {2d}{d}} \right)\]</span></p>
-]]></content>
-      <tags>
-        <tag>Combinatorial</tag>
-        <tag>Generating Function</tag>
-        <tag>Burnside</tag>
       </tags>
   </entry>
   <entry>
@@ -292,6 +249,49 @@ G(n, i) = G(n, i+1) + \sum_{c=0}^{\substack{p_i^{c+1} \le n}} f(p_i^{c+1}) + f(p
       </tags>
   </entry>
   <entry>
+    <title>平面树计数</title>
+    <url>/2017/count-plane-tree/</url>
+    <content><![CDATA[<p>不常见的经典问题, 顺便总结一下Burnside引理吧.</p>
+<a id="more"></a>
+<h3 id="问题描述">问题描述</h3>
+<blockquote>
+<p>给定 <span class="math inline">\(N\)</span>, 求 <span class="math inline">\(N\)</span> 个点的本质不同的平面树的数量. 两棵平面树是等价的当且仅当其中一棵能够移动点的位置与另一棵重合, 且过程中仍然是一棵平面树.</p>
+</blockquote>
+<h3 id="做法">做法</h3>
+<p>考虑模型转化(计算 <span class="math inline">\(N+1\)</span> 个点的答案): 取单位圆, 等距地取 <span class="math inline">\(2N\)</span> 个点, 然后将这些点两两配对连边, 满足所有连边不相交. 发现它的对偶图恰好是一棵平面树, 像这样:</p>
+<p><img src="/img/plane-tree.png"></p>
+<p>那么就只需要考虑本质不同的这样的配对的数量即可. 两个圆是等价的当且仅当一个圆可以通过旋转一定的角度与另一个圆重合. 而在这个圆上共有 <span class="math inline">\(2N\)</span> 个点, 就意味着有 <span class="math inline">\(2N\)</span> 个置换, 构成一个置换群.</p>
+<p>置换群下的计数可以用到 Burnside引理 :</p>
+<blockquote>
+<p><span class="math display">\[ N(G, C) = \frac{1}{|G|} { \sum_{f \in G} c(f) } \]</span></p>
+</blockquote>
+<p>则转化为求置换下的不动点的数量:</p>
+<ul>
+<li><p>不存在置换的情况下, 答案为 <span class="math inline">\(C_N\)</span>, <span class="math inline">\(\mathrm{Catalan}\)</span> 数的第 <span class="math inline">\(N\)</span> 项. 即将相互匹配的位置看作左右括号, 则所有合法的括号序列都对应一个满足条件的圆.</p></li>
+<li><p><span class="math inline">\(N\)</span> 为奇数时, 可能存在一条平分圆的对角线在置换下不变, 计算 <span class="math inline">\(\frac{N+1}{2}\)</span> 个点的答案即可.</p></li>
+<li><p>考虑旋转置换:</p>
+<p>为了满足旋转之后的边重合, 点 <span class="math inline">\(i\)</span> 和它的匹配点 <span class="math inline">\(p_i\)</span> 在旋转后应该仍然是相匹配的. 则环的数量一定是偶数 <span class="math inline">\(2d\)</span>, 所以环的长度可以表示为 <span class="math inline">\(\frac{2N}{2d} = \frac{N}{d}\)</span>.</p>
+<p>假定置换的阶是 <span class="math inline">\(e\)</span>, <span class="math inline">\(e &gt; 1, e | N\)</span>, 环的数量 <span class="math inline">\(2d = \frac{2N}{e}\)</span>. 环上与 <span class="math inline">\(0\)</span> 匹配的点为 <span class="math inline">\(i\)</span>, 不难发现在这些点之间的点的方案数为 <span class="math inline">\(C_{i-1}\)</span>. 当这些点确定之后, 它们在环上依次经过的 <span class="math inline">\(e(i+1)\)</span> 个点就确定了.</p></li>
+</ul>
+<p>令 <span class="math inline">\(f(x)\)</span> 表示 <span class="math inline">\(\mathrm{Catalan}\)</span> 数的生成函数, 根据 <span class="math inline">\(\mathrm{Catalan}\)</span> 数的递推式, 不难得到:</p>
+<p><span class="math display">\[ f(x) = xf^2(x) + 1 \]</span></p>
+<p>构造 <span class="math inline">\(B_d\)</span> 表示包含 <span class="math inline">\(2d\)</span> 个环的置换下不动点的数量.</p>
+<p><span class="math display">\[ B_d = 2\sum_{i = 0}^{d-1} C_i B_{d-i-1} \]</span></p>
+<p>其中因子 <span class="math inline">\(2\)</span> 考虑的是 <span class="math inline">\(i &gt; 2d\)</span> 时用当前置换的逆来计算的情况.</p>
+<p>则 <span class="math inline">\(B_d\)</span> 的生成函数 <span class="math inline">\(g(x)\)</span> 满足:</p>
+<p><span class="math display">\[ g(x) = 2x g(x) f(x) + 1 \]</span></p>
+<p>解得:</p>
+<p><span class="math display">\[ g(x) = (1 - 4x) ^ {-\frac{1}{2}} \]</span></p>
+<h3 id="问题解决">问题解决</h3>
+<p><span class="math display">\[ p(n) = \frac{1}{2n} \left( [\mathrm{n \, is \, odd}]\binom{n}{\lfloor\frac{n}{2}\rfloor} - \binom{2n}{n-1} + \sum_{d|n}{\varphi(n/d)\binom {2d}{d}} \right)\]</span></p>
+]]></content>
+      <tags>
+        <tag>Combinatorial</tag>
+        <tag>Generating Function</tag>
+        <tag>Burnside</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>NOI2016 网格</title>
     <url>/2017/noi2016-grid/</url>
     <content><![CDATA[<h3 id="description">Description</h3>
@@ -313,34 +313,80 @@ G(n, i) = G(n, i+1) + \sum_{c=0}^{\substack{p_i^{c+1} \le n}} f(p_i^{c+1}) + f(p
       </tags>
   </entry>
   <entry>
-    <title>记NOI2018</title>
-    <url>/2018/noi2018/</url>
-    <content><![CDATA[<p>折腾了好久终于把博客修好了, 来填一些坑.</p>
+    <title>若干趣题</title>
+    <url>/2020/exercise-of-thoughts/</url>
+    <content><![CDATA[<h2 id="写在前面">写在前面</h2>
+<p>宅家没事的时候找的乐子，不定期更新，大概。</p>
 <a id="more"></a>
-<h3 id="day--1">Day -1</h3>
-<p>上午在家无所事事, 收了下行李, 下午就到洋湖报到去了, 然后听说笔试时间调整到了上午, 感觉有点慌整个晚上都在背笔试.</p>
-<h3 id="day-0">Day 0</h3>
-<p>上午考笔试, 比预料中的简单很多, 没有什么快捷键之类的坑题也没有挂分, 试机就打了一个最简单的配置就跑了.</p>
-<p>下午找了一间教室自习, 不知道干什么, 晚上懒得复习什么早早地睡了, 奇怪的是居然丝毫不紧张.</p>
-<h3 id="day-1">Day 1</h3>
-<p>第一试, 看了看题, 觉得题意都挺好理解的, 难度也基本按照题目顺序.</p>
-<p>就直接开始写T1了, 写完 <span class="math inline">\(\log^2\)</span> 过了大样例直接丢到一边了, 然后看T2, 推了一个看起来有理有据的结论, 但不是很会算答案搞了很久大样例四个全错, 想了一下随便打了个特判过了其中两个, 又改了一下特判才在考试一半时间的时候过了大样例.</p>
-<p>期间去上了一个厕所, 用掉20min...</p>
-<p>看T3惊喜地发现68分特别傻逼, 飞快地码完过了大样例还有一个半小时, 正准备回去继续做T2最后20分的时候发现T1可能跑不过, 卡了很久的常, 期间竟然检查出好多致命的错误, 然后心里特别虚地不停检查, T2也没有继续想了.</p>
-<p>好在最后并没有挂分.</p>
-<h3 id="day-1.5">Day 1.5</h3>
-<p>鸽了社会活动, 在自习室搞了一天颓.</p>
-<p>直接打出了防沉迷警告...</p>
-<h3 id="day-2">Day 2</h3>
-<p>看完题目一直在想哪道题最简单, 然后T1补充了一个条件...</p>
-<p>用了两个小时都没有从T1的倒数第二步推出最后一步, 想想当时可能真的受到了降智打击, 还自信地觉得T2比较可做, 码了很久发现是假算法, 感觉很慌滚去写T3暴力, 回来想先写T2的45分又不想放弃T1, 最后连T2的45分都没拿到...</p>
-<p>感觉心态真的崩的厉害, 虽然最后查分发现意外的多了5分(大雾).</p>
-<h3 id="总结">总结</h3>
-<p>好像从去年NOIP以来, 身上一直有某种二试Debuff存在, 可能经常性的因为第一试考得不错, 而对多数情况下更难的二试心存轻视, 也没能调整好自己的心态吧.</p>
-<p>不管怎样, 接下来的OI生涯, 要更加珍惜!</p>
+<h2 id="section">1</h2>
+<h3 id="description">Description</h3>
+<p>有 <span class="math inline">\(n\)</span> 个人，其中有好有坏，每个人都知道其他任何人是好是坏，现在可以进行若干次询问，每次询问形如 <span class="math inline">\((i, j)\)</span>，表示问第 <span class="math inline">\(i\)</span> 个人第 <span class="math inline">\(j\)</span> 个人是否是好人 <span class="math inline">\((i \neq j)\)</span>，同时好人一定说真话，坏人可能说假话，问：</p>
+<ol type="1">
+<li>如果有多于一半的人是好的，是否存在策略能够在不超过 <span class="math inline">\(n\)</span> 次询问下确定一个好人。</li>
+<li>如果有恰好一半的人是坏人，是否存在上述策略。</li>
+</ol>
+<h3 id="solution">Solution</h3>
+<h4 id="section-1">1</h4>
+<p>考虑维护一个序列，初始时加入编号为 <span class="math inline">\(1\)</span> 的人，接下来依次将其他人加入，每次加入的时候询问序列末尾的人这个人是好人还是坏人，如果答案是坏人则删除末尾，否则将这个新加入的作为末尾，正确性不难验证：</p>
+<ol type="1">
+<li>每次删除的至少有一个坏人，因此最后序列剩下的人中至少有一个好人。</li>
+<li>如果序列中至少有一个好人，则序列的末尾一定也是好人。</li>
+</ol>
+<h4 id="section-2">2</h4>
+<p>不能，如果所有坏人都永远说谎，则他们与好人没有区别。</p>
+<h2 id="section-3">2</h2>
+<h3 id="巴塞尔公式">巴塞尔公式</h3>
+<p><span class="math display">\[
+    \sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}
+\]</span></p>
+<h3 id="证明">证明</h3>
+<p>首先注意到：</p>
+<p><span class="math display">\[
+\begin{aligned}
+    I=&amp;\int_0^1 \mathrm{d} x \int_0^1 \frac{1}{1-xy} \mathrm{d} y \\
+    =&amp;\iint_D \sum_{i=0}^{\infty} (xy)^i \mathrm{d}x\mathrm{d}y \\
+    =&amp;\sum_{i=0}^{\infty} \iint_D (xy)^i \mathrm{d}x\mathrm{d}y \\
+    =&amp;\sum_{i=0}^{\infty} \left(\int_0^1 x^i \mathrm{d} x\right)^2 \\
+    =&amp;\sum_{i=1}^{\infty} \frac{1}{i^2}
+\end{aligned}
+\]</span></p>
+<p>故只需证明 <span class="math inline">\(I = \dfrac{\pi^2}{6}\)</span> 即可，考虑变量替换：</p>
+<p><span class="math display">\[
+\begin{cases}
+    x = u + v \\
+    y = u - v
+\end{cases},
+\frac{\partial(x, y)}{\partial(u, v)} = \left|\begin{matrix} 1 &amp; 1 \\ 1 &amp; -1 \end{matrix} \right| = -2
+\]</span></p>
+<p>则：</p>
+<p><span class="math display">\[
+\begin{aligned}
+I &amp;= 2 \iint_{D_{uv}} \frac{1}{1 - u^2 + v^2} \mathrm{d} u \mathrm{d} v \\
+&amp;= 4 \left(\int_0^{\frac{1}{2}} \mathrm{d} u \int_0^{u} \frac{1}{1-u^2+v^2} \mathrm{d} v + \int_{\frac{1}{2}}^{1} \mathrm{d}u \int_0^{1-u} \frac{1}{1-u^2+v^2} \mathrm{d} v\right) \\
+&amp;= 4 \left(\int_0^{\frac{1}{2}} \frac{1}{\sqrt{1-u^2}} \arctan \frac{u}{\sqrt{1-u^2}} \mathrm{d} u + \int_{\frac{1}{2}}^{1} \frac{1}{\sqrt{1-u^2}} \arctan \frac{1-u}{\sqrt{1-u^2}} \mathrm{d} u\right) \\
+&amp;= 4 \left(\int_0^{\frac{1}{2}} \arctan \frac{u}{\sqrt{1-u^2}} \mathrm{d} \arctan \frac{u}{\sqrt{1-u^2}} 
+  -2       \int_{\frac{1}{2}}^1 \arctan \frac{1-u}{\sqrt{1-u^2}} \mathrm{d} \arctan \frac{1-u}{\sqrt{1-u^2}} \right) \\
+&amp;= 4 \times \frac{1}{2} \times \left(\frac{\pi}{6}\right)^2 + 4 \times \left(\frac{\pi}{6}\right)^2 = \frac{\pi^2}{6} \\
+&amp;&amp; \square
+\end{aligned}
+\]</span></p>
+<h3 id="应用">应用</h3>
+<blockquote>
+<p>任取两个正整数，求它们互质的概率</p>
+</blockquote>
+<p>考虑任意质因子 <span class="math inline">\(p\)</span>，如果两个数同时是 <span class="math inline">\(p\)</span> 的倍数，则不会互质，这个概率显然为 <span class="math inline">\(\dfrac{1}{p^2}\)</span>，因此互质的概率可以写成如下形式：</p>
+<p><span class="math display">\[
+\begin{aligned}
+P &amp;= \prod_{p\, \mathrm{is\ prime}} \left(1 - \frac{1}{p^2}\right) \\
+&amp;= \prod_{p\, \mathrm{is\ prime}} \cfrac{1}{\sum_{i=0}^{\infty} \left(\cfrac{1}{p^2}\right)^i} \\
+&amp;= \frac{1}{\sum_{i=1}^{\infty} \frac{1}{i^2}} \\
+&amp;= \frac{6}{\pi^2}
+\end{aligned}
+\]</span></p>
 ]]></content>
       <tags>
-        <tag>Summary</tag>
+        <tag>Combinatorial</tag>
+        <tag>Induction</tag>
       </tags>
   </entry>
   <entry>
@@ -381,33 +427,6 @@ G(n, i) = G(n, i+1) + \sum_{c=0}^{\substack{p_i^{c+1} \le n}} f(p_i^{c+1}) + f(p
         <tag>Dynamic Programming</tag>
         <tag>Combinatorial</tag>
         <tag>Probability</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ZJOI2017 树状数组</title>
-    <url>/2017/zjoi2017-bit/</url>
-    <content><![CDATA[<h3 id="description">Description</h3>
-<blockquote>
-<p>给你一个长度为 <span class="math inline">\(N\)</span> 的序列以及 <span class="math inline">\(M\)</span> 次操作, 每次等概率地修改 <span class="math inline">\([L_i, R_i]\)</span> 区间中一个值的奇偶性, 或者对于询问<span class="math inline">\([L_i,R_i]\)</span>区间中的和的奇偶性, 判断给定的一种错误算法输出正确答案的概率是多少 $ N, M &lt;= 10^5 $</p>
-</blockquote>
-<a id="more"></a>
-<h3 id="solution">Solution</h3>
-<p>考虑这个错误算法, 由于可以把 $ + lowbit $ 和 $ - lowbit $ 都看成在一棵树上向父亲节点跳, 根据这个性质可以知道错误算法求了一个后缀和, 所以当且仅当对于询问区间 <span class="math inline">\([L_i, R_i]\)</span>, 满足 $ a[L_i-1] = a[R_i] $ 时它会输出正确答案</p>
-<p>那么我们得到了一个 $ O(nm) $ 的暴力算法, 即每一个询问都暴力扫之前的所有修改计算概率即可.</p>
-<p>然而这样还不能通过所有数据, 考虑将区间 <span class="math inline">\([L_i, R_i]\)</span> 表示成二维平面上的一个点 $ (L_i, R_i)$.</p>
-<p>然后用一个二维线段树去维护每个点代表的两个端点的值不相等的概率.显然地, 这个概率是可以很方便的合并的. 这样对于每次修改<span class="math inline">\([L_i, R_i]\)</span>的操作, 相当于: - 将 $ x , y $ 中的点 <span class="math inline">\((x, y)\)</span> 与 $  $ 合并. - 将 $ x , y (R_i, N] $ 以及 $ x $ 与 $  $ 合并.</p>
-<h3 id="hint">Hint</h3>
-<p>注意到对于 $ L_i = 1 $ 的情况, $ Find(0) $ 直接返回了 <span class="math inline">\(0\)</span> 而非 <span class="math inline">\(0\)</span> 的后缀和 这个时候就要特判一下了, 注意到每次不管如何修改, 最终的正确答案是 <span class="math inline">\(R_i\)</span> 的前缀和, 而题中所给的方法输出的答案是 <span class="math inline">\(R_i\)</span> 的后缀和.</p>
-<ul>
-<li>当前修改次数为偶数, 则当且仅当 <span class="math inline">\(R_i = 0\)</span> 前后缀和相同, 相当于查询 <span class="math inline">\(a[R_i] = 0\)</span> 的概率.</li>
-<li>当前修改次数为奇数, 则当且仅当 <span class="math inline">\(R_i = 1\)</span> 前后缀和相同, 相当于查询 <span class="math inline">\(a[R_i] = 1\)</span> 的概率.</li>
-</ul>
-<p>因为 <span class="math inline">\(a[0]\)</span> 不可能被修改, 所以上述问题也可以转化为查询 <span class="math inline">\([L_i, R_i]\)</span> 相等概率.</p>
-<h3 id="code">Code</h3>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fst first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> snd second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> getchar getchar_unlocked</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">chkmax</span><span class="params">(T&amp; a, T b)</span> </span>&#123; <span class="keyword">return</span> a &lt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">chkmin</span><span class="params">(T&amp; a, T b)</span> </span>&#123; <span class="keyword">return</span> a &gt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> oo = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">998244353</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>, f = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="keyword">for</span>( ;!<span class="built_in">isdigit</span>(ch); ch = getchar()) <span class="keyword">if</span>(ch == <span class="string">'-'</span>) f = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>( ; <span class="built_in">isdigit</span>(ch); ch = getchar()) n = n * <span class="number">10</span> + ch - <span class="number">48</span>;</span><br><span class="line">    <span class="keyword">return</span> n * f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (a * (<span class="number">1L</span>L - b + mod) % mod + b * (<span class="number">1L</span>L - a + mod) % mod) % mod;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> N, M, prob;</span><br><span class="line"><span class="keyword">namespace</span> Seg_Tree &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> SZ_X = (maxn &lt;&lt; <span class="number">2</span>) + <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> SZ_Y = (maxn * <span class="number">400</span>) + <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> rt[SZ_X];</span><br><span class="line">    <span class="keyword">int</span> val[SZ_Y];</span><br><span class="line">    <span class="keyword">int</span> lc[SZ_Y], rc[SZ_Y], cnt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LC (u &lt;&lt; 1) </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RC (LC | 1)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mid ((l+r) &gt;&gt; 1)</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Add_Y</span><span class="params">(<span class="keyword">int</span>&amp; u, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!u) u = ++cnt;</span><br><span class="line">        <span class="keyword">if</span>(x &lt;= l &amp;&amp; r &lt;= y) &#123;</span><br><span class="line">            val[u] = merge(val[u], prob);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(x &lt;= mid) Add_Y(lc[u], l, mid, x, y);</span><br><span class="line">        <span class="keyword">if</span>(y &gt; mid) Add_Y(rc[u], mid+<span class="number">1</span>, r, x, y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Add_X</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> x0, <span class="keyword">int</span> y0)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x &lt;= l &amp;&amp; r &lt;= y) &#123;</span><br><span class="line">            Add_Y(rt[u], <span class="number">0</span>, N, x0, y0);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(x &lt;= mid) Add_X(LC, l, mid, x, y, x0, y0);</span><br><span class="line">        <span class="keyword">if</span>(y &gt; mid) Add_X(RC, mid+<span class="number">1</span>, r, x, y, x0, y0);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">query_Y</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(l == r) <span class="keyword">return</span> val[u];</span><br><span class="line">        <span class="keyword">return</span> merge(val[u], </span><br><span class="line">                x &lt;= mid ? query_Y(lc[u], l, mid, x) : query_Y(rc[u], mid+<span class="number">1</span>, r, x));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">query_X</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x, <span class="keyword">int</span> x0)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(l == r) <span class="keyword">return</span> query_Y(rt[u], <span class="number">0</span>, N, x0);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> merge(query_Y(rt[u], <span class="number">0</span>, N, x0), </span><br><span class="line">                x &lt;= mid ? query_X(LC, l, mid, x, x0) : query_X(RC, mid+<span class="number">1</span>, r, x, x0));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fpm</span><span class="params">(<span class="keyword">int</span> base, <span class="keyword">int</span> <span class="built_in">exp</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(; <span class="built_in">exp</span> &gt; <span class="number">0</span>; <span class="built_in">exp</span> &gt;&gt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">exp</span> &amp; <span class="number">1</span>) </span><br><span class="line">            res = <span class="number">1L</span>L * res * base % mod;</span><br><span class="line">        base = <span class="number">1L</span>L * base * base % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> tot = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    N = read(); M = read();</span><br><span class="line">    <span class="keyword">while</span>(M--) &#123;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">int</span> ty, l, r;</span><br><span class="line">        ty = read(); l = read(); r = read();</span><br><span class="line">        <span class="keyword">if</span>(ty == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">static</span> LL tmp; </span><br><span class="line">            tmp = fpm(r-l+<span class="number">1</span>, mod<span class="number">-2</span>);</span><br><span class="line">            prob = <span class="number">2</span>*tmp; Seg_Tree::Add_X(<span class="number">1</span>, <span class="number">0</span>, N, l, r, l, r); </span><br><span class="line">            prob = tmp; Seg_Tree::Add_X(<span class="number">1</span>, <span class="number">0</span>, N, l, r, r+<span class="number">1</span>, N);</span><br><span class="line">            prob = tmp; Seg_Tree::Add_X(<span class="number">1</span>, <span class="number">0</span>, N, <span class="number">0</span>, l<span class="number">-1</span>, l, r);</span><br><span class="line">            ++ tot;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">static</span> <span class="keyword">int</span> ans;</span><br><span class="line">            ans = (<span class="number">1</span>-Seg_Tree::query_X(<span class="number">1</span>, <span class="number">0</span>, N, l<span class="number">-1</span>, r)+mod) % mod;</span><br><span class="line">            <span class="keyword">if</span>(!(l<span class="number">-1</span>) &amp;&amp; (tot &amp; <span class="number">1</span>))</span><br><span class="line">                ans = (<span class="number">1</span>-ans+mod) % mod;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">    freopen(<span class="string">"data.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"ans.txt"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">    solve();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>Data Structure</tag>
       </tags>
   </entry>
   <entry>
@@ -530,80 +549,61 @@ G: \{0, 1\}^l \rightarrow \{0, 1\}^n
       </tags>
   </entry>
   <entry>
-    <title>若干趣题</title>
-    <url>/2020/exercise-of-thoughts/</url>
-    <content><![CDATA[<h2 id="写在前面">写在前面</h2>
-<p>宅家没事的时候找的乐子，不定期更新，大概。</p>
+    <title>记NOI2018</title>
+    <url>/2018/noi2018/</url>
+    <content><![CDATA[<p>折腾了好久终于把博客修好了, 来填一些坑.</p>
 <a id="more"></a>
-<h2 id="section">1</h2>
-<h3 id="description">Description</h3>
-<p>有 <span class="math inline">\(n\)</span> 个人，其中有好有坏，每个人都知道其他任何人是好是坏，现在可以进行若干次询问，每次询问形如 <span class="math inline">\((i, j)\)</span>，表示问第 <span class="math inline">\(i\)</span> 个人第 <span class="math inline">\(j\)</span> 个人是否是好人 <span class="math inline">\((i \neq j)\)</span>，同时好人一定说真话，坏人可能说假话，问：</p>
-<ol type="1">
-<li>如果有多于一半的人是好的，是否存在策略能够在不超过 <span class="math inline">\(n\)</span> 次询问下确定一个好人。</li>
-<li>如果有恰好一半的人是坏人，是否存在上述策略。</li>
-</ol>
-<h3 id="solution">Solution</h3>
-<h4 id="section-1">1</h4>
-<p>考虑维护一个序列，初始时加入编号为 <span class="math inline">\(1\)</span> 的人，接下来依次将其他人加入，每次加入的时候询问序列末尾的人这个人是好人还是坏人，如果答案是坏人则删除末尾，否则将这个新加入的作为末尾，正确性不难验证：</p>
-<ol type="1">
-<li>每次删除的至少有一个坏人，因此最后序列剩下的人中至少有一个好人。</li>
-<li>如果序列中至少有一个好人，则序列的末尾一定也是好人。</li>
-</ol>
-<h4 id="section-2">2</h4>
-<p>不能，如果所有坏人都永远说谎，则他们与好人没有区别。</p>
-<h2 id="section-3">2</h2>
-<h3 id="巴塞尔公式">巴塞尔公式</h3>
-<p><span class="math display">\[
-    \sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}
-\]</span></p>
-<h3 id="证明">证明</h3>
-<p>首先注意到：</p>
-<p><span class="math display">\[
-\begin{aligned}
-    I=&amp;\int_0^1 \mathrm{d} x \int_0^1 \frac{1}{1-xy} \mathrm{d} y \\
-    =&amp;\iint_D \sum_{i=0}^{\infty} (xy)^i \mathrm{d}x\mathrm{d}y \\
-    =&amp;\sum_{i=0}^{\infty} \iint_D (xy)^i \mathrm{d}x\mathrm{d}y \\
-    =&amp;\sum_{i=0}^{\infty} \left(\int_0^1 x^i \mathrm{d} x\right)^2 \\
-    =&amp;\sum_{i=1}^{\infty} \frac{1}{i^2}
-\end{aligned}
-\]</span></p>
-<p>故只需证明 <span class="math inline">\(I = \dfrac{\pi^2}{6}\)</span> 即可，考虑变量替换：</p>
-<p><span class="math display">\[
-\begin{cases}
-    x = u + v \\
-    y = u - v
-\end{cases},
-\frac{\partial(x, y)}{\partial(u, v)} = \left|\begin{matrix} 1 &amp; 1 \\ 1 &amp; -1 \end{matrix} \right| = -2
-\]</span></p>
-<p>则：</p>
-<p><span class="math display">\[
-\begin{aligned}
-I &amp;= 2 \iint_{D_{uv}} \frac{1}{1 - u^2 + v^2} \mathrm{d} u \mathrm{d} v \\
-&amp;= 4 \left(\int_0^{\frac{1}{2}} \mathrm{d} u \int_0^{u} \frac{1}{1-u^2+v^2} \mathrm{d} v + \int_{\frac{1}{2}}^{1} \mathrm{d}u \int_0^{1-u} \frac{1}{1-u^2+v^2} \mathrm{d} v\right) \\
-&amp;= 4 \left(\int_0^{\frac{1}{2}} \frac{1}{\sqrt{1-u^2}} \arctan \frac{u}{\sqrt{1-u^2}} \mathrm{d} u + \int_{\frac{1}{2}}^{1} \frac{1}{\sqrt{1-u^2}} \arctan \frac{1-u}{\sqrt{1-u^2}} \mathrm{d} u\right) \\
-&amp;= 4 \left(\int_0^{\frac{1}{2}} \arctan \frac{u}{\sqrt{1-u^2}} \mathrm{d} \arctan \frac{u}{\sqrt{1-u^2}} 
-  -2       \int_{\frac{1}{2}}^1 \arctan \frac{1-u}{\sqrt{1-u^2}} \mathrm{d} \arctan \frac{1-u}{\sqrt{1-u^2}} \right) \\
-&amp;= 4 \times \frac{1}{2} \times \left(\frac{\pi}{6}\right)^2 + 4 \times \left(\frac{\pi}{6}\right)^2 = \frac{\pi^2}{6} \\
-&amp;&amp; \square
-\end{aligned}
-\]</span></p>
-<h3 id="应用">应用</h3>
-<blockquote>
-<p>任取两个正整数，求它们互质的概率</p>
-</blockquote>
-<p>考虑任意质因子 <span class="math inline">\(p\)</span>，如果两个数同时是 <span class="math inline">\(p\)</span> 的倍数，则不会互质，这个概率显然为 <span class="math inline">\(\dfrac{1}{p^2}\)</span>，因此互质的概率可以写成如下形式：</p>
-<p><span class="math display">\[
-\begin{aligned}
-P &amp;= \prod_{p\, \mathrm{is\ prime}} \left(1 - \frac{1}{p^2}\right) \\
-&amp;= \prod_{p\, \mathrm{is\ prime}} \cfrac{1}{\sum_{i=0}^{\infty} \left(\cfrac{1}{p^2}\right)^i} \\
-&amp;= \frac{1}{\sum_{i=1}^{\infty} \frac{1}{i^2}} \\
-&amp;= \frac{6}{\pi^2}
-\end{aligned}
-\]</span></p>
+<h3 id="day--1">Day -1</h3>
+<p>上午在家无所事事, 收了下行李, 下午就到洋湖报到去了, 然后听说笔试时间调整到了上午, 感觉有点慌整个晚上都在背笔试.</p>
+<h3 id="day-0">Day 0</h3>
+<p>上午考笔试, 比预料中的简单很多, 没有什么快捷键之类的坑题也没有挂分, 试机就打了一个最简单的配置就跑了.</p>
+<p>下午找了一间教室自习, 不知道干什么, 晚上懒得复习什么早早地睡了, 奇怪的是居然丝毫不紧张.</p>
+<h3 id="day-1">Day 1</h3>
+<p>第一试, 看了看题, 觉得题意都挺好理解的, 难度也基本按照题目顺序.</p>
+<p>就直接开始写T1了, 写完 <span class="math inline">\(\log^2\)</span> 过了大样例直接丢到一边了, 然后看T2, 推了一个看起来有理有据的结论, 但不是很会算答案搞了很久大样例四个全错, 想了一下随便打了个特判过了其中两个, 又改了一下特判才在考试一半时间的时候过了大样例.</p>
+<p>期间去上了一个厕所, 用掉20min...</p>
+<p>看T3惊喜地发现68分特别傻逼, 飞快地码完过了大样例还有一个半小时, 正准备回去继续做T2最后20分的时候发现T1可能跑不过, 卡了很久的常, 期间竟然检查出好多致命的错误, 然后心里特别虚地不停检查, T2也没有继续想了.</p>
+<p>好在最后并没有挂分.</p>
+<h3 id="day-1.5">Day 1.5</h3>
+<p>鸽了社会活动, 在自习室搞了一天颓.</p>
+<p>直接打出了防沉迷警告...</p>
+<h3 id="day-2">Day 2</h3>
+<p>看完题目一直在想哪道题最简单, 然后T1补充了一个条件...</p>
+<p>用了两个小时都没有从T1的倒数第二步推出最后一步, 想想当时可能真的受到了降智打击, 还自信地觉得T2比较可做, 码了很久发现是假算法, 感觉很慌滚去写T3暴力, 回来想先写T2的45分又不想放弃T1, 最后连T2的45分都没拿到...</p>
+<p>感觉心态真的崩的厉害, 虽然最后查分发现意外的多了5分(大雾).</p>
+<h3 id="总结">总结</h3>
+<p>好像从去年NOIP以来, 身上一直有某种二试Debuff存在, 可能经常性的因为第一试考得不错, 而对多数情况下更难的二试心存轻视, 也没能调整好自己的心态吧.</p>
+<p>不管怎样, 接下来的OI生涯, 要更加珍惜!</p>
 ]]></content>
       <tags>
-        <tag>Combinatorial</tag>
-        <tag>Induction</tag>
+        <tag>Summary</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ZJOI2017 树状数组</title>
+    <url>/2017/zjoi2017-bit/</url>
+    <content><![CDATA[<h3 id="description">Description</h3>
+<blockquote>
+<p>给你一个长度为 <span class="math inline">\(N\)</span> 的序列以及 <span class="math inline">\(M\)</span> 次操作, 每次等概率地修改 <span class="math inline">\([L_i, R_i]\)</span> 区间中一个值的奇偶性, 或者对于询问<span class="math inline">\([L_i,R_i]\)</span>区间中的和的奇偶性, 判断给定的一种错误算法输出正确答案的概率是多少 $ N, M &lt;= 10^5 $</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="solution">Solution</h3>
+<p>考虑这个错误算法, 由于可以把 $ + lowbit $ 和 $ - lowbit $ 都看成在一棵树上向父亲节点跳, 根据这个性质可以知道错误算法求了一个后缀和, 所以当且仅当对于询问区间 <span class="math inline">\([L_i, R_i]\)</span>, 满足 $ a[L_i-1] = a[R_i] $ 时它会输出正确答案</p>
+<p>那么我们得到了一个 $ O(nm) $ 的暴力算法, 即每一个询问都暴力扫之前的所有修改计算概率即可.</p>
+<p>然而这样还不能通过所有数据, 考虑将区间 <span class="math inline">\([L_i, R_i]\)</span> 表示成二维平面上的一个点 $ (L_i, R_i)$.</p>
+<p>然后用一个二维线段树去维护每个点代表的两个端点的值不相等的概率.显然地, 这个概率是可以很方便的合并的. 这样对于每次修改<span class="math inline">\([L_i, R_i]\)</span>的操作, 相当于: - 将 $ x , y $ 中的点 <span class="math inline">\((x, y)\)</span> 与 $  $ 合并. - 将 $ x , y (R_i, N] $ 以及 $ x $ 与 $  $ 合并.</p>
+<h3 id="hint">Hint</h3>
+<p>注意到对于 $ L_i = 1 $ 的情况, $ Find(0) $ 直接返回了 <span class="math inline">\(0\)</span> 而非 <span class="math inline">\(0\)</span> 的后缀和 这个时候就要特判一下了, 注意到每次不管如何修改, 最终的正确答案是 <span class="math inline">\(R_i\)</span> 的前缀和, 而题中所给的方法输出的答案是 <span class="math inline">\(R_i\)</span> 的后缀和.</p>
+<ul>
+<li>当前修改次数为偶数, 则当且仅当 <span class="math inline">\(R_i = 0\)</span> 前后缀和相同, 相当于查询 <span class="math inline">\(a[R_i] = 0\)</span> 的概率.</li>
+<li>当前修改次数为奇数, 则当且仅当 <span class="math inline">\(R_i = 1\)</span> 前后缀和相同, 相当于查询 <span class="math inline">\(a[R_i] = 1\)</span> 的概率.</li>
+</ul>
+<p>因为 <span class="math inline">\(a[0]\)</span> 不可能被修改, 所以上述问题也可以转化为查询 <span class="math inline">\([L_i, R_i]\)</span> 相等概率.</p>
+<h3 id="code">Code</h3>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fst first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> snd second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> getchar getchar_unlocked</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">chkmax</span><span class="params">(T&amp; a, T b)</span> </span>&#123; <span class="keyword">return</span> a &lt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">chkmin</span><span class="params">(T&amp; a, T b)</span> </span>&#123; <span class="keyword">return</span> a &gt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> oo = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">998244353</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>, f = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="keyword">for</span>( ;!<span class="built_in">isdigit</span>(ch); ch = getchar()) <span class="keyword">if</span>(ch == <span class="string">'-'</span>) f = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>( ; <span class="built_in">isdigit</span>(ch); ch = getchar()) n = n * <span class="number">10</span> + ch - <span class="number">48</span>;</span><br><span class="line">    <span class="keyword">return</span> n * f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (a * (<span class="number">1L</span>L - b + mod) % mod + b * (<span class="number">1L</span>L - a + mod) % mod) % mod;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> N, M, prob;</span><br><span class="line"><span class="keyword">namespace</span> Seg_Tree &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> SZ_X = (maxn &lt;&lt; <span class="number">2</span>) + <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> SZ_Y = (maxn * <span class="number">400</span>) + <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> rt[SZ_X];</span><br><span class="line">    <span class="keyword">int</span> val[SZ_Y];</span><br><span class="line">    <span class="keyword">int</span> lc[SZ_Y], rc[SZ_Y], cnt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LC (u &lt;&lt; 1) </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RC (LC | 1)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> mid ((l+r) &gt;&gt; 1)</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Add_Y</span><span class="params">(<span class="keyword">int</span>&amp; u, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!u) u = ++cnt;</span><br><span class="line">        <span class="keyword">if</span>(x &lt;= l &amp;&amp; r &lt;= y) &#123;</span><br><span class="line">            val[u] = merge(val[u], prob);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(x &lt;= mid) Add_Y(lc[u], l, mid, x, y);</span><br><span class="line">        <span class="keyword">if</span>(y &gt; mid) Add_Y(rc[u], mid+<span class="number">1</span>, r, x, y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Add_X</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> x0, <span class="keyword">int</span> y0)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x &lt;= l &amp;&amp; r &lt;= y) &#123;</span><br><span class="line">            Add_Y(rt[u], <span class="number">0</span>, N, x0, y0);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(x &lt;= mid) Add_X(LC, l, mid, x, y, x0, y0);</span><br><span class="line">        <span class="keyword">if</span>(y &gt; mid) Add_X(RC, mid+<span class="number">1</span>, r, x, y, x0, y0);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">query_Y</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(l == r) <span class="keyword">return</span> val[u];</span><br><span class="line">        <span class="keyword">return</span> merge(val[u], </span><br><span class="line">                x &lt;= mid ? query_Y(lc[u], l, mid, x) : query_Y(rc[u], mid+<span class="number">1</span>, r, x));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">query_X</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x, <span class="keyword">int</span> x0)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(l == r) <span class="keyword">return</span> query_Y(rt[u], <span class="number">0</span>, N, x0);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> merge(query_Y(rt[u], <span class="number">0</span>, N, x0), </span><br><span class="line">                x &lt;= mid ? query_X(LC, l, mid, x, x0) : query_X(RC, mid+<span class="number">1</span>, r, x, x0));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fpm</span><span class="params">(<span class="keyword">int</span> base, <span class="keyword">int</span> <span class="built_in">exp</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(; <span class="built_in">exp</span> &gt; <span class="number">0</span>; <span class="built_in">exp</span> &gt;&gt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">exp</span> &amp; <span class="number">1</span>) </span><br><span class="line">            res = <span class="number">1L</span>L * res * base % mod;</span><br><span class="line">        base = <span class="number">1L</span>L * base * base % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> tot = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    N = read(); M = read();</span><br><span class="line">    <span class="keyword">while</span>(M--) &#123;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">int</span> ty, l, r;</span><br><span class="line">        ty = read(); l = read(); r = read();</span><br><span class="line">        <span class="keyword">if</span>(ty == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">static</span> LL tmp; </span><br><span class="line">            tmp = fpm(r-l+<span class="number">1</span>, mod<span class="number">-2</span>);</span><br><span class="line">            prob = <span class="number">2</span>*tmp; Seg_Tree::Add_X(<span class="number">1</span>, <span class="number">0</span>, N, l, r, l, r); </span><br><span class="line">            prob = tmp; Seg_Tree::Add_X(<span class="number">1</span>, <span class="number">0</span>, N, l, r, r+<span class="number">1</span>, N);</span><br><span class="line">            prob = tmp; Seg_Tree::Add_X(<span class="number">1</span>, <span class="number">0</span>, N, <span class="number">0</span>, l<span class="number">-1</span>, l, r);</span><br><span class="line">            ++ tot;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">static</span> <span class="keyword">int</span> ans;</span><br><span class="line">            ans = (<span class="number">1</span>-Seg_Tree::query_X(<span class="number">1</span>, <span class="number">0</span>, N, l<span class="number">-1</span>, r)+mod) % mod;</span><br><span class="line">            <span class="keyword">if</span>(!(l<span class="number">-1</span>) &amp;&amp; (tot &amp; <span class="number">1</span>))</span><br><span class="line">                ans = (<span class="number">1</span>-ans+mod) % mod;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">    freopen(<span class="string">"data.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"ans.txt"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">    solve();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>Data Structure</tag>
       </tags>
   </entry>
   <entry>
