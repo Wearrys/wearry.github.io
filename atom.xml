@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-07-22T16:20:52.600Z</updated>
+  <updated>2020-08-17T01:50:55.954Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>A brief proof of Birthday Paradox</title>
+    <link href="http://yoursite.com/2020/birthday-paradox/"/>
+    <id>http://yoursite.com/2020/birthday-paradox/</id>
+    <published>2020-08-16T15:07:06.000Z</published>
+    <updated>2020-08-17T01:50:55.954Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="introduction"><em>Introduction</em></h1><h2 id="birthday-paradox"><em>Birthday Paradox</em></h2><blockquote><p>There are <span class="math inline">\(k\)</span> people whose birthdays are among set <span class="math inline">\(B\)</span> with size <span class="math inline">\(n\)</span>, the probability that there are <strong>at least</strong> a pair of people have the same birthday is greater than <span class="math inline">\(\frac{1}{2}\)</span> when <span class="math inline">\(k \ge 1.2 \sqrt{n} + 1\)</span></p></blockquote><a id="more"></a><h1 id="proof"><em>Proof</em></h1><p>Suppose each person's birthday is <strong>independent uniform</strong> in <span class="math inline">\(B\)</span>, then the probability that don't exist such a pair is:</p><p><span class="math display">\[P = \prod_{i=0}^{k-1} \left(1 - \frac{i}{n}\right)\]</span></p><p>to prove <span class="math inline">\(P \le \frac{1}{2}\)</span>, we use the result in analysis that:</p><blockquote><p><span class="math inline">\(\forall x \in \mathbb{R}, 1 + x \le \mathrm{e}^x\)</span> <img src="/img/exp.png"></p></blockquote><p>then:</p><p><span class="math display">\[\begin{aligned}P &amp;\le \exp \left(\sum_{i=0}^{k-1} -\cfrac{i}{n}\right) \\&amp;\le \exp \left(-\frac{(k-1)^2}{2n}\right) \\&amp;\le \exp \left(-\frac{(1.2 \sqrt{n})^2}{2n}\right) \\&amp;= \exp(-0.72) &lt; \frac{1}{2} \\\end{aligned}\]</span></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;introduction&quot;&gt;&lt;em&gt;Introduction&lt;/em&gt;&lt;/h1&gt;
+&lt;h2 id=&quot;birthday-paradox&quot;&gt;&lt;em&gt;Birthday Paradox&lt;/em&gt;&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There are &lt;span class=&quot;math inline&quot;&gt;\(k\)&lt;/span&gt; people whose birthdays are among set &lt;span class=&quot;math inline&quot;&gt;\(B\)&lt;/span&gt; with size &lt;span class=&quot;math inline&quot;&gt;\(n\)&lt;/span&gt;, the probability that there are &lt;strong&gt;at least&lt;/strong&gt; a pair of people have the same birthday is greater than &lt;span class=&quot;math inline&quot;&gt;\(\frac{1}{2}\)&lt;/span&gt; when &lt;span class=&quot;math inline&quot;&gt;\(k \ge 1.2 \sqrt{n} + 1\)&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
+    
+      <category term="Real Analysis" scheme="http://yoursite.com/tags/Real-Analysis/"/>
+    
+  </entry>
   
   <entry>
     <title>Cryptography Notes</title>
@@ -32,9 +58,9 @@
     </summary>
     
     
-      <category term="Number Theory" scheme="http://yoursite.com/tags/Number-Theory/"/>
-    
       <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
+    
+      <category term="Number Theory" scheme="http://yoursite.com/tags/Number-Theory/"/>
     
       <category term="Induction" scheme="http://yoursite.com/tags/Induction/"/>
     
@@ -224,11 +250,11 @@
     </summary>
     
     
+      <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
+    
       <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
     
       <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
-    
-      <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
     
   </entry>
   
@@ -248,9 +274,9 @@
     </summary>
     
     
-      <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
-    
       <category term="Summary" scheme="http://yoursite.com/tags/Summary/"/>
+    
+      <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
     
       <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
     
@@ -350,9 +376,9 @@
     </summary>
     
     
-      <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
-    
       <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
+    
+      <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
     
       <category term="Generating Function" scheme="http://yoursite.com/tags/Generating-Function/"/>
     

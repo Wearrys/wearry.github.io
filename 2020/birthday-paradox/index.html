@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="Combinatorial,Induction,">
+  <meta name="keywords" content="Probability,Real Analysis,">
 
 
 
@@ -107,18 +107,20 @@
 
 
 
-<meta name="description" content="写在前面 宅家没事的时候找的乐子，不定期更新，大概。">
-<meta name="keywords" content="Combinatorial,Induction">
+<meta name="description" content="Introduction Birthday Paradox  There are \(k\) people whose birthdays are among set \(B\) with size \(n\), the probability that there are at least a pair of people have the same birthday is greater th">
+<meta name="keywords" content="Probability,Real Analysis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="若干趣题">
-<meta property="og:url" content="http://yoursite.com/2020/exercise-of-thoughts/index.html">
+<meta property="og:title" content="A brief proof of Birthday Paradox">
+<meta property="og:url" content="http://yoursite.com/2020/birthday-paradox/index.html">
 <meta property="og:site_name" content="Wearry&#39;s Blog">
-<meta property="og:description" content="写在前面 宅家没事的时候找的乐子，不定期更新，大概。">
+<meta property="og:description" content="Introduction Birthday Paradox  There are \(k\) people whose birthdays are among set \(B\) with size \(n\), the probability that there are at least a pair of people have the same birthday is greater th">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-06-22T09:24:00.420Z">
+<meta property="og:image" content="http://yoursite.com/img/exp.png">
+<meta property="og:updated_time" content="2020-08-17T01:50:55.954Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="若干趣题">
-<meta name="twitter:description" content="写在前面 宅家没事的时候找的乐子，不定期更新，大概。">
+<meta name="twitter:title" content="A brief proof of Birthday Paradox">
+<meta name="twitter:description" content="Introduction Birthday Paradox  There are \(k\) people whose birthdays are among set \(B\) with size \(n\), the probability that there are at least a pair of people have the same birthday is greater th">
+<meta name="twitter:image" content="http://yoursite.com/img/exp.png">
 
 
 
@@ -148,13 +150,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/exercise-of-thoughts/">
+  <link rel="canonical" href="http://yoursite.com/2020/birthday-paradox/">
 
 
 
 
 
-  <title>若干趣题 | Wearry's Blog</title>
+  <title>A brief proof of Birthday Paradox | Wearry's Blog</title>
   
 
 
@@ -281,7 +283,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/exercise-of-thoughts/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/birthday-paradox/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wearry">
@@ -298,7 +300,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">若干趣题</h1>
+          <h1 class="post-title" itemprop="name headline">A brief proof of Birthday Paradox</h1>
         
 
         <div class="post-meta">
@@ -310,8 +312,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-10T22:04:22+08:00">
-                2020-02-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-16T23:07:06+08:00">
+                2020-08-16
               </time>
             
 
@@ -348,72 +350,28 @@
       
 
       
-        <h2 id="写在前面">写在前面</h2>
-<p>宅家没事的时候找的乐子，不定期更新，大概。</p>
-<a id="more"></a>
-<h2 id="section">1</h2>
-<h3 id="description">Description</h3>
-<p>有 <span class="math inline">\(n\)</span> 个人，其中有好有坏，每个人都知道其他任何人是好是坏，现在可以进行若干次询问，每次询问形如 <span class="math inline">\((i, j)\)</span>，表示问第 <span class="math inline">\(i\)</span> 个人第 <span class="math inline">\(j\)</span> 个人是否是好人 <span class="math inline">\((i \neq j)\)</span>，同时好人一定说真话，坏人可能说假话，问：</p>
-<ol type="1">
-<li>如果有多于一半的人是好的，是否存在策略能够在不超过 <span class="math inline">\(n\)</span> 次询问下确定一个好人。</li>
-<li>如果有恰好一半的人是坏人，是否存在上述策略。</li>
-</ol>
-<h3 id="solution">Solution</h3>
-<h4 id="section-1">1</h4>
-<p>考虑维护一个序列，初始时加入编号为 <span class="math inline">\(1\)</span> 的人，接下来依次将其他人加入，每次加入的时候询问序列末尾的人这个人是好人还是坏人，如果答案是坏人则删除末尾，否则将这个新加入的作为末尾，正确性不难验证：</p>
-<ol type="1">
-<li>每次删除的至少有一个坏人，因此最后序列剩下的人中至少有一个好人。</li>
-<li>如果序列中至少有一个好人，则序列的末尾一定也是好人。</li>
-</ol>
-<h4 id="section-2">2</h4>
-<p>不能，如果所有坏人都永远说谎，则他们与好人没有区别。</p>
-<h2 id="section-3">2</h2>
-<h3 id="巴塞尔公式">巴塞尔公式</h3>
-<p><span class="math display">\[
-    \sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}
-\]</span></p>
-<h3 id="证明">证明</h3>
-<p>首先注意到：</p>
-<p><span class="math display">\[
-\begin{aligned}
-    I=&amp;\int_0^1 \mathrm{d} x \int_0^1 \frac{1}{1-xy} \mathrm{d} y \\
-    =&amp;\iint_D \sum_{i=0}^{\infty} (xy)^i \mathrm{d}x\mathrm{d}y \\
-    =&amp;\sum_{i=0}^{\infty} \iint_D (xy)^i \mathrm{d}x\mathrm{d}y \\
-    =&amp;\sum_{i=0}^{\infty} \left(\int_0^1 x^i \mathrm{d} x\right)^2 \\
-    =&amp;\sum_{i=1}^{\infty} \frac{1}{i^2}
-\end{aligned}
-\]</span></p>
-<p>故只需证明 <span class="math inline">\(I = \dfrac{\pi^2}{6}\)</span> 即可，考虑变量替换：</p>
-<p><span class="math display">\[
-\begin{cases}
-    x = u + v \\
-    y = u - v
-\end{cases},
-\frac{\partial(x, y)}{\partial(u, v)} = \left|\begin{matrix} 1 &amp; 1 \\ 1 &amp; -1 \end{matrix} \right| = -2
-\]</span></p>
-<p>则：</p>
-<p><span class="math display">\[
-\begin{aligned}
-I &amp;= 2 \iint_{D_{uv}} \frac{1}{1 - u^2 + v^2} \mathrm{d} u \mathrm{d} v \\
-&amp;= 4 \left(\int_0^{\frac{1}{2}} \mathrm{d} u \int_0^{u} \frac{1}{1-u^2+v^2} \mathrm{d} v + \int_{\frac{1}{2}}^{1} \mathrm{d}u \int_0^{1-u} \frac{1}{1-u^2+v^2} \mathrm{d} v\right) \\
-&amp;= 4 \left(\int_0^{\frac{1}{2}} \frac{1}{\sqrt{1-u^2}} \arctan \frac{u}{\sqrt{1-u^2}} \mathrm{d} u + \int_{\frac{1}{2}}^{1} \frac{1}{\sqrt{1-u^2}} \arctan \frac{1-u}{\sqrt{1-u^2}} \mathrm{d} u\right) \\
-&amp;= 4 \left(\int_0^{\frac{1}{2}} \arctan \frac{u}{\sqrt{1-u^2}} \mathrm{d} \arctan \frac{u}{\sqrt{1-u^2}} 
-  -2       \int_{\frac{1}{2}}^1 \arctan \frac{1-u}{\sqrt{1-u^2}} \mathrm{d} \arctan \frac{1-u}{\sqrt{1-u^2}} \right) \\
-&amp;= 4 \times \frac{1}{2} \times \left(\frac{\pi}{6}\right)^2 + 4 \times \left(\frac{\pi}{6}\right)^2 = \frac{\pi^2}{6} \\
-&amp;&amp; \square
-\end{aligned}
-\]</span></p>
-<h3 id="应用">应用</h3>
+        <h1 id="introduction"><em>Introduction</em></h1>
+<h2 id="birthday-paradox"><em>Birthday Paradox</em></h2>
 <blockquote>
-<p>任取两个正整数，求它们互质的概率</p>
+<p>There are <span class="math inline">\(k\)</span> people whose birthdays are among set <span class="math inline">\(B\)</span> with size <span class="math inline">\(n\)</span>, the probability that there are <strong>at least</strong> a pair of people have the same birthday is greater than <span class="math inline">\(\frac{1}{2}\)</span> when <span class="math inline">\(k \ge 1.2 \sqrt{n} + 1\)</span></p>
 </blockquote>
-<p>考虑任意质因子 <span class="math inline">\(p\)</span>，如果两个数同时是 <span class="math inline">\(p\)</span> 的倍数，则不会互质，这个概率显然为 <span class="math inline">\(\dfrac{1}{p^2}\)</span>，因此互质的概率可以写成如下形式：</p>
+<a id="more"></a>
+<h1 id="proof"><em>Proof</em></h1>
+<p>Suppose each person's birthday is <strong>independent uniform</strong> in <span class="math inline">\(B\)</span>, then the probability that don't exist such a pair is:</p>
+<p><span class="math display">\[
+P = \prod_{i=0}^{k-1} \left(1 - \frac{i}{n}\right)
+\]</span></p>
+<p>to prove <span class="math inline">\(P \le \frac{1}{2}\)</span>, we use the result in analysis that:</p>
+<blockquote>
+<p><span class="math inline">\(\forall x \in \mathbb{R}, 1 + x \le \mathrm{e}^x\)</span> <img src="/img/exp.png"></p>
+</blockquote>
+<p>then:</p>
 <p><span class="math display">\[
 \begin{aligned}
-P &amp;= \prod_{p\, \mathrm{is\ prime}} \left(1 - \frac{1}{p^2}\right) \\
-&amp;= \prod_{p\, \mathrm{is\ prime}} \cfrac{1}{\sum_{i=0}^{\infty} \left(\cfrac{1}{p^2}\right)^i} \\
-&amp;= \frac{1}{\sum_{i=1}^{\infty} \frac{1}{i^2}} \\
-&amp;= \frac{6}{\pi^2}
+P &amp;\le \exp \left(\sum_{i=0}^{k-1} -\cfrac{i}{n}\right) \\
+&amp;\le \exp \left(-\frac{(k-1)^2}{2n}\right) \\
+&amp;\le \exp \left(-\frac{(1.2 \sqrt{n})^2}{2n}\right) \\
+&amp;= \exp(-0.72) &lt; \frac{1}{2} \\
 \end{aligned}
 \]</span></p>
 
@@ -433,9 +391,9 @@ P &amp;= \prod_{p\, \mathrm{is\ prime}} \left(1 - \frac{1}{p^2}\right) \\
       
         <div class="post-tags">
           
-            <a href="/tags/Combinatorial/" rel="tag"># Combinatorial</a>
+            <a href="/tags/Probability/" rel="tag"># Probability</a>
           
-            <a href="/tags/Induction/" rel="tag"># Induction</a>
+            <a href="/tags/Real-Analysis/" rel="tag"># Real Analysis</a>
           
         </div>
       
@@ -448,8 +406,8 @@ P &amp;= \prod_{p\, \mathrm{is\ prime}} \left(1 - \frac{1}{p^2}\right) \\
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/problem-select/" rel="next" title="互测题总结">
-                <i class="fa fa-chevron-left"></i> 互测题总结
+              <a href="/2020/cryptography/" rel="next" title="Cryptography Notes">
+                <i class="fa fa-chevron-left"></i> Cryptography Notes
               </a>
             
           </div>
@@ -457,10 +415,6 @@ P &amp;= \prod_{p\, \mathrm{is\ prime}} \left(1 - \frac{1}{p^2}\right) \\
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/cryptography/" rel="prev" title="Cryptography Notes">
-                Cryptography Notes <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -604,7 +558,7 @@ P &amp;= \prod_{p\, \mathrm{is\ prime}} \left(1 - \frac{1}{p^2}\right) \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#section"><span class="nav-number">2.</span> <span class="nav-text">1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#description"><span class="nav-number">2.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#solution"><span class="nav-number">2.2.</span> <span class="nav-text">Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#section-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#section-2"><span class="nav-number">2.2.2.</span> <span class="nav-text">2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#section-3"><span class="nav-number">3.</span> <span class="nav-text">2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#巴塞尔公式"><span class="nav-number">3.1.</span> <span class="nav-text">巴塞尔公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#证明"><span class="nav-number">3.2.</span> <span class="nav-text">证明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用"><span class="nav-number">3.3.</span> <span class="nav-text">应用</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#birthday-paradox"><span class="nav-number">1.1.</span> <span class="nav-text">Birthday Paradox</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proof"><span class="nav-number">2.</span> <span class="nav-text">Proof</span></a></li></ol></div>
             
 
           </div>
