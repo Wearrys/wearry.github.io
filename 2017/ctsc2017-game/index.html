@@ -107,18 +107,18 @@
 
 
 
-<meta name="description" content="Description  有\(N\) 局游戏, 除第一局游戏外每一局游戏的获胜机率均与上一局游戏的结果有关. 现在对游戏进行\(Q\)次修改, 每次告诉你某一局游戏的结果或者删除之前给你的信息, 求修改后期望下获胜的场数为多少.  $ N, Q   ^ 5 $">
+<meta name="description" content="Description  有\(N\) 局游戏, 除第一局游戏外每一局游戏的获胜机率均与上一局游戏的结果有关. 现在对游戏进行\(Q\)次修改, 每次告诉你某一局游戏的结果或者删除之前给你的信息, 求修改后期望下获胜的场数为多少.  \(N, Q \le 2 \times 10 ^ 5\)">
 <meta name="keywords" content="Probability,Data Structure">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CTSC2017 游戏">
 <meta property="og:url" content="http://yoursite.com/2017/ctsc2017-game/index.html">
 <meta property="og:site_name" content="Wearry&#39;s Blog">
-<meta property="og:description" content="Description  有\(N\) 局游戏, 除第一局游戏外每一局游戏的获胜机率均与上一局游戏的结果有关. 现在对游戏进行\(Q\)次修改, 每次告诉你某一局游戏的结果或者删除之前给你的信息, 求修改后期望下获胜的场数为多少.  $ N, Q   ^ 5 $">
+<meta property="og:description" content="Description  有\(N\) 局游戏, 除第一局游戏外每一局游戏的获胜机率均与上一局游戏的结果有关. 现在对游戏进行\(Q\)次修改, 每次告诉你某一局游戏的结果或者删除之前给你的信息, 求修改后期望下获胜的场数为多少.  \(N, Q \le 2 \times 10 ^ 5\)">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-29T19:43:50.000Z">
+<meta property="og:updated_time" content="2020-08-17T13:11:33.656Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CTSC2017 游戏">
-<meta name="twitter:description" content="Description  有\(N\) 局游戏, 除第一局游戏外每一局游戏的获胜机率均与上一局游戏的结果有关. 现在对游戏进行\(Q\)次修改, 每次告诉你某一局游戏的结果或者删除之前给你的信息, 求修改后期望下获胜的场数为多少.  $ N, Q   ^ 5 $">
+<meta name="twitter:description" content="Description  有\(N\) 局游戏, 除第一局游戏外每一局游戏的获胜机率均与上一局游戏的结果有关. 现在对游戏进行\(Q\)次修改, 每次告诉你某一局游戏的结果或者删除之前给你的信息, 求修改后期望下获胜的场数为多少.  \(N, Q \le 2 \times 10 ^ 5\)">
 
 
 
@@ -352,11 +352,11 @@
 <blockquote>
 <p>有<span class="math inline">\(N\)</span> 局游戏, 除第一局游戏外每一局游戏的获胜机率均与上一局游戏的结果有关. 现在对游戏进行<span class="math inline">\(Q\)</span>次修改, 每次告诉你某一局游戏的结果或者删除之前给你的信息, 求修改后期望下获胜的场数为多少.</p>
 </blockquote>
-<p>$ N, Q   ^ 5 $</p>
+<p><span class="math inline">\(N, Q \le 2 \times 10 ^ 5\)</span></p>
 <a id="more"></a>
 <h3 id="solution">Solution</h3>
 <p>首先不难发现, 某一局的游戏的胜率只与其左右的最近游戏结果相关, 所以答案可以分段计算.</p>
-<p>考虑期望的线性性, 可以将期望胜利场数表示成每一局游戏的胜率之和. 记 <span class="math inline">\(X _ i\)</span> 表示第<span class="math inline">\(i\)</span> 场游戏的状态. 所求即为 $ _ {l &lt; m &lt; r} P( X _ m = 1 | X _ l, X _ r) $.</p>
+<p>考虑期望的线性性, 可以将期望胜利场数表示成每一局游戏的胜率之和. 记 <span class="math inline">\(X_i\)</span> 表示第<span class="math inline">\(i\)</span> 场游戏的状态. 所求即为 <span class="math inline">\(\sum _ {l &lt; m &lt; r} P( X _ m = 1 | X _ l, X _ r)\)</span></p>
 <p>由贝叶斯公式: <span class="math display">\[
 \begin{align}
 P(X _ m = 1 | X _ l, X _ r) &amp;= \frac{P(X _ m = 1, X _ l, X _ r)}{P(X _ l) \cdot P(X _ r | X _ l) } \\
