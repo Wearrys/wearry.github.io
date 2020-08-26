@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="Number Theory,Probability,Induction,">
+  <meta name="keywords" content="Probability,Number Theory,Induction,">
 
 
 
@@ -108,17 +108,19 @@
 
 
 <meta name="description" content="Some notes of 🔒 cryptography lessons TODO:   Reconstruct the architecture of this post  Complete other contents">
-<meta name="keywords" content="Number Theory,Probability,Induction">
+<meta name="keywords" content="Probability,Number Theory,Induction">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cryptography Notes">
 <meta property="og:url" content="http://yoursite.com/2020/cryptography/index.html">
 <meta property="og:site_name" content="Wearry&#39;s Blog">
 <meta property="og:description" content="Some notes of 🔒 cryptography lessons TODO:   Reconstruct the architecture of this post  Complete other contents">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-08-17T13:04:14.770Z">
+<meta property="og:image" content="http://yoursite.com/img/PRG-ADV.png">
+<meta property="og:updated_time" content="2020-08-26T18:32:29.702Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cryptography Notes">
 <meta name="twitter:description" content="Some notes of 🔒 cryptography lessons TODO:   Reconstruct the architecture of this post  Complete other contents">
+<meta name="twitter:image" content="http://yoursite.com/img/PRG-ADV.png">
 
 
 
@@ -357,7 +359,7 @@ Reconstruct the architecture of this post</li>
 Complete other contents</li>
 </ul>
 <a id="more"></a>
-<h1 id="preliminary-discrete-probability"><em>Preliminary: Discrete Probability</em></h1>
+<h1 id="preliminary-fundamental-discrete-probability"><em>Preliminary: Fundamental Discrete Probability</em></h1>
 <p>Suppose <span class="math inline">\(U\)</span> is a finite set.</p>
 <h2 id="probability-distribution"><em>Probability Distribution</em></h2>
 <blockquote>
@@ -416,13 +418,72 @@ Pr[A = a \,\,\mathrm{and}\,\, B = b] = Pr[A = a] \times Pr[B = b]
 <li><span class="math inline">\(D = \{1, 2, \dots, 5\}\)</span></li>
 </ol>
 </blockquote>
-<h1 id="i-pseudo-randomness"><em>I: Pseudo Randomness</em></h1>
-<h2 id="pseudo-random-generator"><em>Pseudo Random Generator</em></h2>
+<h2 id="more-about-probability"><em>More about Probability</em></h2>
+<p><a href="https://crypto.stanford.edu/~blynn/pr/" target="_blank" rel="noopener">See also</a></p>
+<h1 id="i-pseudorandomness"><em>I: Pseudorandomness</em></h1>
+<p><code>Pseudorandomness</code> measures the extent to which a sequence of numbers, though produced by a completely deterministic and repeatable process, appear to be patternless.</p>
+<h2 id="pseudo-random-generator"><em>Pseudo-random Generator</em></h2>
+<p>A <code>Pseudo-random Generator</code>, or <code>PRG</code> for short, is an efficient, deterministic algorithm <span class="math inline">\(G\)</span> that given as input a <code>seed</code> <span class="math inline">\(s\)</span>, computes an output <span class="math inline">\(r\)</span>. Both <span class="math inline">\(s\)</span> and <span class="math inline">\(r\)</span> come from a finite space, called <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\mathcal{R}\)</span> respectively.</p>
+<p>Typically <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(\mathcal{R}\)</span> are sets of bit strings of some prescribed length. We can also regard <span class="math inline">\(G\)</span> as an abstract function defined over <span class="math inline">\(\mathcal{(S, R)}\)</span>:</p>
+<p><span class="math display">\[
+G: \mathcal{S} = \{0, 1\}^l \rightarrow \mathcal{R} = \{0, 1\}^L
+\]</span></p>
+<h3 id="security"><em>Security</em></h3>
+<p>We say a PRG <span class="math inline">\(G\)</span> is secure if <span class="math inline">\(G(s)\)</span> and <span class="math inline">\(r\)</span> are <strong>computational indistinguishable</strong>, among which <span class="math inline">\(s\)</span> is chosen uniform randomly from <span class="math inline">\(\mathcal{S}\)</span> and <span class="math inline">\(r\)</span> is chosen at random from <span class="math inline">\(\mathcal{R}\)</span>.</p>
+<p>To illustrate <strong>computational indistinguishability</strong>, the definition is formulated as an attack game:</p>
+<blockquote>
+<h4 id="attack-game-prg-and-advantage"><em>Attack Game (PRG) and Advantage</em></h4>
+<p>For a given PRG <span class="math inline">\(G\)</span> defined over <span class="math inline">\(\mathcal{(S, R)}\)</span>, and for a given adversary <span class="math inline">\(\mathcal{A}\)</span>, we define two experiments, Experiment <span class="math inline">\(0\)</span> and Experiment <span class="math inline">\(1\)</span>:</p>
+<p><strong>Experiment</strong> <span class="math inline">\(b\)</span>:</p>
+<ul>
+<li><p>The Challenger computes <span class="math inline">\(r \in \mathcal{R}\)</span> as follows: <img src="/img/PRG-ADV.png" alt="PRG-ADV"></p>
+<ul>
+<li>if <span class="math inline">\(b = 0\)</span>, <span class="math inline">\(s \xleftarrow{R} \mathcal{S}, r \leftarrow G(s)\)</span></li>
+<li>if <span class="math inline">\(b = 1\)</span>, <span class="math inline">\(r \xleftarrow{R} \mathcal{R}\)</span></li>
+</ul></li>
+<li><p>Given <span class="math inline">\(r\)</span>, the adversary computes and outputs a bit <span class="math inline">\(\hat{b} \in \{0, 1\}\)</span></p></li>
+</ul>
+<p>For <span class="math inline">\(b \in \{0, 1\}\)</span>, let <span class="math inline">\(W_b\)</span> be the event that <span class="math inline">\(\mathcal{A}\)</span> outputs <span class="math inline">\(\hat{b} = 1\)</span> in Experiment <span class="math inline">\(b\)</span>. We define <span class="math inline">\(\mathcal{A}\)</span>'s <code>advantage</code> with respect to <span class="math inline">\(G\)</span> as</p>
+<p><span class="math display">\[
+PRG_{adv} [\mathcal{A}, G] = \left|Pr[W_0] - Pr[W_1]\right|
+\]</span></p>
+</blockquote>
+<p>Now we can define a PRG <span class="math inline">\(G\)</span> is <strong>secure</strong> if the value <span class="math inline">\(PRG_{adv} [\mathcal{A}, G]\)</span> is negligible <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> for all efficient adversaries <span class="math inline">\(\mathcal{A}\)</span>.</p>
+<h2 id="pseudo-random-function"><em>Pseudo-random Function</em></h2>
+<p>A <code>Pseudo-random Function(PRF)</code> <span class="math inline">\(F\)</span> is a deterministic algorithm that has two inputs: a <code>key</code> <span class="math inline">\(k\)</span> and an <code>input data block</code> <span class="math inline">\(x\)</span>; its output <span class="math inline">\(y := F(k, x)\)</span> is called an <code>output data block</code>. We denote the finite space of <span class="math inline">\(k, x, y\)</span> with <span class="math inline">\(\mathcal{(K, X, Y)}\)</span>, over which is <span class="math inline">\(F\)</span> defined.</p>
+<p>Intuitively, our notion of security says that for a randomly chosen key <span class="math inline">\(k\)</span>, <span class="math inline">\(F(k, \cdot )\)</span> is indistinguishable from a random function from <span class="math inline">\(\mathcal{X}\)</span> to <span class="math inline">\(\mathcal{Y}\)</span></p>
+<blockquote>
+<h3 id="notation"><strong>Notation</strong></h3>
+<p><span class="math display">\[
+Funs[\mathcal{X, Y}] = \{f: \mathcal{X} \rightarrow \mathcal{Y}\}
+\]</span> clearly we know that <span class="math display">\[
+|Funs[\mathcal{X, Y}]| = |\mathcal{Y}|^{|\mathcal{X}|}
+\]</span></p>
+</blockquote>
+<h3 id="attack-game-prf">Attack Game (PRF)</h3>
+<p>Similarly we can define two experiments, Experiment <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>, for a PRF <span class="math inline">\(F\)</span> defined over <span class="math inline">\(\mathcal{(K, X, Y)}\)</span>:</p>
+<p><strong>Experiment</strong> <span class="math inline">\(b\)</span>:</p>
+<ul>
+<li>The challenger selects <span class="math inline">\(f\)</span> as follows:
+<ul>
+<li>if <span class="math inline">\(b = 0\)</span>, <span class="math inline">\(k \xleftarrow{R} \mathcal{K}, f \leftarrow F(k, \cdot)\)</span></li>
+<li>if <span class="math inline">\(b = 1\)</span>, <span class="math inline">\(f \xleftarrow{R} Funs[\mathcal{X, Y}]\)</span></li>
+</ul></li>
+<li>The adversary <span class="math inline">\(\mathcal{A}\)</span> submits a sequence of queries <span class="math inline">\(x_1, \dots, x_q\)</span>, and receives <span class="math inline">\(y_i = f(x_i)\)</span> for each <span class="math inline">\(i\)</span> from the challenger</li>
+<li>The adversary computes <span class="math inline">\(\hat{b} \in {0, 1}\)</span></li>
+</ul>
+<p>Let <span class="math inline">\(W_b\)</span> be the event <span class="math inline">\(\mathcal{A}\)</span> outputs <span class="math inline">\(1\)</span> in Experiment <span class="math inline">\(b\)</span>, the <code>advantage</code> is also defined by:</p>
+<p><span class="math display">\[
+PRF_{adv} [\mathcal{A}, F] = |Pr[W_0] - Pr[W_1]|
+\]</span></p>
+<p>We say a PRF <span class="math inline">\(F\)</span> is <strong>secure</strong> if all efficient adversary <span class="math inline">\(A\)</span> have a negligible advantage.</p>
+<h2 id="pseudo-random-permutation"><em>Pseudo-random Permutation</em></h2>
+<p>Also called <a href="#bc">Block Cipher</a>, is a special PRF which is also invertible.</p>
 <h1 id="ii-cipher"><em>II: Cipher</em></h1>
 <p>Throughout history, there were many ways of encryption, however, some of them have been proved unsafe. The question now is whether a particular <code>cipher</code> is <strong>secure</strong> and how to construct a <strong>secure</strong> one.</p>
 <h2 id="stream-cipher"><em>Stream Cipher</em></h2>
 <blockquote>
-<p>A <code>cipher</code> defined over a triple <span class="math inline">\((\mathcal{K, M, C})\)</span> is a pair of <strong>efficient</strong><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> algos <span class="math inline">\((E, D)\)</span> where:</p>
+<p>A <code>cipher</code> defined over a triple <span class="math inline">\((\mathcal{K, M, C})\)</span> is a pair of <strong>efficient</strong><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> algos <span class="math inline">\((E, D)\)</span> where:</p>
 <p><span class="math display">\[
 \begin{aligned}
 E: \mathcal{K \times M} \rightarrow \mathcal{C} \\
@@ -452,13 +513,15 @@ D(k, m) = k \oplus m \\
 <p>If a <code>cipher</code> has <code>perfect secrecy</code>, then: <span class="math display">\[|\mathcal{K}| \ge |\mathcal{M}|\]</span> which means the length of keys mustn't less than length of messages.</p>
 </blockquote>
 <p>That somehow makes no sense for if we have some way sending and receiving such long keys secretly, then it's absolutely unnecessary to use <code>cipher</code>.</p>
+<h2 id="bc"><em>Block Cipher</em></h2>
 <h1 id="iii-mac"><em>III: MAC</em></h1>
 <h1 id="iv-attack-security"><em>IV: Attack &amp; Security</em></h1>
 <section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1" role="doc-endnote"><p>LSB is a function which gets the last significant bit of a bit-string<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>Theoretically, efficient means runs in polynomial time; Practically it means runs within a certain time period.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1" role="doc-endnote"><p>LSB is a function which gets the last significant bit of a bit-string.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Negligible means small enough so that cannot be detected even by enormous samples.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>Theoretically, efficient means runs in polynomial time; Practically it means runs within a certain time period.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -478,9 +541,9 @@ D(k, m) = k \oplus m \\
       
         <div class="post-tags">
           
-            <a href="/tags/Number-Theory/" rel="tag"># Number Theory</a>
-          
             <a href="/tags/Probability/" rel="tag"># Probability</a>
+          
+            <a href="/tags/Number-Theory/" rel="tag"># Number Theory</a>
           
             <a href="/tags/Induction/" rel="tag"># Induction</a>
           
@@ -651,7 +714,7 @@ D(k, m) = k \oplus m \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#preliminary-discrete-probability"><span class="nav-number">1.</span> <span class="nav-text">Preliminary: Discrete Probability</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#probability-distribution"><span class="nav-number">1.1.</span> <span class="nav-text">Probability Distribution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#event"><span class="nav-number">1.2.</span> <span class="nav-text">Event</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#the-union-bound"><span class="nav-number">1.2.1.</span> <span class="nav-text">The Union Bound</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#random-variable"><span class="nav-number">1.3.</span> <span class="nav-text">Random Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#uniform-random-variable"><span class="nav-number">1.3.1.</span> <span class="nav-text">Uniform Random Variable</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#independence"><span class="nav-number">1.4.</span> <span class="nav-text">Independence</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#i-pseudo-randomness"><span class="nav-number">2.</span> <span class="nav-text">I: Pseudo Randomness</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pseudo-random-generator"><span class="nav-number">2.1.</span> <span class="nav-text">Pseudo Random Generator</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ii-cipher"><span class="nav-number">3.</span> <span class="nav-text">II: Cipher</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#stream-cipher"><span class="nav-number">3.1.</span> <span class="nav-text">Stream Cipher</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#otp"><span class="nav-number">3.1.1.</span> <span class="nav-text">One Time Pad</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#perfect-secrecy"><span class="nav-number">3.2.</span> <span class="nav-text">Perfect Secrecy</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iii-mac"><span class="nav-number">4.</span> <span class="nav-text">III: MAC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iv-attack-security"><span class="nav-number">5.</span> <span class="nav-text">IV: Attack &amp; Security</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#preliminary-fundamental-discrete-probability"><span class="nav-number">1.</span> <span class="nav-text">Preliminary: Fundamental Discrete Probability</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#probability-distribution"><span class="nav-number">1.1.</span> <span class="nav-text">Probability Distribution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#event"><span class="nav-number">1.2.</span> <span class="nav-text">Event</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#the-union-bound"><span class="nav-number">1.2.1.</span> <span class="nav-text">The Union Bound</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#random-variable"><span class="nav-number">1.3.</span> <span class="nav-text">Random Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#uniform-random-variable"><span class="nav-number">1.3.1.</span> <span class="nav-text">Uniform Random Variable</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#independence"><span class="nav-number">1.4.</span> <span class="nav-text">Independence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#more-about-probability"><span class="nav-number">1.5.</span> <span class="nav-text">More about Probability</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#i-pseudorandomness"><span class="nav-number">2.</span> <span class="nav-text">I: Pseudorandomness</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pseudo-random-generator"><span class="nav-number">2.1.</span> <span class="nav-text">Pseudo-random Generator</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#security"><span class="nav-number">2.1.1.</span> <span class="nav-text">Security</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#attack-game-prg-and-advantage"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">Attack Game (PRG) and Advantage</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pseudo-random-function"><span class="nav-number">2.2.</span> <span class="nav-text">Pseudo-random Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notation"><span class="nav-number">2.2.1.</span> <span class="nav-text">Notation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#attack-game-prf"><span class="nav-number">2.2.2.</span> <span class="nav-text">Attack Game (PRF)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pseudo-random-permutation"><span class="nav-number">2.3.</span> <span class="nav-text">Pseudo-random Permutation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ii-cipher"><span class="nav-number">3.</span> <span class="nav-text">II: Cipher</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#stream-cipher"><span class="nav-number">3.1.</span> <span class="nav-text">Stream Cipher</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#otp"><span class="nav-number">3.1.1.</span> <span class="nav-text">One Time Pad</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#perfect-secrecy"><span class="nav-number">3.2.</span> <span class="nav-text">Perfect Secrecy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bc"><span class="nav-number">3.3.</span> <span class="nav-text">Block Cipher</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iii-mac"><span class="nav-number">4.</span> <span class="nav-text">III: MAC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iv-attack-security"><span class="nav-number">5.</span> <span class="nav-text">IV: Attack &amp; Security</span></a></li></ol></div>
             
 
           </div>
