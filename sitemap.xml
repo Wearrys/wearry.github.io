@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/birthday-paradox/</loc>
+    
+    <lastmod>2020-08-27T01:36:48.497Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/friends/index.html</loc>
     
     <lastmod>2020-08-26T18:34:59.186Z</lastmod>
@@ -37,13 +44,6 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2020/birthday-paradox/</loc>
-    
-    <lastmod>2020-08-17T01:50:55.954Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yoursite.com/2017/cf-553e/</loc>
     
     <lastmod>2020-07-14T12:09:41.580Z</lastmod>
@@ -72,14 +72,21 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/cf-418e/</loc>
+    <loc>http://yoursite.com/2017/zjoi2017-bit/</loc>
     
     <lastmod>2018-11-29T19:43:50.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite.com/2018/noi2018/</loc>
+    <loc>http://yoursite.com/2018/ex-eratos-sieve/</loc>
+    
+    <lastmod>2018-11-29T19:43:50.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2017/cf-418e/</loc>
     
     <lastmod>2018-11-29T19:43:50.000Z</lastmod>
     
@@ -93,7 +100,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/zjoi2017-bit/</loc>
+    <loc>http://yoursite.com/2017/noi2016-grid/</loc>
     
     <lastmod>2018-11-29T19:43:50.000Z</lastmod>
     
@@ -107,14 +114,7 @@
   </url>
   
   <url>
-    <loc>http://yoursite.com/2017/noi2016-grid/</loc>
-    
-    <lastmod>2018-11-29T19:43:50.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2018/ex-eratos-sieve/</loc>
+    <loc>http://yoursite.com/2018/noi2018/</loc>
     
     <lastmod>2018-11-29T19:43:50.000Z</lastmod>
     
