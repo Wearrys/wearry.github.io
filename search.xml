@@ -1,62 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Codeforces Div2 418E</title>
-    <url>/2017/cf-418e/</url>
-    <content><![CDATA[<h3 id="description">Description</h3>
-<blockquote>
-<p>求满足如下条件的 <span class="math inline">\(N\)</span> 个点的简单无向图的个数对 $ 1e9 + 7 $ 取模的结果： - 每个点的度数均为 <span class="math inline">\(2\)</span> 或 <span class="math inline">\(3\)</span> - 从一号点到任何一个点的最短路唯一并且随着点标号上升而不降.</p>
-</blockquote>
-<p>(两个图不同当且仅当边的集合不同). <span class="math inline">\(N &lt;= 50\)</span></p>
-<a id="more"></a>
-<h3 id="solution">Solution</h3>
-<p>我们可以记: - <span class="math inline">\(f_{i, j}\)</span> 表示考虑完前 <span class="math inline">\(i\)</span> 个点, 最后一层恰好有 <span class="math inline">\(j\)</span> 个点, 且最后一层之前的点度数已经满足条件时的方案数. - <span class="math inline">\(g_{i, j, k}\)</span> 表示当前层有 <span class="math inline">\(i\)</span> 个点, 上一层剩下来 <span class="math inline">\(j\)</span> 个度为 <span class="math inline">\(2\)</span> 的点, <span class="math inline">\(k\)</span> 个度为 <span class="math inline">\(3\)</span> 的点时连边的方案数.</p>
-<p>那么容易得到<span class="math inline">\(f_{i, j} = \sum_{k} f_{i-j, k} \times g_{j, c0, c1}\)</span>, 其中<span class="math inline">\(c0\,,c1\)</span>表示最后一层 <span class="math inline">\(k\)</span> 个点中度为 <span class="math inline">\(2\)</span> 的点和度为 <span class="math inline">\(3\)</span> 的点的个数.</p>
-<p>对于 <span class="math inline">\(g\)</span>, 不难得到:</p>
-<p><span class="math display">\[ 
-g_{i, j, k} = 
-\begin{cases} 
-    1 &amp; i = 0, j = 0, k = 0 \\
-    \sum_{l=2}^{k-1} \frac{l!}{2} {k-1 \choose l} g_{i, j, k-l-1} &amp; i = 0, j = 0, k &gt; 0 \\
-    (j-1) \cdot g_{i, j-2, k} + k \cdot g_{i, j, k-1} &amp; i = 0, j &gt; 0 \\
-    j \cdot g_{i-1, j-1, k} + k \cdot g_{i-1, j+1, k-1} &amp; i &gt; 0
-\end{cases}
-\]</span></p>
-<h3 id="hint">Hint</h3>
-<p>注意在第二个递推式中 <span class="math inline">\(l\)</span> 从 <span class="math inline">\(2\)</span> 开始枚举, 因为不能有重边, 所以不存在大小为 <span class="math inline">\(2\)</span> 的环.</p>
-]]></content>
-      <tags>
-        <tag>Combinatorial</tag>
-        <tag>Dynamic Programming</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Codeforces 553E Kyoya and Train</title>
-    <url>/2017/cf-553e/</url>
-    <content><![CDATA[<h3 id="description">Description</h3>
-<blockquote>
-<p>给定 <span class="math inline">\(N\)</span> 个点, <span class="math inline">\(M\)</span> 条边的有向图.</p>
-</blockquote>
-<p>每条边有花费: 通过第 <span class="math inline">\(i\)</span> 条边的时间有 $ P _ {i1} $ 的概率为 <span class="math inline">\(1\)</span>, <span class="math inline">\(P _ {i2}\)</span> 的概率为 <span class="math inline">\(2\)</span>... 如果总用时超过 <span class="math inline">\(T\)</span> 则会被罚钱 <span class="math inline">\(X\)</span> 元, 求从 <span class="math inline">\(1\)</span> 号点到 <span class="math inline">\(n\)</span> 号点的最小期望花费. $ N , M , T  $</p>
-<h3 id="solution">Solution</h3>
-<p>考虑暴力DP, 记状态 $ dp _ {i, t} $ 表示到达 <span class="math inline">\(i\)</span> 号点, 且经过的时间为 <span class="math inline">\(t\)</span> 的最小期望花费, 转移十分显然. 同时因为状态之间按照时间构成一个拓扑图, 所以转移不存在环.</p>
-<a id="more"></a>
-<p>可以记 <span class="math inline">\(S_{e, t}\)</span> 表示边 <span class="math inline">\(e\)</span> 在时刻 <span class="math inline">\(t\)</span> 之后后继状态的最小期望花费. 则可以用下面这个式子计算 <span class="math inline">\(dp _ {e, t}\)</span>:</p>
-<p><span class="math display">\[d_{i, t} = \min \left\{ S_{e, t} + cost_e \right\}\]</span></p>
-<p><span class="math inline">\(e\)</span> 是 <span class="math inline">\(i\)</span> 的出边.</p>
-<p>接下来考虑如何计算 <span class="math inline">\(S(e,t)\)</span>, 利用定义:</p>
-<p><span class="math display">\[S_{e, t} = \sum_{i = 1}^{T} dp_{to_e, t+i} * P_{ei}\]</span></p>
-<p>这样变成卷积形式, 分治 <span class="math inline">\(FFT\)</span> 即可.</p>
-<h3 id="code">Code</h3>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> oo = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">200000</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> PI = <span class="built_in">acos</span>(<span class="number">-1.0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">bool</span> <span class="title">chkmax</span><span class="params">(T&amp; a, T b)</span> </span>&#123; <span class="keyword">return</span> a &lt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">bool</span> <span class="title">chkmin</span><span class="params">(T&amp; a, T b)</span> </span>&#123; <span class="keyword">return</span> a &gt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fst first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> snd second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> debug(x) cerr &lt;&lt; #x &lt;&lt; <span class="meta-string">":"</span> &lt;&lt; (x) &lt;&lt; endl</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> REP(i, a, b) for(int i = (a), i##end = (b); i &lt; i##end; ++i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DREP(i, a, b) for(int i = (a)-1, i##bgn = (b); i &gt;= i##bgn; --i)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function">T <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    T n = <span class="number">0</span>, f = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="keyword">for</span>( ;!<span class="built_in">isdigit</span>(ch); ch = getchar()) <span class="keyword">if</span>(ch == <span class="string">'-'</span>) f = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>( ; <span class="built_in">isdigit</span>(ch); ch = getchar()) n = n * <span class="number">10</span> + ch - <span class="number">48</span>;</span><br><span class="line">    <span class="keyword">return</span> n * f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Complex</span> &#123;</span></span><br><span class="line">    <span class="keyword">double</span> real, imag;</span><br><span class="line">    Complex(<span class="keyword">double</span> r = <span class="number">0.0</span>, <span class="keyword">double</span> i = <span class="number">0.0</span>): real(r), imag(i) &#123;&#125;</span><br><span class="line">    Complex <span class="keyword">operator</span> + (<span class="keyword">const</span> Complex&amp; rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Complex(real + rhs.real, imag + rhs.imag);</span><br><span class="line">    &#125;</span><br><span class="line">    Complex <span class="keyword">operator</span> - (<span class="keyword">const</span> Complex&amp; rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Complex(real - rhs.real, imag - rhs.imag);</span><br><span class="line">    &#125;</span><br><span class="line">    Complex <span class="keyword">operator</span> * (<span class="keyword">const</span> Complex&amp; rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Complex(real*rhs.real - imag*rhs.imag, real*rhs.imag + imag*rhs.real);</span><br><span class="line">    &#125;</span><br><span class="line">    Complex <span class="keyword">operator</span> / (<span class="keyword">const</span> <span class="keyword">double</span>&amp; div) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Complex(real / div, imag / div);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> rev[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFT</span><span class="params">(Complex *x, <span class="keyword">int</span> N, <span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) </span><br><span class="line">        <span class="keyword">if</span>(i &lt; rev[i]) swap(x[i], x[rev[i]]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> l = <span class="number">2</span>; l &lt;= N; l &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        Complex wn = Complex(<span class="built_in">cos</span>(<span class="number">2</span>*PI*t/l), <span class="built_in">sin</span>(<span class="number">2</span>*PI*t/l));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i += l) &#123;</span><br><span class="line">            Complex w = Complex(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; (l &gt;&gt; <span class="number">1</span>); j++, w = w * wn) &#123;</span><br><span class="line">                Complex L = x[i + j];</span><br><span class="line">                Complex R = x[i + j + (l &gt;&gt; <span class="number">1</span>)] * w;</span><br><span class="line">                x[i + j] = L + R;</span><br><span class="line">                x[i + j + (l &gt;&gt; <span class="number">1</span>)] = L - R;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!~t) <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) x[i] = x[i] / N;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> dis[N][N];</span><br><span class="line"><span class="keyword">int</span> n, m, t, x;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> u, v, c;</span><br><span class="line">    <span class="keyword">double</span> p[maxn];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">input</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        u = read&lt;<span class="keyword">int</span>&gt;(), v = read&lt;<span class="keyword">int</span>&gt;(), c = read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line"></span><br><span class="line">        chkmin(dis[u][v], c);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= t; i++) p[i] = <span class="keyword">double</span>(read&lt;<span class="keyword">int</span>&gt;()) / <span class="number">100000.0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;E[N];</span><br><span class="line"></span><br><span class="line">Complex A[maxn], B[maxn];</span><br><span class="line"><span class="keyword">double</span> S[N][maxn], f[N][maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> mid)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> base, len;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; m; k++) &#123;</span><br><span class="line">        <span class="keyword">int</span> v = E[k].v;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(base = <span class="number">1</span>, len = <span class="number">0</span>; base &lt;= <span class="number">2</span>*r-l-mid+<span class="number">1</span>; base &lt;&lt;= <span class="number">1</span>) ++ len;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; base; i++) rev[i] = (rev[i&gt;&gt;<span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i&amp;<span class="number">1</span>) &lt;&lt; (len<span class="number">-1</span>));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; base; i++) A[i] = B[i] = Complex(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; r-mid; i++) A[i] = Complex(f[v][r-i], <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= r-l; i++) B[i<span class="number">-1</span>] = Complex(E[k].p[i], <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        DFT(A, base, <span class="number">1</span>); DFT(B, base, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; base; i++) A[i] = A[i] * B[i];</span><br><span class="line">        DFT(A, base, <span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = l; i &lt;= mid; i++) S[k][i] += A[r-i<span class="number">-1</span>].real;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cdq_solve</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l == r) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) </span><br><span class="line">            chkmin(f[E[i].u][l], S[i][l] + E[i].c);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    cdq_solve(mid+<span class="number">1</span>, r);</span><br><span class="line">    calc(l, r, mid);</span><br><span class="line">    cdq_solve(l, mid);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">    freopen(<span class="string">"data.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"ans.txt"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">memset</span>(dis, oo, <span class="keyword">sizeof</span> dis);</span><br><span class="line">    n = read&lt;<span class="keyword">int</span>&gt;(), m = read&lt;<span class="keyword">int</span>&gt;(), t = read&lt;<span class="keyword">int</span>&gt;(), x = read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) dis[i][i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) E[i].input();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n; k++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) </span><br><span class="line">                chkmin(dis[i][j], dis[i][k] + dis[k][j]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> T = <span class="number">0</span>; T &lt;= t; T++) f[i][T] = (i == n) ? <span class="number">0</span> : oo;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> T = t+<span class="number">1</span>; T &lt;= <span class="number">2</span>*t; T++) f[i][T] = dis[i][n] + x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    calc(<span class="number">1</span>, t*<span class="number">2</span>, t);</span><br><span class="line">    cdq_solve(<span class="number">0</span>, t);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.10lf\n"</span>, f[<span class="number">1</span>][<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>Dynamic Programming</tag>
-        <tag>Probability</tag>
-        <tag>Generating Function</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Atcoder 选做</title>
     <url>/2017/atcoder-select/</url>
     <content><![CDATA[<p>其实是总结一下比赛中遇到的好题, 然后瞎做了几场 AGC 的题目练习, 感觉还比较有意思.</p>
@@ -150,9 +94,9 @@ g(x, y) =
 <p>然后我们得到了一个<span class="math inline">\(Fibonacci\)</span>数列? 直接暴力算就好了... 实际上第一种情况也可以直接算, 因为整个序列都是<span class="math inline">\(T\)</span>的若干次重复得到的.</p>
 ]]></content>
       <tags>
-        <tag>Combinatorial</tag>
-        <tag>Dynamic Programming</tag>
         <tag>Summary</tag>
+        <tag>Dynamic Programming</tag>
+        <tag>Combinatorial</tag>
       </tags>
   </entry>
   <entry>
@@ -186,6 +130,65 @@ g(x, y) =
 ]]></content>
       <tags>
         <tag>Summary</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>A Brief Proof of Birthday Paradox</title>
+    <url>/2020/birthday-paradox/</url>
+    <content><![CDATA[<h1 id="introduction"><em>Introduction</em></h1>
+<h2 id="birthday-paradox"><em>Birthday Paradox</em></h2>
+<blockquote>
+<p>There are <span class="math inline">\(k\)</span> people whose birthdays are among set <span class="math inline">\(B\)</span> with size <span class="math inline">\(n\)</span>, the probability that there are <strong>at least</strong> a pair of people have the same birthday is greater than <span class="math inline">\(\frac{1}{2}\)</span> when <span class="math inline">\(k \ge 1.2 \sqrt{n} + 1\)</span></p>
+</blockquote>
+<a id="more"></a>
+<h1 id="proof"><em>Proof</em></h1>
+<p>Suppose each person's birthday is <strong>independent uniform</strong> in <span class="math inline">\(B\)</span>, then the probability that don't exist such a pair is:</p>
+<p><span class="math display">\[
+P = \prod_{i=0}^{k-1} \left(1 - \frac{i}{n}\right)
+\]</span></p>
+<p>to prove <span class="math inline">\(P \le \frac{1}{2}\)</span>, we use the result in analysis that:</p>
+<blockquote>
+<p><span class="math inline">\(\forall x \in \mathbb{R}, 1 + x \le \mathrm{e}^x\)</span> <img src="/img/exp.png"></p>
+</blockquote>
+<p>then:</p>
+<p><span class="math display">\[
+\begin{aligned}
+P &amp;\le \exp \left(\sum_{i=0}^{k-1} -\cfrac{i}{n}\right) \\
+&amp;\le \exp \left(-\frac{(k-1)^2}{2n}\right) \\
+&amp;\le \exp \left(-\frac{(1.2 \sqrt{n})^2}{2n}\right) \\
+&amp;= \exp(-0.72) &lt; \frac{1}{2} \\
+\end{aligned}
+\]</span></p>
+]]></content>
+      <tags>
+        <tag>Probability</tag>
+        <tag>Real Analysis</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Codeforces 553E Kyoya and Train</title>
+    <url>/2017/cf-553e/</url>
+    <content><![CDATA[<h3 id="description">Description</h3>
+<blockquote>
+<p>给定 <span class="math inline">\(N\)</span> 个点, <span class="math inline">\(M\)</span> 条边的有向图.</p>
+</blockquote>
+<p>每条边有花费: 通过第 <span class="math inline">\(i\)</span> 条边的时间有 $ P _ {i1} $ 的概率为 <span class="math inline">\(1\)</span>, <span class="math inline">\(P _ {i2}\)</span> 的概率为 <span class="math inline">\(2\)</span>... 如果总用时超过 <span class="math inline">\(T\)</span> 则会被罚钱 <span class="math inline">\(X\)</span> 元, 求从 <span class="math inline">\(1\)</span> 号点到 <span class="math inline">\(n\)</span> 号点的最小期望花费. $ N , M , T  $</p>
+<h3 id="solution">Solution</h3>
+<p>考虑暴力DP, 记状态 $ dp _ {i, t} $ 表示到达 <span class="math inline">\(i\)</span> 号点, 且经过的时间为 <span class="math inline">\(t\)</span> 的最小期望花费, 转移十分显然. 同时因为状态之间按照时间构成一个拓扑图, 所以转移不存在环.</p>
+<a id="more"></a>
+<p>可以记 <span class="math inline">\(S_{e, t}\)</span> 表示边 <span class="math inline">\(e\)</span> 在时刻 <span class="math inline">\(t\)</span> 之后后继状态的最小期望花费. 则可以用下面这个式子计算 <span class="math inline">\(dp _ {e, t}\)</span>:</p>
+<p><span class="math display">\[d_{i, t} = \min \left\{ S_{e, t} + cost_e \right\}\]</span></p>
+<p><span class="math inline">\(e\)</span> 是 <span class="math inline">\(i\)</span> 的出边.</p>
+<p>接下来考虑如何计算 <span class="math inline">\(S(e,t)\)</span>, 利用定义:</p>
+<p><span class="math display">\[S_{e, t} = \sum_{i = 1}^{T} dp_{to_e, t+i} * P_{ei}\]</span></p>
+<p>这样变成卷积形式, 分治 <span class="math inline">\(FFT\)</span> 即可.</p>
+<h3 id="code">Code</h3>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> oo = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">200000</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> PI = <span class="built_in">acos</span>(<span class="number">-1.0</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">bool</span> <span class="title">chkmax</span><span class="params">(T&amp; a, T b)</span> </span>&#123; <span class="keyword">return</span> a &lt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">bool</span> <span class="title">chkmin</span><span class="params">(T&amp; a, T b)</span> </span>&#123; <span class="keyword">return</span> a &gt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fst first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> snd second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> debug(x) cerr &lt;&lt; #x &lt;&lt; <span class="meta-string">":"</span> &lt;&lt; (x) &lt;&lt; endl</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> REP(i, a, b) for(int i = (a), i##end = (b); i &lt; i##end; ++i)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DREP(i, a, b) for(int i = (a)-1, i##bgn = (b); i &gt;= i##bgn; --i)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function">T <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    T n = <span class="number">0</span>, f = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="keyword">for</span>( ;!<span class="built_in">isdigit</span>(ch); ch = getchar()) <span class="keyword">if</span>(ch == <span class="string">'-'</span>) f = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>( ; <span class="built_in">isdigit</span>(ch); ch = getchar()) n = n * <span class="number">10</span> + ch - <span class="number">48</span>;</span><br><span class="line">    <span class="keyword">return</span> n * f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Complex</span> &#123;</span></span><br><span class="line">    <span class="keyword">double</span> real, imag;</span><br><span class="line">    Complex(<span class="keyword">double</span> r = <span class="number">0.0</span>, <span class="keyword">double</span> i = <span class="number">0.0</span>): real(r), imag(i) &#123;&#125;</span><br><span class="line">    Complex <span class="keyword">operator</span> + (<span class="keyword">const</span> Complex&amp; rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Complex(real + rhs.real, imag + rhs.imag);</span><br><span class="line">    &#125;</span><br><span class="line">    Complex <span class="keyword">operator</span> - (<span class="keyword">const</span> Complex&amp; rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Complex(real - rhs.real, imag - rhs.imag);</span><br><span class="line">    &#125;</span><br><span class="line">    Complex <span class="keyword">operator</span> * (<span class="keyword">const</span> Complex&amp; rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Complex(real*rhs.real - imag*rhs.imag, real*rhs.imag + imag*rhs.real);</span><br><span class="line">    &#125;</span><br><span class="line">    Complex <span class="keyword">operator</span> / (<span class="keyword">const</span> <span class="keyword">double</span>&amp; div) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Complex(real / div, imag / div);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> rev[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFT</span><span class="params">(Complex *x, <span class="keyword">int</span> N, <span class="keyword">int</span> t)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) </span><br><span class="line">        <span class="keyword">if</span>(i &lt; rev[i]) swap(x[i], x[rev[i]]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> l = <span class="number">2</span>; l &lt;= N; l &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        Complex wn = Complex(<span class="built_in">cos</span>(<span class="number">2</span>*PI*t/l), <span class="built_in">sin</span>(<span class="number">2</span>*PI*t/l));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i += l) &#123;</span><br><span class="line">            Complex w = Complex(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; (l &gt;&gt; <span class="number">1</span>); j++, w = w * wn) &#123;</span><br><span class="line">                Complex L = x[i + j];</span><br><span class="line">                Complex R = x[i + j + (l &gt;&gt; <span class="number">1</span>)] * w;</span><br><span class="line">                x[i + j] = L + R;</span><br><span class="line">                x[i + j + (l &gt;&gt; <span class="number">1</span>)] = L - R;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!~t) <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++) x[i] = x[i] / N;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> dis[N][N];</span><br><span class="line"><span class="keyword">int</span> n, m, t, x;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> u, v, c;</span><br><span class="line">    <span class="keyword">double</span> p[maxn];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">input</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        u = read&lt;<span class="keyword">int</span>&gt;(), v = read&lt;<span class="keyword">int</span>&gt;(), c = read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line"></span><br><span class="line">        chkmin(dis[u][v], c);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= t; i++) p[i] = <span class="keyword">double</span>(read&lt;<span class="keyword">int</span>&gt;()) / <span class="number">100000.0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;E[N];</span><br><span class="line"></span><br><span class="line">Complex A[maxn], B[maxn];</span><br><span class="line"><span class="keyword">double</span> S[N][maxn], f[N][maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">calc</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> mid)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> base, len;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; m; k++) &#123;</span><br><span class="line">        <span class="keyword">int</span> v = E[k].v;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(base = <span class="number">1</span>, len = <span class="number">0</span>; base &lt;= <span class="number">2</span>*r-l-mid+<span class="number">1</span>; base &lt;&lt;= <span class="number">1</span>) ++ len;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; base; i++) rev[i] = (rev[i&gt;&gt;<span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i&amp;<span class="number">1</span>) &lt;&lt; (len<span class="number">-1</span>));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; base; i++) A[i] = B[i] = Complex(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; r-mid; i++) A[i] = Complex(f[v][r-i], <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= r-l; i++) B[i<span class="number">-1</span>] = Complex(E[k].p[i], <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        DFT(A, base, <span class="number">1</span>); DFT(B, base, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; base; i++) A[i] = A[i] * B[i];</span><br><span class="line">        DFT(A, base, <span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = l; i &lt;= mid; i++) S[k][i] += A[r-i<span class="number">-1</span>].real;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">cdq_solve</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l == r) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) </span><br><span class="line">            chkmin(f[E[i].u][l], S[i][l] + E[i].c);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    cdq_solve(mid+<span class="number">1</span>, r);</span><br><span class="line">    calc(l, r, mid);</span><br><span class="line">    cdq_solve(l, mid);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">    freopen(<span class="string">"data.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"ans.txt"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">memset</span>(dis, oo, <span class="keyword">sizeof</span> dis);</span><br><span class="line">    n = read&lt;<span class="keyword">int</span>&gt;(), m = read&lt;<span class="keyword">int</span>&gt;(), t = read&lt;<span class="keyword">int</span>&gt;(), x = read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) dis[i][i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) E[i].input();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n; k++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) </span><br><span class="line">                chkmin(dis[i][j], dis[i][k] + dis[k][j]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> T = <span class="number">0</span>; T &lt;= t; T++) f[i][T] = (i == n) ? <span class="number">0</span> : oo;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> T = t+<span class="number">1</span>; T &lt;= <span class="number">2</span>*t; T++) f[i][T] = dis[i][n] + x;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    calc(<span class="number">1</span>, t*<span class="number">2</span>, t);</span><br><span class="line">    cdq_solve(<span class="number">0</span>, t);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.10lf\n"</span>, f[<span class="number">1</span>][<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>Dynamic Programming</tag>
+        <tag>Probability</tag>
+        <tag>Generating Function</tag>
       </tags>
   </entry>
   <entry>
@@ -232,85 +235,61 @@ g(x, y) =
       </tags>
   </entry>
   <entry>
-    <title>Mathematical Problems</title>
-    <url>/2020/exercise-of-thoughts/</url>
-    <content><![CDATA[<h2 id="preface">Preface</h2>
-<p>Some interesting problems about Number Theory, Combinatics, Analysis or Algebra.</p>
-<a id="more"></a>
-<h2 id="basel-series">Basel Series</h2>
-<p>Calculate</p>
-<p><span class="math display">\[
-    \sum_{n=1}^{\infty} \frac{1}{n^2} = 1 + \frac{1}{2^2} + \frac{1}{3^2} + \dots
-\]</span></p>
-<h3 id="analytical-perspective">Analytical Perspective</h3>
-<p>First notice that：</p>
-<p><span class="math display">\[
-\begin{aligned}
-    I=&amp;\int_0^1 \mathrm{d} x \int_0^1 \frac{1}{1-xy} \mathrm{d} y \\
-    =&amp;\iint_D \sum_{i=0}^{\infty} (xy)^i \mathrm{d}x\mathrm{d}y \\
-    =&amp;\sum_{i=0}^{\infty} \iint_D (xy)^i \mathrm{d}x\mathrm{d}y \\
-    =&amp;\sum_{i=0}^{\infty} \left(\int_0^1 x^i \mathrm{d} x\right)^2 \\
-    =&amp;\sum_{i=1}^{\infty} \frac{1}{i^2}
-\end{aligned}
-\]</span></p>
-<p>Now just need to calculate <span class="math inline">\(I\)</span>，replace variables：</p>
-<p><span class="math display">\[
-\begin{cases}
-    x = u + v \\
-    y = u - v
-\end{cases},
-\frac{\partial(x, y)}{\partial(u, v)} = \left|\begin{matrix} 1 &amp; 1 \\ 1 &amp; -1 \end{matrix} \right| = -2
-\]</span></p>
-<p>then：</p>
-<p><span class="math display">\[
-\begin{aligned}
-I &amp;= 2 \iint_{D_{uv}} \frac{1}{1 - u^2 + v^2} \mathrm{d} u \mathrm{d} v \\
-&amp;= 4 \left(\int_0^{\frac{1}{2}} \mathrm{d} u \int_0^{u} \frac{1}{1-u^2+v^2} \mathrm{d} v + \int_{\frac{1}{2}}^{1} \mathrm{d}u \int_0^{1-u} \frac{1}{1-u^2+v^2} \mathrm{d} v\right) \\
-&amp;= 4 \left(\int_0^{\frac{1}{2}} \frac{1}{\sqrt{1-u^2}} \arctan \frac{u}{\sqrt{1-u^2}} \mathrm{d} u + \int_{\frac{1}{2}}^{1} \frac{1}{\sqrt{1-u^2}} \arctan \frac{1-u}{\sqrt{1-u^2}} \mathrm{d} u\right) \\
-&amp;= 4 \left(\int_0^{\frac{1}{2}} \arctan \frac{u}{\sqrt{1-u^2}} \mathrm{d} \arctan \frac{u}{\sqrt{1-u^2}} 
-  -2       \int_{\frac{1}{2}}^1 \arctan \frac{1-u}{\sqrt{1-u^2}} \mathrm{d} \arctan \frac{1-u}{\sqrt{1-u^2}} \right) \\
-&amp;= 4 \times \frac{1}{2} \times \left(\frac{\pi}{6}\right)^2 + 4 \times \left(\frac{\pi}{6}\right)^2 = \frac{\pi^2}{6} \\
-&amp;&amp; \square
-\end{aligned}
-\]</span></p>
-<h3 id="algebraic-perspective">Algebraic Perspective</h3>
-<p>From Taylor's series, we know that:</p>
-<p><span class="math display">\[
-\sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \dots
-\]</span></p>
-<p>Let:</p>
-<p><span class="math display">\[
-f(x) = \frac{\sin(x)}{x} = 1 - \frac{x^2}{3!} + \frac{x^4}{5!} - \dots
-\]</span></p>
-<p>Obviously the roots of <span class="math inline">\(f(x)\)</span> are <span class="math inline">\(n\pi, n \in \mathbb{Z} \backslash \{0\}\)</span>, hence:</p>
-<p><span class="math display">\[
-f(x) = (1 - \frac{x}{\pi})(1 + \frac{x}{\pi})(1 - \frac{x}{2\pi})(1 + \frac{x}{2\pi})\dots
-\]</span></p>
-<p>Consider the coeficient of <span class="math inline">\(x^2\)</span>, we have:</p>
-<p><span class="math display">\[
--\left(\frac{1}{\pi^2} + \frac{1}{(2\pi)^2} + \frac{1}{(3\pi)^2} + \dots\right) = -\frac{1}{3!}
-\]</span></p>
-<p>Which also shows that:</p>
-<p><span class="math display">\[
-\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}
-\]</span></p>
-<h3 id="application">Application</h3>
+    <title>CTSC2017 游戏</title>
+    <url>/2017/ctsc2017-game/</url>
+    <content><![CDATA[<h3 id="description">Description</h3>
 <blockquote>
-<p>What's the probability that any two arbitrary positive integers are <strong>relatively prime</strong>?</p>
+<p>有<span class="math inline">\(N\)</span> 局游戏, 除第一局游戏外每一局游戏的获胜机率均与上一局游戏的结果有关. 现在对游戏进行<span class="math inline">\(Q\)</span>次修改, 每次告诉你某一局游戏的结果或者删除之前给你的信息, 求修改后期望下获胜的场数为多少.</p>
 </blockquote>
-<p>For any prime number <span class="math inline">\(p\)</span>，those integers won't be relatively prime if they are both multiples of <span class="math inline">\(p\)</span>, thus the probability is:</p>
-<p><span class="math display">\[
-\begin{aligned}
-P &amp;= \prod_{p\, \mathrm{is\ prime}} \left(1 - \frac{1}{p^2}\right) \\
-&amp;= \prod_{p\, \mathrm{is\ prime}} \cfrac{1}{\displaystyle \sum_{i=0}^{\infty} \left(\cfrac{1}{p^2}\right)^i} \\
-&amp;= \frac{1}{\displaystyle \sum_{i=1}^{\infty} \frac{1}{i^2}} \\
-&amp;= \frac{6}{\pi^2}
-\end{aligned}
+<p><span class="math inline">\(N, Q \le 2 \times 10 ^ 5\)</span></p>
+<a id="more"></a>
+<h3 id="solution">Solution</h3>
+<p>首先不难发现, 某一局的游戏的胜率只与其左右的最近游戏结果相关, 所以答案可以分段计算.</p>
+<p>考虑期望的线性性, 可以将期望胜利场数表示成每一局游戏的胜率之和. 记 <span class="math inline">\(X_i\)</span> 表示第<span class="math inline">\(i\)</span> 场游戏的状态. 所求即为 <span class="math inline">\(\sum _ {l &lt; m &lt; r} P( X _ m = 1 | X _ l, X _ r)\)</span></p>
+<p>由贝叶斯公式: <span class="math display">\[
+\begin{align}
+P(X _ m = 1 | X _ l, X _ r) &amp;= \frac{P(X _ m = 1, X _ l, X _ r)}{P(X _ l) \cdot P(X _ r | X _ l) } \\
+&amp;= \frac{P(X _ l) \cdot P(X _ m = 1 | X _ l) \cdot P(X _ r | X _ l, X _ m = 1)}{P(X _ l) \cdot P(X _ r | X _ l)} \\
+&amp;= \frac{P(X _ m=1 | X _ l) \cdot P(X _ r | X _ l, X _ m = 1)}{P(X _ r | X _ l)} \\
+&amp;= \frac{P(X _ m=1 | X _ l) \cdot P(X _ r | X _ m = 1)}{P(X _ r | X _ l)} 
+\end{align}
 \]</span></p>
+<p>发现分母是常数, 于是可以合并分子. 考虑分子的意义, 大概是合法状态下当前位置为胜的概率. 每一段就可以直接用<span class="math inline">\(dp\)</span>来处理出答案, 记录某场比赛为胜/ 负的概率以及分子的期望即可. 这个复杂度是每次询问<span class="math inline">\(O(n)\)</span>的.</p>
+<p>其实这道题要讲的已经讲完了, 最后只要用矩乘快速合并<span class="math inline">\(dp\)</span>值, 维护一下就可以了.</p>
 ]]></content>
       <tags>
+        <tag>Probability</tag>
+        <tag>Data Structure</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Codeforces Div2 418E</title>
+    <url>/2017/cf-418e/</url>
+    <content><![CDATA[<h3 id="description">Description</h3>
+<blockquote>
+<p>求满足如下条件的 <span class="math inline">\(N\)</span> 个点的简单无向图的个数对 $ 1e9 + 7 $ 取模的结果： - 每个点的度数均为 <span class="math inline">\(2\)</span> 或 <span class="math inline">\(3\)</span> - 从一号点到任何一个点的最短路唯一并且随着点标号上升而不降.</p>
+</blockquote>
+<p>(两个图不同当且仅当边的集合不同). <span class="math inline">\(N &lt;= 50\)</span></p>
+<a id="more"></a>
+<h3 id="solution">Solution</h3>
+<p>我们可以记: - <span class="math inline">\(f_{i, j}\)</span> 表示考虑完前 <span class="math inline">\(i\)</span> 个点, 最后一层恰好有 <span class="math inline">\(j\)</span> 个点, 且最后一层之前的点度数已经满足条件时的方案数. - <span class="math inline">\(g_{i, j, k}\)</span> 表示当前层有 <span class="math inline">\(i\)</span> 个点, 上一层剩下来 <span class="math inline">\(j\)</span> 个度为 <span class="math inline">\(2\)</span> 的点, <span class="math inline">\(k\)</span> 个度为 <span class="math inline">\(3\)</span> 的点时连边的方案数.</p>
+<p>那么容易得到<span class="math inline">\(f_{i, j} = \sum_{k} f_{i-j, k} \times g_{j, c0, c1}\)</span>, 其中<span class="math inline">\(c0\,,c1\)</span>表示最后一层 <span class="math inline">\(k\)</span> 个点中度为 <span class="math inline">\(2\)</span> 的点和度为 <span class="math inline">\(3\)</span> 的点的个数.</p>
+<p>对于 <span class="math inline">\(g\)</span>, 不难得到:</p>
+<p><span class="math display">\[ 
+g_{i, j, k} = 
+\begin{cases} 
+    1 &amp; i = 0, j = 0, k = 0 \\
+    \sum_{l=2}^{k-1} \frac{l!}{2} {k-1 \choose l} g_{i, j, k-l-1} &amp; i = 0, j = 0, k &gt; 0 \\
+    (j-1) \cdot g_{i, j-2, k} + k \cdot g_{i, j, k-1} &amp; i = 0, j &gt; 0 \\
+    j \cdot g_{i-1, j-1, k} + k \cdot g_{i-1, j+1, k-1} &amp; i &gt; 0
+\end{cases}
+\]</span></p>
+<h3 id="hint">Hint</h3>
+<p>注意在第二个递推式中 <span class="math inline">\(l\)</span> 从 <span class="math inline">\(2\)</span> 开始枚举, 因为不能有重边, 所以不存在大小为 <span class="math inline">\(2\)</span> 的环.</p>
+]]></content>
+      <tags>
+        <tag>Dynamic Programming</tag>
         <tag>Combinatorial</tag>
-        <tag>Induction</tag>
       </tags>
   </entry>
   <entry>
@@ -346,43 +325,26 @@ G(n, i) = G(n, i+1) + \sum_{c=0}^{\substack{p_i^{c+1} \le n}} f(p_i^{c+1}) + f(p
       </tags>
   </entry>
   <entry>
-    <title>CTSC2017 游戏</title>
-    <url>/2017/ctsc2017-game/</url>
-    <content><![CDATA[<h3 id="description">Description</h3>
-<blockquote>
-<p>有<span class="math inline">\(N\)</span> 局游戏, 除第一局游戏外每一局游戏的获胜机率均与上一局游戏的结果有关. 现在对游戏进行<span class="math inline">\(Q\)</span>次修改, 每次告诉你某一局游戏的结果或者删除之前给你的信息, 求修改后期望下获胜的场数为多少.</p>
-</blockquote>
-<p><span class="math inline">\(N, Q \le 2 \times 10 ^ 5\)</span></p>
-<a id="more"></a>
-<h3 id="solution">Solution</h3>
-<p>首先不难发现, 某一局的游戏的胜率只与其左右的最近游戏结果相关, 所以答案可以分段计算.</p>
-<p>考虑期望的线性性, 可以将期望胜利场数表示成每一局游戏的胜率之和. 记 <span class="math inline">\(X_i\)</span> 表示第<span class="math inline">\(i\)</span> 场游戏的状态. 所求即为 <span class="math inline">\(\sum _ {l &lt; m &lt; r} P( X _ m = 1 | X _ l, X _ r)\)</span></p>
-<p>由贝叶斯公式: <span class="math display">\[
-\begin{align}
-P(X _ m = 1 | X _ l, X _ r) &amp;= \frac{P(X _ m = 1, X _ l, X _ r)}{P(X _ l) \cdot P(X _ r | X _ l) } \\
-&amp;= \frac{P(X _ l) \cdot P(X _ m = 1 | X _ l) \cdot P(X _ r | X _ l, X _ m = 1)}{P(X _ l) \cdot P(X _ r | X _ l)} \\
-&amp;= \frac{P(X _ m=1 | X _ l) \cdot P(X _ r | X _ l, X _ m = 1)}{P(X _ r | X _ l)} \\
-&amp;= \frac{P(X _ m=1 | X _ l) \cdot P(X _ r | X _ m = 1)}{P(X _ r | X _ l)} 
-\end{align}
-\]</span></p>
-<p>发现分母是常数, 于是可以合并分子. 考虑分子的意义, 大概是合法状态下当前位置为胜的概率. 每一段就可以直接用<span class="math inline">\(dp\)</span>来处理出答案, 记录某场比赛为胜/ 负的概率以及分子的期望即可. 这个复杂度是每次询问<span class="math inline">\(O(n)\)</span>的.</p>
-<p>其实这道题要讲的已经讲完了, 最后只要用矩乘快速合并<span class="math inline">\(dp\)</span>值, 维护一下就可以了.</p>
-]]></content>
-      <tags>
-        <tag>Probability</tag>
-        <tag>Data Structure</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Cryptography Notes</title>
     <url>/2020/cryptography/</url>
     <content><![CDATA[<p>Some notes of 🔒 cryptography lessons</p>
 <p><strong>TODO</strong>:</p>
-<ul class="task-list">
+<ul>
 <li><input type="checkbox" disabled checked>
 Reconstruct the architecture of this post</li>
+<li>Complete other contents
+<ul class="task-list">
+<li><input type="checkbox" disabled checked>
+I: Pseudorandomness</li>
+<li><input type="checkbox" disabled checked>
+II: Cipher</li>
 <li><input type="checkbox" disabled>
-Complete other contents</li>
+III: MAC</li>
+<li><input type="checkbox" disabled>
+IV: Attack &amp; Security</li>
+<li><input type="checkbox" disabled>
+V: Public-key Cryptography</li>
+</ul></li>
 </ul>
 <a id="more"></a>
 <h1 id="preliminary-fundamental-discrete-probability"><em>Preliminary: Fundamental Discrete Probability</em></h1>
@@ -476,7 +438,7 @@ PRG_{adv} [\mathcal{A}, G] = \left|Pr[W_0] - Pr[W_1]\right|
 </blockquote>
 <p>Now we can define a PRG <span class="math inline">\(G\)</span> is <strong>secure</strong> if the value <span class="math inline">\(PRG_{adv} [\mathcal{A}, G]\)</span> is negligible <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> for all efficient adversaries <span class="math inline">\(\mathcal{A}\)</span>.</p>
 <h2 id="pseudo-random-function"><em>Pseudo-random Function</em></h2>
-<p>A <code>Pseudo-random Function(PRF)</code> <span class="math inline">\(F\)</span> is a deterministic algorithm that has two inputs: a <code>key</code> <span class="math inline">\(k\)</span> and an <code>input data block</code> <span class="math inline">\(x\)</span>; its output <span class="math inline">\(y := F(k, x)\)</span> is called an <code>output data block</code>. We denote the finite space of <span class="math inline">\(k, x, y\)</span> with <span class="math inline">\(\mathcal{(K, X, Y)}\)</span>, over which is <span class="math inline">\(F\)</span> defined.</p>
+<p>A <code>Pseudo-random Function(PRF)</code> <span class="math inline">\(F\)</span> is a deterministic algorithm that has two inputs: a <code>key</code> <span class="math inline">\(k\)</span> and an <code>input data block</code> <span class="math inline">\(x\)</span>; its output <span class="math inline">\(y := F(k, x)\)</span> is called an <code>output data block</code>. We denote the finite space of <span class="math inline">\(k, x, y\)</span> with <span class="math inline">\((\mathcal{K, X, Y})\)</span>, over which is <span class="math inline">\(F\)</span> defined.</p>
 <p>Intuitively, our notion of security says that for a randomly chosen key <span class="math inline">\(k\)</span>, <span class="math inline">\(F(k, \cdot )\)</span> is indistinguishable from a random function from <span class="math inline">\(\mathcal{X}\)</span> to <span class="math inline">\(\mathcal{Y}\)</span></p>
 <blockquote>
 <h3 id="notation"><strong>Notation</strong></h3>
@@ -486,8 +448,8 @@ Funs[\mathcal{X, Y}] = \{f: \mathcal{X} \rightarrow \mathcal{Y}\}
 |Funs[\mathcal{X, Y}]| = |\mathcal{Y}|^{|\mathcal{X}|}
 \]</span></p>
 </blockquote>
-<h3 id="attack-game-prf">Attack Game (PRF)</h3>
-<p>Similarly we can define two experiments, Experiment <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>, for a PRF <span class="math inline">\(F\)</span> defined over <span class="math inline">\(\mathcal{(K, X, Y)}\)</span>:</p>
+<h3 id="attack-game-prf"><em>Attack Game (PRF)</em></h3>
+<p>Similarly we can define two experiments, Experiment <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>, for a PRF <span class="math inline">\(F\)</span> defined over <span class="math inline">\((\mathcal{K, X, Y})\)</span>:</p>
 <p><strong>Experiment</strong> <span class="math inline">\(b\)</span>:</p>
 <ul>
 <li>The challenger selects <span class="math inline">\(f\)</span> as follows:
@@ -496,7 +458,7 @@ Funs[\mathcal{X, Y}] = \{f: \mathcal{X} \rightarrow \mathcal{Y}\}
 <li>if <span class="math inline">\(b = 1\)</span>, <span class="math inline">\(f \xleftarrow{R} Funs[\mathcal{X, Y}]\)</span></li>
 </ul></li>
 <li>The adversary <span class="math inline">\(\mathcal{A}\)</span> submits a sequence of queries <span class="math inline">\(x_1, \dots, x_q\)</span>, and receives <span class="math inline">\(y_i = f(x_i)\)</span> for each <span class="math inline">\(i\)</span> from the challenger</li>
-<li>The adversary computes <span class="math inline">\(\hat{b} \in {0, 1}\)</span></li>
+<li>The adversary computes <span class="math inline">\(\hat{b} \in \{0, 1\}\)</span></li>
 </ul>
 <p>Let <span class="math inline">\(W_b\)</span> be the event <span class="math inline">\(\mathcal{A}\)</span> outputs <span class="math inline">\(1\)</span> in Experiment <span class="math inline">\(b\)</span>, the <code>advantage</code> is also defined by:</p>
 <p><span class="math display">\[
@@ -507,7 +469,6 @@ PRF_{adv} [\mathcal{A}, F] = |Pr[W_0] - Pr[W_1]|
 <p>Also called <a href="#bc">Block Cipher</a>, is a special PRF which is also invertible.</p>
 <h1 id="ii-cipher"><em>II: Cipher</em></h1>
 <p>Throughout history, there were many ways of encryption, however, some of them have been proved unsafe. The question now is whether a particular <code>cipher</code> is <strong>secure</strong> and how to construct a <strong>secure</strong> one.</p>
-<h2 id="stream-cipher"><em>Stream Cipher</em></h2>
 <blockquote>
 <p>A <code>cipher</code> defined over a triple <span class="math inline">\((\mathcal{K, M, C})\)</span> is a pair of <strong>efficient</strong><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> algos <span class="math inline">\((E, D)\)</span> where:</p>
 <p><span class="math display">\[
@@ -519,12 +480,14 @@ D: \mathcal{K \times C} \rightarrow \mathcal{M}
 m = D(k, E(k, m))
 \]</span> and <span class="math inline">\(\mathcal{K, M, C}\)</span> denote the space of keys, messages and cipher texts.</p>
 </blockquote>
+<h2 id="stream-cipher"><em>Stream Cipher</em></h2>
+<p>The example below shows the basic idea of stream cipher.</p>
 <h3 id="otp"><em>One Time Pad</em></h3>
 <p>An example cipher over <span class="math inline">\(\mathcal{K, M, C} = \{0, 1\}^n\)</span> and:</p>
 <p><span class="math display">\[
 \begin{aligned}
-E(k, m) = k \oplus m \\
-D(k, m) = k \oplus m \\
+E(k, m) &amp;= k \oplus m \\
+D(k, c) &amp;= k \oplus c \\
 \end{aligned}
 \]</span></p>
 <h2 id="perfect-secrecy"><em>Perfect Secrecy</em></h2>
@@ -534,14 +497,60 @@ D(k, m) = k \oplus m \\
 <p><span class="math inline">\(\forall m_0, m_1 \in \mathcal{M} \,\,\mathrm{that}\,\, |m_0| = |m_1|, c \in \mathcal{C}\)</span>: <span class="math display">\[Pr[E(k, m_0) = c] = Pr[E(k, m_1) = c]\]</span> where <span class="math inline">\(k \xleftarrow{R} \mathcal{K}\)</span></p>
 </blockquote>
 <p>It's not hard to see that when attacker gets a cipher text, he will have no idea what the plain text is. By definition, we can also prove <a href="#otp">One Time Pad</a> has <code>perfect secrecy</code>.</p>
-<p>However, <code>perfect secrecy</code> is too hard to satisfy because we have theorem below:</p>
+<p>However, <code>perfect secrecy</code> is too hard to satisfy because we have theorem says:</p>
 <blockquote>
 <p>If a <code>cipher</code> has <code>perfect secrecy</code>, then: <span class="math display">\[|\mathcal{K}| \ge |\mathcal{M}|\]</span> which means the length of keys mustn't less than length of messages.</p>
 </blockquote>
 <p>That somehow makes no sense for if we have some way sending and receiving such long keys secretly, then it's absolutely unnecessary to use <code>cipher</code>.</p>
+<h3 id="stream-cipher-in-practice"><em>Stream Cipher in Practice</em></h3>
+<p>However, <code>One Time Pad</code> is not mainly used in practice because:</p>
+<ol type="1">
+<li>The key space <span class="math inline">\(\mathcal{K}\)</span> is as large as message space <span class="math inline">\(\mathcal{M}\)</span>, which makes no sense in communication.</li>
+<li>For two same message segments in different positions, they would also be same in the cipher text.</li>
+</ol>
+<p>In practice, we have to change some details to solve these problems:</p>
+<ol type="1">
+<li><p>We can implement a <code>PRF</code> <span class="math inline">\(G\)</span> with seed space <span class="math inline">\(\mathcal{S}\)</span> much less than the message space <span class="math inline">\(\mathcal{M}\)</span>, and rewrite the process of encryption and decryption as: <span class="math display">\[
+\begin{aligned}
+E(k, m) &amp;= G(k) \oplus m \\
+D(k, c) &amp;= G(k) \oplus c
+\end{aligned}
+\]</span> By the properties of <code>PRF</code> we could argue the security.</p></li>
+<li><p>To solve this problem, we can change the key after a fixed length of message or using a nonce, the later one will appear in remain chapters.</p></li>
+</ol>
 <h2 id="bc"><em>Block Cipher</em></h2>
+<p>A <code>block cipher</code> defined over <span class="math inline">\((\mathcal{K, X})\)</span> is a deterministic <span class="math inline">\((E, D)\)</span> whose message space and cipher space is same (finite) set <span class="math inline">\(\mathcal{X}\)</span>. Additionally, for each <span class="math inline">\(k \in \mathcal{K}\)</span>, it's necessary that <span class="math inline">\(E(k, \cdot)\)</span> is invertible, which also means <span class="math inline">\(f_k := E(k, \cdot)\)</span> is an one-to-one map on finite set <span class="math inline">\(\mathcal{X}\)</span> and <span class="math inline">\(D(k, \cdot) = f_k^{-1}\)</span>.</p>
+<p>It's not hard to see that <span class="math inline">\(D(k, E(k, m)) = m\)</span>, so the point now is to argue the security of <code>block cipher</code> (also called <code>Pseudo-random Permutation</code>, <code>PRP</code>). Before that, let's focus on the properties of invertible function on a finite set <span class="math inline">\(\mathcal{X}\)</span>:</p>
+<ol type="1">
+<li><p>Some notation: <span class="math display">\[
+Perm[\mathcal{X}] = \{F \in Funs[\mathcal{X, X}] : F \text{ is invertible}\}
+\]</span></p></li>
+<li><p>Obviously: <span class="math display">\[
+|Perm[\mathcal{X}]| = |\mathcal{X}|!
+\]</span></p></li>
+</ol>
+<h3 id="attack-game-prp-security"><em>Attack Game (PRP) &amp; Security</em></h3>
+<p>Similarly with the idea used in attacking <code>PRF</code>, we design an attack game for a certain <code>block cipher</code> (or <code>PRP</code>) <span class="math inline">\(\mathcal{E} = (E, D)\)</span> over <span class="math inline">\((\mathcal{K, X})\)</span> against an attacker <span class="math inline">\(\mathcal{A}\)</span>:</p>
+<p>Experiment <span class="math inline">\(b\)</span>:</p>
+<ol type="1">
+<li><p>Challenger selects <span class="math inline">\(f\)</span> as follow</p>
+<ul>
+<li>if <span class="math inline">\(b = 0\)</span>, <span class="math inline">\(k \xleftarrow{R} \mathcal{K}, f = E(k, \cdot)\)</span></li>
+<li>if <span class="math inline">\(b = 1\)</span>, <span class="math inline">\(f \xleftarrow{R} Perm[\mathcal{X}]\)</span></li>
+</ul></li>
+<li><p>Attacker choose a sequence of input <span class="math inline">\(x_1, x_2, \dots, x_q\)</span>, and get <span class="math inline">\(y_i = f(x_i)\)</span> from the challenger.</p></li>
+<li><p>Attacker output a <span class="math inline">\(\hat{b} \in \{0, 1\}\)</span>.</p></li>
+</ol>
+<p>The advantage is defined as:</p>
+<p><span class="math display">\[
+BC_{ADV}[\mathcal{A, E}] = |Pr[W_0] - Pr[W_1]|
+\]</span></p>
+<p>where <span class="math inline">\(W_b\)</span> describe the event that <span class="math inline">\(\mathcal{A}\)</span> outputs <span class="math inline">\(\hat{b} = 1\)</span> in Experiment <span class="math inline">\(b\)</span>, <span class="math inline">\(\mathcal{E}\)</span> is <strong>secure</strong> if the advantage is negligible for all efficient algorithm <span class="math inline">\(\mathcal{A}\)</span>.</p>
+<h3 id="practice">Practice</h3>
+<p>In practice, we often divide messages into "blocks", then implement <code>block cipher</code> to them and concate to get the cipher text.</p>
 <h1 id="iii-mac"><em>III: MAC</em></h1>
 <h1 id="iv-attack-security"><em>IV: Attack &amp; Security</em></h1>
+<h1 id="v-public-key-cryptography"><em>V: Public-key Cryptography</em></h1>
 <section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -553,41 +562,8 @@ D(k, m) = k \oplus m \\
 ]]></content>
       <tags>
         <tag>Probability</tag>
-        <tag>Induction</tag>
         <tag>Number Theory</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>A Brief Proof of Birthday Paradox</title>
-    <url>/2020/birthday-paradox/</url>
-    <content><![CDATA[<h1 id="introduction"><em>Introduction</em></h1>
-<h2 id="birthday-paradox"><em>Birthday Paradox</em></h2>
-<blockquote>
-<p>There are <span class="math inline">\(k\)</span> people whose birthdays are among set <span class="math inline">\(B\)</span> with size <span class="math inline">\(n\)</span>, the probability that there are <strong>at least</strong> a pair of people have the same birthday is greater than <span class="math inline">\(\frac{1}{2}\)</span> when <span class="math inline">\(k \ge 1.2 \sqrt{n} + 1\)</span></p>
-</blockquote>
-<a id="more"></a>
-<h1 id="proof"><em>Proof</em></h1>
-<p>Suppose each person's birthday is <strong>independent uniform</strong> in <span class="math inline">\(B\)</span>, then the probability that don't exist such a pair is:</p>
-<p><span class="math display">\[
-P = \prod_{i=0}^{k-1} \left(1 - \frac{i}{n}\right)
-\]</span></p>
-<p>to prove <span class="math inline">\(P \le \frac{1}{2}\)</span>, we use the result in analysis that:</p>
-<blockquote>
-<p><span class="math inline">\(\forall x \in \mathbb{R}, 1 + x \le \mathrm{e}^x\)</span> <img src="/img/exp.png"></p>
-</blockquote>
-<p>then:</p>
-<p><span class="math display">\[
-\begin{aligned}
-P &amp;\le \exp \left(\sum_{i=0}^{k-1} -\cfrac{i}{n}\right) \\
-&amp;\le \exp \left(-\frac{(k-1)^2}{2n}\right) \\
-&amp;\le \exp \left(-\frac{(1.2 \sqrt{n})^2}{2n}\right) \\
-&amp;= \exp(-0.72) &lt; \frac{1}{2} \\
-\end{aligned}
-\]</span></p>
-]]></content>
-      <tags>
-        <tag>Probability</tag>
-        <tag>Real Analysis</tag>
+        <tag>Induction</tag>
       </tags>
   </entry>
   <entry>
@@ -619,27 +595,6 @@ P &amp;\le \exp \left(\sum_{i=0}^{k-1} -\cfrac{i}{n}\right) \\
 ]]></content>
       <tags>
         <tag>Summary</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>NOI2016 网格</title>
-    <url>/2017/noi2016-grid/</url>
-    <content><![CDATA[<h3 id="description">Description</h3>
-<blockquote>
-<p>给出一个 $ N M $ 的网格图和图上的 $ C $ 个障碍物, 求最少删去多少个点可使得原图空格不四连通. $ N, M &lt;= 10 ^ 9, C &lt;= 10 ^ 5 $</p>
-</blockquote>
-<a id="more"></a>
-<h3 id="solution">Solution</h3>
-<p>我们可以发现, 可能的答案只有 $ { -1, 0, 1, 2 } $ 几种.</p>
-<p>考虑一些简单的情况: 答案等于 $ -1 $ 时, 点数小于 <span class="math inline">\(2\)</span> 或者恰好有两个相邻的点. 答案为 $ 0 $ 时, 显然原图不连通.</p>
-<p>那么就只需知道答案是否为 $ 1 $, 发现答案等于 $ 1 $ 当且仅当原图存在割点, 暴力的话不难做到 $ O(n * m) $.</p>
-<p>将到达每个障碍的曼哈顿距离不超过 <span class="math inline">\(2\)</span> 的空格给提出来, 然后在这些点中找出一个割点, 满足到达最近的障碍的距离不超过 <span class="math inline">\(1\)</span>.<br>
-这样的点就一定是原图中的割点.</p>
-<h3 id="code">Code</h3>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fst first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> snd second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">bool</span> <span class="title">chkmax</span><span class="params">(T&amp; a, T b)</span> </span>&#123; <span class="keyword">return</span> a &lt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">bool</span> <span class="title">chkmin</span><span class="params">(T&amp; a, T b)</span> </span>&#123; <span class="keyword">return</span> a &gt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">2.5e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> oo = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function">T <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    T n = <span class="number">0</span>, f = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="keyword">for</span>( ;!<span class="built_in">isdigit</span>(ch); ch = getchar()) <span class="keyword">if</span>(ch == <span class="string">'-'</span>) f = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>( ; <span class="built_in">isdigit</span>(ch); ch = getchar()) n = n * <span class="number">10</span> + ch - <span class="number">48</span>;</span><br><span class="line">    <span class="keyword">return</span> n * f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Hash_Map</span> &#123;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1666667</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> st[mod], nxt[maxn], X[maxn], Y[maxn];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">memset</span>(st, <span class="number">0</span>, <span class="keyword">sizeof</span> st);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">idx</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ((<span class="number">233L</span>L*x + (y^<span class="number">888</span>))%mod + mod)%mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> u = idx(x, y);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = st[u]; i; i = nxt[i]) </span><br><span class="line">            <span class="keyword">if</span>(X[i] == x &amp;&amp; Y[i] == y) </span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> u = idx(x, y);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = st[u]; i; i = nxt[i]) </span><br><span class="line">            <span class="keyword">if</span>(X[i] == x &amp;&amp; Y[i] == y) </span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line"></span><br><span class="line">        ++ cnt;</span><br><span class="line">        X[cnt] = x, Y[cnt] = y;</span><br><span class="line">        nxt[cnt] = st[u]; st[u] = cnt;</span><br><span class="line">        <span class="keyword">return</span> cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;HM;</span><br><span class="line"></span><br><span class="line">LL n, m, c;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> dx[] = &#123; <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">1</span>, <span class="number">-1</span>, <span class="number">1</span>, <span class="number">-1</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> dy[] = &#123; <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">1</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> st[maxn], nxt[maxn &lt;&lt; <span class="number">3</span>], to[maxn &lt;&lt; <span class="number">3</span>], ecnt = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123; </span><br><span class="line">    to[++ecnt] = y; nxt[ecnt] = st[x]; st[x] = ecnt;</span><br><span class="line">    to[++ecnt] = x; nxt[ecnt] = st[y]; st[y] = ecnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> vis[maxn];</span><br><span class="line"><span class="keyword">int</span> mark[maxn], now = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ecnt = <span class="number">1</span>;</span><br><span class="line">    HM.clear();</span><br><span class="line">    <span class="built_in">memset</span>(st, <span class="number">0</span>, <span class="keyword">sizeof</span> st);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">flood_fill</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">1</span>;</span><br><span class="line">    mark[u] = now;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = st[u], v; i; i = nxt[i]) <span class="keyword">if</span>(mark[v = to[i]] != now) </span><br><span class="line">        res += flood_fill(v);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">area_count</span><span class="params">(<span class="keyword">int</span> s)</span> </span>&#123; <span class="keyword">return</span> ++ now, flood_fill(s); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">chk</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n*m-c &lt; <span class="number">2</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">int</span> res = area_count(c + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span>(n*m == <span class="number">2</span> || (res == <span class="number">2</span> &amp;&amp; n*m-c == <span class="number">2</span>)) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> flag;</span><br><span class="line"><span class="keyword">int</span> dfn[maxn], low[maxn], dfs_clock = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa, <span class="keyword">bool</span> f = <span class="literal">false</span>)</span> </span>&#123;</span><br><span class="line">    low[u] = dfn[u] = ++dfs_clock;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = st[u], v; i; i = nxt[i]) <span class="keyword">if</span>((v = to[i]) ^ fa) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!dfn[v]) &#123;</span><br><span class="line">            <span class="keyword">if</span>(dfs(v, u)) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(vis[u] == <span class="number">1</span> &amp;&amp; (low[v] &gt; dfn[u] || (!f &amp;&amp; low[v] == dfn[u]))) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            chkmin(low[u], low[v]);</span><br><span class="line">        &#125;<span class="keyword">else</span> chkmin(low[u], dfn[v]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">chk1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    flag = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(dfn, dfs_clock = <span class="number">0</span>, <span class="keyword">sizeof</span> dfn);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = c+<span class="number">1</span>; i &lt;= HM.cnt; i++) <span class="keyword">if</span>(!dfn[i]) &#123;</span><br><span class="line">        <span class="keyword">if</span>(dfs(i, <span class="number">0</span>, <span class="number">1</span>)) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> x(i) HM.X[i]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> y(i) HM.Y[i]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//char ch[1000][1000];</span></span><br><span class="line"><span class="keyword">int</span> X[maxn], Y[maxn], idx[maxn];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">chk0</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(idx, <span class="number">0</span>, <span class="keyword">sizeof</span> idx);</span><br><span class="line">    <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span> vis);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= c; i++) HM.insert(X[i], Y[i]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> v = <span class="number">1</span>; v &lt;= c; v++) <span class="keyword">if</span>(!vis[v]) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; V;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">int</span> q[maxn];</span><br><span class="line">        <span class="keyword">int</span> head = <span class="number">0</span>, tail = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        ecnt = <span class="number">1</span>;</span><br><span class="line">        vis[q[tail++] = v] = <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">while</span>(head &lt; tail) &#123;</span><br><span class="line">            <span class="keyword">int</span> h = q[head++];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++) &#123;</span><br><span class="line">                <span class="keyword">int</span> nx = x(h) + dx[i];</span><br><span class="line">                <span class="keyword">int</span> ny = y(h) + dy[i];</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(nx &gt;= <span class="number">1</span> &amp;&amp; nx &lt;= n &amp;&amp; ny &gt;= <span class="number">1</span> &amp;&amp; ny &lt;= m) &#123;</span><br><span class="line">                    <span class="keyword">int</span> Nxt = HM.insert(nx, ny);</span><br><span class="line"></span><br><span class="line">                    st[Nxt] = <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">if</span>(Nxt &lt;= c) &#123;</span><br><span class="line">                        <span class="keyword">if</span>(!vis[Nxt]) &#123;</span><br><span class="line">                            vis[Nxt] = <span class="number">3</span>;</span><br><span class="line">                            q[tail++] = Nxt;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(idx[Nxt] != v) &#123;</span><br><span class="line">                        idx[Nxt] = v, V.pb(Nxt);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">int</span>(V.size()); i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> u = V[i];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) &#123;</span><br><span class="line">                <span class="keyword">int</span> nx = x(u) + dx[j];</span><br><span class="line">                <span class="keyword">int</span> ny = y(u) + dy[j];</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(nx &gt;= <span class="number">1</span> &amp;&amp; nx &lt;= n &amp;&amp; ny &gt;= <span class="number">1</span> &amp;&amp; ny &lt;= m) &#123;</span><br><span class="line">                    <span class="keyword">int</span> Nxt = HM.find(nx, ny);</span><br><span class="line">                    <span class="keyword">if</span>(idx[Nxt] == v) addedge(u, Nxt);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(V.size() &amp;&amp; area_count(V[<span class="number">0</span>]) != <span class="keyword">int</span>(V.size()))</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span> vis);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> tail = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> q[maxn];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= c; i++) </span><br><span class="line">        HM.insert(X[i], Y[i]), vis[i] = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= c; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">8</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">int</span> nx = X[i] + dx[j];</span><br><span class="line">            <span class="keyword">int</span> ny = Y[i] + dy[j];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(nx &gt;= <span class="number">1</span> &amp;&amp; nx &lt;= n &amp;&amp; ny &gt;= <span class="number">1</span> &amp;&amp; ny &lt;= m) &#123;</span><br><span class="line">                <span class="keyword">int</span> Nxt = HM.insert(nx, ny);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(!vis[Nxt]) &#123;</span><br><span class="line">                    vis[Nxt] = <span class="number">1</span>;</span><br><span class="line">                    q[tail++] = Nxt;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> lim = tail;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lim; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">8</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">int</span> nx = x(q[i]) + dx[j];</span><br><span class="line">            <span class="keyword">int</span> ny = y(q[i]) + dy[j];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(nx &gt;= <span class="number">1</span> &amp;&amp; nx &lt;= n &amp;&amp; ny &gt;= <span class="number">1</span> &amp;&amp; ny &lt;= m) &#123;</span><br><span class="line">                <span class="keyword">int</span> Nxt = HM.insert(nx, ny);</span><br><span class="line">                <span class="keyword">if</span>(!vis[Nxt]) &#123;</span><br><span class="line">                    vis[Nxt] = <span class="number">2</span>;</span><br><span class="line">                    q[tail++] = Nxt;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; tail; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">int</span> nx = x(q[i]) + dx[j];</span><br><span class="line">            <span class="keyword">int</span> ny = y(q[i]) + dy[j];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(nx &gt;= <span class="number">1</span> &amp;&amp; nx &lt;= n &amp;&amp; ny &gt;= <span class="number">1</span> &amp;&amp; ny &lt;= m) &#123;</span><br><span class="line">                <span class="keyword">int</span> Nxt = HM.find(nx, ny);</span><br><span class="line">                <span class="keyword">if</span>(Nxt &gt; c) addedge(q[i], Nxt);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">spe</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>) &#123;</span><br><span class="line">        Y[++c] = <span class="number">0</span>; Y[++c] = m+<span class="number">1</span>; sort(Y+<span class="number">1</span>, Y+c+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= c; i++) <span class="keyword">if</span>(Y[i] - Y[i<span class="number">-1</span>] &gt; <span class="number">1</span>) ++ res;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        X[++c] = <span class="number">0</span>; X[++c] = n+<span class="number">1</span>; sort(X+<span class="number">1</span>, X+c+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= c; i++) <span class="keyword">if</span>(X[i] - X[i<span class="number">-1</span>] &gt; <span class="number">1</span>) ++ res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res &gt;= <span class="number">2</span> ? <span class="number">0</span> : <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">    freopen(<span class="string">"data.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"ans.txt"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> T = read&lt;<span class="keyword">int</span>&gt;(); T--; ) &#123;</span><br><span class="line"></span><br><span class="line">        init();</span><br><span class="line"></span><br><span class="line">        n = read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">        m = read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">        c = read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= c; i++) &#123;</span><br><span class="line">            X[i] = read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">            Y[i] = read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(chk0()) &#123;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"0"</span>);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        init();</span><br><span class="line">        build();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">int</span> ans;</span><br><span class="line">        <span class="keyword">if</span>((ans = chk()) != <span class="number">-2</span>) &#123; &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(min(n, m) == <span class="number">1</span>) &#123; ans = spe(); &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            ans = chk1() ? <span class="number">1</span> : <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="number">0</span>) ans = min(n, m) == <span class="number">1</span> ? <span class="number">1</span> : <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>Graph Theory</tag>
       </tags>
   </entry>
   <entry>
@@ -677,8 +632,8 @@ P &amp;\le \exp \left(\sum_{i=0}^{k-1} -\cfrac{i}{n}\right) \\
 <p>   这样加上一些预处理的技巧可以做到 <span class="math inline">\(O(3 ^ n)\)</span>.</p>
 ]]></content>
       <tags>
-        <tag>Combinatorial</tag>
         <tag>Dynamic Programming</tag>
+        <tag>Combinatorial</tag>
         <tag>Probability</tag>
       </tags>
   </entry>
@@ -707,6 +662,109 @@ P &amp;\le \exp \left(\sum_{i=0}^{k-1} -\cfrac{i}{n}\right) \\
 ]]></content>
       <tags>
         <tag>Data Structure</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Mathematical Problems</title>
+    <url>/2020/exercise-of-thoughts/</url>
+    <content><![CDATA[<h2 id="preface">Preface</h2>
+<p>Some interesting problems about Number Theory, Combinatics, Analysis or Algebra.</p>
+<a id="more"></a>
+<h2 id="basel-series">Basel Series</h2>
+<p>Calculate</p>
+<p><span class="math display">\[
+\sum_{n=1}^{\infty} \frac{1}{n^2} = 1 + \frac{1}{2^2} + \frac{1}{3^2} + \dots
+\]</span></p>
+<h3 id="analytical-perspective">Analytical Perspective</h3>
+<p>First notice that：</p>
+<p><span class="math display">\[
+\begin{aligned}
+    I=&amp;\int_0^1 \mathrm{d} x \int_0^1 \frac{1}{1-xy} \mathrm{d} y \\
+    =&amp;\iint_D \sum_{i=0}^{\infty} (xy)^i \mathrm{d}x\mathrm{d}y \\
+    =&amp;\sum_{i=0}^{\infty} \iint_D (xy)^i \mathrm{d}x\mathrm{d}y \\
+    =&amp;\sum_{i=0}^{\infty} \left(\int_0^1 x^i \mathrm{d} x\right)^2 \\
+    =&amp;\sum_{i=1}^{\infty} \frac{1}{i^2}
+\end{aligned}
+\]</span></p>
+<p>Now just need to calculate <span class="math inline">\(I\)</span>，replace variables：</p>
+<p><span class="math display">\[
+\begin{cases}
+    x = u + v \\
+    y = u - v
+\end{cases},
+\frac{\partial(x, y)}{\partial(u, v)} = \left|\begin{matrix} 1 &amp; 1 \\ 1 &amp; -1 \end{matrix} \right| = -2
+\]</span></p>
+<p>then：</p>
+<p><span class="math display">\[
+\begin{aligned}
+I &amp;= 2 \iint_{D_{uv}} \frac{1}{1 - u^2 + v^2} \mathrm{d} u \mathrm{d} v \\
+&amp;= 4 \left(\int_0^{\frac{1}{2}} \mathrm{d} u \int_0^{u} \frac{1}{1-u^2+v^2} \mathrm{d} v + \int_{\frac{1}{2}}^{1} \mathrm{d}u \int_0^{1-u} \frac{1}{1-u^2+v^2} \mathrm{d} v\right) \\
+&amp;= 4 \left(\int_0^{\frac{1}{2}} \frac{1}{\sqrt{1-u^2}} \arctan \frac{u}{\sqrt{1-u^2}} \mathrm{d} u + \int_{\frac{1}{2}}^{1} \frac{1}{\sqrt{1-u^2}} \arctan \frac{1-u}{\sqrt{1-u^2}} \mathrm{d} u\right) \\
+&amp;= 4 \left(\int_0^{\frac{1}{2}} \arctan \frac{u}{\sqrt{1-u^2}} \mathrm{d} \arctan \frac{u}{\sqrt{1-u^2}} 
+  -2       \int_{\frac{1}{2}}^1 \arctan \frac{1-u}{\sqrt{1-u^2}} \mathrm{d} \arctan \frac{1-u}{\sqrt{1-u^2}} \right) \\
+&amp;= 4 \times \frac{1}{2} \times \left(\frac{\pi}{6}\right)^2 + 4 \times \left(\frac{\pi}{6}\right)^2 = \frac{\pi^2}{6} \\
+&amp;&amp; \square
+\end{aligned}
+\]</span></p>
+<h3 id="algebraic-perspective">Algebraic Perspective</h3>
+<p>From Taylor's series, we know that:</p>
+<p><span class="math display">\[
+\sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \dots
+\]</span></p>
+<p>Let:</p>
+<p><span class="math display">\[
+f(x) = \frac{\sin(x)}{x} = 1 - \frac{x^2}{3!} + \frac{x^4}{5!} - \dots
+\]</span></p>
+<p>Obviously the roots of <span class="math inline">\(f(x)\)</span> are <span class="math inline">\(n\pi, n \in \mathbb{Z} \backslash \{0\}\)</span>, hence:</p>
+<p><span class="math display">\[
+f(x) = (1 - \frac{x}{\pi})(1 + \frac{x}{\pi})(1 - \frac{x}{2\pi})(1 + \frac{x}{2\pi})\dots
+\]</span></p>
+<p>Consider the coeficient of <span class="math inline">\(x^2\)</span>, we have:</p>
+<p><span class="math display">\[
+-\left(\frac{1}{\pi^2} + \frac{1}{(2\pi)^2} + \frac{1}{(3\pi)^2} + \dots\right) = -\frac{1}{3!}
+\]</span></p>
+<p>Which also shows that:</p>
+<p><span class="math display">\[
+\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}
+\]</span></p>
+<h3 id="application">Application</h3>
+<blockquote>
+<p>What's the probability that any two arbitrary positive integers are <strong>relatively prime</strong>?</p>
+</blockquote>
+<p>For any prime <span class="math inline">\(p\)</span>，those integers won't be <strong>relatively prime</strong> if they are both multiples of <span class="math inline">\(p\)</span>, thus the probability is:</p>
+<p><span class="math display">\[
+\begin{aligned}
+P &amp;= \prod_{p\, \mathrm{is\ prime}} \left(1 - \frac{1}{p^2}\right) \\
+&amp;= \prod_{p\, \mathrm{is\ prime}} \cfrac{1}{\displaystyle \sum_{i=0}^{\infty} \left(\cfrac{1}{p^2}\right)^i} \\
+&amp;= \frac{1}{\displaystyle \sum_{i=1}^{\infty} \frac{1}{i^2}} \\
+&amp;= \frac{6}{\pi^2}
+\end{aligned}
+\]</span></p>
+]]></content>
+      <tags>
+        <tag>Combinatorial</tag>
+        <tag>Induction</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NOI2016 网格</title>
+    <url>/2017/noi2016-grid/</url>
+    <content><![CDATA[<h3 id="description">Description</h3>
+<blockquote>
+<p>给出一个 $ N M $ 的网格图和图上的 $ C $ 个障碍物, 求最少删去多少个点可使得原图空格不四连通. $ N, M &lt;= 10 ^ 9, C &lt;= 10 ^ 5 $</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="solution">Solution</h3>
+<p>我们可以发现, 可能的答案只有 $ { -1, 0, 1, 2 } $ 几种.</p>
+<p>考虑一些简单的情况: 答案等于 $ -1 $ 时, 点数小于 <span class="math inline">\(2\)</span> 或者恰好有两个相邻的点. 答案为 $ 0 $ 时, 显然原图不连通.</p>
+<p>那么就只需知道答案是否为 $ 1 $, 发现答案等于 $ 1 $ 当且仅当原图存在割点, 暴力的话不难做到 $ O(n * m) $.</p>
+<p>将到达每个障碍的曼哈顿距离不超过 <span class="math inline">\(2\)</span> 的空格给提出来, 然后在这些点中找出一个割点, 满足到达最近的障碍的距离不超过 <span class="math inline">\(1\)</span>.<br>
+这样的点就一定是原图中的割点.</p>
+<h3 id="code">Code</h3>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; pii;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fst first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> snd second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">bool</span> <span class="title">chkmax</span><span class="params">(T&amp; a, T b)</span> </span>&#123; <span class="keyword">return</span> a &lt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="function"><span class="keyword">bool</span> <span class="title">chkmin</span><span class="params">(T&amp; a, T b)</span> </span>&#123; <span class="keyword">return</span> a &gt; b ? a = b, <span class="number">1</span> : <span class="number">0</span>; &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">2.5e6</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> oo = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt; <span class="function">T <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    T n = <span class="number">0</span>, f = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span> ch = getchar();</span><br><span class="line">    <span class="keyword">for</span>( ;!<span class="built_in">isdigit</span>(ch); ch = getchar()) <span class="keyword">if</span>(ch == <span class="string">'-'</span>) f = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span>( ; <span class="built_in">isdigit</span>(ch); ch = getchar()) n = n * <span class="number">10</span> + ch - <span class="number">48</span>;</span><br><span class="line">    <span class="keyword">return</span> n * f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Hash_Map</span> &#123;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1666667</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> st[mod], nxt[maxn], X[maxn], Y[maxn];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">memset</span>(st, <span class="number">0</span>, <span class="keyword">sizeof</span> st);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">idx</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ((<span class="number">233L</span>L*x + (y^<span class="number">888</span>))%mod + mod)%mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> u = idx(x, y);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = st[u]; i; i = nxt[i]) </span><br><span class="line">            <span class="keyword">if</span>(X[i] == x &amp;&amp; Y[i] == y) </span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> u = idx(x, y);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = st[u]; i; i = nxt[i]) </span><br><span class="line">            <span class="keyword">if</span>(X[i] == x &amp;&amp; Y[i] == y) </span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line"></span><br><span class="line">        ++ cnt;</span><br><span class="line">        X[cnt] = x, Y[cnt] = y;</span><br><span class="line">        nxt[cnt] = st[u]; st[u] = cnt;</span><br><span class="line">        <span class="keyword">return</span> cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;HM;</span><br><span class="line"></span><br><span class="line">LL n, m, c;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> dx[] = &#123; <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">1</span>, <span class="number">-1</span>, <span class="number">1</span>, <span class="number">-1</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> dy[] = &#123; <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">-1</span>, <span class="number">-1</span>, <span class="number">1</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> st[maxn], nxt[maxn &lt;&lt; <span class="number">3</span>], to[maxn &lt;&lt; <span class="number">3</span>], ecnt = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addedge</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123; </span><br><span class="line">    to[++ecnt] = y; nxt[ecnt] = st[x]; st[x] = ecnt;</span><br><span class="line">    to[++ecnt] = x; nxt[ecnt] = st[y]; st[y] = ecnt;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> vis[maxn];</span><br><span class="line"><span class="keyword">int</span> mark[maxn], now = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ecnt = <span class="number">1</span>;</span><br><span class="line">    HM.clear();</span><br><span class="line">    <span class="built_in">memset</span>(st, <span class="number">0</span>, <span class="keyword">sizeof</span> st);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">flood_fill</span><span class="params">(<span class="keyword">int</span> u)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">1</span>;</span><br><span class="line">    mark[u] = now;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = st[u], v; i; i = nxt[i]) <span class="keyword">if</span>(mark[v = to[i]] != now) </span><br><span class="line">        res += flood_fill(v);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">area_count</span><span class="params">(<span class="keyword">int</span> s)</span> </span>&#123; <span class="keyword">return</span> ++ now, flood_fill(s); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">chk</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n*m-c &lt; <span class="number">2</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">int</span> res = area_count(c + <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span>(n*m == <span class="number">2</span> || (res == <span class="number">2</span> &amp;&amp; n*m-c == <span class="number">2</span>)) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> flag;</span><br><span class="line"><span class="keyword">int</span> dfn[maxn], low[maxn], dfs_clock = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa, <span class="keyword">bool</span> f = <span class="literal">false</span>)</span> </span>&#123;</span><br><span class="line">    low[u] = dfn[u] = ++dfs_clock;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = st[u], v; i; i = nxt[i]) <span class="keyword">if</span>((v = to[i]) ^ fa) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!dfn[v]) &#123;</span><br><span class="line">            <span class="keyword">if</span>(dfs(v, u)) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(vis[u] == <span class="number">1</span> &amp;&amp; (low[v] &gt; dfn[u] || (!f &amp;&amp; low[v] == dfn[u]))) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            chkmin(low[u], low[v]);</span><br><span class="line">        &#125;<span class="keyword">else</span> chkmin(low[u], dfn[v]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">chk1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    flag = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(dfn, dfs_clock = <span class="number">0</span>, <span class="keyword">sizeof</span> dfn);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = c+<span class="number">1</span>; i &lt;= HM.cnt; i++) <span class="keyword">if</span>(!dfn[i]) &#123;</span><br><span class="line">        <span class="keyword">if</span>(dfs(i, <span class="number">0</span>, <span class="number">1</span>)) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> x(i) HM.X[i]</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> y(i) HM.Y[i]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//char ch[1000][1000];</span></span><br><span class="line"><span class="keyword">int</span> X[maxn], Y[maxn], idx[maxn];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">chk0</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(idx, <span class="number">0</span>, <span class="keyword">sizeof</span> idx);</span><br><span class="line">    <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span> vis);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= c; i++) HM.insert(X[i], Y[i]);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> v = <span class="number">1</span>; v &lt;= c; v++) <span class="keyword">if</span>(!vis[v]) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; V;</span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">int</span> q[maxn];</span><br><span class="line">        <span class="keyword">int</span> head = <span class="number">0</span>, tail = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        ecnt = <span class="number">1</span>;</span><br><span class="line">        vis[q[tail++] = v] = <span class="number">3</span>;</span><br><span class="line">        <span class="keyword">while</span>(head &lt; tail) &#123;</span><br><span class="line">            <span class="keyword">int</span> h = q[head++];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i++) &#123;</span><br><span class="line">                <span class="keyword">int</span> nx = x(h) + dx[i];</span><br><span class="line">                <span class="keyword">int</span> ny = y(h) + dy[i];</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(nx &gt;= <span class="number">1</span> &amp;&amp; nx &lt;= n &amp;&amp; ny &gt;= <span class="number">1</span> &amp;&amp; ny &lt;= m) &#123;</span><br><span class="line">                    <span class="keyword">int</span> Nxt = HM.insert(nx, ny);</span><br><span class="line"></span><br><span class="line">                    st[Nxt] = <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">if</span>(Nxt &lt;= c) &#123;</span><br><span class="line">                        <span class="keyword">if</span>(!vis[Nxt]) &#123;</span><br><span class="line">                            vis[Nxt] = <span class="number">3</span>;</span><br><span class="line">                            q[tail++] = Nxt;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(idx[Nxt] != v) &#123;</span><br><span class="line">                        idx[Nxt] = v, V.pb(Nxt);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">int</span>(V.size()); i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> u = V[i];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) &#123;</span><br><span class="line">                <span class="keyword">int</span> nx = x(u) + dx[j];</span><br><span class="line">                <span class="keyword">int</span> ny = y(u) + dy[j];</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(nx &gt;= <span class="number">1</span> &amp;&amp; nx &lt;= n &amp;&amp; ny &gt;= <span class="number">1</span> &amp;&amp; ny &lt;= m) &#123;</span><br><span class="line">                    <span class="keyword">int</span> Nxt = HM.find(nx, ny);</span><br><span class="line">                    <span class="keyword">if</span>(idx[Nxt] == v) addedge(u, Nxt);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(V.size() &amp;&amp; area_count(V[<span class="number">0</span>]) != <span class="keyword">int</span>(V.size()))</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span> vis);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> tail = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> q[maxn];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= c; i++) </span><br><span class="line">        HM.insert(X[i], Y[i]), vis[i] = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= c; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">8</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">int</span> nx = X[i] + dx[j];</span><br><span class="line">            <span class="keyword">int</span> ny = Y[i] + dy[j];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(nx &gt;= <span class="number">1</span> &amp;&amp; nx &lt;= n &amp;&amp; ny &gt;= <span class="number">1</span> &amp;&amp; ny &lt;= m) &#123;</span><br><span class="line">                <span class="keyword">int</span> Nxt = HM.insert(nx, ny);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(!vis[Nxt]) &#123;</span><br><span class="line">                    vis[Nxt] = <span class="number">1</span>;</span><br><span class="line">                    q[tail++] = Nxt;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> lim = tail;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lim; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">8</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">int</span> nx = x(q[i]) + dx[j];</span><br><span class="line">            <span class="keyword">int</span> ny = y(q[i]) + dy[j];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(nx &gt;= <span class="number">1</span> &amp;&amp; nx &lt;= n &amp;&amp; ny &gt;= <span class="number">1</span> &amp;&amp; ny &lt;= m) &#123;</span><br><span class="line">                <span class="keyword">int</span> Nxt = HM.insert(nx, ny);</span><br><span class="line">                <span class="keyword">if</span>(!vis[Nxt]) &#123;</span><br><span class="line">                    vis[Nxt] = <span class="number">2</span>;</span><br><span class="line">                    q[tail++] = Nxt;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; tail; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">int</span> nx = x(q[i]) + dx[j];</span><br><span class="line">            <span class="keyword">int</span> ny = y(q[i]) + dy[j];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(nx &gt;= <span class="number">1</span> &amp;&amp; nx &lt;= n &amp;&amp; ny &gt;= <span class="number">1</span> &amp;&amp; ny &lt;= m) &#123;</span><br><span class="line">                <span class="keyword">int</span> Nxt = HM.find(nx, ny);</span><br><span class="line">                <span class="keyword">if</span>(Nxt &gt; c) addedge(q[i], Nxt);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">spe</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(n == <span class="number">1</span>) &#123;</span><br><span class="line">        Y[++c] = <span class="number">0</span>; Y[++c] = m+<span class="number">1</span>; sort(Y+<span class="number">1</span>, Y+c+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= c; i++) <span class="keyword">if</span>(Y[i] - Y[i<span class="number">-1</span>] &gt; <span class="number">1</span>) ++ res;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        X[++c] = <span class="number">0</span>; X[++c] = n+<span class="number">1</span>; sort(X+<span class="number">1</span>, X+c+<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= c; i++) <span class="keyword">if</span>(X[i] - X[i<span class="number">-1</span>] &gt; <span class="number">1</span>) ++ res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res &gt;= <span class="number">2</span> ? <span class="number">0</span> : <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> ONLINE_JUDGE</span></span><br><span class="line">    freopen(<span class="string">"data.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line">    freopen(<span class="string">"ans.txt"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> T = read&lt;<span class="keyword">int</span>&gt;(); T--; ) &#123;</span><br><span class="line"></span><br><span class="line">        init();</span><br><span class="line"></span><br><span class="line">        n = read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">        m = read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">        c = read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= c; i++) &#123;</span><br><span class="line">            X[i] = read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">            Y[i] = read&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(chk0()) &#123;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"0"</span>);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        init();</span><br><span class="line">        build();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">int</span> ans;</span><br><span class="line">        <span class="keyword">if</span>((ans = chk()) != <span class="number">-2</span>) &#123; &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(min(n, m) == <span class="number">1</span>) &#123; ans = spe(); &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            ans = chk1() ? <span class="number">1</span> : <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="number">0</span>) ans = min(n, m) == <span class="number">1</span> ? <span class="number">1</span> : <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>Graph Theory</tag>
       </tags>
   </entry>
   <entry>
@@ -873,8 +931,8 @@ dp(a + 1, p_{a} - 1, b + 1, p_{b} - 1) + dp(p_{a} + 1, b, p_{c} + 1, d) + |w_{a}
 <p>以上规则也可利用交换法证明正确性. 又因为任意两个二元组合并得到的新二元组不会比原来的两个二元组都更优, 所以全局最优的二元组在可以选择的时候一定会马上选择, 于是得到一个贪心策略, 每次选择最优的二元组并将其和父亲当前对应的二元组进行合并, 可以发现这样能够得到整棵树的操作序列.</p>
 ]]></content>
       <tags>
-        <tag>Combinatorial</tag>
         <tag>Summary</tag>
+        <tag>Combinatorial</tag>
       </tags>
   </entry>
 </search>

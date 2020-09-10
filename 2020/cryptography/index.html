@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="Probability,Induction,Number Theory,">
+  <meta name="keywords" content="Probability,Number Theory,Induction,">
 
 
 
@@ -107,19 +107,19 @@
 
 
 
-<meta name="description" content="Some notes of 🔒 cryptography lessons TODO:   Reconstruct the architecture of this post  Complete other contents">
-<meta name="keywords" content="Probability,Induction,Number Theory">
+<meta name="description" content="Some notes of 🔒 cryptography lessons TODO:   Reconstruct the architecture of this post Complete other contents   I: Pseudorandomness  II: Cipher  III: MAC  IV: Attack &amp;amp; Security  V: Public-key Cr">
+<meta name="keywords" content="Probability,Number Theory,Induction">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cryptography Notes">
 <meta property="og:url" content="http://yoursite.com/2020/cryptography/index.html">
 <meta property="og:site_name" content="Wearry&#39;s Blog">
-<meta property="og:description" content="Some notes of 🔒 cryptography lessons TODO:   Reconstruct the architecture of this post  Complete other contents">
+<meta property="og:description" content="Some notes of 🔒 cryptography lessons TODO:   Reconstruct the architecture of this post Complete other contents   I: Pseudorandomness  II: Cipher  III: MAC  IV: Attack &amp;amp; Security  V: Public-key Cr">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://yoursite.com/img/PRG-ADV.png">
-<meta property="og:updated_time" content="2020-08-26T18:32:29.702Z">
+<meta property="og:updated_time" content="2020-09-10T16:21:36.876Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cryptography Notes">
-<meta name="twitter:description" content="Some notes of 🔒 cryptography lessons TODO:   Reconstruct the architecture of this post  Complete other contents">
+<meta name="twitter:description" content="Some notes of 🔒 cryptography lessons TODO:   Reconstruct the architecture of this post Complete other contents   I: Pseudorandomness  II: Cipher  III: MAC  IV: Attack &amp;amp; Security  V: Public-key Cr">
 <meta name="twitter:image" content="http://yoursite.com/img/PRG-ADV.png">
 
 
@@ -352,11 +352,22 @@
       
         <p>Some notes of 🔒 cryptography lessons</p>
 <p><strong>TODO</strong>:</p>
-<ul class="task-list">
+<ul>
 <li><input type="checkbox" disabled checked>
 Reconstruct the architecture of this post</li>
+<li>Complete other contents
+<ul class="task-list">
+<li><input type="checkbox" disabled checked>
+I: Pseudorandomness</li>
+<li><input type="checkbox" disabled checked>
+II: Cipher</li>
 <li><input type="checkbox" disabled>
-Complete other contents</li>
+III: MAC</li>
+<li><input type="checkbox" disabled>
+IV: Attack &amp; Security</li>
+<li><input type="checkbox" disabled>
+V: Public-key Cryptography</li>
+</ul></li>
 </ul>
 <a id="more"></a>
 <h1 id="preliminary-fundamental-discrete-probability"><em>Preliminary: Fundamental Discrete Probability</em></h1>
@@ -450,7 +461,7 @@ PRG_{adv} [\mathcal{A}, G] = \left|Pr[W_0] - Pr[W_1]\right|
 </blockquote>
 <p>Now we can define a PRG <span class="math inline">\(G\)</span> is <strong>secure</strong> if the value <span class="math inline">\(PRG_{adv} [\mathcal{A}, G]\)</span> is negligible <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> for all efficient adversaries <span class="math inline">\(\mathcal{A}\)</span>.</p>
 <h2 id="pseudo-random-function"><em>Pseudo-random Function</em></h2>
-<p>A <code>Pseudo-random Function(PRF)</code> <span class="math inline">\(F\)</span> is a deterministic algorithm that has two inputs: a <code>key</code> <span class="math inline">\(k\)</span> and an <code>input data block</code> <span class="math inline">\(x\)</span>; its output <span class="math inline">\(y := F(k, x)\)</span> is called an <code>output data block</code>. We denote the finite space of <span class="math inline">\(k, x, y\)</span> with <span class="math inline">\(\mathcal{(K, X, Y)}\)</span>, over which is <span class="math inline">\(F\)</span> defined.</p>
+<p>A <code>Pseudo-random Function(PRF)</code> <span class="math inline">\(F\)</span> is a deterministic algorithm that has two inputs: a <code>key</code> <span class="math inline">\(k\)</span> and an <code>input data block</code> <span class="math inline">\(x\)</span>; its output <span class="math inline">\(y := F(k, x)\)</span> is called an <code>output data block</code>. We denote the finite space of <span class="math inline">\(k, x, y\)</span> with <span class="math inline">\((\mathcal{K, X, Y})\)</span>, over which is <span class="math inline">\(F\)</span> defined.</p>
 <p>Intuitively, our notion of security says that for a randomly chosen key <span class="math inline">\(k\)</span>, <span class="math inline">\(F(k, \cdot )\)</span> is indistinguishable from a random function from <span class="math inline">\(\mathcal{X}\)</span> to <span class="math inline">\(\mathcal{Y}\)</span></p>
 <blockquote>
 <h3 id="notation"><strong>Notation</strong></h3>
@@ -460,8 +471,8 @@ Funs[\mathcal{X, Y}] = \{f: \mathcal{X} \rightarrow \mathcal{Y}\}
 |Funs[\mathcal{X, Y}]| = |\mathcal{Y}|^{|\mathcal{X}|}
 \]</span></p>
 </blockquote>
-<h3 id="attack-game-prf">Attack Game (PRF)</h3>
-<p>Similarly we can define two experiments, Experiment <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>, for a PRF <span class="math inline">\(F\)</span> defined over <span class="math inline">\(\mathcal{(K, X, Y)}\)</span>:</p>
+<h3 id="attack-game-prf"><em>Attack Game (PRF)</em></h3>
+<p>Similarly we can define two experiments, Experiment <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>, for a PRF <span class="math inline">\(F\)</span> defined over <span class="math inline">\((\mathcal{K, X, Y})\)</span>:</p>
 <p><strong>Experiment</strong> <span class="math inline">\(b\)</span>:</p>
 <ul>
 <li>The challenger selects <span class="math inline">\(f\)</span> as follows:
@@ -470,7 +481,7 @@ Funs[\mathcal{X, Y}] = \{f: \mathcal{X} \rightarrow \mathcal{Y}\}
 <li>if <span class="math inline">\(b = 1\)</span>, <span class="math inline">\(f \xleftarrow{R} Funs[\mathcal{X, Y}]\)</span></li>
 </ul></li>
 <li>The adversary <span class="math inline">\(\mathcal{A}\)</span> submits a sequence of queries <span class="math inline">\(x_1, \dots, x_q\)</span>, and receives <span class="math inline">\(y_i = f(x_i)\)</span> for each <span class="math inline">\(i\)</span> from the challenger</li>
-<li>The adversary computes <span class="math inline">\(\hat{b} \in {0, 1}\)</span></li>
+<li>The adversary computes <span class="math inline">\(\hat{b} \in \{0, 1\}\)</span></li>
 </ul>
 <p>Let <span class="math inline">\(W_b\)</span> be the event <span class="math inline">\(\mathcal{A}\)</span> outputs <span class="math inline">\(1\)</span> in Experiment <span class="math inline">\(b\)</span>, the <code>advantage</code> is also defined by:</p>
 <p><span class="math display">\[
@@ -481,7 +492,6 @@ PRF_{adv} [\mathcal{A}, F] = |Pr[W_0] - Pr[W_1]|
 <p>Also called <a href="#bc">Block Cipher</a>, is a special PRF which is also invertible.</p>
 <h1 id="ii-cipher"><em>II: Cipher</em></h1>
 <p>Throughout history, there were many ways of encryption, however, some of them have been proved unsafe. The question now is whether a particular <code>cipher</code> is <strong>secure</strong> and how to construct a <strong>secure</strong> one.</p>
-<h2 id="stream-cipher"><em>Stream Cipher</em></h2>
 <blockquote>
 <p>A <code>cipher</code> defined over a triple <span class="math inline">\((\mathcal{K, M, C})\)</span> is a pair of <strong>efficient</strong><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> algos <span class="math inline">\((E, D)\)</span> where:</p>
 <p><span class="math display">\[
@@ -493,12 +503,14 @@ D: \mathcal{K \times C} \rightarrow \mathcal{M}
 m = D(k, E(k, m))
 \]</span> and <span class="math inline">\(\mathcal{K, M, C}\)</span> denote the space of keys, messages and cipher texts.</p>
 </blockquote>
+<h2 id="stream-cipher"><em>Stream Cipher</em></h2>
+<p>The example below shows the basic idea of stream cipher.</p>
 <h3 id="otp"><em>One Time Pad</em></h3>
 <p>An example cipher over <span class="math inline">\(\mathcal{K, M, C} = \{0, 1\}^n\)</span> and:</p>
 <p><span class="math display">\[
 \begin{aligned}
-E(k, m) = k \oplus m \\
-D(k, m) = k \oplus m \\
+E(k, m) &amp;= k \oplus m \\
+D(k, c) &amp;= k \oplus c \\
 \end{aligned}
 \]</span></p>
 <h2 id="perfect-secrecy"><em>Perfect Secrecy</em></h2>
@@ -508,14 +520,60 @@ D(k, m) = k \oplus m \\
 <p><span class="math inline">\(\forall m_0, m_1 \in \mathcal{M} \,\,\mathrm{that}\,\, |m_0| = |m_1|, c \in \mathcal{C}\)</span>: <span class="math display">\[Pr[E(k, m_0) = c] = Pr[E(k, m_1) = c]\]</span> where <span class="math inline">\(k \xleftarrow{R} \mathcal{K}\)</span></p>
 </blockquote>
 <p>It's not hard to see that when attacker gets a cipher text, he will have no idea what the plain text is. By definition, we can also prove <a href="#otp">One Time Pad</a> has <code>perfect secrecy</code>.</p>
-<p>However, <code>perfect secrecy</code> is too hard to satisfy because we have theorem below:</p>
+<p>However, <code>perfect secrecy</code> is too hard to satisfy because we have theorem says:</p>
 <blockquote>
 <p>If a <code>cipher</code> has <code>perfect secrecy</code>, then: <span class="math display">\[|\mathcal{K}| \ge |\mathcal{M}|\]</span> which means the length of keys mustn't less than length of messages.</p>
 </blockquote>
 <p>That somehow makes no sense for if we have some way sending and receiving such long keys secretly, then it's absolutely unnecessary to use <code>cipher</code>.</p>
+<h3 id="stream-cipher-in-practice"><em>Stream Cipher in Practice</em></h3>
+<p>However, <code>One Time Pad</code> is not mainly used in practice because:</p>
+<ol type="1">
+<li>The key space <span class="math inline">\(\mathcal{K}\)</span> is as large as message space <span class="math inline">\(\mathcal{M}\)</span>, which makes no sense in communication.</li>
+<li>For two same message segments in different positions, they would also be same in the cipher text.</li>
+</ol>
+<p>In practice, we have to change some details to solve these problems:</p>
+<ol type="1">
+<li><p>We can implement a <code>PRF</code> <span class="math inline">\(G\)</span> with seed space <span class="math inline">\(\mathcal{S}\)</span> much less than the message space <span class="math inline">\(\mathcal{M}\)</span>, and rewrite the process of encryption and decryption as: <span class="math display">\[
+\begin{aligned}
+E(k, m) &amp;= G(k) \oplus m \\
+D(k, c) &amp;= G(k) \oplus c
+\end{aligned}
+\]</span> By the properties of <code>PRF</code> we could argue the security.</p></li>
+<li><p>To solve this problem, we can change the key after a fixed length of message or using a nonce, the later one will appear in remain chapters.</p></li>
+</ol>
 <h2 id="bc"><em>Block Cipher</em></h2>
+<p>A <code>block cipher</code> defined over <span class="math inline">\((\mathcal{K, X})\)</span> is a deterministic <span class="math inline">\((E, D)\)</span> whose message space and cipher space is same (finite) set <span class="math inline">\(\mathcal{X}\)</span>. Additionally, for each <span class="math inline">\(k \in \mathcal{K}\)</span>, it's necessary that <span class="math inline">\(E(k, \cdot)\)</span> is invertible, which also means <span class="math inline">\(f_k := E(k, \cdot)\)</span> is an one-to-one map on finite set <span class="math inline">\(\mathcal{X}\)</span> and <span class="math inline">\(D(k, \cdot) = f_k^{-1}\)</span>.</p>
+<p>It's not hard to see that <span class="math inline">\(D(k, E(k, m)) = m\)</span>, so the point now is to argue the security of <code>block cipher</code> (also called <code>Pseudo-random Permutation</code>, <code>PRP</code>). Before that, let's focus on the properties of invertible function on a finite set <span class="math inline">\(\mathcal{X}\)</span>:</p>
+<ol type="1">
+<li><p>Some notation: <span class="math display">\[
+Perm[\mathcal{X}] = \{F \in Funs[\mathcal{X, X}] : F \text{ is invertible}\}
+\]</span></p></li>
+<li><p>Obviously: <span class="math display">\[
+|Perm[\mathcal{X}]| = |\mathcal{X}|!
+\]</span></p></li>
+</ol>
+<h3 id="attack-game-prp-security"><em>Attack Game (PRP) &amp; Security</em></h3>
+<p>Similarly with the idea used in attacking <code>PRF</code>, we design an attack game for a certain <code>block cipher</code> (or <code>PRP</code>) <span class="math inline">\(\mathcal{E} = (E, D)\)</span> over <span class="math inline">\((\mathcal{K, X})\)</span> against an attacker <span class="math inline">\(\mathcal{A}\)</span>:</p>
+<p>Experiment <span class="math inline">\(b\)</span>:</p>
+<ol type="1">
+<li><p>Challenger selects <span class="math inline">\(f\)</span> as follow</p>
+<ul>
+<li>if <span class="math inline">\(b = 0\)</span>, <span class="math inline">\(k \xleftarrow{R} \mathcal{K}, f = E(k, \cdot)\)</span></li>
+<li>if <span class="math inline">\(b = 1\)</span>, <span class="math inline">\(f \xleftarrow{R} Perm[\mathcal{X}]\)</span></li>
+</ul></li>
+<li><p>Attacker choose a sequence of input <span class="math inline">\(x_1, x_2, \dots, x_q\)</span>, and get <span class="math inline">\(y_i = f(x_i)\)</span> from the challenger.</p></li>
+<li><p>Attacker output a <span class="math inline">\(\hat{b} \in \{0, 1\}\)</span>.</p></li>
+</ol>
+<p>The advantage is defined as:</p>
+<p><span class="math display">\[
+BC_{ADV}[\mathcal{A, E}] = |Pr[W_0] - Pr[W_1]|
+\]</span></p>
+<p>where <span class="math inline">\(W_b\)</span> describe the event that <span class="math inline">\(\mathcal{A}\)</span> outputs <span class="math inline">\(\hat{b} = 1\)</span> in Experiment <span class="math inline">\(b\)</span>, <span class="math inline">\(\mathcal{E}\)</span> is <strong>secure</strong> if the advantage is negligible for all efficient algorithm <span class="math inline">\(\mathcal{A}\)</span>.</p>
+<h3 id="practice">Practice</h3>
+<p>In practice, we often divide messages into "blocks", then implement <code>block cipher</code> to them and concate to get the cipher text.</p>
 <h1 id="iii-mac"><em>III: MAC</em></h1>
 <h1 id="iv-attack-security"><em>IV: Attack &amp; Security</em></h1>
+<h1 id="v-public-key-cryptography"><em>V: Public-key Cryptography</em></h1>
 <section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -543,9 +601,9 @@ D(k, m) = k \oplus m \\
           
             <a href="/tags/Probability/" rel="tag"># Probability</a>
           
-            <a href="/tags/Induction/" rel="tag"># Induction</a>
-          
             <a href="/tags/Number-Theory/" rel="tag"># Number Theory</a>
+          
+            <a href="/tags/Induction/" rel="tag"># Induction</a>
           
         </div>
       
@@ -714,7 +772,7 @@ D(k, m) = k \oplus m \\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#preliminary-fundamental-discrete-probability"><span class="nav-number">1.</span> <span class="nav-text">Preliminary: Fundamental Discrete Probability</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#probability-distribution"><span class="nav-number">1.1.</span> <span class="nav-text">Probability Distribution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#event"><span class="nav-number">1.2.</span> <span class="nav-text">Event</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#the-union-bound"><span class="nav-number">1.2.1.</span> <span class="nav-text">The Union Bound</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#random-variable"><span class="nav-number">1.3.</span> <span class="nav-text">Random Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#uniform-random-variable"><span class="nav-number">1.3.1.</span> <span class="nav-text">Uniform Random Variable</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#independence"><span class="nav-number">1.4.</span> <span class="nav-text">Independence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#more-about-probability"><span class="nav-number">1.5.</span> <span class="nav-text">More about Probability</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#i-pseudorandomness"><span class="nav-number">2.</span> <span class="nav-text">I: Pseudorandomness</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pseudo-random-generator"><span class="nav-number">2.1.</span> <span class="nav-text">Pseudo-random Generator</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#security"><span class="nav-number">2.1.1.</span> <span class="nav-text">Security</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#attack-game-prg-and-advantage"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">Attack Game (PRG) and Advantage</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pseudo-random-function"><span class="nav-number">2.2.</span> <span class="nav-text">Pseudo-random Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notation"><span class="nav-number">2.2.1.</span> <span class="nav-text">Notation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#attack-game-prf"><span class="nav-number">2.2.2.</span> <span class="nav-text">Attack Game (PRF)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pseudo-random-permutation"><span class="nav-number">2.3.</span> <span class="nav-text">Pseudo-random Permutation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ii-cipher"><span class="nav-number">3.</span> <span class="nav-text">II: Cipher</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#stream-cipher"><span class="nav-number">3.1.</span> <span class="nav-text">Stream Cipher</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#otp"><span class="nav-number">3.1.1.</span> <span class="nav-text">One Time Pad</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#perfect-secrecy"><span class="nav-number">3.2.</span> <span class="nav-text">Perfect Secrecy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bc"><span class="nav-number">3.3.</span> <span class="nav-text">Block Cipher</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iii-mac"><span class="nav-number">4.</span> <span class="nav-text">III: MAC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iv-attack-security"><span class="nav-number">5.</span> <span class="nav-text">IV: Attack &amp; Security</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#preliminary-fundamental-discrete-probability"><span class="nav-number">1.</span> <span class="nav-text">Preliminary: Fundamental Discrete Probability</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#probability-distribution"><span class="nav-number">1.1.</span> <span class="nav-text">Probability Distribution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#event"><span class="nav-number">1.2.</span> <span class="nav-text">Event</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#the-union-bound"><span class="nav-number">1.2.1.</span> <span class="nav-text">The Union Bound</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#random-variable"><span class="nav-number">1.3.</span> <span class="nav-text">Random Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#uniform-random-variable"><span class="nav-number">1.3.1.</span> <span class="nav-text">Uniform Random Variable</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#independence"><span class="nav-number">1.4.</span> <span class="nav-text">Independence</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#more-about-probability"><span class="nav-number">1.5.</span> <span class="nav-text">More about Probability</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#i-pseudorandomness"><span class="nav-number">2.</span> <span class="nav-text">I: Pseudorandomness</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pseudo-random-generator"><span class="nav-number">2.1.</span> <span class="nav-text">Pseudo-random Generator</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#security"><span class="nav-number">2.1.1.</span> <span class="nav-text">Security</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#attack-game-prg-and-advantage"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">Attack Game (PRG) and Advantage</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pseudo-random-function"><span class="nav-number">2.2.</span> <span class="nav-text">Pseudo-random Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#notation"><span class="nav-number">2.2.1.</span> <span class="nav-text">Notation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#attack-game-prf"><span class="nav-number">2.2.2.</span> <span class="nav-text">Attack Game (PRF)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pseudo-random-permutation"><span class="nav-number">2.3.</span> <span class="nav-text">Pseudo-random Permutation</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ii-cipher"><span class="nav-number">3.</span> <span class="nav-text">II: Cipher</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#stream-cipher"><span class="nav-number">3.1.</span> <span class="nav-text">Stream Cipher</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#otp"><span class="nav-number">3.1.1.</span> <span class="nav-text">One Time Pad</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#perfect-secrecy"><span class="nav-number">3.2.</span> <span class="nav-text">Perfect Secrecy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#stream-cipher-in-practice"><span class="nav-number">3.2.1.</span> <span class="nav-text">Stream Cipher in Practice</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bc"><span class="nav-number">3.3.</span> <span class="nav-text">Block Cipher</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#attack-game-prp-security"><span class="nav-number">3.3.1.</span> <span class="nav-text">Attack Game (PRP) &amp; Security</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#practice"><span class="nav-number">3.3.2.</span> <span class="nav-text">Practice</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iii-mac"><span class="nav-number">4.</span> <span class="nav-text">III: MAC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iv-attack-security"><span class="nav-number">5.</span> <span class="nav-text">IV: Attack &amp; Security</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#v-public-key-cryptography"><span class="nav-number">6.</span> <span class="nav-text">V: Public-key Cryptography</span></a></li></ol></div>
             
 
           </div>
