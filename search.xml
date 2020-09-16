@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>写在NOIP2017之后</title>
+    <url>/2017/after-noip-2017/</url>
+    <content><![CDATA[<h3 id="引">引</h3>
+<blockquote>
+<p>本来应该有另一篇博客叫做写在NOIP2017之前的, 但跑回家才意识到博客搭在机房的电脑上, 于是......</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="比赛过程">比赛过程</h3>
+<h4 id="day1">Day1</h4>
+<p>看到这个T1不送分了, 心里还是有点虚, 认真地读完了后面两题平复了一下心态. 想着既然是T1, 肯定不是送就是偷, 看着样例找了找规律, 推了个 <span class="math inline">\(a + b + (b \% a) (a &lt; b)\)</span> 的方法, 发现过不了大样例. 于是盯着大样例发呆, 突然发现了世界的奥秘. 然后写T2, 写完眼查了一下大样例, 正要关闭窗口的时候 Vimdiff 了一波, 发现自己大小写写错一大堆... T3想了想写了个不考虑零边的记忆化搜索, 发现大样例过不了 认真思考了一下发现是没有考虑到达终点又折返的情况 又想了想发现 <span class="math inline">\(-1\)</span> 挺好判的, 就加上了.</p>
+<h4 id="day2">Day2</h4>
+<p>到达考场时精神状态不太好, 意识模糊地打开了题目. 看完T2一直在想MST什么的, 感觉不太会做准备放弃时发现数据范围只有12, 于是秒懂了. T3没想多久推出一个平衡树的做法, 对自己代码能力过于自信没有多想就开始写, 结果调到最后一刻还是GG了.</p>
+<h3 id="反思错误">反思错误</h3>
+<p>感觉这次虽然题目比较奇怪, 但实际难度还是合理的, 出现了一些失误恰恰暴露出身上的一些问题.</p>
+<ul>
+<li>考试的时候大部分处在一种边想边写的状态, 一边写可能还要一边完善一些细节.</li>
+<li>刷了很多Atcoder 的题目之后, 代码能力退化明显.</li>
+<li>考场的debuff比较强.</li>
+</ul>
+<p>可能后面两条还稍微可以接受吧, 但是第一条的确是硬伤, 这样做简单题或者在比较清醒的时候写题可能还好, 然而一旦遇到代码实现比较复杂或者条件比较多的题目, 就会挂得很惨, 这个问题模拟赛中也出现过几次. 解决的策略其实说起来也不难, 主要就是每道题写之前把算法细节考虑基本清楚, 做到 <code>Think twice, Code once</code> 吧. 这样也不会出现某道题写了很久最后发现做法是错误的这种尴尬的情况也能够避免写一些特别复杂的做法.</p>
+<h3 id="关于未来">关于未来</h3>
+<p>针对这次联赛的问题和原来的一些弱点, 对接下来的一段学习做一些规划：</p>
+<ul>
+<li>补一些数学相关的知识（不一定OI相关）</li>
+<li>提高一下代码能力, 复习一些不熟练的数据结构, 刷一些质量比较高的题目</li>
+</ul>
+<p>然后的话, 回去就要补文化了吧.</p>
+]]></content>
+      <tags>
+        <tag>Summary</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Atcoder 选做</title>
     <url>/2017/atcoder-select/</url>
     <content><![CDATA[<p>其实是总结一下比赛中遇到的好题, 然后瞎做了几场 AGC 的题目练习, 感觉还比较有意思.</p>
@@ -94,42 +127,9 @@ g(x, y) =
 <p>然后我们得到了一个<span class="math inline">\(Fibonacci\)</span>数列? 直接暴力算就好了... 实际上第一种情况也可以直接算, 因为整个序列都是<span class="math inline">\(T\)</span>的若干次重复得到的.</p>
 ]]></content>
       <tags>
-        <tag>Summary</tag>
         <tag>Dynamic Programming</tag>
-        <tag>Combinatorial</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>写在NOIP2017之后</title>
-    <url>/2017/after-noip-2017/</url>
-    <content><![CDATA[<h3 id="引">引</h3>
-<blockquote>
-<p>本来应该有另一篇博客叫做写在NOIP2017之前的, 但跑回家才意识到博客搭在机房的电脑上, 于是......</p>
-</blockquote>
-<a id="more"></a>
-<h3 id="比赛过程">比赛过程</h3>
-<h4 id="day1">Day1</h4>
-<p>看到这个T1不送分了, 心里还是有点虚, 认真地读完了后面两题平复了一下心态. 想着既然是T1, 肯定不是送就是偷, 看着样例找了找规律, 推了个 <span class="math inline">\(a + b + (b \% a) (a &lt; b)\)</span> 的方法, 发现过不了大样例. 于是盯着大样例发呆, 突然发现了世界的奥秘. 然后写T2, 写完眼查了一下大样例, 正要关闭窗口的时候 Vimdiff 了一波, 发现自己大小写写错一大堆... T3想了想写了个不考虑零边的记忆化搜索, 发现大样例过不了 认真思考了一下发现是没有考虑到达终点又折返的情况 又想了想发现 <span class="math inline">\(-1\)</span> 挺好判的, 就加上了.</p>
-<h4 id="day2">Day2</h4>
-<p>到达考场时精神状态不太好, 意识模糊地打开了题目. 看完T2一直在想MST什么的, 感觉不太会做准备放弃时发现数据范围只有12, 于是秒懂了. T3没想多久推出一个平衡树的做法, 对自己代码能力过于自信没有多想就开始写, 结果调到最后一刻还是GG了.</p>
-<h3 id="反思错误">反思错误</h3>
-<p>感觉这次虽然题目比较奇怪, 但实际难度还是合理的, 出现了一些失误恰恰暴露出身上的一些问题.</p>
-<ul>
-<li>考试的时候大部分处在一种边想边写的状态, 一边写可能还要一边完善一些细节.</li>
-<li>刷了很多Atcoder 的题目之后, 代码能力退化明显.</li>
-<li>考场的debuff比较强.</li>
-</ul>
-<p>可能后面两条还稍微可以接受吧, 但是第一条的确是硬伤, 这样做简单题或者在比较清醒的时候写题可能还好, 然而一旦遇到代码实现比较复杂或者条件比较多的题目, 就会挂得很惨, 这个问题模拟赛中也出现过几次. 解决的策略其实说起来也不难, 主要就是每道题写之前把算法细节考虑基本清楚, 做到 <code>Think twice, Code once</code> 吧. 这样也不会出现某道题写了很久最后发现做法是错误的这种尴尬的情况也能够避免写一些特别复杂的做法.</p>
-<h3 id="关于未来">关于未来</h3>
-<p>针对这次联赛的问题和原来的一些弱点, 对接下来的一段学习做一些规划：</p>
-<ul>
-<li>补一些数学相关的知识（不一定OI相关）</li>
-<li>提高一下代码能力, 复习一些不熟练的数据结构, 刷一些质量比较高的题目</li>
-</ul>
-<p>然后的话, 回去就要补文化了吧.</p>
-]]></content>
-      <tags>
         <tag>Summary</tag>
+        <tag>Combinatorial</tag>
       </tags>
   </entry>
   <entry>
@@ -163,39 +163,6 @@ g_{i, j, k} =
       </tags>
   </entry>
   <entry>
-    <title>A Brief Proof of Birthday Paradox</title>
-    <url>/2020/birthday-paradox/</url>
-    <content><![CDATA[<h1 id="introduction"><em>Introduction</em></h1>
-<h2 id="birthday-paradox"><em>Birthday Paradox</em></h2>
-<blockquote>
-<p>There are <span class="math inline">\(k\)</span> people whose birthdays are among set <span class="math inline">\(B\)</span> with size <span class="math inline">\(n\)</span>, the probability that there are <strong>at least</strong> a pair of people have the same birthday is greater than <span class="math inline">\(\frac{1}{2}\)</span> when <span class="math inline">\(k \ge 1.2 \sqrt{n} + 1\)</span></p>
-</blockquote>
-<a id="more"></a>
-<h1 id="proof"><em>Proof</em></h1>
-<p>Suppose each person's birthday is <strong>independent uniform</strong> in <span class="math inline">\(B\)</span>, then the probability that don't exist such a pair is:</p>
-<p><span class="math display">\[
-P = \prod_{i=0}^{k-1} \left(1 - \frac{i}{n}\right)
-\]</span></p>
-<p>to prove <span class="math inline">\(P \le \frac{1}{2}\)</span>, we use the result in analysis that:</p>
-<blockquote>
-<p><span class="math inline">\(\forall x \in \mathbb{R}, 1 + x \le \mathrm{e}^x\)</span> <img src="/img/exp.png"></p>
-</blockquote>
-<p>then:</p>
-<p><span class="math display">\[
-\begin{aligned}
-P &amp;\le \exp \left(\sum_{i=0}^{k-1} -\cfrac{i}{n}\right) \\
-&amp;\le \exp \left(-\frac{(k-1)^2}{2n}\right) \\
-&amp;\le \exp \left(-\frac{(1.2 \sqrt{n})^2}{2n}\right) \\
-&amp;= \exp(-0.72) &lt; \frac{1}{2} \\
-\end{aligned}
-\]</span></p>
-]]></content>
-      <tags>
-        <tag>Probability</tag>
-        <tag>Real Analysis</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Codeforces 553E Kyoya and Train</title>
     <url>/2017/cf-553e/</url>
     <content><![CDATA[<h3 id="description">Description</h3>
@@ -219,6 +186,34 @@ P &amp;\le \exp \left(\sum_{i=0}^{k-1} -\cfrac{i}{n}\right) \\
         <tag>Dynamic Programming</tag>
         <tag>Probability</tag>
         <tag>Generating Function</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CTSC2017 游戏</title>
+    <url>/2017/ctsc2017-game/</url>
+    <content><![CDATA[<h3 id="description">Description</h3>
+<blockquote>
+<p>有<span class="math inline">\(N\)</span> 局游戏, 除第一局游戏外每一局游戏的获胜机率均与上一局游戏的结果有关. 现在对游戏进行<span class="math inline">\(Q\)</span>次修改, 每次告诉你某一局游戏的结果或者删除之前给你的信息, 求修改后期望下获胜的场数为多少.</p>
+</blockquote>
+<p><span class="math inline">\(N, Q \le 2 \times 10 ^ 5\)</span></p>
+<a id="more"></a>
+<h3 id="solution">Solution</h3>
+<p>首先不难发现, 某一局的游戏的胜率只与其左右的最近游戏结果相关, 所以答案可以分段计算.</p>
+<p>考虑期望的线性性, 可以将期望胜利场数表示成每一局游戏的胜率之和. 记 <span class="math inline">\(X_i\)</span> 表示第<span class="math inline">\(i\)</span> 场游戏的状态. 所求即为 <span class="math inline">\(\sum _ {l &lt; m &lt; r} P( X _ m = 1 | X _ l, X _ r)\)</span></p>
+<p>由贝叶斯公式: <span class="math display">\[
+\begin{align}
+P(X _ m = 1 | X _ l, X _ r) &amp;= \frac{P(X _ m = 1, X _ l, X _ r)}{P(X _ l) \cdot P(X _ r | X _ l) } \\
+&amp;= \frac{P(X _ l) \cdot P(X _ m = 1 | X _ l) \cdot P(X _ r | X _ l, X _ m = 1)}{P(X _ l) \cdot P(X _ r | X _ l)} \\
+&amp;= \frac{P(X _ m=1 | X _ l) \cdot P(X _ r | X _ l, X _ m = 1)}{P(X _ r | X _ l)} \\
+&amp;= \frac{P(X _ m=1 | X _ l) \cdot P(X _ r | X _ m = 1)}{P(X _ r | X _ l)} 
+\end{align}
+\]</span></p>
+<p>发现分母是常数, 于是可以合并分子. 考虑分子的意义, 大概是合法状态下当前位置为胜的概率. 每一段就可以直接用<span class="math inline">\(dp\)</span>来处理出答案, 记录某场比赛为胜/ 负的概率以及分子的期望即可. 这个复杂度是每次询问<span class="math inline">\(O(n)\)</span>的.</p>
+<p>其实这道题要讲的已经讲完了, 最后只要用矩乘快速合并<span class="math inline">\(dp\)</span>值, 维护一下就可以了.</p>
+]]></content>
+      <tags>
+        <tag>Probability</tag>
+        <tag>Data Structure</tag>
       </tags>
   </entry>
   <entry>
@@ -265,135 +260,36 @@ P &amp;\le \exp \left(\sum_{i=0}^{k-1} -\cfrac{i}{n}\right) \\
       </tags>
   </entry>
   <entry>
-    <title>CTSC2017 游戏</title>
-    <url>/2017/ctsc2017-game/</url>
-    <content><![CDATA[<h3 id="description">Description</h3>
+    <title>A Brief Proof of Birthday Paradox</title>
+    <url>/2020/birthday-paradox/</url>
+    <content><![CDATA[<h1 id="introduction"><em>Introduction</em></h1>
+<h2 id="birthday-paradox"><em>Birthday Paradox</em></h2>
 <blockquote>
-<p>有<span class="math inline">\(N\)</span> 局游戏, 除第一局游戏外每一局游戏的获胜机率均与上一局游戏的结果有关. 现在对游戏进行<span class="math inline">\(Q\)</span>次修改, 每次告诉你某一局游戏的结果或者删除之前给你的信息, 求修改后期望下获胜的场数为多少.</p>
+<p>There are <span class="math inline">\(k\)</span> people whose birthdays are among set <span class="math inline">\(B\)</span> with size <span class="math inline">\(n\)</span>, the probability that there are <strong>at least</strong> a pair of people have the same birthday is greater than <span class="math inline">\(\frac{1}{2}\)</span> when <span class="math inline">\(k \ge 1.2 \sqrt{n} + 1\)</span></p>
 </blockquote>
-<p><span class="math inline">\(N, Q \le 2 \times 10 ^ 5\)</span></p>
 <a id="more"></a>
-<h3 id="solution">Solution</h3>
-<p>首先不难发现, 某一局的游戏的胜率只与其左右的最近游戏结果相关, 所以答案可以分段计算.</p>
-<p>考虑期望的线性性, 可以将期望胜利场数表示成每一局游戏的胜率之和. 记 <span class="math inline">\(X_i\)</span> 表示第<span class="math inline">\(i\)</span> 场游戏的状态. 所求即为 <span class="math inline">\(\sum _ {l &lt; m &lt; r} P( X _ m = 1 | X _ l, X _ r)\)</span></p>
-<p>由贝叶斯公式: <span class="math display">\[
-\begin{align}
-P(X _ m = 1 | X _ l, X _ r) &amp;= \frac{P(X _ m = 1, X _ l, X _ r)}{P(X _ l) \cdot P(X _ r | X _ l) } \\
-&amp;= \frac{P(X _ l) \cdot P(X _ m = 1 | X _ l) \cdot P(X _ r | X _ l, X _ m = 1)}{P(X _ l) \cdot P(X _ r | X _ l)} \\
-&amp;= \frac{P(X _ m=1 | X _ l) \cdot P(X _ r | X _ l, X _ m = 1)}{P(X _ r | X _ l)} \\
-&amp;= \frac{P(X _ m=1 | X _ l) \cdot P(X _ r | X _ m = 1)}{P(X _ r | X _ l)} 
-\end{align}
+<h1 id="proof"><em>Proof</em></h1>
+<p>Suppose each person's birthday is <strong>independent uniform</strong> in <span class="math inline">\(B\)</span>, then the probability that don't exist such a pair is:</p>
+<p><span class="math display">\[
+P = \prod_{i=0}^{k-1} \left(1 - \frac{i}{n}\right)
 \]</span></p>
-<p>发现分母是常数, 于是可以合并分子. 考虑分子的意义, 大概是合法状态下当前位置为胜的概率. 每一段就可以直接用<span class="math inline">\(dp\)</span>来处理出答案, 记录某场比赛为胜/ 负的概率以及分子的期望即可. 这个复杂度是每次询问<span class="math inline">\(O(n)\)</span>的.</p>
-<p>其实这道题要讲的已经讲完了, 最后只要用矩乘快速合并<span class="math inline">\(dp\)</span>值, 维护一下就可以了.</p>
+<p>to prove <span class="math inline">\(P \le \frac{1}{2}\)</span>, we use the result in analysis that:</p>
+<blockquote>
+<p><span class="math inline">\(\forall x \in \mathbb{R}, 1 + x \le \mathrm{e}^x\)</span> <img src="/img/exp.png"></p>
+</blockquote>
+<p>then:</p>
+<p><span class="math display">\[
+\begin{aligned}
+P &amp;\le \exp \left(\sum_{i=0}^{k-1} -\cfrac{i}{n}\right) \\
+&amp;\le \exp \left(-\frac{(k-1)^2}{2n}\right) \\
+&amp;\le \exp \left(-\frac{(1.2 \sqrt{n})^2}{2n}\right) \\
+&amp;= \exp(-0.72) &lt; \frac{1}{2} \\
+\end{aligned}
+\]</span></p>
 ]]></content>
       <tags>
         <tag>Probability</tag>
-        <tag>Data Structure</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>拓展埃氏筛法小结</title>
-    <url>/2018/ex-eratos-sieve/</url>
-    <content><![CDATA[<p>学完洲阁筛之后忘得差不多了, 不过现在已经可以将洲阁筛扔进垃圾桶了...</p>
-<a id="more"></a>
-<h3 id="description">Description</h3>
-<p>求:</p>
-<p><span class="math display">\[h(n) = \sum_{i=1}^{n} f(i)\]</span></p>
-<p>其中 <span class="math inline">\(f\)</span> 是定义在正整数集下的积性函数, 满足 <span class="math inline">\(f(p^c)\)</span> 能够快速计算.</p>
-<h3 id="conversion">Conversion</h3>
-<p>首先可以将所有要求的数按照是否只含大于 <span class="math inline">\(\sqrt{n}\)</span> 的质因子分为两类, 对于第一类数一定是一个质数, 而第二类数一定可以在某个较小的质因子处考虑到, 于是我们只关注不超过 <span class="math inline">\(\sqrt{n}\)</span> 的那些质因子.</p>
-<p>定义 <span class="math inline">\(S_k(n, i)\)</span> 表示小于等于 <span class="math inline">\(n\)</span> 的数中与前 <span class="math inline">\(i\)</span> 个质数互质的所有数与<strong>所有质数</strong>的 <span class="math inline">\(k\)</span> 次方和, 容易得到转移:</p>
-<p><span class="math display">\[
-S_k(n, i) = 
-\begin{cases}
-S_k(n, i-1) &amp; n &lt; p_i^2 \\
-S_k(n, i-1) - p_i^k \times \left(S_k(\left \lfloor \frac{n}{p_i} \right \rfloor, i - 1) - S_k(p_{i-1}, i - 1)\right) &amp; \mathrm{otherwise} 
-\end{cases}
-\]</span></p>
-<p>在考虑完 <span class="math inline">\(\sqrt{n}\)</span> 以内的所有质因数后, <span class="math inline">\(S_k(n)\)</span> 中留下了所有质数的 <span class="math inline">\(k\)</span> 次方, 这样所有第一类数的函数值都可以快速计算.</p>
-<p>类似地, 定义 <span class="math inline">\(G(n, i)\)</span> 表示小于等于 <span class="math inline">\(n\)</span> 的数中仅由第 <span class="math inline">\(i\)</span> 个以后的质数构成的数与<strong>所有质数</strong> <span class="math inline">\(x\)</span> 的 <span class="math inline">\(f(x)\)</span> 之和, 转移的方式类似:</p>
-<p><span class="math display">\[
-G(n, i) = G(n, i+1) + \sum_{c=0}^{\substack{p_i^{c+1} \le n}} f(p_i^{c+1}) + f(p_i^c) \times \left(G(\left \lfloor \frac{n}{p_i^c} \right \rfloor, i+1) - G(p_i, i+1)\right)
-\]</span></p>
-<p>复杂度约为 <span class="math inline">\(O\left(\frac{n^{\frac{3}{4}}}{\log{n}}\right)\)</span></p>
-<h3 id="code">Code</h3>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">namespace</span> SIV &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">100000</span>;</span><br><span class="line"></span><br><span class="line">    ll n;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    uint val[M + <span class="number">5</span>];</span><br><span class="line">    <span class="keyword">int</span> prime[M + <span class="number">5</span>], pcnt;</span><br><span class="line">    uint s[M + <span class="number">5</span>], S[M + <span class="number">5</span>];</span><br><span class="line">    uint f[M + <span class="number">5</span>], F[M + <span class="number">5</span>];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> uint <span class="title">gets</span><span class="params">(ll x)</span> </span>&#123; <span class="keyword">return</span> x &lt;= m ? s[x] : S[n / x]; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> uint <span class="title">getf</span><span class="params">(ll x)</span> </span>&#123; <span class="keyword">return</span> x &lt;= m ? f[x] : F[n / x]; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">my_sqrt</span><span class="params">(ll x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> r = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="number">1l</span>l * (r + <span class="number">1</span>) * (r + <span class="number">1</span>) &lt;= x) ++ r;</span><br><span class="line">        <span class="keyword">return</span> r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(ll _n)</span> </span>&#123;</span><br><span class="line">        m = my_sqrt(n = _n);</span><br><span class="line">       </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">            val[i] = <span class="number">81</span> * i * i - <span class="number">27</span> * i + <span class="number">9</span>;</span><br><span class="line">            s[i] = i - <span class="number">1</span>;</span><br><span class="line">            S[i] = (n / i) - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> p = <span class="number">2</span>; p &lt;= m; ++p) &#123;</span><br><span class="line">            <span class="keyword">if</span>(s[p] == s[p<span class="number">-1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">            prime[pcnt ++] = p;</span><br><span class="line">             </span><br><span class="line">            <span class="keyword">const</span> uint _s = s[p - <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">const</span> ll q = <span class="number">1l</span>l * p * p, lim = min((ll) m, n / q), x = m / p, y = n / p;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= x; ++i) S[i] -= S[i * p] - _s;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = x + <span class="number">1</span>; i &lt;= lim; ++i) S[i] -= s[y / i] - _s;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = m; i &gt;= q; --i) s[i] -= s[i / p] - _s;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">            f[i] = s[i] * <span class="number">63</span>;</span><br><span class="line">            F[i] = S[i] * <span class="number">63</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> e = pcnt; e &gt;= <span class="number">1</span>; --e) &#123;</span><br><span class="line">            <span class="keyword">int</span> p = prime[e<span class="number">-1</span>];</span><br><span class="line">            <span class="keyword">const</span> ll q = <span class="number">1l</span>l * p * p, lim = min((ll) m, n / q);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= lim; ++i) &#123;</span><br><span class="line">                ll cur = n / i;</span><br><span class="line">                <span class="keyword">for</span>(ll t = p, c = <span class="number">1</span>; t * p &lt;= cur; t *= p, ++ c) &#123;</span><br><span class="line">                    F[i] += (getf(cur / t) - e * <span class="number">63</span>) * val[c] + val[c + <span class="number">1</span>];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = m; i &gt;= q; --i) &#123;</span><br><span class="line">                <span class="keyword">int</span> cur = i;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> t = p, c = <span class="number">1</span>; t &lt;= cur / p; t *= p, ++ c) &#123;</span><br><span class="line">                    f[i] += (getf(cur / t) - e * <span class="number">63</span>) * val[c] + val[c + <span class="number">1</span>];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>Number Theory</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>一些碎笔</title>
-    <url>/2020/pieces-of-memories/</url>
-    <content><![CDATA[<h3 id="引">引</h3>
-<hr>
-<p>不出所料的话，48小时后，园子里的我再次回忆起这段特殊经历时，能说的就仅仅是一句“却道天凉好个秋”了。</p>
-<p>但我还是决心提笔记录此时此刻的强烈感受，姑且当作为了离别而进行的某种仪式。</p>
-<a id="more"></a>
-<h3 id="夏日">夏日</h3>
-<hr>
-<p>7月底的某个午后，在炙烤的烈日下和单调的蝉声里，我补完了《EVA》的TV版和旧剧场版，随后默默将新剧版移出列表。 就像剧中真嗣拒绝了最后的补完一样，我也拒绝了对新剧版的“补完”。已经曲终人散的故事不需要重新来过，就让那绕梁的余音再多停留一会儿吧。</p>
-<p>后来不知道在什么地方看到了贺炜说的话 “...我想真正的成熟应该并不是追求完美，而是直面自己的缺憾，这才是生活的本质。罗曼罗兰说过的，这个世上只有一种真正的英雄主义，那就是认清生活的真相，并且仍然热爱他...”， 倏忽间许多剧中的隐喻的迷雾也消散了。</p>
-<p>于是夏日就在这蝉鸣之间不觉过去了。</p>
-<h3 id="逃离">逃离</h3>
-<hr>
-<p>逃离城市的热闹与喧嚣的方式或许很多，但对我而言最直接的方式就是从空间上真正远离。</p>
-<p>过去的一轮冬春夏秋里，都有在老宅的度过的时光：在无名芬芳里，我曾沿着历史的长河逆流而上，在那蜿蜒曲折、川流不息的轨迹里寻觅熟悉的踪迹； 也曾在点点星光下抬头仰望，敬畏着遥远时空外的浩瀚无垠；或是深入微风下浪一般涌动的稻田，透过层叠的稻叶一窥虫儿的世界。</p>
-<p>窗外鸟儿的低语打断我的思绪，似乎也预示着逃离的结束，钢筋水泥的丛林里可没有这样的故事。</p>
-<h3 id="城游">城游</h3>
-<hr>
-<p>粗略一算，这段特殊的时间，跨度之长，已接近过去好多年的总和。</p>
-<p>重新踏上新街旧巷，像是久别重逢的老友。沿着7年前的方向，恍惚间，我填平时间沟壑的妄想似乎也得以暂时成立。</p>
-<p>路过一个又一个熟悉的街口，整理脑中已经陌生的记忆，将他们对应在一起。就像是将思绪的碎片以现实的坐标拼接起来，重新得到记忆的地图。</p>
-<p>于是沿着这地图的指示，我再次窥见过去的自己。</p>
-<h3 id="梧桐雨">梧桐雨</h3>
-<hr>
-<p>秋雨里的法国梧桐，总莫名让我想起“梧桐更兼细雨”的意境来，虽说法国梧桐并不是梧桐，气氛也没有那么凄冷。</p>
-<p>想起高中门前那条种满法桐的路了，多少个日夜朝夕，从茂密的桐荫下走过的我不会想到，如今的我已只能在记忆里看见当时的场景了。</p>
-<p>忽然想起生命中许多人来，他们也像这梧桐，在路过你生命的时候为你提供短暂的荫蔽， 而当你经过他们，他们也消失在你视野之外时，就只能留下淡漠的回忆和无力的惋惜而已。</p>
-<p>写这段话的时候大概理解了几分“悲欢离合总无情”，查了一下出处是蒋捷的《虞美人·听雨》，摘录在这里作为收尾好了：</p>
-<blockquote>
-<p>少年听雨歌楼上，红烛昏罗帐。<br>
-壮年听雨客舟中，江阔云低，断雁叫西风。<br>
-而今听雨僧庐下，鬓已星星也。<br>
-悲欢离合总无情，一任阶前，点滴到天明。</p>
-</blockquote>
-]]></content>
-      <tags>
-        <tag>Summary</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>记NOI2018</title>
-    <url>/2018/noi2018/</url>
-    <content><![CDATA[<p>折腾了好久终于把博客修好了, 来填一些坑.</p>
-<a id="more"></a>
-<h3 id="day--1">Day -1</h3>
-<p>上午在家无所事事, 收了下行李, 下午就到洋湖报到去了, 然后听说笔试时间调整到了上午, 感觉有点慌整个晚上都在背笔试.</p>
-<h3 id="day-0">Day 0</h3>
-<p>上午考笔试, 比预料中的简单很多, 没有什么快捷键之类的坑题也没有挂分, 试机就打了一个最简单的配置就跑了.</p>
-<p>下午找了一间教室自习, 不知道干什么, 晚上懒得复习什么早早地睡了, 奇怪的是居然丝毫不紧张.</p>
-<h3 id="day-1">Day 1</h3>
-<p>第一试, 看了看题, 觉得题意都挺好理解的, 难度也基本按照题目顺序.</p>
-<p>就直接开始写T1了, 写完 <span class="math inline">\(\log^2\)</span> 过了大样例直接丢到一边了, 然后看T2, 推了一个看起来有理有据的结论, 但不是很会算答案搞了很久大样例四个全错, 想了一下随便打了个特判过了其中两个, 又改了一下特判才在考试一半时间的时候过了大样例.</p>
-<p>期间去上了一个厕所, 用掉20min...</p>
-<p>看T3惊喜地发现68分特别傻逼, 飞快地码完过了大样例还有一个半小时, 正准备回去继续做T2最后20分的时候发现T1可能跑不过, 卡了很久的常, 期间竟然检查出好多致命的错误, 然后心里特别虚地不停检查, T2也没有继续想了.</p>
-<p>好在最后并没有挂分.</p>
-<h3 id="day-1.5">Day 1.5</h3>
-<p>鸽了社会活动, 在自习室搞了一天颓.</p>
-<p>直接打出了防沉迷警告...</p>
-<h3 id="day-2">Day 2</h3>
-<p>看完题目一直在想哪道题最简单, 然后T1补充了一个条件...</p>
-<p>用了两个小时都没有从T1的倒数第二步推出最后一步, 想想当时可能真的受到了降智打击, 还自信地觉得T2比较可做, 码了很久发现是假算法, 感觉很慌滚去写T3暴力, 回来想先写T2的45分又不想放弃T1, 最后连T2的45分都没拿到...</p>
-<p>感觉心态真的崩的厉害, 虽然最后查分发现意外的多了5分(大雾).</p>
-<h3 id="总结">总结</h3>
-<p>好像从去年NOIP以来, 身上一直有某种二试Debuff存在, 可能经常性的因为第一试考得不错, 而对多数情况下更难的二试心存轻视, 也没能调整好自己的心态吧.</p>
-<p>不管怎样, 接下来的OI生涯, 要更加珍惜!</p>
-]]></content>
-      <tags>
-        <tag>Summary</tag>
+        <tag>Real Analysis</tag>
       </tags>
   </entry>
   <entry>
@@ -479,6 +375,38 @@ P &amp;= \prod_{p\, \mathrm{is\ prime}} \left(1 - \frac{1}{p^2}\right) \\
       </tags>
   </entry>
   <entry>
+    <title>拓展埃氏筛法小结</title>
+    <url>/2018/ex-eratos-sieve/</url>
+    <content><![CDATA[<p>学完洲阁筛之后忘得差不多了, 不过现在已经可以将洲阁筛扔进垃圾桶了...</p>
+<a id="more"></a>
+<h3 id="description">Description</h3>
+<p>求:</p>
+<p><span class="math display">\[h(n) = \sum_{i=1}^{n} f(i)\]</span></p>
+<p>其中 <span class="math inline">\(f\)</span> 是定义在正整数集下的积性函数, 满足 <span class="math inline">\(f(p^c)\)</span> 能够快速计算.</p>
+<h3 id="conversion">Conversion</h3>
+<p>首先可以将所有要求的数按照是否只含大于 <span class="math inline">\(\sqrt{n}\)</span> 的质因子分为两类, 对于第一类数一定是一个质数, 而第二类数一定可以在某个较小的质因子处考虑到, 于是我们只关注不超过 <span class="math inline">\(\sqrt{n}\)</span> 的那些质因子.</p>
+<p>定义 <span class="math inline">\(S_k(n, i)\)</span> 表示小于等于 <span class="math inline">\(n\)</span> 的数中与前 <span class="math inline">\(i\)</span> 个质数互质的所有数与<strong>所有质数</strong>的 <span class="math inline">\(k\)</span> 次方和, 容易得到转移:</p>
+<p><span class="math display">\[
+S_k(n, i) = 
+\begin{cases}
+S_k(n, i-1) &amp; n &lt; p_i^2 \\
+S_k(n, i-1) - p_i^k \times \left(S_k(\left \lfloor \frac{n}{p_i} \right \rfloor, i - 1) - S_k(p_{i-1}, i - 1)\right) &amp; \mathrm{otherwise} 
+\end{cases}
+\]</span></p>
+<p>在考虑完 <span class="math inline">\(\sqrt{n}\)</span> 以内的所有质因数后, <span class="math inline">\(S_k(n)\)</span> 中留下了所有质数的 <span class="math inline">\(k\)</span> 次方, 这样所有第一类数的函数值都可以快速计算.</p>
+<p>类似地, 定义 <span class="math inline">\(G(n, i)\)</span> 表示小于等于 <span class="math inline">\(n\)</span> 的数中仅由第 <span class="math inline">\(i\)</span> 个以后的质数构成的数与<strong>所有质数</strong> <span class="math inline">\(x\)</span> 的 <span class="math inline">\(f(x)\)</span> 之和, 转移的方式类似:</p>
+<p><span class="math display">\[
+G(n, i) = G(n, i+1) + \sum_{c=0}^{\substack{p_i^{c+1} \le n}} f(p_i^{c+1}) + f(p_i^c) \times \left(G(\left \lfloor \frac{n}{p_i^c} \right \rfloor, i+1) - G(p_i, i+1)\right)
+\]</span></p>
+<p>复杂度约为 <span class="math inline">\(O\left(\frac{n^{\frac{3}{4}}}{\log{n}}\right)\)</span></p>
+<h3 id="code">Code</h3>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">namespace</span> SIV &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">100000</span>;</span><br><span class="line"></span><br><span class="line">    ll n;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    uint val[M + <span class="number">5</span>];</span><br><span class="line">    <span class="keyword">int</span> prime[M + <span class="number">5</span>], pcnt;</span><br><span class="line">    uint s[M + <span class="number">5</span>], S[M + <span class="number">5</span>];</span><br><span class="line">    uint f[M + <span class="number">5</span>], F[M + <span class="number">5</span>];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> uint <span class="title">gets</span><span class="params">(ll x)</span> </span>&#123; <span class="keyword">return</span> x &lt;= m ? s[x] : S[n / x]; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> uint <span class="title">getf</span><span class="params">(ll x)</span> </span>&#123; <span class="keyword">return</span> x &lt;= m ? f[x] : F[n / x]; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">my_sqrt</span><span class="params">(ll x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> r = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="number">1l</span>l * (r + <span class="number">1</span>) * (r + <span class="number">1</span>) &lt;= x) ++ r;</span><br><span class="line">        <span class="keyword">return</span> r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(ll _n)</span> </span>&#123;</span><br><span class="line">        m = my_sqrt(n = _n);</span><br><span class="line">       </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">            val[i] = <span class="number">81</span> * i * i - <span class="number">27</span> * i + <span class="number">9</span>;</span><br><span class="line">            s[i] = i - <span class="number">1</span>;</span><br><span class="line">            S[i] = (n / i) - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> p = <span class="number">2</span>; p &lt;= m; ++p) &#123;</span><br><span class="line">            <span class="keyword">if</span>(s[p] == s[p<span class="number">-1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">            prime[pcnt ++] = p;</span><br><span class="line">             </span><br><span class="line">            <span class="keyword">const</span> uint _s = s[p - <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">const</span> ll q = <span class="number">1l</span>l * p * p, lim = min((ll) m, n / q), x = m / p, y = n / p;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= x; ++i) S[i] -= S[i * p] - _s;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = x + <span class="number">1</span>; i &lt;= lim; ++i) S[i] -= s[y / i] - _s;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = m; i &gt;= q; --i) s[i] -= s[i / p] - _s;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">            f[i] = s[i] * <span class="number">63</span>;</span><br><span class="line">            F[i] = S[i] * <span class="number">63</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> e = pcnt; e &gt;= <span class="number">1</span>; --e) &#123;</span><br><span class="line">            <span class="keyword">int</span> p = prime[e<span class="number">-1</span>];</span><br><span class="line">            <span class="keyword">const</span> ll q = <span class="number">1l</span>l * p * p, lim = min((ll) m, n / q);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= lim; ++i) &#123;</span><br><span class="line">                ll cur = n / i;</span><br><span class="line">                <span class="keyword">for</span>(ll t = p, c = <span class="number">1</span>; t * p &lt;= cur; t *= p, ++ c) &#123;</span><br><span class="line">                    F[i] += (getf(cur / t) - e * <span class="number">63</span>) * val[c] + val[c + <span class="number">1</span>];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = m; i &gt;= q; --i) &#123;</span><br><span class="line">                <span class="keyword">int</span> cur = i;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> t = p, c = <span class="number">1</span>; t &lt;= cur / p; t *= p, ++ c) &#123;</span><br><span class="line">                    f[i] += (getf(cur / t) - e * <span class="number">63</span>) * val[c] + val[c + <span class="number">1</span>];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>Number Theory</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>NOI2016 网格</title>
     <url>/2017/noi2016-grid/</url>
     <content><![CDATA[<h3 id="description">Description</h3>
@@ -497,6 +425,37 @@ P &amp;= \prod_{p\, \mathrm{is\ prime}} \left(1 - \frac{1}{p^2}\right) \\
 ]]></content>
       <tags>
         <tag>Graph Theory</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>记NOI2018</title>
+    <url>/2018/noi2018/</url>
+    <content><![CDATA[<p>折腾了好久终于把博客修好了, 来填一些坑.</p>
+<a id="more"></a>
+<h3 id="day--1">Day -1</h3>
+<p>上午在家无所事事, 收了下行李, 下午就到洋湖报到去了, 然后听说笔试时间调整到了上午, 感觉有点慌整个晚上都在背笔试.</p>
+<h3 id="day-0">Day 0</h3>
+<p>上午考笔试, 比预料中的简单很多, 没有什么快捷键之类的坑题也没有挂分, 试机就打了一个最简单的配置就跑了.</p>
+<p>下午找了一间教室自习, 不知道干什么, 晚上懒得复习什么早早地睡了, 奇怪的是居然丝毫不紧张.</p>
+<h3 id="day-1">Day 1</h3>
+<p>第一试, 看了看题, 觉得题意都挺好理解的, 难度也基本按照题目顺序.</p>
+<p>就直接开始写T1了, 写完 <span class="math inline">\(\log^2\)</span> 过了大样例直接丢到一边了, 然后看T2, 推了一个看起来有理有据的结论, 但不是很会算答案搞了很久大样例四个全错, 想了一下随便打了个特判过了其中两个, 又改了一下特判才在考试一半时间的时候过了大样例.</p>
+<p>期间去上了一个厕所, 用掉20min...</p>
+<p>看T3惊喜地发现68分特别傻逼, 飞快地码完过了大样例还有一个半小时, 正准备回去继续做T2最后20分的时候发现T1可能跑不过, 卡了很久的常, 期间竟然检查出好多致命的错误, 然后心里特别虚地不停检查, T2也没有继续想了.</p>
+<p>好在最后并没有挂分.</p>
+<h3 id="day-1.5">Day 1.5</h3>
+<p>鸽了社会活动, 在自习室搞了一天颓.</p>
+<p>直接打出了防沉迷警告...</p>
+<h3 id="day-2">Day 2</h3>
+<p>看完题目一直在想哪道题最简单, 然后T1补充了一个条件...</p>
+<p>用了两个小时都没有从T1的倒数第二步推出最后一步, 想想当时可能真的受到了降智打击, 还自信地觉得T2比较可做, 码了很久发现是假算法, 感觉很慌滚去写T3暴力, 回来想先写T2的45分又不想放弃T1, 最后连T2的45分都没拿到...</p>
+<p>感觉心态真的崩的厉害, 虽然最后查分发现意外的多了5分(大雾).</p>
+<h3 id="总结">总结</h3>
+<p>好像从去年NOIP以来, 身上一直有某种二试Debuff存在, 可能经常性的因为第一试考得不错, 而对多数情况下更难的二试心存轻视, 也没能调整好自己的心态吧.</p>
+<p>不管怎样, 接下来的OI生涯, 要更加珍惜!</p>
+]]></content>
+      <tags>
+        <tag>Summary</tag>
       </tags>
   </entry>
   <entry>
@@ -564,6 +523,53 @@ P &amp;= \prod_{p\, \mathrm{is\ prime}} \left(1 - \frac{1}{p^2}\right) \\
 ]]></content>
       <tags>
         <tag>Data Structure</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一些碎笔</title>
+    <url>/2020/pieces-of-memories/</url>
+    <content><![CDATA[<h3 id="引">引</h3>
+<hr>
+<p>不出所料的话，48小时后，园子里的我再次回忆起这段特殊经历时，能说的就仅仅是一句“却道天凉好个秋”了。</p>
+<p>但我还是决心提笔记录此时此刻的强烈感受，姑且当作为了离别而进行的某种仪式。</p>
+<a id="more"></a>
+<h3 id="夏日">夏日</h3>
+<hr>
+<p>7月底的某个午后，在炙烤的烈日下和单调的蝉声里，我补完了《EVA》的TV版和旧剧场版，随后默默将新剧版移出列表。 就像剧中真嗣拒绝了最后的补完一样，我也拒绝了对新剧版的“补完”。已经曲终人散的故事不需要重新来过，就让那绕梁的余音再多停留一会儿吧。</p>
+<p>后来不知道在什么地方看到了贺炜说的话 “...我想真正的成熟应该并不是追求完美，而是直面自己的缺憾，这才是生活的本质。罗曼罗兰说过的，这个世上只有一种真正的英雄主义，那就是认清生活的真相，并且仍然热爱他...”， 倏忽间许多剧中的隐喻的迷雾也消散了。</p>
+<p>于是夏日就在这蝉鸣之间不觉过去了。</p>
+<h3 id="逃离">逃离</h3>
+<hr>
+<p>逃离城市的热闹与喧嚣的方式或许很多，但对我而言最直接的方式就是从空间上真正远离。</p>
+<p>过去的一轮冬春夏秋里，都有在老宅的度过的时光：在无名芬芳里，我曾沿着历史的长河逆流而上，在那蜿蜒曲折、川流不息的轨迹里寻觅熟悉的踪迹； 也曾在点点星光下抬头仰望，敬畏着遥远时空外的浩瀚无垠；或是深入微风下浪一般涌动的稻田，透过层叠的稻叶一窥虫儿的世界。</p>
+<p>窗外鸟儿的低语打断我的思绪，似乎也预示着逃离的结束，钢筋水泥的丛林里可没有这样的故事。</p>
+<h3 id="城游">城游</h3>
+<hr>
+<p>粗略一算，这段特殊的时间，跨度之长，已接近过去好多年的总和。</p>
+<p>重新踏上新街旧巷，像是久别重逢的老友。沿着7年前的方向，恍惚间，我填平时间沟壑的妄想似乎也得以暂时成立。</p>
+<p>路过一个又一个熟悉的街口，整理脑中已经陌生的记忆，将他们对应在一起。就像是将思绪的碎片以现实的坐标拼接起来，重新得到记忆的地图。</p>
+<p>于是沿着这地图的指示，我再次窥见过去的自己。</p>
+<h3 id="梧桐雨">梧桐雨</h3>
+<hr>
+<p>秋雨里的法国梧桐，总莫名让我想起“梧桐更兼细雨”的意境来，虽说法国梧桐并不是梧桐，气氛也没有那么凄冷。</p>
+<p>想起高中门前那条种满法桐的路了，多少个日夜朝夕，从茂密的桐荫下走过的我大概不会想到，如今的我已只能在记忆里看见当时的场景了。</p>
+<p>生命中许多人，他们也就像这梧桐，在路过你生命的时候为你提供短暂的荫蔽， 而当你经过他们，他们也消失在你视野之外时，就只能留下淡漠的回忆和无力的惋惜而已。</p>
+<p>写这段话的时候大概理解了几分“悲欢离合总无情”，查了一下出处是蒋捷的《虞美人·听雨》，摘录在这里作为收尾好了：</p>
+<blockquote>
+<p>少年听雨歌楼上，红烛昏罗帐。<br>
+壮年听雨客舟中，江阔云低，断雁叫西风。<br>
+而今听雨僧庐下，鬓已星星也。<br>
+悲欢离合总无情，一任阶前，点滴到天明。</p>
+</blockquote>
+<h3 id="后记">后记</h3>
+<hr>
+<p>写这篇文章的时候，正好是一个旧的阶段将要过去，新的旅途尚未开始的时候，混乱的记忆和杂糅的情感不断交织，希望利用这碎笔的形式一吐心中积郁。 然而实在太久没有写点什么的尝试了，我浅薄的笔力已经无法驾驭乱飘的思绪，只好任其裹挟，零落不已。 而这样吐露式的尝试并不能将复杂的心绪重新梳理，于是有这段后记。</p>
+<p>以当下的状态回望彼时的心境，感到积郁的缘由无非以下种种：在寒假开始之前，犯了一些错误，也相应的付出了一些代价； 加上疫情期间隔离在家的某种压抑感，让情绪在心中积累、发酵；好不容易调整之后突然又到了分别之时...</p>
+<p>细细梳理下来，发现也没有多么难以面对，无非是这些东西缠在一起，像一团乱麻让人无从下手。而当它们被抽丝剥茧一样样梳理出来时，我好像也变得释然了。</p>
+<p>整个的这段特殊时期，就像是一次长假，仿佛无形的手按下了暂停，于是不顺心的事情全部抛诸脑后，停下来，休息调整。 幸运的是，尽管经历诸多波折，在这个假期里还是遇到了许多对我意义重大的人和事，与我共同面对，共同克服，我也总算在长假的尾声中重整了自己的心绪。 至于现在，无形的手又一次按下播放，我将重新开始着眼未来，面对前方未知的道路。过去的情绪就让它们留在过去的时空吧，轻装上阵的我多带任何一点都会成为累赘的。</p>
+]]></content>
+      <tags>
+        <tag>Summary</tag>
       </tags>
   </entry>
   <entry>
@@ -803,8 +809,8 @@ BC_{ADV}[\mathcal{A, E}] = |Pr[W_0] - Pr[W_1]|
 </section>
 ]]></content>
       <tags>
-        <tag>Probability</tag>
         <tag>Number Theory</tag>
+        <tag>Probability</tag>
         <tag>Induction</tag>
       </tags>
   </entry>
