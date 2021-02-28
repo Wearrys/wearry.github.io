@@ -99,9 +99,9 @@ V: Public-key Cryptography&lt;/li&gt;
     </summary>
     
     
-      <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
-    
       <category term="Number Theory" scheme="http://yoursite.com/tags/Number-Theory/"/>
+    
+      <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
     
       <category term="Induction" scheme="http://yoursite.com/tags/Induction/"/>
     
@@ -291,11 +291,11 @@ V: Public-key Cryptography&lt;/li&gt;
     </summary>
     
     
-      <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
+      <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
     
       <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
     
-      <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
+      <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
     
   </entry>
   
@@ -315,11 +315,11 @@ V: Public-key Cryptography&lt;/li&gt;
     </summary>
     
     
+      <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
+    
       <category term="Summary" scheme="http://yoursite.com/tags/Summary/"/>
     
       <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
-    
-      <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
     
   </entry>
   
@@ -343,9 +343,9 @@ V: Public-key Cryptography&lt;/li&gt;
     </summary>
     
     
-      <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
-    
       <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
+    
+      <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
     
   </entry>
   
@@ -417,9 +417,9 @@ V: Public-key Cryptography&lt;/li&gt;
     </summary>
     
     
-      <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
-    
       <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
+    
+      <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
     
       <category term="Generating Function" scheme="http://yoursite.com/tags/Generating-Function/"/>
     
