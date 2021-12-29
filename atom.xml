@@ -99,11 +99,11 @@ V: Public-key Cryptography&lt;/li&gt;
     </summary>
     
     
-      <category term="Number Theory" scheme="http://yoursite.com/tags/Number-Theory/"/>
-    
       <category term="Probability" scheme="http://yoursite.com/tags/Probability/"/>
     
       <category term="Induction" scheme="http://yoursite.com/tags/Induction/"/>
+    
+      <category term="Number Theory" scheme="http://yoursite.com/tags/Number-Theory/"/>
     
   </entry>
   
@@ -151,9 +151,9 @@ V: Public-key Cryptography&lt;/li&gt;
     </summary>
     
     
-      <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
-    
       <category term="Summary" scheme="http://yoursite.com/tags/Summary/"/>
+    
+      <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
     
   </entry>
   
@@ -213,11 +213,11 @@ V: Public-key Cryptography&lt;/li&gt;
     </summary>
     
     
+      <category term="Burnside" scheme="http://yoursite.com/tags/Burnside/"/>
+    
       <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
     
       <category term="Generating Function" scheme="http://yoursite.com/tags/Generating-Function/"/>
-    
-      <category term="Burnside" scheme="http://yoursite.com/tags/Burnside/"/>
     
   </entry>
   
@@ -260,11 +260,11 @@ V: Public-key Cryptography&lt;/li&gt;
     </summary>
     
     
-      <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
+      <category term="Summary" scheme="http://yoursite.com/tags/Summary/"/>
     
       <category term="Combinatorial" scheme="http://yoursite.com/tags/Combinatorial/"/>
     
-      <category term="Summary" scheme="http://yoursite.com/tags/Summary/"/>
+      <category term="Dynamic Programming" scheme="http://yoursite.com/tags/Dynamic-Programming/"/>
     
   </entry>
   

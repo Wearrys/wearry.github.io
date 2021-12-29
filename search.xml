@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>写在NOIP2017之后</title>
+    <url>/2017/after-noip-2017/</url>
+    <content><![CDATA[<h3 id="引">引</h3>
+<blockquote>
+<p>本来应该有另一篇博客叫做写在NOIP2017之前的, 但跑回家才意识到博客搭在机房的电脑上, 于是......</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="比赛过程">比赛过程</h3>
+<h4 id="day1">Day1</h4>
+<p>看到这个T1不送分了, 心里还是有点虚, 认真地读完了后面两题平复了一下心态. 想着既然是T1, 肯定不是送就是偷, 看着样例找了找规律, 推了个 <span class="math inline">\(a + b + (b \% a) (a &lt; b)\)</span> 的方法, 发现过不了大样例. 于是盯着大样例发呆, 突然发现了世界的奥秘. 然后写T2, 写完眼查了一下大样例, 正要关闭窗口的时候 Vimdiff 了一波, 发现自己大小写写错一大堆... T3想了想写了个不考虑零边的记忆化搜索, 发现大样例过不了 认真思考了一下发现是没有考虑到达终点又折返的情况 又想了想发现 <span class="math inline">\(-1\)</span> 挺好判的, 就加上了.</p>
+<h4 id="day2">Day2</h4>
+<p>到达考场时精神状态不太好, 意识模糊地打开了题目. 看完T2一直在想MST什么的, 感觉不太会做准备放弃时发现数据范围只有12, 于是秒懂了. T3没想多久推出一个平衡树的做法, 对自己代码能力过于自信没有多想就开始写, 结果调到最后一刻还是GG了.</p>
+<h3 id="反思错误">反思错误</h3>
+<p>感觉这次虽然题目比较奇怪, 但实际难度还是合理的, 出现了一些失误恰恰暴露出身上的一些问题.</p>
+<ul>
+<li>考试的时候大部分处在一种边想边写的状态, 一边写可能还要一边完善一些细节.</li>
+<li>刷了很多Atcoder 的题目之后, 代码能力退化明显.</li>
+<li>考场的debuff比较强.</li>
+</ul>
+<p>可能后面两条还稍微可以接受吧, 但是第一条的确是硬伤, 这样做简单题或者在比较清醒的时候写题可能还好, 然而一旦遇到代码实现比较复杂或者条件比较多的题目, 就会挂得很惨, 这个问题模拟赛中也出现过几次. 解决的策略其实说起来也不难, 主要就是每道题写之前把算法细节考虑基本清楚, 做到 <code>Think twice, Code once</code> 吧. 这样也不会出现某道题写了很久最后发现做法是错误的这种尴尬的情况也能够避免写一些特别复杂的做法.</p>
+<h3 id="关于未来">关于未来</h3>
+<p>针对这次联赛的问题和原来的一些弱点, 对接下来的一段学习做一些规划：</p>
+<ul>
+<li>补一些数学相关的知识（不一定OI相关）</li>
+<li>提高一下代码能力, 复习一些不熟练的数据结构, 刷一些质量比较高的题目</li>
+</ul>
+<p>然后的话, 回去就要补文化了吧.</p>
+]]></content>
+      <tags>
+        <tag>Summary</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>平面树计数</title>
     <url>/2017/count-plane-tree/</url>
     <content><![CDATA[<p>不常见的经典问题, 顺便总结一下Burnside引理吧.</p>
@@ -38,42 +71,9 @@
 <p><span class="math display">\[ p(n) = \frac{1}{2n} \left( [\mathrm{n \, is \, odd}]\binom{n}{\lfloor\frac{n}{2}\rfloor} - \binom{2n}{n-1} + \sum_{d|n}{\varphi(n/d)\binom {2d}{d}} \right)\]</span></p>
 ]]></content>
       <tags>
+        <tag>Burnside</tag>
         <tag>Combinatorial</tag>
         <tag>Generating Function</tag>
-        <tag>Burnside</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>写在NOIP2017之后</title>
-    <url>/2017/after-noip-2017/</url>
-    <content><![CDATA[<h3 id="引">引</h3>
-<blockquote>
-<p>本来应该有另一篇博客叫做写在NOIP2017之前的, 但跑回家才意识到博客搭在机房的电脑上, 于是......</p>
-</blockquote>
-<a id="more"></a>
-<h3 id="比赛过程">比赛过程</h3>
-<h4 id="day1">Day1</h4>
-<p>看到这个T1不送分了, 心里还是有点虚, 认真地读完了后面两题平复了一下心态. 想着既然是T1, 肯定不是送就是偷, 看着样例找了找规律, 推了个 <span class="math inline">\(a + b + (b \% a) (a &lt; b)\)</span> 的方法, 发现过不了大样例. 于是盯着大样例发呆, 突然发现了世界的奥秘. 然后写T2, 写完眼查了一下大样例, 正要关闭窗口的时候 Vimdiff 了一波, 发现自己大小写写错一大堆... T3想了想写了个不考虑零边的记忆化搜索, 发现大样例过不了 认真思考了一下发现是没有考虑到达终点又折返的情况 又想了想发现 <span class="math inline">\(-1\)</span> 挺好判的, 就加上了.</p>
-<h4 id="day2">Day2</h4>
-<p>到达考场时精神状态不太好, 意识模糊地打开了题目. 看完T2一直在想MST什么的, 感觉不太会做准备放弃时发现数据范围只有12, 于是秒懂了. T3没想多久推出一个平衡树的做法, 对自己代码能力过于自信没有多想就开始写, 结果调到最后一刻还是GG了.</p>
-<h3 id="反思错误">反思错误</h3>
-<p>感觉这次虽然题目比较奇怪, 但实际难度还是合理的, 出现了一些失误恰恰暴露出身上的一些问题.</p>
-<ul>
-<li>考试的时候大部分处在一种边想边写的状态, 一边写可能还要一边完善一些细节.</li>
-<li>刷了很多Atcoder 的题目之后, 代码能力退化明显.</li>
-<li>考场的debuff比较强.</li>
-</ul>
-<p>可能后面两条还稍微可以接受吧, 但是第一条的确是硬伤, 这样做简单题或者在比较清醒的时候写题可能还好, 然而一旦遇到代码实现比较复杂或者条件比较多的题目, 就会挂得很惨, 这个问题模拟赛中也出现过几次. 解决的策略其实说起来也不难, 主要就是每道题写之前把算法细节考虑基本清楚, 做到 <code>Think twice, Code once</code> 吧. 这样也不会出现某道题写了很久最后发现做法是错误的这种尴尬的情况也能够避免写一些特别复杂的做法.</p>
-<h3 id="关于未来">关于未来</h3>
-<p>针对这次联赛的问题和原来的一些弱点, 对接下来的一段学习做一些规划：</p>
-<ul>
-<li>补一些数学相关的知识（不一定OI相关）</li>
-<li>提高一下代码能力, 复习一些不熟练的数据结构, 刷一些质量比较高的题目</li>
-</ul>
-<p>然后的话, 回去就要补文化了吧.</p>
-]]></content>
-      <tags>
-        <tag>Summary</tag>
       </tags>
   </entry>
   <entry>
@@ -170,9 +170,9 @@ g(x, y) =
 <p>然后我们得到了一个<span class="math inline">\(Fibonacci\)</span>数列? 直接暴力算就好了... 实际上第一种情况也可以直接算, 因为整个序列都是<span class="math inline">\(T\)</span>的若干次重复得到的.</p>
 ]]></content>
       <tags>
-        <tag>Dynamic Programming</tag>
-        <tag>Combinatorial</tag>
         <tag>Summary</tag>
+        <tag>Combinatorial</tag>
+        <tag>Dynamic Programming</tag>
       </tags>
   </entry>
   <entry>
@@ -206,38 +206,6 @@ P &amp;\le \exp \left(\sum_{i=0}^{k-1} -\cfrac{i}{n}\right) \\
       <tags>
         <tag>Probability</tag>
         <tag>Real Analysis</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>拓展埃氏筛法小结</title>
-    <url>/2018/ex-eratos-sieve/</url>
-    <content><![CDATA[<p>学完洲阁筛之后忘得差不多了, 不过现在已经可以将洲阁筛扔进垃圾桶了...</p>
-<a id="more"></a>
-<h3 id="description">Description</h3>
-<p>求:</p>
-<p><span class="math display">\[h(n) = \sum_{i=1}^{n} f(i)\]</span></p>
-<p>其中 <span class="math inline">\(f\)</span> 是定义在正整数集下的积性函数, 满足 <span class="math inline">\(f(p^c)\)</span> 能够快速计算.</p>
-<h3 id="conversion">Conversion</h3>
-<p>首先可以将所有要求的数按照是否只含大于 <span class="math inline">\(\sqrt{n}\)</span> 的质因子分为两类, 对于第一类数一定是一个质数, 而第二类数一定可以在某个较小的质因子处考虑到, 于是我们只关注不超过 <span class="math inline">\(\sqrt{n}\)</span> 的那些质因子.</p>
-<p>定义 <span class="math inline">\(S_k(n, i)\)</span> 表示小于等于 <span class="math inline">\(n\)</span> 的数中与前 <span class="math inline">\(i\)</span> 个质数互质的所有数与<strong>所有质数</strong>的 <span class="math inline">\(k\)</span> 次方和, 容易得到转移:</p>
-<p><span class="math display">\[
-S_k(n, i) = 
-\begin{cases}
-S_k(n, i-1) &amp; n &lt; p_i^2 \\
-S_k(n, i-1) - p_i^k \times \left(S_k(\left \lfloor \frac{n}{p_i} \right \rfloor, i - 1) - S_k(p_{i-1}, i - 1)\right) &amp; \mathrm{otherwise} 
-\end{cases}
-\]</span></p>
-<p>在考虑完 <span class="math inline">\(\sqrt{n}\)</span> 以内的所有质因数后, <span class="math inline">\(S_k(n)\)</span> 中留下了所有质数的 <span class="math inline">\(k\)</span> 次方, 这样所有第一类数的函数值都可以快速计算.</p>
-<p>类似地, 定义 <span class="math inline">\(G(n, i)\)</span> 表示小于等于 <span class="math inline">\(n\)</span> 的数中仅由第 <span class="math inline">\(i\)</span> 个以后的质数构成的数与<strong>所有质数</strong> <span class="math inline">\(x\)</span> 的 <span class="math inline">\(f(x)\)</span> 之和, 转移的方式类似:</p>
-<p><span class="math display">\[
-G(n, i) = G(n, i+1) + \sum_{c=0}^{\substack{p_i^{c+1} \le n}} f(p_i^{c+1}) + f(p_i^c) \times \left(G(\left \lfloor \frac{n}{p_i^c} \right \rfloor, i+1) - G(p_i, i+1)\right)
-\]</span></p>
-<p>复杂度约为 <span class="math inline">\(O\left(\frac{n^{\frac{3}{4}}}{\log{n}}\right)\)</span></p>
-<h3 id="code">Code</h3>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">namespace</span> SIV &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">100000</span>;</span><br><span class="line"></span><br><span class="line">    ll n;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    uint val[M + <span class="number">5</span>];</span><br><span class="line">    <span class="keyword">int</span> prime[M + <span class="number">5</span>], pcnt;</span><br><span class="line">    uint s[M + <span class="number">5</span>], S[M + <span class="number">5</span>];</span><br><span class="line">    uint f[M + <span class="number">5</span>], F[M + <span class="number">5</span>];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> uint <span class="title">gets</span><span class="params">(ll x)</span> </span>&#123; <span class="keyword">return</span> x &lt;= m ? s[x] : S[n / x]; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> uint <span class="title">getf</span><span class="params">(ll x)</span> </span>&#123; <span class="keyword">return</span> x &lt;= m ? f[x] : F[n / x]; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">my_sqrt</span><span class="params">(ll x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> r = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="number">1l</span>l * (r + <span class="number">1</span>) * (r + <span class="number">1</span>) &lt;= x) ++ r;</span><br><span class="line">        <span class="keyword">return</span> r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(ll _n)</span> </span>&#123;</span><br><span class="line">        m = my_sqrt(n = _n);</span><br><span class="line">       </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">            val[i] = <span class="number">81</span> * i * i - <span class="number">27</span> * i + <span class="number">9</span>;</span><br><span class="line">            s[i] = i - <span class="number">1</span>;</span><br><span class="line">            S[i] = (n / i) - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> p = <span class="number">2</span>; p &lt;= m; ++p) &#123;</span><br><span class="line">            <span class="keyword">if</span>(s[p] == s[p<span class="number">-1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">            prime[pcnt ++] = p;</span><br><span class="line">             </span><br><span class="line">            <span class="keyword">const</span> uint _s = s[p - <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">const</span> ll q = <span class="number">1l</span>l * p * p, lim = min((ll) m, n / q), x = m / p, y = n / p;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= x; ++i) S[i] -= S[i * p] - _s;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = x + <span class="number">1</span>; i &lt;= lim; ++i) S[i] -= s[y / i] - _s;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = m; i &gt;= q; --i) s[i] -= s[i / p] - _s;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">            f[i] = s[i] * <span class="number">63</span>;</span><br><span class="line">            F[i] = S[i] * <span class="number">63</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> e = pcnt; e &gt;= <span class="number">1</span>; --e) &#123;</span><br><span class="line">            <span class="keyword">int</span> p = prime[e<span class="number">-1</span>];</span><br><span class="line">            <span class="keyword">const</span> ll q = <span class="number">1l</span>l * p * p, lim = min((ll) m, n / q);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= lim; ++i) &#123;</span><br><span class="line">                ll cur = n / i;</span><br><span class="line">                <span class="keyword">for</span>(ll t = p, c = <span class="number">1</span>; t * p &lt;= cur; t *= p, ++ c) &#123;</span><br><span class="line">                    F[i] += (getf(cur / t) - e * <span class="number">63</span>) * val[c] + val[c + <span class="number">1</span>];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = m; i &gt;= q; --i) &#123;</span><br><span class="line">                <span class="keyword">int</span> cur = i;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> t = p, c = <span class="number">1</span>; t &lt;= cur / p; t *= p, ++ c) &#123;</span><br><span class="line">                    f[i] += (getf(cur / t) - e * <span class="number">63</span>) * val[c] + val[c + <span class="number">1</span>];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>Number Theory</tag>
       </tags>
   </entry>
   <entry>
@@ -323,6 +291,38 @@ P &amp;= \prod_{p\, \mathrm{is\ prime}} \left(1 - \frac{1}{p^2}\right) \\
       </tags>
   </entry>
   <entry>
+    <title>拓展埃氏筛法小结</title>
+    <url>/2018/ex-eratos-sieve/</url>
+    <content><![CDATA[<p>学完洲阁筛之后忘得差不多了, 不过现在已经可以将洲阁筛扔进垃圾桶了...</p>
+<a id="more"></a>
+<h3 id="description">Description</h3>
+<p>求:</p>
+<p><span class="math display">\[h(n) = \sum_{i=1}^{n} f(i)\]</span></p>
+<p>其中 <span class="math inline">\(f\)</span> 是定义在正整数集下的积性函数, 满足 <span class="math inline">\(f(p^c)\)</span> 能够快速计算.</p>
+<h3 id="conversion">Conversion</h3>
+<p>首先可以将所有要求的数按照是否只含大于 <span class="math inline">\(\sqrt{n}\)</span> 的质因子分为两类, 对于第一类数一定是一个质数, 而第二类数一定可以在某个较小的质因子处考虑到, 于是我们只关注不超过 <span class="math inline">\(\sqrt{n}\)</span> 的那些质因子.</p>
+<p>定义 <span class="math inline">\(S_k(n, i)\)</span> 表示小于等于 <span class="math inline">\(n\)</span> 的数中与前 <span class="math inline">\(i\)</span> 个质数互质的所有数与<strong>所有质数</strong>的 <span class="math inline">\(k\)</span> 次方和, 容易得到转移:</p>
+<p><span class="math display">\[
+S_k(n, i) = 
+\begin{cases}
+S_k(n, i-1) &amp; n &lt; p_i^2 \\
+S_k(n, i-1) - p_i^k \times \left(S_k(\left \lfloor \frac{n}{p_i} \right \rfloor, i - 1) - S_k(p_{i-1}, i - 1)\right) &amp; \mathrm{otherwise} 
+\end{cases}
+\]</span></p>
+<p>在考虑完 <span class="math inline">\(\sqrt{n}\)</span> 以内的所有质因数后, <span class="math inline">\(S_k(n)\)</span> 中留下了所有质数的 <span class="math inline">\(k\)</span> 次方, 这样所有第一类数的函数值都可以快速计算.</p>
+<p>类似地, 定义 <span class="math inline">\(G(n, i)\)</span> 表示小于等于 <span class="math inline">\(n\)</span> 的数中仅由第 <span class="math inline">\(i\)</span> 个以后的质数构成的数与<strong>所有质数</strong> <span class="math inline">\(x\)</span> 的 <span class="math inline">\(f(x)\)</span> 之和, 转移的方式类似:</p>
+<p><span class="math display">\[
+G(n, i) = G(n, i+1) + \sum_{c=0}^{\substack{p_i^{c+1} \le n}} f(p_i^{c+1}) + f(p_i^c) \times \left(G(\left \lfloor \frac{n}{p_i^c} \right \rfloor, i+1) - G(p_i, i+1)\right)
+\]</span></p>
+<p>复杂度约为 <span class="math inline">\(O\left(\frac{n^{\frac{3}{4}}}{\log{n}}\right)\)</span></p>
+<h3 id="code">Code</h3>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">namespace</span> SIV &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">100000</span>;</span><br><span class="line"></span><br><span class="line">    ll n;</span><br><span class="line">    <span class="keyword">int</span> m;</span><br><span class="line">    uint val[M + <span class="number">5</span>];</span><br><span class="line">    <span class="keyword">int</span> prime[M + <span class="number">5</span>], pcnt;</span><br><span class="line">    uint s[M + <span class="number">5</span>], S[M + <span class="number">5</span>];</span><br><span class="line">    uint f[M + <span class="number">5</span>], F[M + <span class="number">5</span>];</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> uint <span class="title">gets</span><span class="params">(ll x)</span> </span>&#123; <span class="keyword">return</span> x &lt;= m ? s[x] : S[n / x]; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> uint <span class="title">getf</span><span class="params">(ll x)</span> </span>&#123; <span class="keyword">return</span> x &lt;= m ? f[x] : F[n / x]; &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">my_sqrt</span><span class="params">(ll x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> r = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="number">1l</span>l * (r + <span class="number">1</span>) * (r + <span class="number">1</span>) &lt;= x) ++ r;</span><br><span class="line">        <span class="keyword">return</span> r;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(ll _n)</span> </span>&#123;</span><br><span class="line">        m = my_sqrt(n = _n);</span><br><span class="line">       </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">            val[i] = <span class="number">81</span> * i * i - <span class="number">27</span> * i + <span class="number">9</span>;</span><br><span class="line">            s[i] = i - <span class="number">1</span>;</span><br><span class="line">            S[i] = (n / i) - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> p = <span class="number">2</span>; p &lt;= m; ++p) &#123;</span><br><span class="line">            <span class="keyword">if</span>(s[p] == s[p<span class="number">-1</span>]) <span class="keyword">continue</span>;</span><br><span class="line">            prime[pcnt ++] = p;</span><br><span class="line">             </span><br><span class="line">            <span class="keyword">const</span> uint _s = s[p - <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">const</span> ll q = <span class="number">1l</span>l * p * p, lim = min((ll) m, n / q), x = m / p, y = n / p;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= x; ++i) S[i] -= S[i * p] - _s;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = x + <span class="number">1</span>; i &lt;= lim; ++i) S[i] -= s[y / i] - _s;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = m; i &gt;= q; --i) s[i] -= s[i / p] - _s;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i) &#123;</span><br><span class="line">            f[i] = s[i] * <span class="number">63</span>;</span><br><span class="line">            F[i] = S[i] * <span class="number">63</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> e = pcnt; e &gt;= <span class="number">1</span>; --e) &#123;</span><br><span class="line">            <span class="keyword">int</span> p = prime[e<span class="number">-1</span>];</span><br><span class="line">            <span class="keyword">const</span> ll q = <span class="number">1l</span>l * p * p, lim = min((ll) m, n / q);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= lim; ++i) &#123;</span><br><span class="line">                ll cur = n / i;</span><br><span class="line">                <span class="keyword">for</span>(ll t = p, c = <span class="number">1</span>; t * p &lt;= cur; t *= p, ++ c) &#123;</span><br><span class="line">                    F[i] += (getf(cur / t) - e * <span class="number">63</span>) * val[c] + val[c + <span class="number">1</span>];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = m; i &gt;= q; --i) &#123;</span><br><span class="line">                <span class="keyword">int</span> cur = i;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> t = p, c = <span class="number">1</span>; t &lt;= cur / p; t *= p, ++ c) &#123;</span><br><span class="line">                    f[i] += (getf(cur / t) - e * <span class="number">63</span>) * val[c] + val[c + <span class="number">1</span>];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>Number Theory</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>记NOI2018</title>
     <url>/2018/noi2018/</url>
     <content><![CDATA[<p>折腾了好久终于把博客修好了, 来填一些坑.</p>
@@ -397,174 +397,6 @@ P &amp;= \prod_{p\, \mathrm{is\ prime}} \left(1 - \frac{1}{p^2}\right) \\
 <p>整个的这段特殊时期，就像是一次长假，仿佛无形的手按下了暂停，于是不顺心的事情全部抛诸脑后，停下来，休息调整。 幸运的是，尽管经历诸多波折，在这个假期里还是遇到了许多对我意义重大的人和事，与我共同面对，共同克服，我也总算在长假的尾声中重整了自己的心绪。 至于现在，无形的手又一次按下播放，我将重新开始着眼未来，面对前方未知的道路。过去的情绪就让它们留在过去的时空吧，轻装上阵的我多带任何一点都会成为累赘的。</p>
 ]]></content>
       <tags>
-        <tag>Summary</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>互测题总结</title>
-    <url>/2018/problem-select/</url>
-    <content><![CDATA[<h3 id="string">String</h3>
-<h4 id="description">Description</h4>
-<blockquote>
-<p>称一个仅由<code>a</code>, <code>b</code>, <code>c</code>组成的字符串 <span class="math inline">\(S\)</span> 是平衡的当且仅当对于 <span class="math inline">\(S\)</span> 的任意一个连续子串 <span class="math inline">\(T\)</span>, 任意两种字符的出现次数之差都小于等于 <span class="math inline">\(k\)</span>, 求长度为 <span class="math inline">\(n\)</span> 的平衡串的数量.</p>
-</blockquote>
-<p><span class="math inline">\(n \le 10^9, K \le 8\)</span></p>
-<a id="more"></a>
-<h4 id="solution">Solution</h4>
-<p>定义 <span class="math inline">\(f_{a, b}(i)\)</span> 表示在前 <span class="math inline">\(i\)</span> 个字符中 <code>a</code> 和 <code>b</code> 出现次数之差, 在只考虑 <code>a</code>, <code>b</code> 两种字符的条件等价于:</p>
-<p><span class="math display">\[\max_{i=1}^{n} f_{a, b}(i) - \min_{i=1}^{n} f_{a, b}(i) \le k\]</span></p>
-<p>注意到如果 <span class="math inline">\(f_{a, b}\)</span> 的值域区间长度为 <span class="math inline">\(len\)</span>, 则被所有长度为 <span class="math inline">\(k\)</span> 的值域区间计算的次数是 <span class="math inline">\(k - len + 1\)</span>. 记 <span class="math inline">\(g(x, y, z)\)</span> 表示三种 <span class="math inline">\(f\)</span> 的值域区间长度限制分别为 <span class="math inline">\(x, y, z\)</span> 时的方案数, 那么可以容斥计算答案:</p>
-<p><span class="math display">\[ans = g(k, k, k) - 3 g(k, k, k-1) + 3 g(k, k-1, k-1) - g(k-1, k-1, k-1)\]</span></p>
-<p>考虑如何计算 <span class="math inline">\(g(x, y, z)\)</span>, 以 <span class="math inline">\(x\)</span> 为例, 每一个合法的区间一定可以表示成 <span class="math inline">\(s_x + l_x \mid l_x \in [0, x]\)</span> 的形式.</p>
-<p>因为初始状态的 <span class="math inline">\(l\)</span> 确定了 <span class="math inline">\(s\)</span> , 接下来的转移只需要保证 <span class="math inline">\(l\)</span> 的范围即可, 由于:</p>
-<p><span class="math display">\[f_{a, b}(i) - f_{a, c}(i) = f_{c, b}(i)\]</span></p>
-<p>考虑对于 <span class="math inline">\(z\)</span> 的限制, 有:</p>
-<p><span class="math display">\[s_z + s_y - s_x \le l_x - l_y \le s_z + s_y - s_x + l_z\]</span></p>
-<p>每次转移之前枚举一下 <span class="math inline">\(s_z + s_y - s_x\)</span> 即可, 这样状态只需要考虑 <span class="math inline">\(l_x, l_y\)</span> 即可, 并且初始状态唯一确定 <span class="math inline">\(s_x, s_y, s_z\)</span>.</p>
-<h3 id="sequence">Sequence</h3>
-<h4 id="description-1">Description</h4>
-<blockquote>
-<p>对长度为 <span class="math inline">\(n\)</span> 的序列 <span class="math inline">\(\{a_i\}\)</span>, 定义 <span class="math inline">\(sum(l, r)\)</span> 为第 <span class="math inline">\(l\)</span> 到 <span class="math inline">\(r\)</span> 项的元素之和, <span class="math inline">\(inc(l, r)\)</span> 为第 <span class="math inline">\(l\)</span> 到 <span class="math inline">\(r\)</span> 项的非空上升子序列的最大权值和, 求 <span class="math inline">\(\max_{1 \le l,\, r \le n} sum(l, r) - inc(l, r)\)</span>, 以及同时满足区间长度最小的 <span class="math inline">\((l, r)\)</span> 的数量.</p>
-</blockquote>
-<p><span class="math inline">\(n \le 2 \times 10^5, |a_i| \le 40\)</span></p>
-<h4 id="solution-1">Solution</h4>
-<p>由于权值的范围比较小, <span class="math inline">\(inc\)</span> 的范围也不大, 同时一定存在方案使得 <span class="math inline">\(inc\)</span> 中只包含正数.</p>
-<p>考虑从左到右枚举右端点, 由于最小化区间长度的需要, 记录 <span class="math inline">\(dp(i, j)\)</span> 表示右边界不超过当前枚举的位置, 最长上升子序列的权值和为 <span class="math inline">\(i\)</span> 且最后一位的权值为 <span class="math inline">\(j\)</span> 时最靠右的左端点的位置. 转移可以做到 <span class="math inline">\(O(n |a_i|^3)\)</span></p>
-<p>接下来考虑计算答案, 从大到小枚举 <span class="math inline">\(inc\)</span> 可能的值, 并求其最靠右的左端点如果左端点是单调增的则说明选择中间这部分的左端点 <span class="math inline">\(inc\)</span> 会发生变化, 找一个能最优化 <span class="math inline">\(sum\)</span> 的同时区间长度最小的左端点即可.</p>
-<h3 id="game">Game</h3>
-<h4 id="description-2">Description</h4>
-<blockquote>
-<p><span class="math inline">\(n\)</span> 个人在一起玩游戏每个人初始有一张牌, 牌上的数字构成一个 <span class="math inline">\(1-n\)</span> 的排列, 所有人从左到右进行决策: 翻开自己的牌并留在原地, 或者选一个之前的人与其交换手中的牌并离开游戏, 之前的人将他的牌翻开. 每个人都会采取最佳策略, 并希望自己手中的牌上的数字尽可能大. 定义 <span class="math inline">\(E(n)\)</span> 为 <span class="math inline">\(n\)</span> 个人进行游戏最后留在原地的人的数量的期望.</p>
-</blockquote>
-<p><span class="math display">\[
-\begin{aligned}
-S_k(n) = 
-\begin{cases}
-    E(n)  &amp; \text{k = 0} \\
-    \sum_{i=1}^{n} S_{k-1}(i) &amp; \text{otherwise} \\
-\end{cases}
-\end{aligned}
-\]</span></p>
-<p>求 <span class="math inline">\(S_k(n)\)</span>, 保留 <span class="math inline">\(10\)</span> 位有效数字.</p>
-<p><span class="math inline">\(k \le 50, n \le 10^{15}\)</span></p>
-<h4 id="solution-2">Solution</h4>
-<p>首先需要分析每个人的策略, 已知的信息有两部分, 留在原地的人手中的数字集合<span class="math inline">\(P\)</span>, 没有进行决策的人手中的数字集合<span class="math inline">\(R\)</span>. 考虑证明最优策略下发生交换当且仅当 <span class="math inline">\(\min\{R\} &lt; \max\{P\}\)</span>.</p>
-<p>不妨使用数学归纳法证明, 对于最后一个做决策的人, 决策正确性显然, 考虑剩下的人:</p>
-<ul>
-<li><p>当 <span class="math inline">\(\min\{R\} &gt; \max\{P\}\)</span> 时, 显然翻开手中的牌无论如何都不会再劣于 <span class="math inline">\(\max\{P\}\)</span>.</p></li>
-<li><p>当 <span class="math inline">\(\min\{R\} &lt; \max\{P\}\)</span> 时, 考虑反证翻开当前的牌不会比 <span class="math inline">\(\max\{P\}\)</span> 更优:</p>
-<ul>
-<li>如果翻开的牌优于 <span class="math inline">\(\max\{P\}\)</span>, 由于在这之前有 <span class="math inline">\(\min\{R\} &lt; \max\{P\}\)</span>, 在最小值被翻出之前接下来的人都会选择与最大的位置交换, 如果最大值所在的位置没有发生变化这个位置最后会变成 <span class="math inline">\(\min\{R\}\)</span> 且不会有人再和他交换手中的牌, 否则这个位置需要先变得小于原本的 <span class="math inline">\(\max\{P\}\)</span>.</li>
-<li>如果翻开的牌劣于 <span class="math inline">\(\max\{P\}\)</span> 则类似上述情况中先变得小于原本 <span class="math inline">\(\max\{P\}\)</span> 的情况, 每一个完整过程中要么 <span class="math inline">\(\max\{P\}\)</span> 变成 <span class="math inline">\(\min\{R\}\)</span>, 要么 <span class="math inline">\(\max\{P\}\)</span> 的位置发生变化, 最终一定都会劣于最初的 <span class="math inline">\(\max\{P\}\)</span>.</li>
-</ul></li>
-</ul>
-<p>接下来考虑 <span class="math inline">\(E(n)\)</span>, 第 <span class="math inline">\(i\)</span> 个人选择留在原地当且仅当第 <span class="math inline">\(i-1\)</span> 个人手中的牌恰好是后缀最小值, 于是:</p>
-<p><span class="math display">\[E(n) = \sum_{i=1}^{n} \frac{1}{i}\]</span></p>
-<p>考虑生成函数:</p>
-<p><span class="math display">\[
-\begin{aligned}
-F(x) &amp;= \sum_{i=1}^{\infty} \frac{1}{i} x^i \\
-     &amp;= \int \frac{1}{1 - x} \\
-     &amp;= -\ln(1 - x) \\
-\end{aligned}
-\]</span></p>
-<p><span class="math display">\[
-\begin{aligned}
-E(x) &amp;= \frac{F(x)}{1 - x} \\
-     &amp;= \frac{-\ln(1 - x)}{1 - x}
-\end{aligned}
-\]</span></p>
-<p>接下来计算 <span class="math inline">\(S_k(n)\)</span>:</p>
-<p><span class="math display">\[ 
-\begin{aligned}
-S_k(x) &amp;= \frac{S_{k-1}(x)}{1 - x} \\
-       &amp;= \frac{-\ln(1 - x)}{(1 - x)^{k + 1}} \\
-S_k&#39;(x) &amp;= \frac{(-\ln(1-x))&#39;}{(1-x)^{k + 1}} - \ln(1 - x) \left( \frac{1}{(1 - x)^{k+1}} \right)&#39; \\
-        &amp;= \frac{1}{(1 - x)^{k + 2}} - \ln(1 - x) \left( -\frac{1}{(1 - x)^{2k + 2}} ((1-x)^{k+1})&#39; \right) \\
-        &amp;= \frac{1}{(1 - x)^{k + 2}} - \ln(1 - x) \frac{(k + 1) (1 - x)^k}{(1 - x)^{2k+2}} \\
-        &amp;= \frac{1}{(1 - x)^{k + 2}} + (k + 1) S_{k+1}(x)
-\end{aligned}
-\]</span></p>
-<p>考虑 <span class="math inline">\(x^n\)</span> 项的系数:</p>
-<p><span class="math display">\[(n+1)S_k(n+1)x^n = {n + k + 2 \choose k + 1}x^n + (k + 1) S_{k + 1}(n) x^n\]</span></p>
-<p><span class="math display">\[S_{k+1}(n) = \frac{(n+1)S_k(n+1) - {n + k + 2 \choose k + 1}}{k + 1}\]</span></p>
-<p>对于 <span class="math inline">\(S_0(n)\)</span>, 使用调和级数的近似公式计算, 否则递归即可.</p>
-<h3 id="power">Power</h3>
-<h4 id="description-3">Description</h4>
-<blockquote>
-<p><span class="math inline">\(n\)</span> 个连续随机变量, 第 <span class="math inline">\(i\)</span> 个变量 <span class="math inline">\(x_i\)</span> 在 <span class="math inline">\([l_i, r_i]\)</span> 中均匀随机, 求 <span class="math inline">\(\max\{ (\sum{x_i})^m, a^m \}\)</span> 的期望值对 <span class="math inline">\(998244353\)</span> 取模的结果.</p>
-</blockquote>
-<p><span class="math inline">\(n \le 15, m \le 10^8, |a|, |l_i|, |r_i| \le 10^6\)</span></p>
-<h4 id="solution-3">Solution</h4>
-<p>连续概率实际上是合法的点集在 <span class="math inline">\(n\)</span> 维超立方体中的体积占比, 点集内部用积分计算期望即可. 对于 <span class="math inline">\([0, \infty)\)</span> 范围内的 <span class="math inline">\(n\)</span> 个连续随机变量 <span class="math inline">\(\{x_i\}\)</span>, 不难归纳得到满足 <span class="math inline">\(\sum x_i \le x\)</span> 的点构成的 <span class="math inline">\(n\)</span> 维超几何体在 <span class="math inline">\(n\)</span> 维空间中的体积是 <span class="math inline">\(\frac{x^n}{n!}\)</span>.</p>
-<p>考虑 <span class="math inline">\(\sum{x_i}\)</span> 和 <span class="math inline">\(a\)</span> 的大小关系.</p>
-<ul>
-<li><span class="math inline">\(m\)</span> 为奇数时, 需要考虑两个区间, <span class="math inline">\([-\infty, a], [a, \infty]\)</span>.</li>
-<li><span class="math inline">\(m\)</span> 为偶数时, 需要计算三个区间的答案, <span class="math inline">\([-\infty, -a], [-a, a], [a, \infty]\)</span>.</li>
-</ul>
-<p>那么要计算在每个区间内部的期望值, 考虑将每个 <span class="math inline">\(x_i\)</span> 表示为 <span class="math inline">\(l_i + y_i\)</span> 或 <span class="math inline">\(r_i + y_i\)</span>, <span class="math inline">\(2^n\)</span> 枚举所有不合法的变量集合进行容斥, 对于 <span class="math inline">\(\sum y_i \le K\)</span> 的限制可以转化成计算:</p>
-<p><span class="math display">\[\int_{0}^{K} \frac{x^{n-1}}{(n-1)!} g(x) \mathrm{d}x\]</span></p>
-<p><span class="math inline">\(g(x)\)</span> 表示当 <span class="math inline">\(\sum y_i = x\)</span> 时的答案, 同一个区间内的形式是相同的.</p>
-<p>对于 <span class="math inline">\(\sum y_i \ge K\)</span> 的限制可以反过来将每个 <span class="math inline">\(x_i\)</span> 表示为 <span class="math inline">\(r_i - y_i\)</span> 或者 <span class="math inline">\(l_i - y_i\)</span>, 限制 <span class="math inline">\(-\sum y_i \ge K\)</span> 可以转化为 <span class="math inline">\(\sum y_i \le K\)</span> 的形式.</p>
-<h3 id="bizi">Bizi</h3>
-<h4 id="description-4">Description</h4>
-<blockquote>
-<p>给出两棵有根树, 大小分别是 <span class="math inline">\(n_1, n_2\)</span>, 可以进行三种操作: 1. 修改: 将一条边的边权从 <span class="math inline">\(x\)</span> 改为 <span class="math inline">\(y\)</span> , 代价为 <span class="math inline">\(|x - y| \times c1\)</span>. 2. 收缩: 选择一个点, 将它的所有子树连向他的父亲, 代价为这个点到父亲的边权 <span class="math inline">\(w \times c2\)</span>. 3. 生长: 选择任意一个点的一段连续的子树, 插入一个新点连向选择的点并成为这些子树的父亲, 代价为连向原来的点的边权 <span class="math inline">\(w \times c2\)</span>.</p>
-</blockquote>
-<blockquote>
-<p>求出使得两颗树括号序列和边权相同需要的最小代价.</p>
-</blockquote>
-<p><span class="math inline">\(n1 \le 50,\, n2 \le 2000\)</span></p>
-<h4 id="solution-4">Solution</h4>
-<p>首先不难发现操作一和操作二互为逆操作, 所以可以只考虑操作二.</p>
-<p>定义 <span class="math inline">\(dp(a, b, c, d)\)</span> 表示第一颗树中 <span class="math inline">\([a, b]\)</span> 表示的括号序列区间和第二棵树中 <span class="math inline">\([c, d]\)</span> 表示的括号序列区间变得相同需要的最小代价, 考虑左端点对应的括号在最终情况下的匹配情况进行转移:</p>
-<p><span class="math display">\[
-dp(a, b, c, d) = \min \begin{cases} 
-dp(a + 1, b, c, d) + w_{a} \times c2 \\
-dp(a, b, c + 1, d) + w_{c} \times c2 \\
-dp(a + 1, p_{a} - 1, b + 1, p_{b} - 1) + dp(p_{a} + 1, b, p_{c} + 1, d) + |w_{a} - w_{b}| \times c1
-\end{cases}
-\]</span></p>
-<p><span class="math inline">\(p_x\)</span> 表示第 <span class="math inline">\(x\)</span> 个括号的匹配括号的位置, <span class="math inline">\(w_x\)</span> 表示第 <span class="math inline">\(x\)</span> 个括号和其父亲结点之间连边的边权.</p>
-<p>看起来状态数是 <span class="math inline">\(O(n1^2n2^2)\)</span> 的, 实际上分析后发现有用的状态数只有 <span class="math inline">\(O(n1^2n2\log{n2})\)</span>: 因为考虑左端点进行转移和考虑右端点进行转移是等价的, 但是如果每次都选择第二棵树中子树大小较小的一侧进行转移, 关于第二棵树的状态数就是轻儿子的子树大小之和, 而这个值是不会超过 <span class="math inline">\(O(n2 \log{n2})\)</span> 的.</p>
-<h3 id="circle">Circle</h3>
-<h4 id="description-5">Description</h4>
-<blockquote>
-<p>平面上有 <span class="math inline">\(n\)</span> 个点, 求有多少个无序三元组 <span class="math inline">\((i, j, k)\)</span> 满足点 <span class="math inline">\(i\)</span>, <span class="math inline">\(j\)</span>, <span class="math inline">\(k\)</span> 确定的圆经过坐标原点.</p>
-</blockquote>
-<p><span class="math inline">\(n \le 2000\)</span></p>
-<h4 id="solution-5">Solution</h4>
-<p>西姆松定理:</p>
-<blockquote>
-<p>三个点确定的圆上任选一点向这三个点构成的三角形三边所在直线分别作垂线, 垂足三点共线.</p>
-</blockquote>
-<p>证明可参考下图:</p>
-<p><img src="/img/simson.png"></p>
-<p>于是问题转化为求三点共线的数量.</p>
-<h3 id="triangle">Triangle</h3>
-<h4 id="description-6">Description</h4>
-<blockquote>
-<p>有一棵 <span class="math inline">\(n\)</span> 个点的树, 初始时树上没有石子, 可以进行若干次如下操作: 1. 如果点 <span class="math inline">\(u\)</span> 的所有子树 <span class="math inline">\(v\)</span> 上都恰好有 <span class="math inline">\(w_v\)</span> 颗石子, 则可以从手中拿出 <span class="math inline">\(w_u\)</span> 颗石子放在点 <span class="math inline">\(u\)</span> 上. 2. 将某个结点上的所有石子收回手中.</p>
-<p>现在询问你对于每一个点 <span class="math inline">\(i\)</span>, 要使得 <span class="math inline">\(i\)</span> 上恰好放有 <span class="math inline">\(w_i\)</span> 颗石子, 初始时手中至少需要多少颗石子.</p>
-</blockquote>
-<p><span class="math inline">\(n \le 10^5, w_i \le 10^9\)</span></p>
-<h4 id="solution-6">Solution</h4>
-<p>首先可以发现操作的过程类似一个拓扑排序, 填上一个结点的石子之前先要将它的所有儿子都填上石子, 接着会立即收回儿子结点上的石子.</p>
-<p>不妨反过来考虑, 定义一次操作为选择一个放有石子的点, 将它的儿子结点全部放上石子, 然后收回这个点的石子. 由于只需要考虑操作过程中石子数量的最大值, 可以发现反转顺序并不会影响答案.</p>
-<p>用一个二元组 <span class="math inline">\((a, b)\)</span> 描述一次操作, <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> 分别表示在操作的过程中石子的总变化量和变化最大值, 注意到两个操作可以方便地合并:</p>
-<p><span class="math display">\[
-(a, b) + (c, d) = (a + c, \max\{b, a + d\})
-\]</span></p>
-<p>接下来考虑二元组 <span class="math inline">\(X = (a, b)\)</span> 和 <span class="math inline">\(Y = (c, d)\)</span> 之间的优先级, 不难得到以下优先级规则:</p>
-<ol type="1">
-<li><span class="math inline">\(a \times c &lt; 0\)</span> 时, 总变化量小于 <span class="math inline">\(0\)</span> 的二元组优先级更高.</li>
-<li><span class="math inline">\(a &lt; 0 ,\,\, c &lt; 0\)</span> 时, 变化最大值较小的二元组优先级更高.</li>
-<li><span class="math inline">\(a &gt; 0 ,\,\, c &gt; 0\)</span> 时, 总变化量减去变化最大值较小的二元组优先级更高.</li>
-</ol>
-<p>以上规则也可利用交换法证明正确性. 又因为任意两个二元组合并得到的新二元组不会比原来的两个二元组都更优, 所以全局最优的二元组在可以选择的时候一定会马上选择, 于是得到一个贪心策略, 每次选择最优的二元组并将其和父亲当前对应的二元组进行合并, 可以发现这样能够得到整棵树的操作序列.</p>
-]]></content>
-      <tags>
-        <tag>Combinatorial</tag>
         <tag>Summary</tag>
       </tags>
   </entry>
@@ -820,9 +652,177 @@ V(k, m, S(k, m)) = 1
 </section>
 ]]></content>
       <tags>
-        <tag>Number Theory</tag>
         <tag>Probability</tag>
         <tag>Induction</tag>
+        <tag>Number Theory</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>互测题总结</title>
+    <url>/2018/problem-select/</url>
+    <content><![CDATA[<h3 id="string">String</h3>
+<h4 id="description">Description</h4>
+<blockquote>
+<p>称一个仅由<code>a</code>, <code>b</code>, <code>c</code>组成的字符串 <span class="math inline">\(S\)</span> 是平衡的当且仅当对于 <span class="math inline">\(S\)</span> 的任意一个连续子串 <span class="math inline">\(T\)</span>, 任意两种字符的出现次数之差都小于等于 <span class="math inline">\(k\)</span>, 求长度为 <span class="math inline">\(n\)</span> 的平衡串的数量.</p>
+</blockquote>
+<p><span class="math inline">\(n \le 10^9, K \le 8\)</span></p>
+<a id="more"></a>
+<h4 id="solution">Solution</h4>
+<p>定义 <span class="math inline">\(f_{a, b}(i)\)</span> 表示在前 <span class="math inline">\(i\)</span> 个字符中 <code>a</code> 和 <code>b</code> 出现次数之差, 在只考虑 <code>a</code>, <code>b</code> 两种字符的条件等价于:</p>
+<p><span class="math display">\[\max_{i=1}^{n} f_{a, b}(i) - \min_{i=1}^{n} f_{a, b}(i) \le k\]</span></p>
+<p>注意到如果 <span class="math inline">\(f_{a, b}\)</span> 的值域区间长度为 <span class="math inline">\(len\)</span>, 则被所有长度为 <span class="math inline">\(k\)</span> 的值域区间计算的次数是 <span class="math inline">\(k - len + 1\)</span>. 记 <span class="math inline">\(g(x, y, z)\)</span> 表示三种 <span class="math inline">\(f\)</span> 的值域区间长度限制分别为 <span class="math inline">\(x, y, z\)</span> 时的方案数, 那么可以容斥计算答案:</p>
+<p><span class="math display">\[ans = g(k, k, k) - 3 g(k, k, k-1) + 3 g(k, k-1, k-1) - g(k-1, k-1, k-1)\]</span></p>
+<p>考虑如何计算 <span class="math inline">\(g(x, y, z)\)</span>, 以 <span class="math inline">\(x\)</span> 为例, 每一个合法的区间一定可以表示成 <span class="math inline">\(s_x + l_x \mid l_x \in [0, x]\)</span> 的形式.</p>
+<p>因为初始状态的 <span class="math inline">\(l\)</span> 确定了 <span class="math inline">\(s\)</span> , 接下来的转移只需要保证 <span class="math inline">\(l\)</span> 的范围即可, 由于:</p>
+<p><span class="math display">\[f_{a, b}(i) - f_{a, c}(i) = f_{c, b}(i)\]</span></p>
+<p>考虑对于 <span class="math inline">\(z\)</span> 的限制, 有:</p>
+<p><span class="math display">\[s_z + s_y - s_x \le l_x - l_y \le s_z + s_y - s_x + l_z\]</span></p>
+<p>每次转移之前枚举一下 <span class="math inline">\(s_z + s_y - s_x\)</span> 即可, 这样状态只需要考虑 <span class="math inline">\(l_x, l_y\)</span> 即可, 并且初始状态唯一确定 <span class="math inline">\(s_x, s_y, s_z\)</span>.</p>
+<h3 id="sequence">Sequence</h3>
+<h4 id="description-1">Description</h4>
+<blockquote>
+<p>对长度为 <span class="math inline">\(n\)</span> 的序列 <span class="math inline">\(\{a_i\}\)</span>, 定义 <span class="math inline">\(sum(l, r)\)</span> 为第 <span class="math inline">\(l\)</span> 到 <span class="math inline">\(r\)</span> 项的元素之和, <span class="math inline">\(inc(l, r)\)</span> 为第 <span class="math inline">\(l\)</span> 到 <span class="math inline">\(r\)</span> 项的非空上升子序列的最大权值和, 求 <span class="math inline">\(\max_{1 \le l,\, r \le n} sum(l, r) - inc(l, r)\)</span>, 以及同时满足区间长度最小的 <span class="math inline">\((l, r)\)</span> 的数量.</p>
+</blockquote>
+<p><span class="math inline">\(n \le 2 \times 10^5, |a_i| \le 40\)</span></p>
+<h4 id="solution-1">Solution</h4>
+<p>由于权值的范围比较小, <span class="math inline">\(inc\)</span> 的范围也不大, 同时一定存在方案使得 <span class="math inline">\(inc\)</span> 中只包含正数.</p>
+<p>考虑从左到右枚举右端点, 由于最小化区间长度的需要, 记录 <span class="math inline">\(dp(i, j)\)</span> 表示右边界不超过当前枚举的位置, 最长上升子序列的权值和为 <span class="math inline">\(i\)</span> 且最后一位的权值为 <span class="math inline">\(j\)</span> 时最靠右的左端点的位置. 转移可以做到 <span class="math inline">\(O(n |a_i|^3)\)</span></p>
+<p>接下来考虑计算答案, 从大到小枚举 <span class="math inline">\(inc\)</span> 可能的值, 并求其最靠右的左端点如果左端点是单调增的则说明选择中间这部分的左端点 <span class="math inline">\(inc\)</span> 会发生变化, 找一个能最优化 <span class="math inline">\(sum\)</span> 的同时区间长度最小的左端点即可.</p>
+<h3 id="game">Game</h3>
+<h4 id="description-2">Description</h4>
+<blockquote>
+<p><span class="math inline">\(n\)</span> 个人在一起玩游戏每个人初始有一张牌, 牌上的数字构成一个 <span class="math inline">\(1-n\)</span> 的排列, 所有人从左到右进行决策: 翻开自己的牌并留在原地, 或者选一个之前的人与其交换手中的牌并离开游戏, 之前的人将他的牌翻开. 每个人都会采取最佳策略, 并希望自己手中的牌上的数字尽可能大. 定义 <span class="math inline">\(E(n)\)</span> 为 <span class="math inline">\(n\)</span> 个人进行游戏最后留在原地的人的数量的期望.</p>
+</blockquote>
+<p><span class="math display">\[
+\begin{aligned}
+S_k(n) = 
+\begin{cases}
+    E(n)  &amp; \text{k = 0} \\
+    \sum_{i=1}^{n} S_{k-1}(i) &amp; \text{otherwise} \\
+\end{cases}
+\end{aligned}
+\]</span></p>
+<p>求 <span class="math inline">\(S_k(n)\)</span>, 保留 <span class="math inline">\(10\)</span> 位有效数字.</p>
+<p><span class="math inline">\(k \le 50, n \le 10^{15}\)</span></p>
+<h4 id="solution-2">Solution</h4>
+<p>首先需要分析每个人的策略, 已知的信息有两部分, 留在原地的人手中的数字集合<span class="math inline">\(P\)</span>, 没有进行决策的人手中的数字集合<span class="math inline">\(R\)</span>. 考虑证明最优策略下发生交换当且仅当 <span class="math inline">\(\min\{R\} &lt; \max\{P\}\)</span>.</p>
+<p>不妨使用数学归纳法证明, 对于最后一个做决策的人, 决策正确性显然, 考虑剩下的人:</p>
+<ul>
+<li><p>当 <span class="math inline">\(\min\{R\} &gt; \max\{P\}\)</span> 时, 显然翻开手中的牌无论如何都不会再劣于 <span class="math inline">\(\max\{P\}\)</span>.</p></li>
+<li><p>当 <span class="math inline">\(\min\{R\} &lt; \max\{P\}\)</span> 时, 考虑反证翻开当前的牌不会比 <span class="math inline">\(\max\{P\}\)</span> 更优:</p>
+<ul>
+<li>如果翻开的牌优于 <span class="math inline">\(\max\{P\}\)</span>, 由于在这之前有 <span class="math inline">\(\min\{R\} &lt; \max\{P\}\)</span>, 在最小值被翻出之前接下来的人都会选择与最大的位置交换, 如果最大值所在的位置没有发生变化这个位置最后会变成 <span class="math inline">\(\min\{R\}\)</span> 且不会有人再和他交换手中的牌, 否则这个位置需要先变得小于原本的 <span class="math inline">\(\max\{P\}\)</span>.</li>
+<li>如果翻开的牌劣于 <span class="math inline">\(\max\{P\}\)</span> 则类似上述情况中先变得小于原本 <span class="math inline">\(\max\{P\}\)</span> 的情况, 每一个完整过程中要么 <span class="math inline">\(\max\{P\}\)</span> 变成 <span class="math inline">\(\min\{R\}\)</span>, 要么 <span class="math inline">\(\max\{P\}\)</span> 的位置发生变化, 最终一定都会劣于最初的 <span class="math inline">\(\max\{P\}\)</span>.</li>
+</ul></li>
+</ul>
+<p>接下来考虑 <span class="math inline">\(E(n)\)</span>, 第 <span class="math inline">\(i\)</span> 个人选择留在原地当且仅当第 <span class="math inline">\(i-1\)</span> 个人手中的牌恰好是后缀最小值, 于是:</p>
+<p><span class="math display">\[E(n) = \sum_{i=1}^{n} \frac{1}{i}\]</span></p>
+<p>考虑生成函数:</p>
+<p><span class="math display">\[
+\begin{aligned}
+F(x) &amp;= \sum_{i=1}^{\infty} \frac{1}{i} x^i \\
+     &amp;= \int \frac{1}{1 - x} \\
+     &amp;= -\ln(1 - x) \\
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+E(x) &amp;= \frac{F(x)}{1 - x} \\
+     &amp;= \frac{-\ln(1 - x)}{1 - x}
+\end{aligned}
+\]</span></p>
+<p>接下来计算 <span class="math inline">\(S_k(n)\)</span>:</p>
+<p><span class="math display">\[ 
+\begin{aligned}
+S_k(x) &amp;= \frac{S_{k-1}(x)}{1 - x} \\
+       &amp;= \frac{-\ln(1 - x)}{(1 - x)^{k + 1}} \\
+S_k&#39;(x) &amp;= \frac{(-\ln(1-x))&#39;}{(1-x)^{k + 1}} - \ln(1 - x) \left( \frac{1}{(1 - x)^{k+1}} \right)&#39; \\
+        &amp;= \frac{1}{(1 - x)^{k + 2}} - \ln(1 - x) \left( -\frac{1}{(1 - x)^{2k + 2}} ((1-x)^{k+1})&#39; \right) \\
+        &amp;= \frac{1}{(1 - x)^{k + 2}} - \ln(1 - x) \frac{(k + 1) (1 - x)^k}{(1 - x)^{2k+2}} \\
+        &amp;= \frac{1}{(1 - x)^{k + 2}} + (k + 1) S_{k+1}(x)
+\end{aligned}
+\]</span></p>
+<p>考虑 <span class="math inline">\(x^n\)</span> 项的系数:</p>
+<p><span class="math display">\[(n+1)S_k(n+1)x^n = {n + k + 2 \choose k + 1}x^n + (k + 1) S_{k + 1}(n) x^n\]</span></p>
+<p><span class="math display">\[S_{k+1}(n) = \frac{(n+1)S_k(n+1) - {n + k + 2 \choose k + 1}}{k + 1}\]</span></p>
+<p>对于 <span class="math inline">\(S_0(n)\)</span>, 使用调和级数的近似公式计算, 否则递归即可.</p>
+<h3 id="power">Power</h3>
+<h4 id="description-3">Description</h4>
+<blockquote>
+<p><span class="math inline">\(n\)</span> 个连续随机变量, 第 <span class="math inline">\(i\)</span> 个变量 <span class="math inline">\(x_i\)</span> 在 <span class="math inline">\([l_i, r_i]\)</span> 中均匀随机, 求 <span class="math inline">\(\max\{ (\sum{x_i})^m, a^m \}\)</span> 的期望值对 <span class="math inline">\(998244353\)</span> 取模的结果.</p>
+</blockquote>
+<p><span class="math inline">\(n \le 15, m \le 10^8, |a|, |l_i|, |r_i| \le 10^6\)</span></p>
+<h4 id="solution-3">Solution</h4>
+<p>连续概率实际上是合法的点集在 <span class="math inline">\(n\)</span> 维超立方体中的体积占比, 点集内部用积分计算期望即可. 对于 <span class="math inline">\([0, \infty)\)</span> 范围内的 <span class="math inline">\(n\)</span> 个连续随机变量 <span class="math inline">\(\{x_i\}\)</span>, 不难归纳得到满足 <span class="math inline">\(\sum x_i \le x\)</span> 的点构成的 <span class="math inline">\(n\)</span> 维超几何体在 <span class="math inline">\(n\)</span> 维空间中的体积是 <span class="math inline">\(\frac{x^n}{n!}\)</span>.</p>
+<p>考虑 <span class="math inline">\(\sum{x_i}\)</span> 和 <span class="math inline">\(a\)</span> 的大小关系.</p>
+<ul>
+<li><span class="math inline">\(m\)</span> 为奇数时, 需要考虑两个区间, <span class="math inline">\([-\infty, a], [a, \infty]\)</span>.</li>
+<li><span class="math inline">\(m\)</span> 为偶数时, 需要计算三个区间的答案, <span class="math inline">\([-\infty, -a], [-a, a], [a, \infty]\)</span>.</li>
+</ul>
+<p>那么要计算在每个区间内部的期望值, 考虑将每个 <span class="math inline">\(x_i\)</span> 表示为 <span class="math inline">\(l_i + y_i\)</span> 或 <span class="math inline">\(r_i + y_i\)</span>, <span class="math inline">\(2^n\)</span> 枚举所有不合法的变量集合进行容斥, 对于 <span class="math inline">\(\sum y_i \le K\)</span> 的限制可以转化成计算:</p>
+<p><span class="math display">\[\int_{0}^{K} \frac{x^{n-1}}{(n-1)!} g(x) \mathrm{d}x\]</span></p>
+<p><span class="math inline">\(g(x)\)</span> 表示当 <span class="math inline">\(\sum y_i = x\)</span> 时的答案, 同一个区间内的形式是相同的.</p>
+<p>对于 <span class="math inline">\(\sum y_i \ge K\)</span> 的限制可以反过来将每个 <span class="math inline">\(x_i\)</span> 表示为 <span class="math inline">\(r_i - y_i\)</span> 或者 <span class="math inline">\(l_i - y_i\)</span>, 限制 <span class="math inline">\(-\sum y_i \ge K\)</span> 可以转化为 <span class="math inline">\(\sum y_i \le K\)</span> 的形式.</p>
+<h3 id="bizi">Bizi</h3>
+<h4 id="description-4">Description</h4>
+<blockquote>
+<p>给出两棵有根树, 大小分别是 <span class="math inline">\(n_1, n_2\)</span>, 可以进行三种操作: 1. 修改: 将一条边的边权从 <span class="math inline">\(x\)</span> 改为 <span class="math inline">\(y\)</span> , 代价为 <span class="math inline">\(|x - y| \times c1\)</span>. 2. 收缩: 选择一个点, 将它的所有子树连向他的父亲, 代价为这个点到父亲的边权 <span class="math inline">\(w \times c2\)</span>. 3. 生长: 选择任意一个点的一段连续的子树, 插入一个新点连向选择的点并成为这些子树的父亲, 代价为连向原来的点的边权 <span class="math inline">\(w \times c2\)</span>.</p>
+</blockquote>
+<blockquote>
+<p>求出使得两颗树括号序列和边权相同需要的最小代价.</p>
+</blockquote>
+<p><span class="math inline">\(n1 \le 50,\, n2 \le 2000\)</span></p>
+<h4 id="solution-4">Solution</h4>
+<p>首先不难发现操作一和操作二互为逆操作, 所以可以只考虑操作二.</p>
+<p>定义 <span class="math inline">\(dp(a, b, c, d)\)</span> 表示第一颗树中 <span class="math inline">\([a, b]\)</span> 表示的括号序列区间和第二棵树中 <span class="math inline">\([c, d]\)</span> 表示的括号序列区间变得相同需要的最小代价, 考虑左端点对应的括号在最终情况下的匹配情况进行转移:</p>
+<p><span class="math display">\[
+dp(a, b, c, d) = \min \begin{cases} 
+dp(a + 1, b, c, d) + w_{a} \times c2 \\
+dp(a, b, c + 1, d) + w_{c} \times c2 \\
+dp(a + 1, p_{a} - 1, b + 1, p_{b} - 1) + dp(p_{a} + 1, b, p_{c} + 1, d) + |w_{a} - w_{b}| \times c1
+\end{cases}
+\]</span></p>
+<p><span class="math inline">\(p_x\)</span> 表示第 <span class="math inline">\(x\)</span> 个括号的匹配括号的位置, <span class="math inline">\(w_x\)</span> 表示第 <span class="math inline">\(x\)</span> 个括号和其父亲结点之间连边的边权.</p>
+<p>看起来状态数是 <span class="math inline">\(O(n1^2n2^2)\)</span> 的, 实际上分析后发现有用的状态数只有 <span class="math inline">\(O(n1^2n2\log{n2})\)</span>: 因为考虑左端点进行转移和考虑右端点进行转移是等价的, 但是如果每次都选择第二棵树中子树大小较小的一侧进行转移, 关于第二棵树的状态数就是轻儿子的子树大小之和, 而这个值是不会超过 <span class="math inline">\(O(n2 \log{n2})\)</span> 的.</p>
+<h3 id="circle">Circle</h3>
+<h4 id="description-5">Description</h4>
+<blockquote>
+<p>平面上有 <span class="math inline">\(n\)</span> 个点, 求有多少个无序三元组 <span class="math inline">\((i, j, k)\)</span> 满足点 <span class="math inline">\(i\)</span>, <span class="math inline">\(j\)</span>, <span class="math inline">\(k\)</span> 确定的圆经过坐标原点.</p>
+</blockquote>
+<p><span class="math inline">\(n \le 2000\)</span></p>
+<h4 id="solution-5">Solution</h4>
+<p>西姆松定理:</p>
+<blockquote>
+<p>三个点确定的圆上任选一点向这三个点构成的三角形三边所在直线分别作垂线, 垂足三点共线.</p>
+</blockquote>
+<p>证明可参考下图:</p>
+<p><img src="/img/simson.png"></p>
+<p>于是问题转化为求三点共线的数量.</p>
+<h3 id="triangle">Triangle</h3>
+<h4 id="description-6">Description</h4>
+<blockquote>
+<p>有一棵 <span class="math inline">\(n\)</span> 个点的树, 初始时树上没有石子, 可以进行若干次如下操作: 1. 如果点 <span class="math inline">\(u\)</span> 的所有子树 <span class="math inline">\(v\)</span> 上都恰好有 <span class="math inline">\(w_v\)</span> 颗石子, 则可以从手中拿出 <span class="math inline">\(w_u\)</span> 颗石子放在点 <span class="math inline">\(u\)</span> 上. 2. 将某个结点上的所有石子收回手中.</p>
+<p>现在询问你对于每一个点 <span class="math inline">\(i\)</span>, 要使得 <span class="math inline">\(i\)</span> 上恰好放有 <span class="math inline">\(w_i\)</span> 颗石子, 初始时手中至少需要多少颗石子.</p>
+</blockquote>
+<p><span class="math inline">\(n \le 10^5, w_i \le 10^9\)</span></p>
+<h4 id="solution-6">Solution</h4>
+<p>首先可以发现操作的过程类似一个拓扑排序, 填上一个结点的石子之前先要将它的所有儿子都填上石子, 接着会立即收回儿子结点上的石子.</p>
+<p>不妨反过来考虑, 定义一次操作为选择一个放有石子的点, 将它的儿子结点全部放上石子, 然后收回这个点的石子. 由于只需要考虑操作过程中石子数量的最大值, 可以发现反转顺序并不会影响答案.</p>
+<p>用一个二元组 <span class="math inline">\((a, b)\)</span> 描述一次操作, <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span> 分别表示在操作的过程中石子的总变化量和变化最大值, 注意到两个操作可以方便地合并:</p>
+<p><span class="math display">\[
+(a, b) + (c, d) = (a + c, \max\{b, a + d\})
+\]</span></p>
+<p>接下来考虑二元组 <span class="math inline">\(X = (a, b)\)</span> 和 <span class="math inline">\(Y = (c, d)\)</span> 之间的优先级, 不难得到以下优先级规则:</p>
+<ol type="1">
+<li><span class="math inline">\(a \times c &lt; 0\)</span> 时, 总变化量小于 <span class="math inline">\(0\)</span> 的二元组优先级更高.</li>
+<li><span class="math inline">\(a &lt; 0 ,\,\, c &lt; 0\)</span> 时, 变化最大值较小的二元组优先级更高.</li>
+<li><span class="math inline">\(a &gt; 0 ,\,\, c &gt; 0\)</span> 时, 总变化量减去变化最大值较小的二元组优先级更高.</li>
+</ol>
+<p>以上规则也可利用交换法证明正确性. 又因为任意两个二元组合并得到的新二元组不会比原来的两个二元组都更优, 所以全局最优的二元组在可以选择的时候一定会马上选择, 于是得到一个贪心策略, 每次选择最优的二元组并将其和父亲当前对应的二元组进行合并, 可以发现这样能够得到整棵树的操作序列.</p>
+]]></content>
+      <tags>
+        <tag>Summary</tag>
+        <tag>Combinatorial</tag>
       </tags>
   </entry>
 </search>
