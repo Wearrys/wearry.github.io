@@ -353,7 +353,7 @@ f(i, j-1) &amp;amp; \leftarrow f(i, j) \times {n-i + (n-j) \times (k-1) + k-2 \c
  }
 
  var __cur = 6;
- var __tot = 32;
+ var __tot = 28;
  var __step = 5;
 
  for (var i = 1; i &lt; __cur; i++) {
@@ -372,11 +372,12 @@ f(i, j-1) &amp;amp; \leftarrow f(i, j) \times {n-i + (n-j) \times (k-1) + k-2 \c
 
  $(window).scroll(function() {
  if($(window).scrollTop() + $(window).height() == $(document).height()) {
- for (var i = __cur; i &lt; __cur + __step &amp;&amp; i &lt;= __tot; i++, __cur += __step) {
+ for (var i = __cur; i &lt; __cur + __step &amp;&amp; i &lt;= __tot; i++) {
  $('#mygallery').append('&lt;a href="https://wearry01.github.io/images/gallery/img_' + padding(i) + '.jpg">' +
  '&lt;img src="https://wearry01.github.io/images/gallery/img_' + padding(i) + '.jpg"/>' + 
  '&lt;/a>');
  }
+ __cur += __step;
  $('#mygallery').justifiedGallery('norewind');
  }
  });
