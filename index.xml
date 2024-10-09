@@ -353,7 +353,7 @@ f(i, j-1) &amp;amp; \leftarrow f(i, j) \times {n-i + (n-j) \times (k-1) + k-2 \c
  }
 
  var __cur = 6;
- var __tot = 28;
+ var __tot = 24;
  var __step = 5;
 
  for (var i = 1; i &lt; __cur; i++) {
